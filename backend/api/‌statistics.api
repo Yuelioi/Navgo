@@ -1,0 +1,14 @@
+syntax = "v1"
+
+import "./base.api"
+
+@server(
+	prefix: /v1
+	group: statistics
+)
+
+service main{
+	@doc "增加页面浏览量"
+	@handler Statistics
+	post /statistics/:id (IDRequest) returns (IDResponse)
+}

@@ -1,0 +1,38 @@
+syntax = "v1"
+
+import "./base.api"
+
+type Comment {
+	ID           string `json:"id"`
+	CollectionId string `json:"collection_id"`
+	Nickname     string `json:"nickname"`
+	Message      string `json:"message"`
+}
+
+type CommentRequest {
+	CollectionId string `json:"collection_id"`
+	Nickname     string `json:"nickname"`
+	Message      string `json:"message"`
+}
+type CommentsResponse {
+	Comments []string `json:"comments"`
+}
+
+@server (
+	prefix: /v1
+	group: comment
+)
+
+service main {
+	@doc "获取页面评论"
+	@handler Comment
+	get /comments (IDRequest) returns (CommentsResponse)
+
+	@doc "发布评论"
+	@handler AddComment
+	post /comment (CommentRequest) returns (IDResponse)
+
+	@doc "删除评论"
+	@handler DeleteComment
+	delete /comment (IDRequest) returns (IDResponse)
+}

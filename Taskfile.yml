@@ -1,0 +1,16 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  api rebuild:
+    cmds:
+      - goctl api go --api ./backend/api/main.api --dir backend
+  api doc:
+    cmds:
+      - powershell -Command "Remove-Item 'backend\\doc' -Recurse -Force"
+      - goctl api doc --dir ./backend/api --o ./backend/doc
+      - powershell -Command "Remove-Item 'backend\\doc\\main.md' -Force"

@@ -1,0 +1,27 @@
+syntax = "v1"
+
+type AnyRequest {}
+
+type IDRequest {
+	ID int `json:"string"`
+}
+
+type IDResponse {
+	ID int `json:"string"`
+}
+
+type Collection {
+	ID          string   `json:"id"`
+	Title       string   `json:"title"`
+	Category    string   `json:"category"`
+	Link        string   `json:"link"`
+	Description string   `json:"description"`
+	Country     string   `json:"country"`
+	Thumbnail   string   `json:"thumbnail"`
+	Tags        []string `json:"tags"`
+	View        int      `json:"view"`
+}
+
+type CollectionsResponse {
+	Collections []Collection `json:"collections"`
+}

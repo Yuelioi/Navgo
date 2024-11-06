@@ -1,0 +1,42 @@
+syntax = "v1"
+
+import "./base.api"
+
+// 可修改的字段
+type CollectionRequest {
+	ID          string   `json:"id"`
+	Title       string   `json:"title"`
+	Category    string   `json:"category"`
+	Link        string   `json:"link"`
+	Description string   `json:"description"`
+	Country     string   `json:"country"`
+	Thumbnail   string   `json:"thumbnail"`
+	Tags        []string `json:"tags"`
+}
+
+@server (
+	prefix: /v1
+	group: collection
+)
+
+service main {
+	@doc "页面集合"
+	@handler Collections
+	get /collections (AnyRequest) returns (CollectionsResponse)
+
+	@doc "单页面"
+	@handler Collection
+	get /collection/:id (IDRequest) returns (Collection)
+
+	@doc "增加页面"
+	@handler AddCollection
+	post /collection (CollectionRequest) returns (Collection)
+
+	@doc "删除页面"
+	@handler DeleteCollection
+	delete /collection (IDRequest) returns (Collection)
+
+	@doc "更新页面"
+	@handler UpdateCollection
+	put /collection (CollectionRequest) returns (Collection)
+}

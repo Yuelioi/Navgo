@@ -1,0 +1,6 @@
+syntax = "v1"
+
+import "./collection.api"
+import "./tag.api"
+import "./comment.api"
+import "./‌statistics.api"

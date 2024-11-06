@@ -1,0 +1,33 @@
+syntax = "v1"
+
+info (
+	title:   "tag api"
+	desc:    "tag api desc"
+	author:  "yueli"
+	date:    "2024 年 11 月 7 日"
+	version: "v1"
+)
+
+import "./base.api"
+
+type TagsResponse {
+	Tags []string `json:"tags"`
+}
+type TagRequest {
+	Tags []string `json:"tags"`
+}
+
+@server (
+	prefix: /v1
+	group: tag
+)
+
+service main {
+	@doc "tags页面集合"
+	@handler Tags
+	get /tags (AnyRequest) returns (TagsResponse)
+
+	@doc "单tag"
+	@handler Tag
+	get /tag/:id (IDRequest) returns (CollectionsResponse)
+}

@@ -1,0 +1,18 @@
+title: 工具
+id: tool
+order: 999
+
+collections:
+  - title: 二维码生成
+    category: 在线
+    link: https://www.qtool.net/qrcode
+    description: qtool在线工具为大家提供各种在线工具,实现分享了在线开发类,查询类,站长类,代码格式化与代码压缩处理,代码在线加密与解密,生活查询,图片在线批量处理,图片生成等内容丰富实用的工具.
+    country: null
+    thumbnail: null
+  - title: Javascript 混淆
+    category: 在线
+    link: https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
+    description: Javascript Obfuscator - Protects JavaScript code from stealing and
+      shrinks size - 100% Free
+    country: null
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/2f9de-www.javascriptobfuscator.com.png
