@@ -2,33 +2,24 @@ package main
 
 import (
 	"context"
-	"flag"
-	"fmt"
 	"net/http"
 
 	"backend/internal/biz"
-	"backend/internal/config"
+	"backend/internal/global"
 	"backend/internal/handler"
-	"backend/internal/svc"
 
-	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/go-zero/rest/httpx"
+
+	_ "backend/internal/db"
 )
 
-var configFile = flag.String("f", "etc/main.yaml", "the config file")
-
 func main() {
-	flag.Parse()
 
-	var c config.Config
-	conf.MustLoad(*configFile, &c)
-
-	server := rest.MustNewServer(c.RestConf)
+	server := rest.MustNewServer(global.ConfInst.RestConf)
 	defer server.Stop()
 
-	ctx := svc.NewServiceContext(c)
-	handler.RegisterHandlers(server, ctx)
+	handler.RegisterHandlers(server, global.SVCInst)
 
 	// 统一错误处理
 	httpx.SetErrorHandler(func(err error) (int, any) {
@@ -39,7 +30,6 @@ func main() {
 		// default:
 		// 	return http.StatusInternalServerError, biz.NewError(500, e.Error())
 		// }
-
 		return http.StatusOK, biz.Result{
 			Code: -1,
 			Msg:  err.Error(),
@@ -52,6 +42,5 @@ func main() {
 		return biz.Success(data)
 	})
 
-	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
 	server.Start()
 }

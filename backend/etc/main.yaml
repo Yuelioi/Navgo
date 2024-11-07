@@ -1,3 +1,6 @@
 Name: main
 Host: 0.0.0.0
 Port: 8888
+
+Database:
+  Resource: "resource/database/core.db"

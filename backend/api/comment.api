@@ -15,7 +15,7 @@ type CommentRequest {
 	Message      string `json:"message"`
 }
 type CommentsResponse {
-	Comments []string `json:"comments"`
+	Comments []Comment `json:"comments"`
 }
 
 @server (

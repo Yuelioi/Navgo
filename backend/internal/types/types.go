@@ -14,7 +14,7 @@ type Collection struct {
 	Description string   `json:"description"`
 	Country     string   `json:"country"`
 	Thumbnail   string   `json:"thumbnail"`
-	Tags        []string `json:"tags"`
+	Tags        []string `json:"tags" gorm:"type:json"`
 	View        int      `json:"view"`
 }
 
@@ -47,7 +47,7 @@ type CommentRequest struct {
 }
 
 type CommentsResponse struct {
-	Comments []string `json:"comments"`
+	Comments []Comment `json:"comments"`
 }
 
 type IDRequest struct {

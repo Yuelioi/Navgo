@@ -18,7 +18,7 @@ type Collection {
 	Description string   `json:"description"`
 	Country     string   `json:"country"`
 	Thumbnail   string   `json:"thumbnail"`
-	Tags        []string `json:"tags"`
+	Tags        []string `json:"tags";gorm:"type:text[]"`
 	View        int      `json:"view"`
 }
 

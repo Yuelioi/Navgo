@@ -20,7 +20,6 @@ func walk(dir string) error {
 }
 
 func main() {
-
 	// 定义要遍历的根目录
 	root := "E:\\Scripting\\nav.yuelili.com\\backend\\resource"
 

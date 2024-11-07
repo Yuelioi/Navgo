@@ -11,7 +11,7 @@ type CollectionRequest {
 	Description string   `json:"description"`
 	Country     string   `json:"country"`
 	Thumbnail   string   `json:"thumbnail"`
-	Tags        []string `json:"tags"`
+	Tags        []string `json:"tags" gorm:"type:json`
 }
 
 @server (

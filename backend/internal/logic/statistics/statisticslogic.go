@@ -2,7 +2,6 @@ package statistics
 
 import (
 	"context"
-	"fmt"
 
 	"backend/internal/svc"
 	"backend/internal/types"
@@ -28,6 +27,5 @@ func NewStatisticsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Statis
 func (l *StatisticsLogic) Statistics(req *types.IDRequest) (resp *types.IDResponse, err error) {
 	// todo: add your logic here and delete this line
 
-	fmt.Printf("req.ID: %v\n", req.ID)
 	return
 }
