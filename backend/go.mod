@@ -2,7 +2,12 @@ module backend
 
 go 1.22.6
 
-require github.com/zeromicro/go-zero v1.7.3
+require (
+	github.com/zeromicro/go-zero v1.7.3
+	gopkg.in/yaml.v3 v3.0.1
+	gorm.io/driver/sqlite v1.5.6
+	gorm.io/gorm v1.25.12
+)
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -48,6 +53,4 @@ require (
 	google.golang.org/grpc v1.65.0 // indirect
 	google.golang.org/protobuf v1.35.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gorm.io/driver/sqlite v1.5.6 // indirect
-	gorm.io/gorm v1.25.12 // indirect
 )
