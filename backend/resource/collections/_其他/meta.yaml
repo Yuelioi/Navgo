@@ -1,0 +1,60 @@
+title: 其他
+cid: other
+order: 1
+collections:
+  - cid: tools.miku.ac
+    title: MikuTools
+    link: https://tools.miku.ac/
+    description: MikuTools - 一个轻量的工具集合
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/2022/08/31601-tools.miku.ac.png
+    view: 0
+  - cid: www.zhansousou.com
+    title: 站搜搜
+    link: https://www.zhansousou.com/
+    description: 站搜搜（zhansousou.com）：输入网站名字直接进站，进站就是这么简单。
+    country: 中国
+    proxy: false
+    thumbnail: ""
+    view: 0
+  - cid: www.egouz.com
+    title: 国外网站排行
+    link: https://www.egouz.com/
+    description: 看看外国人在用什么网站
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/2022/08/a0ae7-www.egouz.com.png
+    view: 0
+  - cid: www.zhansousou.com
+    title: 站搜搜
+    link: https://www.zhansousou.com/
+    description: 站搜搜（zhansousou.com）：输入网站名字直接进站，进站就是这么简单。
+    country: 中国
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/c2857-www.zhansousou.com.png
+    view: 0
+  - cid: withpinbox.com
+    title: Pinbox
+    link: https://withpinbox.com/explore
+    description: Pinbox 的一个分区,可以看别的用户收藏了什么网站
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/6ac94-withpinbox.com.png
+    view: 0
+  - cid: www.8kmm.com
+    title: 八千网址导航
+    link: https://www.8kmm.com/
+    description: 八千导航(8kmm.com)是国内首屈一指的导航分类平台，收录国内外各类型网站供网友检索，八千网址导航致力于为广大用户推荐各行各业优秀网站，国内外网站大全尽在八千导航。
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/796c2-www.8kmm.com.png
+    view: 0
+  - cid: www.sjsdh.cn
+    title: 搜奇导航
+    link: https://www.sjsdh.cn/
+    description: ""
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/27259-www.sjsdh.cn.png
+    view: 0

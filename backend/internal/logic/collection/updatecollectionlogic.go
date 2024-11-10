@@ -24,7 +24,7 @@ func NewUpdateCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *
 	}
 }
 
-func (l *UpdateCollectionLogic) UpdateCollection(req *types.CollectionRequest) (resp *types.Collection, err error) {
+func (l *UpdateCollectionLogic) UpdateCollection(req *types.Collection) (resp *types.Collection, err error) {
 	// todo: add your logic here and delete this line
 
 	return

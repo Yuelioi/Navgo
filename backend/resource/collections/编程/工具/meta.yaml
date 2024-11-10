@@ -1,18 +1,36 @@
 title: 工具
 cid: tool
-order: 11
-
+order: 7
 collections:
-  - title: 二维码生成
+  - cid: neumorphism.io
+    title: neumorphism
+    link: https://neumorphism.io/#D1D8EC
+    description: 拟物风格生成器
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/19ab1-neumorphism.io.png
+    view: 0
+  - cid: coolbackgrounds.io
+    title: 酷背景
+    link: https://coolbackgrounds.io/
+    description: ""
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/3e9e2-coolbackgrounds.io.png
+    view: 0
+  - cid: www.qtool.net
+    title: 二维码生成
     link: https://www.qtool.net/qrcode
-    cid: qtool
     description: qtool在线工具为大家提供各种在线工具,实现分享了在线开发类,查询类,站长类,代码格式化与代码压缩处理,代码在线加密与解密,生活查询,图片在线批量处理,图片生成等内容丰富实用的工具.
-    country: null
-    thumbnail: null
-  - title: Javascript 混淆
-    cid: javascriptobfuscator
+    country: ""
+    proxy: false
+    thumbnail: ""
+    view: 0
+  - cid: www.javascriptobfuscator.com
+    title: Javascript 混淆
     link: https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
-    description: Javascript Obfuscator - Protects JavaScript code from stealing and
-      shrinks size - 100% Free
-    country: null
+    description: Javascript Obfuscator - Protects JavaScript code from stealing and shrinks size - 100% Free
+    country: ""
+    proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/2f9de-www.javascriptobfuscator.com.png
+    view: 0

@@ -3,16 +3,6 @@ syntax = "v1"
 import "./base.api"
 
 // 可修改的字段
-type CollectionRequest {
-	ID          string   `json:"id"`
-	Title       string   `json:"title"`
-	Category    string   `json:"category"`
-	Link        string   `json:"link"`
-	Description string   `json:"description"`
-	Country     string   `json:"country"`
-	Thumbnail   string   `json:"thumbnail"`
-	Tags        []string `json:"tags" gorm:"type:json`
-}
 
 @server (
 	prefix: /v1
@@ -30,7 +20,7 @@ service main {
 
 	@doc "增加页面"
 	@handler AddCollection
-	post /collection (CollectionRequest) returns (Collection)
+	post /collection (Collection) returns (Collection)
 
 	@doc "删除页面"
 	@handler DeleteCollection
@@ -38,5 +28,5 @@ service main {
 
 	@doc "更新页面"
 	@handler UpdateCollection
-	put /collection (CollectionRequest) returns (Collection)
+	put /collection (Collection) returns (Collection)
 }

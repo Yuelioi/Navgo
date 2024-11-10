@@ -6,27 +6,27 @@ package types
 type AnyRequest struct {
 }
 
-type Collection struct {
-	ID          string   `json:"id"`
-	Title       string   `json:"title"`
-	Category    string   `json:"category"`
-	Link        string   `json:"link"`
-	Description string   `json:"description"`
-	Country     string   `json:"country"`
-	Thumbnail   string   `json:"thumbnail"`
-	Tags        []string `json:"tags" gorm:"type:json"`
-	View        int      `json:"view"`
+type Category struct {
+	Model
+	CID   string `json:"cid,optional" gorm:"column:cid"`
+	Title string `json:"title"`
+	Order int    `json:"order,optional"`
+	Path  string `json:"path,optional" gorm:"column:path;unique"`
 }
 
-type CollectionRequest struct {
-	ID          string   `json:"id"`
-	Title       string   `json:"title"`
-	Category    string   `json:"category"`
-	Link        string   `json:"link"`
-	Description string   `json:"description"`
-	Country     string   `json:"country"`
-	Thumbnail   string   `json:"thumbnail"`
-	Tags        []string `json:"tags"`
+type Collection struct {
+	Model
+	CID         string    `json:"cid,optional" gorm:"column:cid"`
+	Title       string    `json:"title"`
+	Link        string    `json:"link"`
+	Path        string    `json:"path,optional" gorm:"column:path;unique"`
+	CategoryID  string    `json:"-" gorm:"column:category_id;index"` // 外键字段
+	Category    *Category `json:"category" gorm:"foreignKey:CategoryID;references:ID"`
+	Description string    `json:"description,optional"`
+	Country     string    `json:"country,optional"`
+	Thumbnail   string    `json:"thumbnail,optional"`
+	Tags        []string  `json:"tags,optional" gorm:"type:json"`
+	View        int       `json:"view,optional"`
 }
 
 type CollectionsResponse struct {
@@ -51,11 +51,17 @@ type CommentsResponse struct {
 }
 
 type IDRequest struct {
-	ID int `json:"string"`
+	ID int `json:"id"`
 }
 
 type IDResponse struct {
-	ID int `json:"string"`
+	ID int `json:"id"`
+}
+
+type Model struct {
+	ID        uint   `json:"-" gorm:"primarykey"`
+	CreatedAt string `json:"-"`
+	UpdatedAt string `json:"-"`
 }
 
 type TagRequest struct {

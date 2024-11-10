@@ -1,0 +1,36 @@
+title: 其他
+cid: other
+order: 8
+collections:
+  - cid: www.turbosquid.com
+    title: TurboSquid
+    link: https://www.turbosquid.com/
+    description: Buy 3D models for your project from our vast online catalog of cars, people, textures, architectural models and more.
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/72906-www.turbosquid.com.png
+    view: 0
+  - cid: sketchfab.com
+    title: Sketchfab
+    link: https://sketchfab.com/feed
+    description: With a community of over one million creators, we are the world’s largest platform to publish, share, and discover 3D content on web, mobile, AR, and VR.
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/32e95-sketchfab.com.png
+    view: 0
+  - cid: free3d.com
+    title: Free 3D
+    link: https://free3d.com/
+    description: Just a moment...
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/47e3e-free3d.com.png
+    view: 0
+  - cid: www.mixamo.com
+    title: Mixamo动画库
+    link: https://www.mixamo.com/#/
+    description: Mixamo
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/82c57-www.mixamo.com.png
+    view: 0

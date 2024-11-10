@@ -1,0 +1,84 @@
+title: 软件
+cid: tool
+order: 1
+collections:
+  - cid: xclient.info
+    title: 精品MAC应用
+    link: https://xclient.info/
+    description: 精品MAC应用分享
+    country: 香港
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/967c4-xclient.info.png
+    view: 0
+  - cid: ilvruan.com
+    title: 爱绿软
+    link: https://ilvruan.com/
+    description: 收集分享各类有趣好玩的绿色软件
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/7685a-ilvruan.com.png
+    view: 0
+  - cid: eagle.cool
+    title: Eagle 素材管理
+    link: https://eagle.cool/
+    description: Unify your creative inspiration in one place. Store anything – inspiring images, design mockups, illustrations, screenshots and more.
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/e5666-eagle.cool.png
+    view: 0
+  - cid: www.jokerps.com
+    title: JOKER.PS
+    link: https://www.jokerps.com/
+    description: 软件分享
+    country: 中華人民共和國
+    proxy: false
+    thumbnail: ""
+    view: 0
+  - cid: www.ghxi.com
+    title: 果核剥壳
+    link: https://www.ghxi.com/
+    description: 本站更换域名为https://www.ghxi.com。果核剥壳是一家综合科技站点，看新闻，分享破解软件、绿色软件，Windows系统。守住互联网最后的一片净土。
+    country: 中国
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/f3bbb-www.ghxi.com.png
+    view: 0
+  - cid: www.52pojie.cn
+    title: 吾爱破解
+    link: https://www.52pojie.cn/
+    description: 吾爱破解论坛致力于软件安全与病毒分析的前沿，丰富的技术版块交相辉映，由无数热衷于软件加密解密及反病毒爱好者共同维护
+    country: 中国
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/d609f-www.52pojie.cn.png
+    view: 0
+  - cid: msdn.itellyou.cn
+    title: MSDN
+    link: https://msdn.itellyou.cn/
+    description: MSDN, 我告诉你 - 做一个安静的工具站
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/23f44-msdn.itellyou.cn.png
+    view: 0
+  - cid: en.taiwebs.com
+    title: Share and Download Free Software
+    link: https://en.taiwebs.com/?lang=TW
+    description: Taiwebs.com | Download games and share software full Vesion, Software, latest computer utilities - Download free webs.
+    country: 加拿大
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/9f43f-en.taiwebs.com.png
+    view: 0
+  - cid: www.crxsoso.com
+    title: Crx搜搜
+    link: https://www.crxsoso.com/
+    description: 浏览器扩展搜搜，免翻墙
+    country: 香港
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/b0ad3-www.crxsoso.com.png
+    view: 0
+  - cid: tmp.link
+    title: TMPLINK 钛盘 | 临时分享网盘
+    link: https://tmp.link/
+    description: Free and easy to use temporary file transfer station
+    country: 加拿大
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/eaa9c-tmp.link.png
+    view: 0

@@ -1,13 +1,20 @@
 package types
 
-import "gorm.io/gorm"
+import (
+	"time"
 
-type DBComment struct {
-	gorm.Model
-	Comment
+	"gorm.io/gorm"
+)
+
+func (m *Model) BeforeCreate(tx *gorm.DB) (err error) {
+	now := time.Now().Format(time.RFC3339)
+	m.CreatedAt = now
+	m.UpdatedAt = now
+	return
 }
 
-type DBCollection struct {
-	gorm.Model
-	Collection
+func (m *Model) BeforeUpdate(tx *gorm.DB) (err error) {
+	now := time.Now().Format(time.RFC3339)
+	m.UpdatedAt = now
+	return
 }

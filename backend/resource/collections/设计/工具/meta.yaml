@@ -1,0 +1,76 @@
+title: 工具
+cid: tool
+order: 7
+collections:
+  - cid: colorbase.app
+    title: colorbase
+    link: https://colorbase.app/
+    description: ""
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/9a3da-colorbase.app.png
+    view: 0
+  - cid: zhongguose.com
+    title: 中国传统色
+    link: http://zhongguose.com/
+    description: 提供各种中国的传统颜色的名称，CMYK值，RGB值，16进制表示。
+    country: ""
+    proxy: false
+    thumbnail: ""
+    view: 0
+  - cid: nipponcolors.com
+    title: 日本传统色
+    link: https://nipponcolors.com/
+    description: ""
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/b05cd-nipponcolors.com.png
+    view: 0
+  - cid: mycolor.space
+    title: ColorSpace
+    link: https://mycolor.space/
+    description: 找到完美的配色方案！ 生成漂亮的调色板、颜色渐变等等！
+    country: 德国
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/62058-mycolor.space.png
+    view: 0
+  - cid: color.method.ac
+    title: 颜色游戏
+    link: https://color.method.ac/
+    description: ""
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/e0d15-color.method.ac.png
+    view: 0
+  - cid: color.adobe.com
+    title: Adobe颜色
+    link: https://color.adobe.com/
+    description: ""
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/9d343-color.adobe.com.png
+    view: 0
+  - cid: peiseka.com
+    title: 配色卡
+    link: https://peiseka.com/
+    description: 配色卡，简单好用的配色网站，专注于配色色彩领域，拥有超多经典、时尚、新锐配色组合，让色彩搭配不再难
+    country: 中国
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/e759a-peiseka.com.png
+    view: 0
+  - cid: uigradients.com
+    title: uiGradients
+    link: https://uigradients.com/
+    description: 漂亮的渐变色]
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/81f1b-uigradients.com.png
+    view: 0
+  - cid: www.colorsinspo.com
+    title: colorsinspo
+    link: https://www.colorsinspo.com/
+    description: ""
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/bb859-www.colorsinspo.com.png
+    view: 0

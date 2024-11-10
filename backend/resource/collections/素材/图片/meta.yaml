@@ -1,0 +1,44 @@
+title: 其他
+cid: other
+order: 8
+collections:
+  - cid: thepatternlibrary.com
+    title: The Pattern Library
+    link: http://thepatternlibrary.com/
+    description: 随机背景
+    country: ""
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/dfdcd-thepatternlibrary.com.png
+    view: 0
+  - cid: pixabay.com
+    title: pixabay 图片视频
+    link: https://pixabay.com/
+    description: Just a moment...
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/615b6-pixabay.com.png
+    view: 0
+  - cid: iconpark.oceanengine.com
+    title: IconPark | 字节
+    link: https://iconpark.oceanengine.com/home
+    description: IconPark, park your icon. Made by ByteDance
+    country: 中国
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/6bce0-iconpark.oceanengine.com.png
+    view: 0
+  - cid: fontawesome.com
+    title: Font Awesome
+    link: https://fontawesome.com/
+    description: The world’s most popular and easiest to use icon set just got an upgrade. More icons. More styles. More Options.
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/86e5a-fontawesome.com.png
+    view: 0
+  - cid: uigradients.com
+    title: uiGradients
+    link: https://uigradients.com/
+    description: uiGradients - Beautiful colored gradients
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/84b67-uigradients.com.png
+    view: 0

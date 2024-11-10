@@ -1,0 +1,20 @@
+title: 博主
+cid: blogger
+order: 2
+collections:
+  - cid: entagma.com
+    title: Entagma
+    link: https://entagma.com/
+    description: Entagma &#8211; Advanced CG Resources
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/635dc-entagma.com.png
+    view: 0
+  - cid: www.sgasakura.com
+    title: sgasakura
+    link: https://www.sgasakura.com/
+    description: MV,PV,MG,AE插件,教程
+    country: ""
+    proxy: false
+    thumbnail: ""
+    view: 0

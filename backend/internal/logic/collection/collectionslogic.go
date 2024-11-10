@@ -3,6 +3,7 @@ package collection
 import (
 	"context"
 
+	"backend/internal/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -25,7 +26,15 @@ func NewCollectionsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Colle
 }
 
 func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.CollectionsResponse, err error) {
-	// todo: add your logic here and delete this line
+	resp = &types.CollectionsResponse{
+		Collections: []types.Collection{},
+	}
 
+	var collections []types.Collection
+	db.DB.Preload("Category").Model(&types.Collection{}).Find(&collections)
+
+	if collections != nil {
+		resp.Collections = collections
+	}
 	return
 }

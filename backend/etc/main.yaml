@@ -2,5 +2,9 @@ Name: main
 Host: 0.0.0.0
 Port: 8888
 
+Collection:
+  Resource: "resource\\collections"
+  MetaFile: "meta.yaml"
+
 Database:
-  Resource: "resource/database/core.db"
+  Resource: "resource\\database\\core.db"

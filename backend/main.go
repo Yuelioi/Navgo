@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"backend/internal/biz"
@@ -15,7 +16,7 @@ import (
 )
 
 func main() {
-
+	fmt.Print("开始启动服务")
 	server := rest.MustNewServer(global.ConfInst.RestConf)
 	defer server.Stop()
 

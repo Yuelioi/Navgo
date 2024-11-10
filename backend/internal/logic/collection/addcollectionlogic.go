@@ -24,7 +24,7 @@ func NewAddCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Add
 	}
 }
 
-func (l *AddCollectionLogic) AddCollection(req *types.CollectionRequest) (resp *types.Collection, err error) {
+func (l *AddCollectionLogic) AddCollection(req *types.Collection) (resp *types.Collection, err error) {
 	// todo: add your logic here and delete this line
 
 	return

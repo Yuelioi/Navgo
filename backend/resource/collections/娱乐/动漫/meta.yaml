@@ -1,0 +1,91 @@
+title: 动漫
+cid: anime
+order: 1
+collections:
+  - cid: www.acglala.me
+    title: 拉拉动漫
+    link: http://www.acglala.me/
+    description: 拉拉动漫为广大动漫迷们提供最新最全的日本新番动漫大全和最及时动漫资讯,以及最热2017动漫新番免费看,还有完结动漫、后宫动漫、无修版动漫、国产动画电影、欧美动画电影、动漫音乐、原画壁纸图集等动漫周边。
+    country: 加拿大
+    proxy: true
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/48a6c-www.acglala.me.png
+    view: 0
+  - cid: www.bimiacg4.net
+    title: 哔咪动漫
+    link: https://www.bimiacg4.net/
+    description: 哔咪动漫,哔咪哔咪,故被网友称为m站以及bimibimi，无论您喜欢那种类型，m站哔咪哔咪都会筛选经典作品并将新作经典轮番推荐，相信哔咪哔咪都能为您一网打尽，为您带来一场美妙的动漫盛宴，这里是兴趣使然的无名小站。
+    country: 巴西
+    proxy: false
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/d01bb-www.bimiacg4.net.png
+    view: 0
+  - cid: www.pkmp4.com
+    title: 片库2号机
+    link: https://www.pkmp4.com/
+    description: ""
+    country: ""
+    proxy: true
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/ec2c1-www.pkmp4.com.png
+    view: 0
+  - cid: bgmlist.com
+    title: 番组放送
+    link: https://bgmlist.com/
+    description: 动漫信息
+    country: ""
+    proxy: true
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/ef7f5-bgmlist.com.png
+    view: 0
+  - cid: www.agemys.cc
+    title: agemys 动漫
+    link: https://www.agemys.cc/
+    description: ""
+    country: ""
+    proxy: true
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/b44d9-www.agemys.cc.png
+    view: 0
+  - cid: anime1.me
+    title: 動畫線上看
+    link: https://www.anime1.me/
+    description: ""
+    country: ""
+    proxy: false
+    view: 0
+  - cid: bgm.tv
+    title: Bangumi 番组计划
+    link: https://bgm.tv/
+    description: 专注于动漫、音乐、游戏领域，帮助你分享、发现与结识同好的ACG网络
+    country: 加拿大
+    proxy: false
+    thumbnail: ""
+    view: 0
+  - cid: mikanani.me
+    title: 动漫 蜜柑计划
+    link: https://mikanani.me/
+    description: ""
+    country: ""
+    proxy: true
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/caebf-mikanani.me.png
+    view: 0
+  - cid: sub.kamigami.org
+    title: 诸神字幕组
+    link: https://sub.kamigami.org/
+    description: 诸神字幕组 - 诸神字幕组官方发布站..
+    country: 加拿大
+    proxy: true
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/649ae-sub.kamigami.org.png
+    view: 0
+  - cid: share.dmhy.org
+    title: 动漫花园
+    link: https://share.dmhy.org/
+    description: 動漫花園資訊網是一個動漫愛好者交流的平台,提供最及時,最全面的動畫,漫畫,動漫音樂,動漫下載,BT,ED,動漫遊戲,資訊,分享,交流,讨论.
+    country: 加拿大
+    proxy: true
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/8c1d1-share.dmhy.org.png
+    view: 0
+  - cid: share.xfapi.top
+    title: 旋风动漫
+    link: http://share.xfapi.top:88/
+    description: 旋风动漫BT站为漫迷提供日本动画，漫画，片源，动漫音乐，动漫游戏等资源下载。动漫资源，尽在旋风动漫BT下载频道。
+    country: ""
+    proxy: false
+    thumbnail: ""
+    view: 0

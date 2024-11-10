@@ -1,0 +1,20 @@
+title: 官网
+cid: official
+order: 1
+collections:
+  - cid: www.python.org
+    title: Python
+    link: https://www.python.org/
+    description: The official home of the Python Programming Language
+    country: 香港
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/4c9da-www.python.org.png
+    view: 0
+  - cid: go.dev
+    title: Go Language
+    link: https://go.dev/
+    description: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
+    country: ""
+    proxy: false
+    thumbnail: https://nav.yuelili.com/wp-content/uploads/991f2-go.dev.png
+    view: 0
