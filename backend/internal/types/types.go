@@ -9,6 +9,7 @@ type AnyRequest struct {
 type Category struct {
 	Model
 	CID   string `json:"cid,optional" gorm:"column:cid"`
+	Depth int    `json:"depth,optional"`
 	Title string `json:"title"`
 	Order int    `json:"order,optional"`
 	Path  string `json:"path,optional" gorm:"column:path;unique"`
@@ -29,8 +30,13 @@ type Collection struct {
 	View        int       `json:"view,optional"`
 }
 
+type CollectionsData struct {
+	Category *Category `json:"category"` // 使用 inline 标签将 Category 字段内联
+	Groups   []*Group  `json:"groups"`
+}
+
 type CollectionsResponse struct {
-	Collections []Collection `json:"collections"`
+	Datas []*CollectionsData `json:"datas"`
 }
 
 type Comment struct {
@@ -48,6 +54,11 @@ type CommentRequest struct {
 
 type CommentsResponse struct {
 	Comments []Comment `json:"comments"`
+}
+
+type Group struct {
+	Category    *Category     `json:"-" yaml:",inline"` // 使用 inline 标签将 Category 字段内联
+	Collections []*Collection `json:"collections"`
 }
 
 type IDRequest struct {

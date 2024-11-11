@@ -14,51 +14,17 @@ import (
 	"gorm.io/gorm/clause"
 )
 
-type Meta struct {
-	Category    *types.Category     `json:"-" yaml:",inline"` // 使用 inline 标签将 Category 字段内联
-	Collections []*types.Collection `json:"collections"`
-}
-
-// func (m *Meta) UnmarshalYAML(value *yaml.Node) error {
-// 	type plainMeta struct {
-// 		Category    *types.Category     `json:"-" yaml:",inline"`
-// 		Collections []*types.Collection `json:"collections"`
-// 	}
-
-// 	var plain plainMeta
-// 	if err := value.Decode(&plain); err != nil {
-// 		return err
-// 	}
-
-// 	cat := &types.Category{
-// 		CID:   plain.Category.CID,
-// 		Title: plain.Category.Title,
-// 		Order: plain.Category.Order,
-// 		Path:  plain.Category.Path,
-// 	}
-
-// 	m.Category = cat
-
-// 	m.Collections = make([]*types.Collection, len(plain.Collections))
-// 	for i, c := range plain.Collections {
-// 		c.Category = cat
-// 		m.Collections[i] = c
-// 	}
-
-// 	return nil
-// }
-
 type Manager struct {
 	Root          string
-	Metas         []*Meta
+	Metas         []*types.Group
 	catIDs        map[string]string
-	collectionIDs map[string]struct{}
+	collectionIDs map[string]struct{} // 用于验证数据库差异
 }
 
 func New(root string) *Manager {
 	return &Manager{
 		Root:          root,
-		Metas:         make([]*Meta, 0, 1000),
+		Metas:         make([]*types.Group, 0, 1000),
 		catIDs:        map[string]string{},
 		collectionIDs: map[string]struct{}{},
 	}
@@ -91,8 +57,10 @@ func (m *Manager) Read() {
 			}
 
 			if depth == 1 {
-				// 分类级别
+				// 分类级别, 记录一下cid 并填写路径
 				m.catIDs[relativeDirPath] = meta.Category.CID
+				meta.Category.Path = meta.Category.CID
+				meta.Category.Depth = depth
 			} else {
 				// 正常级别
 				paths := strings.Split(relativeDirPath, "\\")
@@ -111,6 +79,7 @@ func (m *Manager) Read() {
 
 				// 补充目录的Path
 				cat := meta.Category
+				cat.Depth = depth
 				cat.Path = strings.Join(cats, "\\")
 				meta.Category = cat
 
@@ -125,8 +94,8 @@ func (m *Manager) Read() {
 					// 储存存在的页面
 					m.collectionIDs[path] = struct{}{}
 				}
-				m.Metas = append(m.Metas, meta)
 			}
+			m.Metas = append(m.Metas, meta)
 
 		}
 		return nil
@@ -149,7 +118,7 @@ func (m *Manager) Build() {
 	DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "path"}},
 		UpdateAll: true,
-	}).CreateInBatches(cats, 100)
+	}).CreateInBatches(cats, 10)
 
 	DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "path"}},
@@ -180,8 +149,8 @@ func (m *Manager) Reduce() {
 	}
 }
 
-func readMeta(path string) (*Meta, error) {
-	meta := &Meta{}
+func readMeta(path string) (*types.Group, error) {
+	meta := &types.Group{}
 	yamlFile, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err

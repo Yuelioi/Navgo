@@ -10,14 +10,6 @@ collections:
     proxy: true
     thumbnail: http://nav.yuelili.com/wp-content/uploads/48a6c-www.acglala.me.png
     view: 0
-  - cid: www.bimiacg4.net
-    title: 哔咪动漫
-    link: https://www.bimiacg4.net/
-    description: 哔咪动漫,哔咪哔咪,故被网友称为m站以及bimibimi，无论您喜欢那种类型，m站哔咪哔咪都会筛选经典作品并将新作经典轮番推荐，相信哔咪哔咪都能为您一网打尽，为您带来一场美妙的动漫盛宴，这里是兴趣使然的无名小站。
-    country: 巴西
-    proxy: false
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/d01bb-www.bimiacg4.net.png
-    view: 0
   - cid: www.pkmp4.com
     title: 片库2号机
     link: https://www.pkmp4.com/

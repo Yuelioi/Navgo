@@ -16,7 +16,7 @@ service main {
 
 	@doc "单页面"
 	@handler Collection
-	get /collection/:id (IDRequest) returns (Collection)
+	get /collection/:id (AnyRequest) returns (Collection)
 
 	@doc "增加页面"
 	@handler AddCollection
