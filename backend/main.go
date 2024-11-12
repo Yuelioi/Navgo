@@ -8,6 +8,7 @@ import (
 	"backend/internal/biz"
 	"backend/internal/global"
 	"backend/internal/handler"
+	"backend/internal/middleware"
 
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -17,7 +18,13 @@ import (
 
 func main() {
 	fmt.Print("开始启动服务")
-	server := rest.MustNewServer(global.ConfInst.RestConf)
+	server := rest.MustNewServer(
+		global.ConfInst.RestConf,
+	)
+
+	// 跨域中间件
+	server.Use(middleware.CORS())
+
 	defer server.Stop()
 
 	handler.RegisterHandlers(server, global.SVCInst)

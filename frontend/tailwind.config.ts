@@ -5,6 +5,7 @@ import { addDynamicIconSelectors } from '@iconify/tailwind'
 
 export default {
     darkMode: ['selector', '[data-theme="dark"]'],
+    purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     content: ['./index.html', './src/**/*.{js,ts,vue,css}'],
     theme: {
         extend: {}

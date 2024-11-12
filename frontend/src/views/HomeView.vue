@@ -1,5 +1,10 @@
-<script setup lang="ts"></script>
-
 <template>
-    <main>222</main>
+    <main class="">
+        <!-- 公告 -->
+
+        <div class=""></div>
+        <!-- 导航 -->
+        <div class=""></div>
+    </main>
 </template>
+<script setup lang="ts"></script>

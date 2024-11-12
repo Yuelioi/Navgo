@@ -2,6 +2,7 @@ package collection
 
 import (
 	"context"
+	"sort"
 	"strings"
 
 	"backend/internal/db"
@@ -26,10 +27,17 @@ func NewCollectionsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Colle
 	}
 }
 
+func sortCollections(datas []*types.CollectionsData) []*types.CollectionsData {
+	sort.Slice(datas, func(i, j int) bool {
+		return datas[i].Category.Order < datas[j].Category.Order
+	})
+
+	return datas
+}
+
 func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.CollectionsResponse, err error) {
-	resp = &types.CollectionsResponse{
-		Datas: []*types.CollectionsData{},
-	}
+
+	datas := make([]*types.CollectionsData, 0)
 
 	var collections []*types.Collection
 	db.DB.Preload("Category").Model(&types.Collection{}).Find(&collections)
@@ -43,7 +51,7 @@ func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.Colle
 		topID := strings.Split(collection.Category.Path, "\\")[0]
 
 		// 查找顶级数据
-		for _, top := range resp.Datas {
+		for _, top := range datas {
 			if top.Category.CID == topID {
 				topData = top
 			}
@@ -58,7 +66,7 @@ func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.Colle
 				Groups:   []*types.Group{},
 			}
 			// 附着到resp
-			resp.Datas = append(resp.Datas, topData)
+			datas = append(datas, topData)
 		}
 
 		// 查找次级数据
@@ -78,6 +86,10 @@ func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.Colle
 		}
 
 		group.Collections = append(group.Collections, collection)
+	}
+
+	resp = &types.CollectionsResponse{
+		Datas: sortCollections(datas),
 	}
 
 	return

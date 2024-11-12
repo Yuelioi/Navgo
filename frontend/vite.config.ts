@@ -10,12 +10,15 @@ import Components from 'unplugin-vue-components/vite'
 
 import IconsResolver from 'unplugin-icons/resolver'
 
+import { addDynamicIconSelectors } from '@iconify/tailwind'
+
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         vue(),
         vueJsx(),
         vueDevTools(),
+        addDynamicIconSelectors(),
         AutoImport({
             dts: 'auto-imports.d.ts',
             include: [
