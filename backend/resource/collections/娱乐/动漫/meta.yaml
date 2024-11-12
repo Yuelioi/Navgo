@@ -2,6 +2,14 @@ title: 动漫
 cid: anime
 order: 1
 collections:
+  - cid: www.nyadm.net
+    title: NyaFun动漫
+    link: https://www.nyadm.net/
+    description: ""
+    country: "日本"
+    proxy: false
+    thumbnail:
+    view: 0
   - cid: www.acglala.me
     title: 拉拉动漫
     link: http://www.acglala.me/

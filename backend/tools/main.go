@@ -15,7 +15,7 @@ func main() {
     thumbnail:
     view: 0`
 
-	link := "https://www.pexels.com/zh-cn/"
+	link := "https://www.nyadm.net/"
 	resp, err := generate(link)
 	if err != nil {
 		fmt.Printf("err: %v\n", err)

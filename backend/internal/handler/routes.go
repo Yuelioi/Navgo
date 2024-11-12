@@ -81,7 +81,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			{
 				// 增加页面浏览量
 				Method:  http.MethodPost,
-				Path:    "/statistics/:id",
+				Path:    "/statistics",
 				Handler: statistics.StatisticsHandler(serverCtx),
 			},
 		},

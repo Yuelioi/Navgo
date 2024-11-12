@@ -21,6 +21,7 @@ type Collection struct {
 	Title       string    `json:"title"`
 	Link        string    `json:"link"`
 	Path        string    `json:"path,optional" gorm:"column:path;unique"`
+	Proxy       bool      `json:"proxy,optional" gorm:"column:proxy"`
 	CategoryID  string    `json:"-" gorm:"column:category_id;index"` // 外键字段
 	Category    *Category `json:"category" gorm:"foreignKey:CategoryID;references:ID"`
 	Description string    `json:"description,optional"`
@@ -57,7 +58,7 @@ type CommentsResponse struct {
 }
 
 type Group struct {
-	Category    *Category     `json:"-" yaml:",inline"` // 使用 inline 标签将 Category 字段内联
+	Category    *Category     `json:"category" yaml:",inline"` // 使用 inline 标签将 Category 字段内联
 	Collections []*Collection `json:"collections"`
 }
 
@@ -73,6 +74,11 @@ type Model struct {
 	ID        uint   `json:"-" gorm:"primarykey"`
 	CreatedAt string `json:"-"`
 	UpdatedAt string `json:"-"`
+}
+
+type Record struct {
+	Model
+	IP string
 }
 
 type TagRequest struct {

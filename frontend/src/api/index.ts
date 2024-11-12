@@ -1,6 +1,6 @@
 import axios from 'axios'
-import * as components from './model'
-export * from './model'
+import * as components from './types'
+export * from './types'
 
 const apiUrl = 'http://localhost:8888'
 
@@ -10,7 +10,7 @@ const apiUrl = 'http://localhost:8888'
  * @param headers
  */
 export function addCollection(req: components.Collection) {
-    return axios.post<components.Collection>(apiUrl + `/v1/collection`, req)
+  return axios.post<components.Collection>(apiUrl + `/v1/collection`, req)
 }
 
 /**
@@ -18,7 +18,7 @@ export function addCollection(req: components.Collection) {
  * @param req
  */
 export function deleteCollection(req: components.IDRequest) {
-    return axios.delete<components.Collection>(apiUrl + `/v1/collection`, req)
+  return axios.delete<components.Collection>(apiUrl + `/v1/collection`, req)
 }
 
 /**
@@ -27,21 +27,21 @@ export function deleteCollection(req: components.IDRequest) {
  * @param headers
  */
 export function updateCollection(req: components.Collection) {
-    return axios.put<components.Collection>(apiUrl + `/v1/collection`, req)
+  return axios.put<components.Collection>(apiUrl + `/v1/collection`, req)
 }
 
 /**
  * @description "单页面"
  */
 export function collection(id: string) {
-    return axios.get<components.Collection>(apiUrl + `/v1/collection/${id}`)
+  return axios.get<components.Collection>(apiUrl + `/v1/collection/${id}`)
 }
 
 /**
  * @description "页面集合"
  */
 export function collections() {
-    return axios.get<components.CollectionsResponse>(apiUrl + `/v1/collections`)
+  return axios.get<{ data: components.CollectionsResponse }>(apiUrl + `/v1/collections`)
 }
 
 /**
@@ -49,7 +49,9 @@ export function collections() {
  * @param req
  */
 export function addComment(req: components.CommentRequest) {
-    return axios.post<components.IDResponse>(apiUrl + `/v1/comment`, req)
+  return axios.post<{
+    data: components.IDResponse
+  }>(apiUrl + `/v1/comment`, req)
 }
 
 /**
@@ -57,7 +59,7 @@ export function addComment(req: components.CommentRequest) {
  * @param req
  */
 export function deleteComment(req: components.IDRequest) {
-    return axios.delete<components.IDResponse>(apiUrl + `/v1/comment`, req)
+  return axios.delete<components.IDResponse>(apiUrl + `/v1/comment`, req)
 }
 
 /**
@@ -65,7 +67,7 @@ export function deleteComment(req: components.IDRequest) {
  * @param req
  */
 export function comment(req: components.IDRequest) {
-    return axios.get<components.CommentsResponse>(apiUrl + `/v1/comments`, req)
+  return axios.get<components.CommentsResponse>(apiUrl + `/v1/comments`, req)
 }
 
 /**
@@ -73,7 +75,7 @@ export function comment(req: components.IDRequest) {
  * @param req
  */
 export function statistics(req: components.IDRequest) {
-    return axios.post<components.IDResponse>(apiUrl + `/v1/statistics/${id}`, req)
+  return axios.post<components.IDResponse>(apiUrl + `/v1/statistics/${id}`, req)
 }
 
 /**
@@ -81,12 +83,12 @@ export function statistics(req: components.IDRequest) {
  * @param req
  */
 export function tag(id: string, req: components.IDRequest) {
-    return axios.get<components.CollectionsResponse>(apiUrl + `/v1/tag/${id}`, req)
+  return axios.get<components.CollectionsResponse>(apiUrl + `/v1/tag/${id}`, req)
 }
 
 /**
  * @description "tags页面集合"
  */
 export function tags() {
-    return axios.get<components.TagsResponse>(apiUrl + `/v1/tags`)
+  return axios.get<components.TagsResponse>(apiUrl + `/v1/tags`)
 }

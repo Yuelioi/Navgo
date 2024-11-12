@@ -34,7 +34,7 @@ func init() {
 		panic("failed to connect database")
 	}
 
-	err = DB.AutoMigrate(&types.Category{}, &types.Collection{}, &types.Comment{})
+	err = DB.AutoMigrate(&types.Category{}, &types.Collection{}, &types.Comment{}, &types.Record{})
 
 	m := New(global.ConfInst.Collection.Resource)
 	m.Read()

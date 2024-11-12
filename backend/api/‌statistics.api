@@ -2,6 +2,11 @@ syntax = "v1"
 
 import "./base.api"
 
+type Record {
+	Model
+	IP string
+}
+
 @server(
 	prefix: /v1
 	group: statistics
@@ -10,5 +15,5 @@ import "./base.api"
 service main{
 	@doc "增加页面浏览量"
 	@handler Statistics
-	post /statistics/:id (IDRequest) returns (IDResponse)
+	post /statistics (IDRequest) returns (IDResponse)
 }

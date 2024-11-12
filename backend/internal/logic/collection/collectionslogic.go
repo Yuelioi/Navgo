@@ -32,6 +32,13 @@ func sortCollections(datas []*types.CollectionsData) []*types.CollectionsData {
 		return datas[i].Category.Order < datas[j].Category.Order
 	})
 
+	for i, data := range datas {
+		sort.Slice(data.Groups, func(i, j int) bool {
+			return data.Groups[i].Category.Order < data.Groups[j].Category.Order
+		})
+
+		datas[i] = data
+	}
 	return datas
 }
 

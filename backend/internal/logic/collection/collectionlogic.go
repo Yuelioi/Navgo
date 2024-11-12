@@ -3,7 +3,6 @@ package collection
 import (
 	"context"
 
-	"backend/internal/dao/category"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -27,8 +26,6 @@ func NewCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Collec
 
 func (l *CollectionLogic) Collection(req *types.AnyRequest) (resp *types.Collection, err error) {
 	// todo: add your logic here and delete this line
-
-	category.FilterTop()
 
 	return
 }
