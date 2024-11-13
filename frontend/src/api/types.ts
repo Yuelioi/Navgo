@@ -18,7 +18,7 @@ export interface Collection {
   iD: number
   createdAt: string
   updatedAt: string
-  cid?: string
+  cid: string
   proxy?: boolean
   title: string
   link: string
@@ -67,6 +67,7 @@ export interface CommentsResponse {
 export interface Group {
   category: Category // 使用 inline 标签将 Category 字段内联
   collections: Array<Collection>
+  show: boolean
 }
 
 export interface IDRequest {

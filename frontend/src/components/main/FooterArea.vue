@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-base-100 shadow-xl w-4/5 self-center">
+  <div class="card bg-base-100 shadow-xl w-4/5 self-center" v-if="!isScrollDown">
     <div class="card-body flex-row justify-between">
       <div class="left flex flex-col space-y-4">
         <h2 class="card-title">月离离导航站</h2>
@@ -52,23 +52,24 @@
 </template>
 
 <script setup lang="ts">
-import { getCollections } from '@/logic'
-
-const _themes = ['light', 'dark']
-const { switchTheme } = useTheme(_themes)
-
 const store = useBasicStore()
-const { collectionsDatas, navs } = storeToRefs(store)
+let { isScrollDown } = storeToRefs(store)
 
-onMounted(async () => {
-  const data = await getCollections()
-  console.log(data)
+const lastScrollTop = ref(0)
 
-  collectionsDatas.value = [...collectionsDatas.value, ...data.datas]
-  navs.value.length = 0
+const handleScroll = () => {
+  const currentScrollTop = window.scrollY || document.documentElement.scrollTop
+  // 如果当前滚动位置大于上次滚动位置，说明是向下滚动
+  isScrollDown.value = currentScrollTop > lastScrollTop.value
+  lastScrollTop.value = currentScrollTop
+}
 
-  collectionsDatas.value.forEach((ele) => {
-    navs.value.push(ele.category)
-  })
+onMounted(() => {
+  // 检测滚动
+  window.addEventListener('scroll', handleScroll)
+})
+
+onBeforeMount(() => {
+  window.removeEventListener('scroll', handleScroll)
 })
 </script>

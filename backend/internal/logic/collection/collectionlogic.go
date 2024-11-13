@@ -2,7 +2,10 @@ package collection
 
 import (
 	"context"
+	"encoding/json"
+	"os"
 
+	"backend/internal/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -24,8 +27,28 @@ func NewCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Collec
 	}
 }
 
+type CC struct {
+	ID        string `json:"id"`
+	Thumbnail string `json:"thumbnail"`
+}
+
 func (l *CollectionLogic) Collection(req *types.AnyRequest) (resp *types.Collection, err error) {
 	// todo: add your logic here and delete this line
 
+	var cos []*types.Collection
+	db.DB.Model(types.Collection{}).Find(&cos)
+
+	result := make([]*CC, 0)
+
+	for _, c := range cos {
+		result = append(result, &CC{c.CID, c.Thumbnail})
+	}
+
+	data, _ := json.Marshal(result)
+
+	f, _ := os.Create("demo.json")
+	defer f.Close()
+
+	f.Write(data)
 	return
 }

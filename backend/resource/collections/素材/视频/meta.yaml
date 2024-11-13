@@ -18,7 +18,7 @@ collections:
     proxy: false
     thumbnail:
     view: 0
-  - cid: https://www.pexels.com/zh-cn/
+  - cid: www.pexels.com
     title: pexels
     link: https://www.pexels.com/zh-cn/
     description: ""
