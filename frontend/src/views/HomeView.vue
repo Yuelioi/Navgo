@@ -1,5 +1,5 @@
 <template>
-  <main class="my-8 flex w-full flex-col space-y-8">
+  <main class="my-8 flex w-full flex-col space-y-8 overflow-hidden">
     <div class="w-4/5 self-center">
       <!-- 公告 -->
       <div class=""></div>
@@ -51,9 +51,5 @@ const { collectionsDatas } = storeToRefs(store)
 
 const AsyncGroupCard = defineAsyncComponent({
   loader: () => import('../components/GroupCard.vue')
-})
-
-onMounted(() => {
-  console.log('home')
 })
 </script>

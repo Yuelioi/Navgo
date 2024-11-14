@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import SiteView from '../views/SiteView.vue'
+import PostView from '@/views/PostView.vue'
 import { loadData } from '@/stores/data'
 
 const router = createRouter({
@@ -13,18 +15,21 @@ const router = createRouter({
     {
       path: '/site/:id',
       name: 'site',
-      component: () => import('../views/SiteView.vue')
+      component: SiteView
+    },
+    {
+      path: '/post',
+      name: 'post',
+      component: PostView
     }
   ]
 })
 
 router.beforeEach(async (to, from, next) => {
   try {
-    await loadData() // 等待数据加载完成
-    next() // 数据加载完成后再进入页面
-  } catch (error) {
-    next('/loading') // 如果加载失败，可以重定向到loading页面
-  }
+    await loadData()
+    next()
+  } catch (error) {}
 })
 
 export default router

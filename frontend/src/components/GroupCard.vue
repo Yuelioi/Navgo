@@ -1,19 +1,34 @@
 <template>
-  <div class="flex flex-wrap">
-    <div class="basis-1/6 p-4 cursor-pointer" v-for="collection in group.collections">
+  <div class="flex flex-wrap relative">
+    <div class="basis-1/5 p-4 cursor-pointer" v-for="collection in group.collections">
       <!-- 单个链接卡片 -->
-      <div class="bg-base-300 shadow-md p-4 hover:ring-2 hover:scale-105 rounded-md">
+      <div class="bg-base-300 shadow-md p-4 group hover:ring-2 hover:scale-105 rounded-md">
         <div class="h-28 flex flex-col">
-          <div
-            class="flex flex-row flex-1 overflow-hidden items-center relative"
-            @click="open(collection.link)">
-            <img
-              :src="'https://cdn.yuelili.com/nav/icons/' + collection.cid + '.png'"
-              class="h-full rounded-full" />
+          <div class="flex flex-row flex-1 items-center relative" @click="open(collection.link)">
+            <div class="absolute group-hover:flex hidden right-2 top-2 items-center space-x-1">
+              <span class="icon-[ep--view] size-3"></span>
+              <span class="text-sm">{{ collection.view }}</span>
+            </div>
 
-            <div class="pl-4">
+            <div class="avatar static size-12">
+              <div class="h-full rounded-xl">
+                <img
+                  :src="'https://cdn.yuelili.com/nav/icons/' + collection.cid + '.png'"
+                  @error="imageLoadError"
+                  class="h-full rounded-full" />
+                <div class="rounded-full flex h-full items-center justify-center bg-purple-200">
+                  <span class="font-bold text-lg">{{ collection.title[0] }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pl-4 flex-1">
               <div class="font-bold">{{ collection.title }}</div>
-              <div class="line-clamp-1">{{ collection.description }}</div>
+              <div class="tooltip static tooltip-bottom" :data-tip="collection.description">
+                <div class="flex text-left">
+                  <span class="line-clamp-1">{{ collection.description }}</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -25,8 +40,7 @@
               <div class="badge badge-ghost">{{ tag }}</div>
             </div>
             <div
-              class="ml-auto tooltip tooltip-bottom"
-              data-tip="查看详情"
+              class="ml-auto"
               @click="
                 router.push({
                   name: 'site',
@@ -49,4 +63,16 @@ import router from '@/router'
 const props = defineProps<{
   group: any
 }>()
+
+function imageLoadError(event: Event) {
+  const target = event.target as HTMLImageElement
+  if (target) {
+    target.style.display = 'none'
+  }
+}
 </script>
+<style scoped>
+.tooltip:before {
+  --tooltip-color: rgb(55 55 55);
+}
+</style>

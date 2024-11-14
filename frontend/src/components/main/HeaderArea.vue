@@ -8,7 +8,7 @@
         <button class="btn btn-ghost btn-sm" v-else @click="collapseNav = !collapseNav">
           <span class="icon-[lucide--menu] size-5"></span>
         </button>
-        <button class="btn btn-ghost btn-sm">
+        <button class="btn btn-ghost btn-sm" @click="router.push('post')">
           <div class="tooltip tooltip-bottom" data-tip="投稿">
             <span class="icon-[lucide--send] size-5"></span>
           </div>
@@ -19,19 +19,17 @@
     <div class="navbar-end">
       <div class="flex items-center space-x-4 mr-4">
         <div class="">这是一句话</div>
+
         <label class="swap swap-rotate">
-          <!-- this hidden checkbox controls the state -->
           <input
             type="checkbox"
             class="theme-controller"
             value="synthwave"
-            @click="changeTheme()" />
+            @click="changeTheme()"
+            :checked="theme == 'dark'" />
 
-          <!-- sun icon -->
-          <span class="icon-[lucide--sun] swap-off size-6 fill-current"></span>
-
-          <!-- moon icon -->
-          <span class="icon-[lucide--moon] swap-on size-6 fill-current"></span>
+          <span class="icon-[lucide--sun] size-6 swap-on fill-current"></span>
+          <span class="icon-[lucide--moon] size-6 swap-off fill-current"></span>
         </label>
       </div>
     </div>
@@ -39,6 +37,8 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router'
+
 const store = useBasicStore()
 const { collapseNav, theme } = storeToRefs(store)
 

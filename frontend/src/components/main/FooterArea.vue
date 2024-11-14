@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-base-100 shadow-xl w-4/5 self-center" v-if="!isScrollDown">
+  <div class="card bg-base-200 shadow-xl w-4/5 self-center" v-if="!isScrollDown">
     <div class="card-body flex-row justify-between">
       <div class="left flex flex-col space-y-4">
         <h2 class="card-title">月离离导航站</h2>
