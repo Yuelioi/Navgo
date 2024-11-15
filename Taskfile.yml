@@ -6,6 +6,14 @@ vars:
   GREETING: Hello, World!
 
 tasks:
+  pnpm dev:
+    dir: frontend
+    cmds:
+      - pnpm dev
+  go dev:
+    dir: backend
+    cmds:
+      - go run .
   api rebuild ts:
     cmds:
       - goctl api ts --api ./backend/api/main.api --dir frontend\\src\\api --caller axios

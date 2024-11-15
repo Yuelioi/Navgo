@@ -79,6 +79,25 @@ class IndexDB {
       }
     })
   }
+
+  async clearData(tabName: string): Promise<void> {
+    const db = await this.launch(1, tabName)
+
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction([tabName], 'readwrite')
+      const store = transaction.objectStore(tabName)
+      const request = store.clear()
+
+      request.onsuccess = () => {
+        resolve()
+      }
+
+      request.onerror = () => {
+        reject(request.error)
+      }
+    })
+  }
+
   async queryData(tabName: string, id: string): Promise<void> {
     const db = await this.launch(1, tabName)
 

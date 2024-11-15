@@ -1,6 +1,7 @@
 import * as api from '@/api'
 import { db } from '@/db/db'
 
+// 高级查询 如果数据不存在，执行添加操作
 async function query(tabName: string, apiFunc: any) {
   const now = new Date()
 
@@ -26,5 +27,7 @@ async function query(tabName: string, apiFunc: any) {
 }
 
 export async function getCollections() {
+  // 先清除历史记录 再添加
+  await db.clearData('collections')
   return await query('collections', api.collections)
 }

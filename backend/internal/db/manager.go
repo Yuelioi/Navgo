@@ -57,17 +57,19 @@ func (m *Manager) Read() {
 			}
 
 			if depth == 1 {
-				// 分类级别, 记录一下cid 并填写路径
+				// 二级分类级别, 记录一下cid 并填写路径
 				m.catIDs[relativeDirPath] = meta.Category.CID
 				meta.Category.Path = meta.Category.CID
 				meta.Category.Depth = depth
 			} else {
-				// 正常级别
+				// 正常导航级别
 				paths := strings.Split(relativeDirPath, "\\")
 				cats := make([]string, 0)
+
 				for _, id := range paths {
 					if v, ok := m.catIDs[id]; ok {
 						cats = append(cats, v)
+
 					} else {
 						cats = append(cats, meta.Category.CID)
 					}
@@ -90,6 +92,7 @@ func (m *Manager) Read() {
 					// 补充页面的目录与Path
 					meta.Collections[i].Category = cat
 					meta.Collections[i].Path = path
+					meta.Collections[i].Order = i + 1
 
 					// 储存存在的页面
 					m.collectionIDs[path] = struct{}{}

@@ -38,14 +38,6 @@
 
         <div class="join input input-bordered gap-2 w-full">
           <div class="flex border-r-2 items-center justify-center pr-3 space-x-2">
-            <span class="text-sm">国家</span>
-            <span class="icon-[lucide--flag] size-4"></span>
-          </div>
-          <div class="divider"></div>
-          <input type="text" class="grow input-bordered" placeholder="Country" />
-        </div>
-        <div class="join input input-bordered gap-2 w-full">
-          <div class="flex border-r-2 items-center justify-center pr-3 space-x-2">
             <span class="text-sm">代理</span>
             <span class="icon-[lucide--utility-pole]"></span>
           </div>
@@ -59,25 +51,32 @@
 
         <!-- 图标 -->
         <div class="flex border rounded-lg input-bordered w-full">
-          <div class="flex items-center justify-center w-full h-24 relative">
+          <div class="flex items-center justify-center w-full h-36 relative">
             <div class="absolute inset-3 left-4 w-fit">
               <div class="flex items-center justify-center space-x-2">
                 <span>图标</span>
                 <span class="icon-[lucide--image]"></span>
               </div>
             </div>
-            <div class="absolute right-4 top-3">
-              <div class="flex btn btn-accent btn-square btn-sm">
-                <span class="icon-[lucide--x]"></span>
-              </div>
-            </div>
 
-            <div class="flex items-center justify-center" v-if="icon == ''">
-              <button class="btn btn-ghost btn-outline">
+            <!-- 上传图片 -->
+            <div
+              class="flex items-center justify-center"
+              @dragover.prevent
+              @drop.prevent="handleDrag">
+              <button class="btn btn-ghost size-16 w-40 btn-outline" @click="imageUpload">
                 <span class="icon-[lucide--arrow-big-up-dash] size-8"></span>
               </button>
             </div>
-            <div class="" v-else>
+
+            <div
+              class="indicator border size-16 absolute right-12 rounded-md border-base-content border-dashed"
+              v-if="icon !== ''">
+              <div class="indicator-item">
+                <span
+                  class="btn btn-sm btn-accent icon-[lucide--circle-x] text-accent"
+                  @click="icon = ''"></span>
+              </div>
               <div class="avatar">
                 <div class="rounded-xl">
                   <img :src="icon" @error="imageLoadError" />
@@ -100,13 +99,24 @@
 </template>
 
 <script setup lang="ts">
-const icon = ref('http://nav.yuelili.com/wp-content/uploads/82cf7-www.mojidict.com.png')
-// const icon = ref('')
+const icon = ref('')
 
 function imageLoadError(event: Event) {
   const target = event.target as HTMLImageElement
   if (target) {
     target.style.display = 'none'
   }
+}
+
+function handleDrag(event: DragEvent) {
+  console.log(event)
+  const files = event.dataTransfer?.files
+  if (files && files.length > 0) {
+    console.log(files)
+  }
+}
+
+function imageUpload(event: Event) {
+  console.log(event)
 }
 </script>

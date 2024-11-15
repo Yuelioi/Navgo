@@ -10,14 +10,6 @@ collections:
     proxy: false
     thumbnail:
     view: 0
-  - cid: www.acglala.me
-    title: 拉拉动漫
-    link: http://www.acglala.me/
-    description: 拉拉动漫为广大动漫迷们提供最新最全的日本新番动漫大全和最及时动漫资讯,以及最热2017动漫新番免费看,还有完结动漫、后宫动漫、无修版动漫、国产动画电影、欧美动画电影、动漫音乐、原画壁纸图集等动漫周边。
-    country: 加拿大
-    proxy: true
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/48a6c-www.acglala.me.png
-    view: 0
   - cid: www.pkmp4.com
     title: 片库2号机
     link: https://www.pkmp4.com/
@@ -26,14 +18,6 @@ collections:
     proxy: true
     thumbnail: http://nav.yuelili.com/wp-content/uploads/ec2c1-www.pkmp4.com.png
     view: 0
-  - cid: bgmlist.com
-    title: 番组放送
-    link: https://bgmlist.com/
-    description: 动漫信息
-    country: ""
-    proxy: true
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/ef7f5-bgmlist.com.png
-    view: 0
   - cid: www.agemys.cc
     title: agemys 动漫
     link: https://www.agemys.cc/
@@ -41,6 +25,14 @@ collections:
     country: ""
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/b44d9-www.agemys.cc.png
+    view: 0
+  - cid: bgmlist.com
+    title: 番组放送
+    link: https://bgmlist.com/
+    description: 动漫信息
+    country: ""
+    proxy: true
+    thumbnail: http://nav.yuelili.com/wp-content/uploads/ef7f5-bgmlist.com.png
     view: 0
   - cid: anime1.me
     title: 動畫線上看
