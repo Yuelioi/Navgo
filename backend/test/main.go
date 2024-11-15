@@ -1,81 +1,61 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"io"
 	"net/http"
-	"os"
-	"strings"
-	"sync"
+	"net/url"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
-type CC struct {
-	ID        string `json:"id"`
-	Thumbnail string `json:"thumbnail"`
+type Collection struct {
+	CID         string   `json:"cid,optional" gorm:"column:cid"`
+	Title       string   `json:"title"`
+	Link        string   `json:"link"`
+	Order       int      `json:"order,optional" gorm:"column:order"`
+	Path        string   `json:"path,optional" gorm:"column:path;unique"`
+	Proxy       bool     `json:"proxy,optional" gorm:"column:proxy"`
+	Description string   `json:"description,optional"`
+	Thumbnail   string   `json:"thumbnail,optional"`
+	Tags        []string `json:"tags,optional" gorm:"type:json"`
+	View        int      `json:"view,optional"`
 }
 
-func download(url string, name string) error {
-	if strings.HasPrefix(url, "data:") {
-		return nil
-	}
+func query(link string) (*Collection, error) {
 
-	resp, err := http.Get(url)
+	URL, err := url.Parse(link)
 	if err != nil {
-		return fmt.Errorf("请求错误: %v", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("请求失败: %d", resp.StatusCode)
+		return nil, err
 	}
 
-	fileName := fmt.Sprintf("%s.png", name)
-	f, err := os.Create(fileName)
+	res, err := http.Get(link)
 	if err != nil {
-		return fmt.Errorf("创建文件错误: %v", err)
+		return nil, err
 	}
-	defer f.Close()
+	defer res.Body.Close()
 
-	_, err = io.Copy(f, resp.Body)
+	// 检查响应状态码
+	if res.StatusCode != 200 {
+		return nil, err
+	}
+
+	doc, err := goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
-		return fmt.Errorf("下载错误: %v", err)
+		return nil, err
 	}
 
-	fmt.Printf("图片 %s 下载成功\n", fileName)
-	return nil
+	title := doc.Find("title").Text()
+	description := doc.Find("meta[name='description']").AttrOr("content", "")
+
+	return &Collection{
+		CID:         URL.Host,
+		Title:       title,
+		Link:        link,
+		Proxy:       false,
+		Description: description,
+	}, nil
 }
 
 func main() {
-	var cs []*CC
-	data, err := os.ReadFile("demo.json")
-	if err != nil {
-		fmt.Printf("读取文件错误: %v\n", err)
-		return
-	}
-
-	if err := json.Unmarshal(data, &cs); err != nil {
-		fmt.Printf("解析 JSON 错误: %v\n", err)
-		return
-	}
-
-	var w sync.WaitGroup
-	sem := make(chan struct{}, 5) // 控制并发数为 5
-
-	for _, c := range cs {
-		if c.ID != "" && c.Thumbnail != "" {
-			fmt.Println(c.ID, c.Thumbnail)
-			w.Add(1)
-			go func(c *CC) {
-				defer w.Done()
-				sem <- struct{}{} // 获取一个许可
-				if err := download(c.Thumbnail, c.ID); err != nil {
-					fmt.Printf("下载错误: %v\n", err)
-				}
-				<-sem // 释放一个许可
-			}(c)
-		}
-	}
-
-	w.Wait()
+	link := "https://www.nyadm.net/play/4469-1-11.html"
+	query(link)
 }

@@ -6,7 +6,6 @@ collections:
     title: Coursera
     link: https://www.coursera.org/
     description: Learn online and earn valuable credentials from top universities like Yale, Michigan, Stanford, and leading companies like Google and IBM. Join Coursera for free and transform your career with degrees, certificates, Specializations, &amp; MOOCs in data science, computer science, business, and dozens of other topics.
-    country: 美国
     proxy: false
     thumbnail: ""
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: 洛谷
     link: https://www.luogu.com.cn/
     description: 洛谷创办于2013年，致力于为...
-    country: 中国
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/1d425-www.luogu.com.cn.png
     view: 0
@@ -22,7 +20,6 @@ collections:
     title: 学堂在线
     link: https://www.xuetangx.com/
     description: 学堂在线是清华大学于2013年1...
-    country: 中国
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/30ffb-www.xuetangx.com.png
     view: 0
@@ -30,7 +27,6 @@ collections:
     title: 网易公开课
     link: https://open.163.com/
     description: 网易公开课汇集清华、北大、哈佛、耶鲁等世界名校共上千门课程，覆盖科学、经济、人文、哲学等22个领域，在这里你可以开拓视野看世界，获取有深度的好知识。
-    country: 中国
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/3e1f6-open.163.com.png
     view: 0
@@ -38,7 +34,6 @@ collections:
     title: Khan Academy
     link: https://www.khanacademy.org/
     description: Learn for free about math, art, computer programming, economics, physics, chemistry, biology, medicine, finance, history, and more. Khan Academy is a nonprofit with the mission of providing a free, world-class education for anyone, anywhere.
-    country: 日本
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/c3797-www.khanacademy.org.png
     view: 0
@@ -46,7 +41,6 @@ collections:
     title: Udacity
     link: https://www.udacity.com/
     description: Learn online and advance your career with courses in programming, data science, artificial intelligence, digital marketing, and more. Gain in-demand technical skills. Join today!
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/5c985-www.udacity.com.png
     view: 0
@@ -54,7 +48,6 @@ collections:
     title: edX
     link: https://www.edx.org/
     description: Access 2000 free online courses from 140 leading institutions worldwide. Gain new skills and earn a certificate of completion. Join today.
-    country: 加拿大
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/842a9-www.edx.org.png
     view: 0
@@ -62,7 +55,6 @@ collections:
     title: 网易云课堂
     link: https://study.163.com/
     description: 网易云课堂，一个专注于成人终身学习的在线教育平台。立足于实用性的要求, 与优质的教育内容创作者一起，为您提供全面、有效的在线学习内容。
-    country: 中国
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/c6be7-study.163.com.png
     view: 0
@@ -70,7 +62,6 @@ collections:
     title: Deeplearning AI
     link: https://www.deeplearning.ai/
     description: Attention Required! | Cloudflare
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/b1564-www.deeplearning.ai.png
     view: 0

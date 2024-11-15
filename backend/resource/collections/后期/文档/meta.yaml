@@ -6,7 +6,6 @@ collections:
     title: 动效周期表
     link: http://foxcodex.html.xdomain.jp/index.html
     description: motiontable
-    country: 日本
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/afbf6-foxcodex.html.xdomain.jp.png
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: CGWiki
     link: https://www.tokeru.com/cgwiki/
     description: ""
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/8f62c-www.tokeru.com.png
     view: 0
@@ -22,7 +20,6 @@ collections:
     title: Adobe Help Center
     link: https://helpx.adobe.com/cn/after-effects/user-guide.html
     description: Adobe Help Center
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/2f63d-helpx.adobe.com.png
     view: 0
@@ -30,7 +27,6 @@ collections:
     title: Houdini文档
     link: https://www.sidefx.com/docs/
     description: Houdini - 3D modeling, animation, VFX, look development, lighting and rendering | SideFX
-    country: 加拿大
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/37962-www.sidefx.com.png
     view: 0
@@ -38,7 +34,6 @@ collections:
     title: Blender文档
     link: https://docs.blender.org/
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/cd36c-docs.blender.org.png
     view: 0
@@ -46,7 +41,6 @@ collections:
     title: C4D文档
     link: https://help.maxon.net/c4d/en-us/
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/aa902-help.maxon.net.png
     view: 0
@@ -54,7 +48,6 @@ collections:
     title: Red Giant文档
     link: https://help.maxon.net/rg
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/8262b-help.maxon.net.png
     view: 0
@@ -62,7 +55,6 @@ collections:
     title: RS文档
     link: https://help.maxon.net/r3d/
     description: redshift3d Home - redshift3d - Global Site
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/c99d0-help.maxon.net.png
     view: 0
@@ -70,7 +62,6 @@ collections:
     title: OC文档
     link: https://help.otoy.com/hc/
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/b7c98-help.otoy.com.png
     view: 0
@@ -78,7 +69,6 @@ collections:
     title: BCC文档
     link: https://borisfx.com/documentation/continuum/bcc-user-guide/
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/7270c-borisfx.com.png
     view: 0

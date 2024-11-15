@@ -6,7 +6,6 @@ collections:
     title: Poly Haven
     link: https://polyhaven.com/
     description: The Public 3D Asset Library
-    country: 加拿大
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/2cf63-polyhaven.com.png
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: Hdri Sky
     link: https://hdri-skies.com/
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/a36d6-hdri-skies.com.png
     view: 0
@@ -22,7 +20,6 @@ collections:
     title: Textures for 3D
     link: https://www.textures.com/
     description: Textures for 3D, graphic design and Photoshop!
-    country: 加拿大
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/3152f-www.textures.com.png
     view: 0
@@ -30,7 +27,6 @@ collections:
     title: ambientcg
     link: https://ambientcg.com/
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/5011f-ambientcg.com.png
     view: 0
@@ -38,7 +34,6 @@ collections:
     title: cgbookcase
     link: https://www.cgbookcase.com/textures
     description: PBR纹理
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/82117-www.cgbookcase.com.png
     view: 0
@@ -46,7 +41,6 @@ collections:
     title: 材质忍者
     link: https://texture.ninja/
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/5527e-texture.ninja.png
     view: 0
@@ -54,7 +48,6 @@ collections:
     title: Texturebox
     link: https://texturebox.com/category
     description: Texturebox - Free and Premium Seamless PBR textures, photoscanned 3d models for archviz and games
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/c613b-texturebox.com.png
     view: 0
@@ -62,7 +55,6 @@ collections:
     title: MaterialX Library
     link: https://matlib.gpuopen.com/main/materials/all
     description: MaterialX 库是完全免费提供的高质量材料和相关纹理的集合。
-    country: ""
     proxy: false
     thumbnail: ""
     view: 0
@@ -70,7 +62,6 @@ collections:
     title: ponzu 贴图在线生成!
     link: https://www.ponzu.gg/
     description: ""
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/3566d-www.ponzu.gg.png
     view: 0

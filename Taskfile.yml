@@ -6,22 +6,22 @@ vars:
   GREETING: Hello, World!
 
 tasks:
-  pnpm dev:
+  pnpm-dev:
     dir: frontend
     cmds:
       - pnpm dev
-  go dev:
+  go-dev:
     dir: backend
     cmds:
-      - go run .
-  api rebuild ts:
+      - go run main.go
+  api-rebuild-ts:
     cmds:
       - goctl api ts --api ./backend/api/main.api --dir frontend\\src\\api --caller axios
-  api rebuild go:
+  api-rebuild-go:
     cmds:
       - powershell -Command "if (Test-Path 'backend\\internal\\types\\types.go') { Remove-Item 'backend\\internal\\types\\types.go' -Recurse -Force }"
       - goctl api go --api ./backend/api/main.api --dir backend
-  api doc:
+  api-doc:
     cmds:
       - powershell -Command "Remove-Item 'backend\\doc' -Recurse -Force -ErrorAction SilentlyContinue"
       - goctl api doc --dir ./backend/api --o ./backend/doc

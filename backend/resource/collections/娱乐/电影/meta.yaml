@@ -6,7 +6,6 @@ collections:
     title: 电影狗
     link: https://www.dianyinggou.com/
     description: ""
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/5de3e-www.dianyinggou.com.png
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: BT电影下载
     link: https://www.kuba222.com/
     description: 酷吧电影下载网
-    country: 美国
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/853f5-www.kuba222.com.png
     view: 0
@@ -22,7 +20,6 @@ collections:
     title: 美剧迷
     link: https://www.meijumi.net/
     description: ""
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/c053b-www.meijumi.net.png
     view: 0
@@ -30,7 +27,6 @@ collections:
     title: dianying.fm电影资源整合
     link: https://dianying.fm/
     description: dianying.fm
-    country: 加拿大
     proxy: false
     thumbnail: ""
     view: 0

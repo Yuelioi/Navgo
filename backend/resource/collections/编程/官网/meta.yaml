@@ -6,7 +6,6 @@ collections:
     title: Python
     link: https://www.python.org/
     description: The official home of the Python Programming Language
-    country: 香港
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/4c9da-www.python.org.png
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: Go Language
     link: https://go.dev/
     description: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/991f2-go.dev.png
     view: 0

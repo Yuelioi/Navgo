@@ -6,7 +6,6 @@ collections:
     title: 猫啃网 字体下载站
     link: https://www.maoken.com/all-fonts
     description: 猫啃网致力于为广大设计师提供最新最全且免费的，可商用，无版权问题的免费字体下载。喵啃网会不定期搜集更多最新发布的免费商用字体与大家分享，欢迎大家常来逛逛。
-    country: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/9882b-www.maoken.com.png
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: 字魂
     link: https://izihun.com/
     description: 字魂网(izihun.com)是提供商用字体下载授权,字体定制,免费字体下载,字体授权,中文字体设计,字体大全以及在线字体转换器的字体网站,致力于让所有人用得起正版字体.
-    country: ""
     proxy: false
     thumbnail:
     view: 0
@@ -22,7 +20,6 @@ collections:
     title: 识字体
     link: https://fonts.safe.360.cn/
     description: 360查字体-查版权，免纠纷
-    country: ""
     proxy: false
     thumbnail:
     view: 0
@@ -30,7 +27,6 @@ collections:
     title: 识字体
     link: https://www.likefont.com/
     description: 识字体网是免费在线字体识别、品牌识别、字体下载、字体搜索和问答社区网站，免费下载Windows、macOS、Linux、Android、iOS/iPad/iPhone字体识别扫一扫软件。无人值守的自动识别和自动/手动拼字，结合人工智能、大数据和搜索技术，可快速识别中文、英文、日文、韩文等全球文字，帮您购买与使用合规字体避免字体侵权风险。
-    country: ""
     proxy: false
     thumbnail:
     view: 0
@@ -38,7 +34,6 @@ collections:
     title: 1001fonts
     link: https://www.1001fonts.com/
     description: 1001 Fonts ❤ Free Fonts Baby!
-    country: "加拿大"
     proxy: false
     thumbnail:
     view: 0
@@ -46,14 +41,12 @@ collections:
     title: 1001fonts
     link: https://www.dafont.com
     description: Archive of freely downloadable fonts. Browse by alphabetical listing, by style, by author or by popularity.
-    country: "法国"
     proxy: false
     thumbnail:
     view: 0
   - cid: www.fontspace.com
     title: fontspace
     link: https://www.fontspace.com/
-    country: "加拿大"
     description: Just a moment...
     proxy: false
     thumbnail:

@@ -18,78 +18,89 @@
 
     <div class="flex w-full h-full items-center justify-center">
       <div class="flex flex-col space-y-4 self-center w-1/4 items-center justify-center">
-        <div class="join input input-bordered gap-2 w-full">
+        <div class="join input input-bordered gap-2 w-full hover:border-info">
           <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
-            <span class="text-sm">网址</span>
+            <span class="text-sm select-none">网址</span>
             <span class="icon-[lucide--link-2] size-5"></span>
           </div>
           <div class="divider"></div>
-          <input type="text" class="grow input-bordered" placeholder="https://" />
+          <input type="text" class="grow input-bordered" placeholder="https://" v-model="link" />
         </div>
 
-        <div class="join input input-bordered gap-2 w-full">
+        <div class="join input input-bordered gap-2 w-full hover:border-info">
           <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
-            <span class="text-sm">名称</span>
+            <span class="text-sm select-none">名称</span>
             <span class="icon-[lucide--case-lower] size-5"></span>
           </div>
           <div class="divider"></div>
-          <input type="text" class="grow input-bordered" placeholder="Name" />
+          <input type="text" class="grow input-bordered" placeholder="Name" v-model="name" />
         </div>
 
-        <div class="join input input-bordered gap-2 w-full">
+        <div class="join input input-bordered gap-2 w-full hover:border-info select-none">
           <div class="flex border-r-2 items-center justify-center pr-3 space-x-2">
-            <span class="text-sm">代理</span>
+            <span class="text-sm select-none">代理</span>
             <span class="icon-[lucide--utility-pole]"></span>
           </div>
           <div class="divider"></div>
-          <div class="flex flex-1 items-center">
+          <div class="flex flex-1 items-center select-none">
             <span class="text-sm opacity-45">如果需要科学上网, 请打勾</span>
 
-            <input type="checkbox" checked class="ml-auto checkbox" />
+            <input type="checkbox" checked class="ml-auto checkbox" v-model="proxy" />
           </div>
         </div>
 
         <!-- 图标 -->
-        <div class="flex border rounded-lg input-bordered w-full">
+        <div
+          class="flex border rounded-lg input-bordered select-none w-full hover:border-info"
+          contenteditable="true"
+          @paste.prevent="handlePaste">
           <div class="flex items-center justify-center w-full h-36 relative">
             <div class="absolute inset-3 left-4 w-fit">
               <div class="flex items-center justify-center space-x-2">
-                <span>图标</span>
+                <span class="select-none">图标</span>
                 <span class="icon-[lucide--image]"></span>
               </div>
             </div>
 
             <!-- 上传图片 -->
             <div
-              class="flex items-center justify-center"
-              @dragover.prevent
-              @drop.prevent="handleDrag">
-              <button class="btn btn-ghost size-16 w-40 btn-outline" @click="imageUpload">
+              class="flex w-full h-full items-center justify-center"
+              @drop.prevent="handleDrag"
+              v-if="icon === null">
+              <button class="h-full inline-flex items-center space-x-4" @click="openFileInput">
+                <span class="select-none">拖拽/粘贴/上传</span>
                 <span class="icon-[lucide--arrow-big-up-dash] size-8"></span>
               </button>
+              <input
+                type="file"
+                @change="onFileChange"
+                ref="fileInput"
+                class="hidden"
+                accept="image/*" />
             </div>
 
             <div
-              class="indicator border size-16 absolute right-12 rounded-md border-base-content border-dashed"
-              v-if="icon !== ''">
+              class="indicator border size-24 rounded-md border-base-content border-dashed"
+              v-if="icon !== null">
               <div class="indicator-item">
-                <span
-                  class="btn btn-sm btn-accent icon-[lucide--circle-x] text-accent"
-                  @click="icon = ''"></span>
+                <span class="btn btn-sm icon-[lucide--circle-x]" @click="icon = null"></span>
               </div>
-              <div class="avatar">
+              <div class="avatar p-2">
                 <div class="rounded-xl">
-                  <img :src="icon" @error="imageLoadError" />
+                  <img ref="iconRef" @error="imageLoadError" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <textarea class="textarea w-full textarea-bordered" placeholder="网址介绍"></textarea>
+        <textarea
+          class="textarea w-full textarea-bordered hover:border-info"
+          placeholder="网址介绍"
+          v-model="description"></textarea>
 
         <div class="flex justify-between w-full">
           <div class="tooltip tooltip-bottom" data-tip="自动补全信息">
-            <button class="btn btn-sm btn-primary">一键填写</button>
+            <button class="btn btn-sm btn-primary" @click="queryMeta">一键填写</button>
           </div>
           <button class="btn btn-sm btn-primary">提交</button>
         </div>
@@ -99,7 +110,16 @@
 </template>
 
 <script setup lang="ts">
-const icon = ref('')
+import { net } from '@/logic'
+
+const fileInput = useTemplateRef<HTMLInputElement | null>('fileInput')
+const iconRef = useTemplateRef<HTMLImageElement>('iconRef')
+
+const link = ref('')
+const name = ref('')
+const proxy = ref(false)
+const icon = ref<File | null>(null)
+const description = ref('')
 
 function imageLoadError(event: Event) {
   const target = event.target as HTMLImageElement
@@ -108,15 +128,68 @@ function imageLoadError(event: Event) {
   }
 }
 
+// 处理拖拽图片事件
 function handleDrag(event: DragEvent) {
-  console.log(event)
-  const files = event.dataTransfer?.files
-  if (files && files.length > 0) {
-    console.log(files)
+  const file = event.dataTransfer?.files?.[0]
+  handleFile(file)
+}
+// 处理粘贴图片事件
+function handlePaste(event: ClipboardEvent) {
+  const items = event.clipboardData?.items
+  if (items && items.length > 0) {
+    for (let item of items) {
+      if (item.type.startsWith('image/')) {
+        const file = item.getAsFile()
+        handleFile(file)
+      }
+    }
+  }
+}
+// 监控icon变动
+watch(icon, () => {
+  if (icon.value) {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      if (iconRef.value) {
+        iconRef.value.src = e.target?.result as string
+      }
+    }
+    reader.readAsDataURL(icon.value)
+  }
+})
+
+// 显示
+function handleFile(file: File | null | undefined) {
+  if (file) {
+    icon.value = file
   }
 }
 
-function imageUpload(event: Event) {
-  console.log(event)
+// 模拟打开对话框
+function openFileInput() {
+  if (fileInput.value) {
+    fileInput.value.click()
+  }
+}
+
+// 检测打开文件
+function onFileChange(event: Event) {
+  const target = event.target as HTMLInputElement
+  const file = target.files?.[0]
+  handleFile(file)
+}
+
+// 获取网站元数据
+async function queryMeta() {
+  Message({ message: '获取中...' })
+  const data = await net(link.value)
+  if (data) {
+    Message({ message: '获取成功...' })
+    name.value = name.value || data.title
+    description.value = description.value || data.description || ''
+    proxy.value = data.proxy || false
+  } else {
+    Message({ message: '获取失败...', type: 'warn' })
+  }
 }
 </script>

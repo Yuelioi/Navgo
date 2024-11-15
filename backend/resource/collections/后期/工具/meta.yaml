@@ -6,7 +6,6 @@ collections:
     title: UE在线蓝图
     link: https://blueprintue.com/
     description: ""
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/7098b-blueprintue.com.png
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: 贝塞尔练习
     link: https://bezier.method.ac/
     description: ""
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/709cd-bezier.method.ac.png
     view: 0
@@ -22,7 +20,6 @@ collections:
     title: 贝塞尔游戏 The Bézier Game
     link: https://bezier.method.ac/
     description: The Bézier Game
-    country: 美国
     proxy: false
     thumbnail: ""
     view: 0

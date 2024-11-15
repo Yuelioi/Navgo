@@ -8,6 +8,7 @@ import (
 
 	collection "backend/internal/handler/collection"
 	comment "backend/internal/handler/comment"
+	service "backend/internal/handler/service"
 	statistics "backend/internal/handler/statistics"
 	tag "backend/internal/handler/tag"
 	"backend/internal/svc"
@@ -71,6 +72,18 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodGet,
 				Path:    "/comments",
 				Handler: comment.CommentHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/v1"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// 获取网站信息
+				Method:  http.MethodPost,
+				Path:    "/net",
+				Handler: service.NetHandler(serverCtx),
 			},
 		},
 		rest.WithPrefix("/v1"),

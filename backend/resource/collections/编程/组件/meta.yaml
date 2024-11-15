@@ -6,7 +6,6 @@ collections:
     title: 组件CSS样式库
     link: https://uiverse.io/
     description: ""
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/20b3f-uiverse.io.png
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: Ant Design
     link: https://ant.design/index-cn
     description: 蚂蚁集团UI设计语言以及React组件库
-    country: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/Page-1@2x.png
     view: 0

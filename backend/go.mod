@@ -1,8 +1,11 @@
 module backend
 
-go 1.22.6
+go 1.23
+
+toolchain go1.23.3
 
 require (
+	github.com/PuerkitoBio/goquery v1.10.0
 	github.com/zeromicro/go-zero v1.7.3
 	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/driver/sqlite v1.5.6
@@ -10,6 +13,7 @@ require (
 )
 
 require (
+	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect

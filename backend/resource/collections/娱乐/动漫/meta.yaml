@@ -6,7 +6,6 @@ collections:
     title: NyaFun动漫
     link: https://www.nyadm.net/
     description: ""
-    country: "日本"
     proxy: false
     thumbnail:
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: 片库2号机
     link: https://www.pkmp4.com/
     description: ""
-    country: ""
     proxy: true
     thumbnail: http://nav.yuelili.com/wp-content/uploads/ec2c1-www.pkmp4.com.png
     view: 0
@@ -22,7 +20,6 @@ collections:
     title: agemys 动漫
     link: https://www.agemys.cc/
     description: ""
-    country: ""
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/b44d9-www.agemys.cc.png
     view: 0
@@ -30,7 +27,6 @@ collections:
     title: 番组放送
     link: https://bgmlist.com/
     description: 动漫信息
-    country: ""
     proxy: true
     thumbnail: http://nav.yuelili.com/wp-content/uploads/ef7f5-bgmlist.com.png
     view: 0
@@ -38,14 +34,12 @@ collections:
     title: 動畫線上看
     link: https://www.anime1.me/
     description: ""
-    country: ""
     proxy: false
     view: 0
   - cid: bgm.tv
     title: Bangumi 番组计划
     link: https://bgm.tv/
     description: 专注于动漫、音乐、游戏领域，帮助你分享、发现与结识同好的ACG网络
-    country: 加拿大
     proxy: false
     thumbnail: ""
     view: 0
@@ -53,7 +47,6 @@ collections:
     title: 动漫 蜜柑计划
     link: https://mikanani.me/
     description: ""
-    country: ""
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/caebf-mikanani.me.png
     view: 0
@@ -61,7 +54,6 @@ collections:
     title: 诸神字幕组
     link: https://sub.kamigami.org/
     description: 诸神字幕组 - 诸神字幕组官方发布站..
-    country: 加拿大
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/649ae-sub.kamigami.org.png
     view: 0
@@ -69,7 +61,6 @@ collections:
     title: 动漫花园
     link: https://share.dmhy.org/
     description: 動漫花園資訊網是一個動漫愛好者交流的平台,提供最及時,最全面的動畫,漫畫,動漫音樂,動漫下載,BT,ED,動漫遊戲,資訊,分享,交流,讨论.
-    country: 加拿大
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/8c1d1-share.dmhy.org.png
     view: 0
@@ -77,7 +68,6 @@ collections:
     title: 旋风动漫
     link: http://share.xfapi.top:88/
     description: 旋风动漫BT站为漫迷提供日本动画，漫画，片源，动漫音乐，动漫游戏等资源下载。动漫资源，尽在旋风动漫BT下载频道。
-    country: ""
     proxy: false
     thumbnail: ""
     view: 0

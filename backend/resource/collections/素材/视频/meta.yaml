@@ -6,7 +6,6 @@ collections:
     title: videvo
     link: https://www.videvo.net/
     description: "Download royalty free stock video footage with over 2 million videos and clips in 4K and HD. We also offer a wide selection of music and sound effect files with over 300,000 clips available. Click here to download royalty-free licensing videos, motion graphics, music and sound effects from Videvo today."
-    country: ""
     proxy: false
     thumbnail:
     view: 0
@@ -14,7 +13,6 @@ collections:
     title: videezy
     link: https://www.videezy.com/
     description: ""
-    country: ""
     proxy: false
     thumbnail:
     view: 0
@@ -22,7 +20,6 @@ collections:
     title: pexels
     link: https://www.pexels.com/zh-cn/
     description: ""
-    country: ""
     proxy: false
     thumbnail:
     view: 0

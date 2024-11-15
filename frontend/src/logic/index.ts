@@ -31,3 +31,8 @@ export async function getCollections() {
   await db.clearData('collections')
   return await query('collections', api.collections)
 }
+
+export async function net(id: string) {
+  const resp = await api.net(id)
+  return resp.data['data']
+}

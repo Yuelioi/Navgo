@@ -40,6 +40,9 @@ export interface CollectionsData {
 export interface CollectionsResponse {
   datas: Array<CollectionsData>
 }
+export interface CollectionResponse {
+  data: Collection
+}
 
 export interface Comment {
   id: string
@@ -71,11 +74,11 @@ export interface Group {
 }
 
 export interface IDRequest {
-  id: number
+  id: string
 }
 
 export interface IDResponse {
-  id: number
+  id: string
 }
 
 export interface Model {

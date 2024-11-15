@@ -25,7 +25,10 @@ func NewAddCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Add
 }
 
 func (l *AddCollectionLogic) AddCollection(req *types.Collection) (resp *types.Collection, err error) {
-	// todo: add your logic here and delete this line
+
+	// 添加到数据库
+
+	// 写入本地文件(待审核)
 
 	return
 }
