@@ -8,6 +8,11 @@
         <button class="btn btn-ghost btn-sm" v-else @click="collapseNav = !collapseNav">
           <span class="icon-[lucide--menu] size-5"></span>
         </button>
+        <button class="btn btn-ghost btn-sm" @click="router.push({ name: 'home' })">
+          <div class="tooltip tooltip-bottom" data-tip="主页">
+            <span class="icon-[lucide--house] size-5"></span>
+          </div>
+        </button>
         <button class="btn btn-ghost btn-sm" @click="router.push('post')">
           <div class="tooltip tooltip-bottom" data-tip="投稿">
             <span class="icon-[lucide--send] size-5"></span>

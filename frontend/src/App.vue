@@ -8,10 +8,10 @@
       <!-- 主界面顶部 -->
       <HeaderArea class="h-12 shadow-md" />
       <!-- 主界面内容区域 -->
-      <div class="flex-1 overflow-y-scroll">
+      <div class="flex-1 w-full flex flex-col overflow-y-scroll">
         <router-view></router-view>
+        <FooterArea />
       </div>
-      <FooterArea class="mb-6" />
     </div>
   </main>
 </template>

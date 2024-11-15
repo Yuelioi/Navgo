@@ -2,15 +2,13 @@ title: 论坛
 cid: forum
 order: 4
 collections:
-  - cid: creativecow.net
-    title: Creative COW
+  - title: Creative COW
     link: https://creativecow.net/forums/forum/adobe-after-effects/
     description: 上古论坛,至今仍在活跃
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/27433-creativecow.net.png
     view: 0
-  - cid: blog.motionisland.com
-    title: motionisland
+  - title: motionisland
     link: https://blog.motionisland.com/
     description: 教程/文档/技巧
     proxy: false

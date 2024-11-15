@@ -2,64 +2,55 @@ title: 其他
 cid: other
 order: 8
 collections:
-  - cid: polyhaven.com
-    title: Poly Haven
+  - title: Poly Haven
     link: https://polyhaven.com/
     description: The Public 3D Asset Library
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/2cf63-polyhaven.com.png
     view: 0
-  - cid: hdri-skies.com
-    title: Hdri Sky
+  - title: Hdri Sky
     link: https://hdri-skies.com/
     description: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/a36d6-hdri-skies.com.png
     view: 0
-  - cid: www.textures.com
-    title: Textures for 3D
+  - title: Textures for 3D
     link: https://www.textures.com/
     description: Textures for 3D, graphic design and Photoshop!
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/3152f-www.textures.com.png
     view: 0
-  - cid: ambientcg.com
-    title: ambientcg
+  - title: ambientcg
     link: https://ambientcg.com/
     description: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/5011f-ambientcg.com.png
     view: 0
-  - cid: www.cgbookcase.com
-    title: cgbookcase
+  - title: cgbookcase
     link: https://www.cgbookcase.com/textures
     description: PBR纹理
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/82117-www.cgbookcase.com.png
     view: 0
-  - cid: texture.ninja
-    title: 材质忍者
+  - title: 材质忍者
     link: https://texture.ninja/
     description: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/5527e-texture.ninja.png
     view: 0
-  - cid: texturebox.com
-    title: Texturebox
+  - title: Texturebox
     link: https://texturebox.com/category
     description: Texturebox - Free and Premium Seamless PBR textures, photoscanned 3d models for archviz and games
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/c613b-texturebox.com.png
     view: 0
-  - cid: matlib.gpuopen.com
-    title: MaterialX Library
+  - title: MaterialX Library
     link: https://matlib.gpuopen.com/main/materials/all
     description: MaterialX 库是完全免费提供的高质量材料和相关纹理的集合。
     proxy: false
     thumbnail: ""
     view: 0
-  - cid: www.ponzu.gg
-    title: ponzu 贴图在线生成!
+  - title: ponzu 贴图在线生成!
     link: https://www.ponzu.gg/
     description: ""
     proxy: false

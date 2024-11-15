@@ -2,22 +2,19 @@ title: 工具
 cid: tool
 order: 7
 collections:
-  - cid: blueprintue.com
-    title: UE在线蓝图
+  - title: UE在线蓝图
     link: https://blueprintue.com/
     description: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/7098b-blueprintue.com.png
     view: 0
-  - cid: bezier.method.ac
-    title: 贝塞尔练习
+  - title: 贝塞尔练习
     link: https://bezier.method.ac/
     description: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/709cd-bezier.method.ac.png
     view: 0
-  - cid: bezier.method.ac
-    title: 贝塞尔游戏 The Bézier Game
+  - title: 贝塞尔游戏 The Bézier Game
     link: https://bezier.method.ac/
     description: The Bézier Game
     proxy: false

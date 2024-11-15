@@ -2,50 +2,43 @@ title: 软件
 cid: tool
 order: 1
 collections:
-  - cid: convertio.co
-    title: File Converter
+  - title: File Converter
     link: https://convertio.co/zh/
     description: Convertio - Easy tool to convert files online. More than 309 different document, image, spreadsheet, ebook, archive, presentation, audio and video formats supported.
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/3ff43-convertio.co.png
     view: 0
-  - cid: bigjpg.com
-    title: 图片无损放大
+  - title: 图片无损放大
     link: https://bigjpg.com/
     description: ""
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/f338d-bigjpg.com.png
     view: 0
-  - cid: tinypng.com
-    title: TinyPNG
+  - title: TinyPNG
     link: https://tinypng.com/
     description: TinyPNG – 图片在线压缩
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/da386-tinypng.com.png
     view: 0
-  - cid: demo.unlock-music.dev
-    title: 音乐解锁
+  - title: 音乐解锁
     link: https://demo.unlock-music.dev/
     description: 音频解密
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/adfcb-demo.unlock-music.dev.png
     view: 0
-  - cid: www.remove.bg
-    title: Remove Background from Image
+  - title: Remove Background from Image
     link: https://www.remove.bg/zh
     description: 移除图片背景
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/5e94f-www.remove.bg.png
     view: 0
-  - cid: vocalremover.org
-    title: 人声伴奏分离
+  - title: 人声伴奏分离
     link: https://vocalremover.org/
     description: Just a moment...
     proxy: false
     thumbnail: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPg0KICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9InJnYigyMjksMTk4LDEzNykiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48L3JlY3Q+DQogICAgICAgICAgICAgICAgPGNpcmNsZSBmaWxsPSJyZ2IoMCwwLDApIiBjeD0iMTYiIGN5PSI4IiByPSI2MCIgIG9wYWNpdHk9Ii40Ij48L2NpcmNsZT4NCiAgICAgICAgICAgICAgICA8Y2lyY2xlIGZpbGw9InJnYigxODEsMjI5LDExNCkiIGN4PSIwMCIgY3k9IjAiIHI9IjUwIiAgb3BhY2l0eT0iLjYiPjwvY2lyY2xlPg0KICAgICAgICAgICAgICAgIDx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1zaXplPSI1MCIgdGV4dC1jb3B5PSJmYXN0IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0ZXh0LXJpZ2h0cz0iYWRtaW4iIGFsaWdubWVudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IidQaW5nRmFuZyBTQycsJ01pY3Jvc29mdCBZYWhlaSciPko8L3RleHQ+PC9zdmc+
     view: 0
-  - cid: www.onlinedoctranslator.com
-    title: 翻译文档
+  - title: 翻译文档
     link: https://www.onlinedoctranslator.com/zh-CN/
     description: "Free, Online Document Translator which translates office documents (PDF, Word, Excel, PowerPoint, OpenOffice, text) into multiple languages, preserving the original layout. Supported file formats: Word: doc, docx; PDF: pdf; Excel: xls, xlsx; Powerpoint; ppt, pptx; Text xml, txt.... This translator supports: English, Afrikaans, Albanian, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bulgarian, Catalan, Chinese, Croatian, Czech, Danish, Dutch, Estonian, Filipino, Finnish, French, Galician, Georgian, German, Greek, Haitian Creole, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Korean, Latvian, Lithuanian, Macedonian, Malay, Maltese, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swahili, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese, Welsh, Yiddish"
     proxy: false

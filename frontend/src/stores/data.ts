@@ -5,7 +5,7 @@ export async function loadData() {
   const _themes = ['light', 'dark']
   const { switchTheme } = useTheme(_themes)
   const store = useBasicStore()
-  let { collectionsDatas, collections, navs, theme } = storeToRefs(store)
+  let { collectionsDatas, collectionsMap, navs, theme, collectionsList } = storeToRefs(store)
 
   switchTheme(theme.value)
 
@@ -14,7 +14,8 @@ export async function loadData() {
 
   collectionsDatas.value.length = 0
   navs.value.length = 0
-  collections.value = new Map()
+  collectionsList.value = []
+  collectionsMap.value = new Map()
 
   collectionsDatas.value = [...collectionsDatas.value, ...data.datas]
   collectionsDatas.value.forEach((ele) => {
@@ -25,7 +26,8 @@ export async function loadData() {
 
     ele.groups.forEach((group) => {
       group.collections.forEach((item) => {
-        collections.value.set(item.cid, item)
+        collectionsMap.value.set(item.cid, item)
+        collectionsList.value.push(item)
       })
     })
   })

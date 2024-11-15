@@ -2,70 +2,60 @@ title: 动漫
 cid: anime
 order: 1
 collections:
-  - cid: www.nyadm.net
-    title: NyaFun动漫
+  - title: NyaFun动漫
     link: https://www.nyadm.net/
     description: ""
     proxy: false
     thumbnail:
     view: 0
-  - cid: www.pkmp4.com
-    title: 片库2号机
+  - title: 片库2号机
     link: https://www.pkmp4.com/
     description: ""
     proxy: true
     thumbnail: http://nav.yuelili.com/wp-content/uploads/ec2c1-www.pkmp4.com.png
     view: 0
-  - cid: www.agemys.cc
-    title: agemys 动漫
+  - title: agemys 动漫
     link: https://www.agemys.cc/
     description: ""
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/b44d9-www.agemys.cc.png
     view: 0
-  - cid: bgmlist.com
-    title: 番组放送
+  - title: 番组放送
     link: https://bgmlist.com/
     description: 动漫信息
     proxy: true
     thumbnail: http://nav.yuelili.com/wp-content/uploads/ef7f5-bgmlist.com.png
     view: 0
-  - cid: anime1.me
-    title: 動畫線上看
+  - title: 動畫線上看
     link: https://www.anime1.me/
     description: ""
     proxy: false
     view: 0
-  - cid: bgm.tv
-    title: Bangumi 番组计划
+  - title: Bangumi 番组计划
     link: https://bgm.tv/
     description: 专注于动漫、音乐、游戏领域，帮助你分享、发现与结识同好的ACG网络
     proxy: false
     thumbnail: ""
     view: 0
-  - cid: mikanani.me
-    title: 动漫 蜜柑计划
+  - title: 动漫 蜜柑计划
     link: https://mikanani.me/
     description: ""
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/caebf-mikanani.me.png
     view: 0
-  - cid: sub.kamigami.org
-    title: 诸神字幕组
+  - title: 诸神字幕组
     link: https://sub.kamigami.org/
     description: 诸神字幕组 - 诸神字幕组官方发布站..
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/649ae-sub.kamigami.org.png
     view: 0
-  - cid: share.dmhy.org
-    title: 动漫花园
+  - title: 动漫花园
     link: https://share.dmhy.org/
     description: 動漫花園資訊網是一個動漫愛好者交流的平台,提供最及時,最全面的動畫,漫畫,動漫音樂,動漫下載,BT,ED,動漫遊戲,資訊,分享,交流,讨论.
     proxy: true
     thumbnail: https://nav.yuelili.com/wp-content/uploads/8c1d1-share.dmhy.org.png
     view: 0
-  - cid: share.xfapi.top
-    title: 旋风动漫
+  - title: 旋风动漫
     link: http://share.xfapi.top:88/
     description: 旋风动漫BT站为漫迷提供日本动画，漫画，片源，动漫音乐，动漫游戏等资源下载。动漫资源，尽在旋风动漫BT下载频道。
     proxy: false

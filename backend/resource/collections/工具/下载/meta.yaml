@@ -2,15 +2,13 @@ title: 软件
 cid: tool
 order: 1
 collections:
-  - cid: 9xbuddy.org
-    title: 9xbuddy
+  - title: 9xbuddy
     link: https://9xbuddy.org
     description: 在线下载油管/推特/P站等等
     proxy: true
     thumbnail: http://nav.yuelili.com/wp-content/uploads/9b6a9-9xbuddy.org.png
     view: 0
-  - cid: kinhdown.com
-    title: kinhdown 百度云解析
+  - title: kinhdown 百度云解析
     link: https://kinhdown.com/
     description: ""
     proxy: false

@@ -2,8 +2,7 @@ title: 其他
 cid: other
 order: 8
 collections:
-  - cid: www.science.org
-    title: Science
+  - title: Science
     link: https://www.science.org/
     description: Science | AAAS
     proxy: false

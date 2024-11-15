@@ -4,7 +4,7 @@
       <div class="top h-12 flex items-center justify-center">这是一个logo</div>
       <ul class="menu menu-lg rounded-box">
         <li v-for="nav in navs" @click="scrollToSection(nav.cid)">
-          <a>
+          <a class="">
             <span class="icon-[lucide--zap]"></span>
             {{ nav.title }}
           </a>

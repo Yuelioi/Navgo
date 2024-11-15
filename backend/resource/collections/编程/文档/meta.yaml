@@ -2,71 +2,61 @@ title: 文档
 cid: docs
 order: 6
 collections:
-  - cid: developer.mozilla.org
-    title: MDN Web Docs
+  - title: MDN Web Docs
     link: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide
     description: The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.
     proxy: false
     thumbnail: http://nav.yuelili.com/wp-content/uploads/54e00-developer.mozilla.org.png
     view: 0
-  - cid: zh.cppreference.com
-    title: CPP中文手册
+  - title: CPP中文手册
     link: https://zh.cppreference.com/
     description: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/c9861-zh.cppreference.com.png
     view: 0
-  - cid: cplusplus.com
-    title: CPP英文手册
+  - title: CPP英文手册
     link: https://cplusplus.com/reference/
     description: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/217df-cplusplus.com.png
     view: 0
-  - cid: zh.javascript.info
-    title: 现代 JavaScript 教程
+  - title: 现代 JavaScript 教程
     link: https://zh.javascript.info/
     description: 现代 JavaScript 教程：有关示例和任务的简单但详细的解释包括：闭包、文档和事件，以及面向对象编程等。
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/6c33f-zh.javascript.info.png
     view: 0
-  - cid: www.progit.cn
-    title: Pro Git (第二版 中)
+  - title: Pro Git (第二版 中)
     link: https://www.progit.cn/
     description: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/bd016-www.progit.cn.png
     view: 0
-  - cid: www.typescriptlang.org
-    title: TypeScript 手册
+  - title: TypeScript 手册
     link: https://www.typescriptlang.org/docs/handbook/intro.html
     description: TypeScript extends JavaScript by adding types to the language. TypeScript speeds up your development experience by catching errors and providing fixes before you even run your code.
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/c2cda-www.typescriptlang.org.png
     view: 0
-  - cid: www.topgoer.com
-    title: Go中文文档
+  - title: Go中文文档
     link: https://www.topgoer.com/
     description: 前景 · Go语言中文文档
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/19c73-www.topgoer.com.png
     view: 0
-  - cid: docs.python.org
-    title: PYTHON 文档
+  - title: PYTHON 文档
     link: https://docs.python.org
     description: python Documentation
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/4275d-docs.python.org.png
     view: 0
-  - cid: docker.easydoc.net
-    title: Docker中文快速入门
+  - title: Docker中文快速入门
     link: https://docker.easydoc.net
     description: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/b82b4-docker.easydoc.net.png
     view: 0
-  - cid: c.biancheng.net
-    title: C语言中文网
+  - title: C语言中文网
     link: http://c.biancheng.net/
     description: C语言中文网是中国领先的C语言程序设计专业网站，提供C语言入门经典教程、C语言编译器、C语言函数手册，C语言编程技巧，C语言考试试题等，是学习、自学C语言程序设计的好帮手。
     proxy: false

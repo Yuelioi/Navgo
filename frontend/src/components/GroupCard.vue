@@ -2,14 +2,10 @@
   <div class="flex flex-wrap relative">
     <div class="basis-1/5 p-4 cursor-pointer" v-for="collection in group.collections">
       <!-- 单个链接卡片 -->
-      <div class="bg-base-300 shadow-md p-4 group hover:ring-2 hover:scale-105 rounded-md">
+      <div
+        class="bg-base-300 shadow-md p-4 group hover:ring-2 ring-primary hover:scale-105 rounded-md">
         <div class="h-28 flex flex-col">
           <div class="flex flex-row flex-1 items-center relative" @click="open(collection.link)">
-            <div class="absolute group-hover:flex hidden right-2 top-2 items-center space-x-1">
-              <span class="icon-[ep--view] size-3"></span>
-              <span class="text-sm">{{ collection.view }}</span>
-            </div>
-
             <div class="avatar static size-12">
               <div class="h-full rounded-xl">
                 <img
@@ -23,7 +19,14 @@
             </div>
 
             <div class="pl-4 flex-1">
-              <div class="font-bold">{{ collection.title }}</div>
+              <div class="items-center flex space-x-2">
+                <span class="font-bold">{{ collection.title }}</span>
+                <span class="items-center group-hover:flex hidden space-x-1">
+                  <span class="icon-[ep--view] size-3"></span>
+                  <span class="text-sm">{{ collection.view }}</span>
+                </span>
+              </div>
+
               <div class="tooltip static tooltip-bottom" :data-tip="collection.description">
                 <div class="flex text-left">
                   <span class="line-clamp-1">{{ collection.description }}</span>

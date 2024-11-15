@@ -2,15 +2,13 @@ title: 工具
 cid: tool
 order: 7
 collections:
-  - cid: uiverse.io
-    title: 组件CSS样式库
+  - title: 组件CSS样式库
     link: https://uiverse.io/
     description: ""
     proxy: false
     thumbnail: https://nav.yuelili.com/wp-content/uploads/20b3f-uiverse.io.png
     view: 0
-  - cid: ant.design
-    title: Ant Design
+  - title: Ant Design
     link: https://ant.design/index-cn
     description: 蚂蚁集团UI设计语言以及React组件库
     proxy: false

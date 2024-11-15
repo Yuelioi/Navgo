@@ -20,11 +20,11 @@ export default {
           primary: '#3056d3',
           secondary: '#00aeec',
           accent: '#ff6699',
-          neutral: '#a3a7af',
+          neutral: '#22212c',
           'neutral-content': '#f8fafc',
 
-          'base-100': '#f3f3f3',
-          'base-200': '#f7f8f9',
+          'base-100': '#f6f6f7',
+          'base-200': '#f8f8f9',
           'base-300': '#ffffff',
           'base-content': '#0f172a',
 
@@ -39,7 +39,7 @@ export default {
           primary: '#3056d3',
           secondary: '#4ac7ff',
           accent: '#ff6699',
-          neutral: '#22212c',
+          neutral: '#a3a7af',
           'neutral-content': '#f8fafc',
 
           'base-100': '#16181d',
