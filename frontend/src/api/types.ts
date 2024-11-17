@@ -14,20 +14,33 @@ export interface Category {
   path?: string
 }
 
-export interface Collection {
+export interface Announce {
   iD: number
   createdAt: string
   updatedAt: string
+  title: string
+  content: string
+  date: string
+}
+
+export interface AnnouncesData {
+  announces: Array<Announce>
+}
+
+export interface Collection {
+  id?: number
+  createdAt?: string
+  updatedAt?: string
   cid: string
   proxy?: boolean
   title: string
   link: string
   path?: string
-  categoryID: string // 外键字段
-  category: Category
+  categoryID?: string // 外键字段
+  category?: Category
   description?: string
   country?: string
-  thumbnail?: string
+  favicon?: string
   tags?: Array<string>
   view?: number
 }
@@ -45,16 +58,14 @@ export interface CollectionResponse {
 }
 
 export interface Comment {
-  id: string
-  collection_id: string
-  nickname: string
-  message: string
-}
-
-export interface Record {
   iD: number
   createdAt: string
   updatedAt: string
+  nickname: string
+  content: string
+  date: string
+  replies: Array<Comment>
+  parent_id?: number
 }
 
 export interface CommentRequest {

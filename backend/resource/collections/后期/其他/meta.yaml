@@ -6,11 +6,7 @@ collections:
     link: https://webjike.com/
     description: 小呆导航是一个可自定义的简洁多领域网址导航，收录了前端开发、设计师、影视后期、日常办公等领域优质网站，为广大用户提供高效率的上网导航服务。
     proxy: false
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/2022/08/772e0-webjike.com.png
-    view: 0
   - title: VFXinfo网址导航
     link: https://cg.vfxer.me/
     description: CG行业精英人士必备导航
     proxy: false
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/2022/08/812bd-cg.vfxer.me.png
-    view: 0

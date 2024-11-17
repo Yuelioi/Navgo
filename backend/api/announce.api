@@ -1,0 +1,25 @@
+syntax = "v1"
+
+import "base.api"
+
+type Announce {
+	Model
+	Title   string `json:"title"`
+	Content string `json:"content" gorm:"column:content;unique"`
+	Date    string `json:"date"`
+}
+
+type AnnouncesData {
+	Announces []*Announce `json:"announces"`
+}
+
+@server (
+	prefix: /v1
+	group: announce
+)
+
+service main {
+	@doc "获取通知"
+	@handler Announces
+	get /announces (AnyRequest) returns (AnnouncesData)
+}

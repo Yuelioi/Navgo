@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden h-full">
-    <div class="sticky top-1/4">
+    <div class="sticky top-1/4 xl:block hidden">
       <div class="absolute right-16">
         <div class="card card-compact bg-base-100 p-4 w-64 shadow-xl">
           <div class="card-body">
@@ -17,7 +17,8 @@
     </div>
 
     <div class="flex w-full h-full items-center justify-center">
-      <div class="flex flex-col space-y-4 self-center w-1/4 items-center justify-center">
+      <div
+        class="grid grid-cols-one space-y-4 self-center bg-base-300 rounded-md p-8 items-center justify-center">
         <div class="join input input-bordered gap-2 w-full hover:border-info">
           <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
             <span class="text-sm select-none">网址</span>
@@ -33,7 +34,7 @@
             <span class="icon-[lucide--case-lower] size-5"></span>
           </div>
           <div class="divider"></div>
-          <input type="text" class="grow input-bordered" placeholder="Name" v-model="name" />
+          <input type="text" class="grow input-bordered" placeholder="Name" v-model="title" />
         </div>
 
         <div class="join input input-bordered gap-2 w-full hover:border-info select-none">
@@ -102,7 +103,7 @@
           <div class="tooltip tooltip-bottom" data-tip="自动补全信息">
             <button class="btn btn-sm btn-primary" @click="queryMeta">一键填写</button>
           </div>
-          <button class="btn btn-sm btn-primary">提交</button>
+          <button class="btn btn-sm btn-primary" @click="handleSubmit">提交</button>
         </div>
       </div>
     </div>
@@ -110,13 +111,14 @@
 </template>
 
 <script setup lang="ts">
+import { addCollection } from '@/api'
 import { net } from '@/logic'
 
 const fileInput = useTemplateRef<HTMLInputElement | null>('fileInput')
 const iconRef = useTemplateRef<HTMLImageElement>('iconRef')
 
 const link = ref('')
-const name = ref('')
+const title = ref('')
 const proxy = ref(false)
 const icon = ref<File | null>(null)
 const description = ref('')
@@ -185,11 +187,32 @@ async function queryMeta() {
   const data = await net(link.value)
   if (data) {
     Message({ message: '获取成功...' })
-    name.value = name.value || data.title
+    title.value = title.value || data.title
     description.value = description.value || data.description || ''
     proxy.value = data.proxy || false
   } else {
     Message({ message: '获取失败...', type: 'warn' })
   }
+}
+
+function handleSubmit() {
+  const formData = new FormData()
+  // 添加表单字段
+  formData.append('title', title.value)
+  formData.append('link', link.value)
+  formData.append('description', description.value)
+  formData.append('proxy', proxy.value.toString())
+
+  if (icon.value) {
+    formData.append('favicon', icon.value, icon.value?.name)
+  }
+
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  }
+
+  addCollection(formData, config)
 }
 </script>

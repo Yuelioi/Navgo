@@ -13,11 +13,77 @@
             <span class="icon-[lucide--house] size-5"></span>
           </div>
         </button>
-        <button class="btn btn-ghost btn-sm" @click="router.push('post')">
+        <button class="btn btn-ghost btn-sm" @click="router.push({ name: 'post' })">
           <div class="tooltip tooltip-bottom" data-tip="投稿">
             <span class="icon-[lucide--send] size-5"></span>
           </div>
         </button>
+        <button class="btn btn-ghost btn-sm" @click="router.push({ name: 'like' })">
+          <div class="tooltip tooltip-bottom" data-tip="我的收藏">
+            <span class="icon-[lucide--star] size-5"></span>
+          </div>
+        </button>
+        <button class="btn btn-ghost btn-sm" @click="router.push({ name: 'comment' })">
+          <div class="tooltip tooltip-bottom" data-tip="留言板">
+            <span class="icon-[lucide--clipboard-pen] size-5"></span>
+          </div>
+        </button>
+        <button
+          class="btn btn-ghost btn-sm"
+          @mousemove="showSettingWindow = true"
+          @click.ctrl="isAdmin = !isAdmin">
+          <div class="tooltip tooltip-bottom" data-tip="设置">
+            <span class="icon-[lucide--settings] size-5"></span>
+          </div>
+        </button>
+        <button
+          class="btn btn-ghost btn-sm relative"
+          @mousemove="showHotkeyWindow = true"
+          @mouseleave="showHotkeyWindow = false">
+          <div class="tooltip tooltip-bottom" data-tip="帮助">
+            <span class="icon-[lucide--message-circle-question] size-5"></span>
+          </div>
+        </button>
+
+        <Transition>
+          <div
+            class="absolute z-10 top-24"
+            v-if="showSettingWindow"
+            @mouseleave="showSettingWindow = false">
+            <div class="flex bg-base-200 flex-col p-6 rounded-lg h-80 w-96 space-y-4 ring-2">
+              <div class="font-bold flex items-center justify-between">
+                <span>设置</span>
+                <span class="icon-[lucide--x] size-5" @click="showSettingWindow = false"></span>
+              </div>
+              <div class="divider"></div>
+              <div class="flex items-center w-full justify-between">
+                <kbd class="font-bold">显示我的收藏</kbd>
+                <div class="form-control">
+                  <label class="label cursor-pointer">
+                    <input type="checkbox" class="toggle" v-model="showMyCollection" />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Transition>
+
+        <Transition>
+          <div class="absolute z-10 top-24" v-if="showHotkeyWindow">
+            <div class="flex bg-base-200 flex-col p-6 rounded-lg h-80 w-96 space-y-4 ring-2">
+              <div class="font-bold"><span>帮助</span></div>
+              <div class="divider"></div>
+              <div class="flex items-center w-full justify-between">
+                <kbd class="kbd">Tab</kbd>
+                <div class="kbd">切换搜索引擎</div>
+              </div>
+              <div class="flex items-center w-full justify-between">
+                <kbd class="kbd">Esc</kbd>
+                <div class="kbd">删除搜索关键词</div>
+              </div>
+            </div>
+          </div>
+        </Transition>
       </div>
     </div>
 
@@ -45,7 +111,10 @@
 import router from '@/router'
 
 const store = useBasicStore()
-const { collapseNav, theme } = storeToRefs(store)
+const { collapseNav, theme, isAdmin, showMyCollection } = storeToRefs(store)
+
+const showHotkeyWindow = ref(false)
+const showSettingWindow = ref(false)
 
 const { switchTheme } = useTheme()
 
@@ -54,3 +123,15 @@ function changeTheme() {
   switchTheme(theme.value)
 }
 </script>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

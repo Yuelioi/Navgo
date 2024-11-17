@@ -6,23 +6,15 @@ collections:
     link: https://www.dianyinggou.com/
     description: ""
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/5de3e-www.dianyinggou.com.png
-    view: 0
   - title: BT电影下载
     link: https://www.kuba222.com/
     description: 酷吧电影下载网
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/853f5-www.kuba222.com.png
-    view: 0
   - title: 美剧迷
     link: https://www.meijumi.net/
     description: ""
     proxy: false
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/c053b-www.meijumi.net.png
-    view: 0
   - title: dianying.fm电影资源整合
     link: https://dianying.fm/
     description: dianying.fm
     proxy: false
-    thumbnail: ""
-    view: 0

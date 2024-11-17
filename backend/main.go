@@ -24,6 +24,7 @@ func main() {
 
 	// 跨域中间件
 	server.Use(middleware.CORS())
+	server.Use(middleware.Limit())
 
 	defer server.Stop()
 

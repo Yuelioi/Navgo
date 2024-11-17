@@ -12,7 +12,7 @@ func main() {
     description: ""
     country: "%s"
     proxy: %t
-    thumbnail:
+    favicon:
     view: 0`
 
 	link := "https://www.nyadm.net/"

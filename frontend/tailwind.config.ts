@@ -8,7 +8,14 @@ export default {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   content: ['./index.html', './src/**/*.{js,ts,vue,css}'],
   theme: {
-    extend: {}
+    extend: {
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        '16': 'repeat(16, minmax(0, 1fr))',
+        one: ' minmax(550px, 50%)',
+        card: 'repeat(auto-fill, minmax(275px, 1fr))'
+      }
+    }
   },
   plugins: [daisyui, addDynamicIconSelectors()],
   safelist: ['hover:text-primary', 'hover:text-secondary', 'hover:text-accent'],
@@ -19,19 +26,19 @@ export default {
         light: {
           primary: '#3056d3',
           secondary: '#00aeec',
-          accent: '#ff6699',
+          accent: '#f980ad',
           neutral: '#22212c',
           'neutral-content': '#f8fafc',
 
-          'base-100': '#f6f6f7',
-          'base-200': '#f8f8f9',
+          'base-100': '#ebecf0',
+          'base-200': '#f6f6f7',
           'base-300': '#ffffff',
           'base-content': '#0f172a',
 
           info: '#3056d3',
           success: '#00bd8d',
           warning: '#ffa200',
-          error: '#ff6a3d'
+          error: '#ff8589'
         }
       },
       {
@@ -50,7 +57,7 @@ export default {
           info: '#3056d3',
           success: '#00bd8d',
           warning: '#ffa200',
-          error: '#ff6a3d'
+          error: '#dc4244'
         }
       }
     ]

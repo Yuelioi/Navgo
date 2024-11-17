@@ -1,61 +1,46 @@
 package main
 
 import (
-	"net/http"
-	"net/url"
+	"fmt"
 
-	"github.com/PuerkitoBio/goquery"
+	"gopkg.in/yaml.v3"
 )
 
-type Collection struct {
-	CID         string   `json:"cid,optional" gorm:"column:cid"`
-	Title       string   `json:"title"`
-	Link        string   `json:"link"`
-	Order       int      `json:"order,optional" gorm:"column:order"`
-	Path        string   `json:"path,optional" gorm:"column:path;unique"`
-	Proxy       bool     `json:"proxy,optional" gorm:"column:proxy"`
-	Description string   `json:"description,optional"`
-	Thumbnail   string   `json:"thumbnail,optional"`
-	Tags        []string `json:"tags,optional" gorm:"type:json"`
-	View        int      `json:"view,optional"`
+type Model struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
-func query(link string) (*Collection, error) {
+type User struct {
+	Model `json:"-" yaml:"-"`
+	Email string `json:"email"`
+}
 
-	URL, err := url.Parse(link)
-	if err != nil {
-		return nil, err
-	}
+// func (m Model) MarshalYAML() (interface{}, error) {
+// 	return nil, nil // 返回 nil 以跳过 Model 字段的序列化
+// }
 
-	res, err := http.Get(link)
-	if err != nil {
-		return nil, err
-	}
-	defer res.Body.Close()
-
-	// 检查响应状态码
-	if res.StatusCode != 200 {
-		return nil, err
-	}
-
-	doc, err := goquery.NewDocumentFromReader(res.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	title := doc.Find("title").Text()
-	description := doc.Find("meta[name='description']").AttrOr("content", "")
-
-	return &Collection{
-		CID:         URL.Host,
-		Title:       title,
-		Link:        link,
-		Proxy:       false,
-		Description: description,
+// 自定义 User 的 MarshalYAML 方法
+func (u User) MarshalYAML() (interface{}, error) {
+	return struct {
+		Email string `json:"email"`
+	}{
+		Email: u.Email,
 	}, nil
 }
 
 func main() {
-	link := "https://www.nyadm.net/play/4469-1-11.html"
-	query(link)
+	m := &User{
+		Model: Model{Name: "John", Age: 30},
+		Email: "231515",
+	}
+
+	// 这里将会调用 YamlMarshal 方法
+	data, err := yaml.Marshal(m)
+	if err != nil {
+		fmt.Println("Error marshaling:", err)
+		return
+	}
+
+	fmt.Println(string(data)) // 输出将只包含 Email 字段
 }

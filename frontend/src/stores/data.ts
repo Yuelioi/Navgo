@@ -1,11 +1,12 @@
-import { getCollections } from '@/logic'
+import { getCollections, getLikes } from '@/logic'
 
 // 用于初始化加载数据
 export async function loadData() {
   const _themes = ['light', 'dark']
   const { switchTheme } = useTheme(_themes)
   const store = useBasicStore()
-  let { collectionsDatas, collectionsMap, navs, theme, collectionsList } = storeToRefs(store)
+  const { collectionsDatas, collectionsMap, navs, theme, collectionsList, likeCollectionsList } =
+    storeToRefs(store)
 
   switchTheme(theme.value)
 
@@ -31,4 +32,9 @@ export async function loadData() {
       })
     })
   })
+
+  // 加载我的收藏
+
+  const data2 = await getLikes()
+  likeCollectionsList.value = data2
 }

@@ -9,14 +9,21 @@ export const useBasicStore = defineStore('basic', () => {
   const collectionsDatas = ref<Array<CollectionsData>>([])
   const collectionsMap: Ref<Map<string, Collection>> = ref(new Map())
   const collectionsList = ref<Collection[]>([])
+  const likeCollectionsList = ref<Collection[]>([])
   const navs = reactive<Category[]>([])
 
+  const dbVersion = useStorage('currentSearch', 1)
   const currentSearchName = useStorage('currentSearch', '百度')
   const theme = useStorage('theme', 'light')
   const collapseNav = useStorage('collapseNav', false)
+  const isAdmin = useStorage('isAdmin', false)
+  const showMyCollection = useStorage('showMyCollection', true)
+
   const isScrollDown = ref(false)
 
   return {
+    isAdmin,
+    dbVersion,
     navs,
     collectionsDatas,
     collectionsList,
@@ -24,6 +31,8 @@ export const useBasicStore = defineStore('basic', () => {
     collapseNav,
     theme,
     isScrollDown,
-    currentSearchName
+    currentSearchName,
+    likeCollectionsList,
+    showMyCollection
   }
 })

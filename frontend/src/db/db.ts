@@ -1,17 +1,24 @@
 class IndexDB {
   dbName: string
+  version = 1
 
   constructor(name: string) {
     this.dbName = name
   }
-  async launch(version: number, storeName: string): Promise<IDBDatabase> {
+
+  // 初始化数据库, 需要填写要添加的表
+  async init(storeNames: string[]): Promise<IDBDatabase> {
+    let that = this
+
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open(this.dbName, version)
+      const request = indexedDB.open(this.dbName, that.version)
       request.onupgradeneeded = (event: IDBVersionChangeEvent) => {
         const db = (event.target as IDBOpenDBRequest).result as IDBDatabase
-        if (!db.objectStoreNames.contains(storeName)) {
-          db.createObjectStore(storeName, { keyPath: 'id' })
-        }
+        storeNames.forEach((storeName) => {
+          if (!db.objectStoreNames.contains(storeName)) {
+            db.createObjectStore(storeName, { keyPath: 'id' })
+          }
+        })
       }
       request.onsuccess = (event) => {
         const target = event.target as IDBRequest
@@ -24,9 +31,27 @@ class IndexDB {
     })
   }
 
+  async launch(): Promise<IDBDatabase> {
+    let that = this
+
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.dbName, that.version)
+
+      request.onsuccess = (event) => {
+        const target = event.target as IDBRequest
+        resolve(target.result)
+      }
+
+      request.onerror = (event) => {
+        const target = event.target as IDBRequest
+        reject(target.error)
+      }
+    })
+  }
+
   // 添加, 有则更新
   async addData(tabName: string, data: any): Promise<void> {
-    const db = await this.launch(1, tabName)
+    const db = await this.launch()
     return new Promise((resolve, reject) => {
       const transaction = db.transaction([tabName], 'readwrite')
       const store = transaction.objectStore(tabName)
@@ -63,7 +88,7 @@ class IndexDB {
   }
 
   async deleteData(tabName: string, id: string): Promise<void> {
-    const db = await this.launch(1, tabName)
+    const db = await this.launch()
 
     return new Promise((resolve, reject) => {
       const transaction = db.transaction([tabName], 'readwrite')
@@ -81,7 +106,7 @@ class IndexDB {
   }
 
   async clearData(tabName: string): Promise<void> {
-    const db = await this.launch(1, tabName)
+    const db = await this.launch()
 
     return new Promise((resolve, reject) => {
       const transaction = db.transaction([tabName], 'readwrite')
@@ -98,8 +123,8 @@ class IndexDB {
     })
   }
 
-  async queryData(tabName: string, id: string): Promise<void> {
-    const db = await this.launch(1, tabName)
+  async queryData(tabName: string, id: string): Promise<any> {
+    const db = await this.launch()
 
     return new Promise((resolve, reject) => {
       const transaction = db.transaction([tabName], 'readwrite')
@@ -115,8 +140,27 @@ class IndexDB {
       }
     })
   }
+  async queryAllData(tabName: string): Promise<any> {
+    const db = await this.launch()
+
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction([tabName], 'readwrite')
+      const store = transaction.objectStore(tabName)
+      const request = store.getAll()
+
+      request.onsuccess = () => {
+        resolve(request.result)
+      }
+
+      request.onerror = () => {
+        reject(request.error)
+      }
+    })
+  }
 }
 
 const db = new IndexDB('core')
+
+db.init(['collections', 'announces', 'likes'])
 
 export { db }

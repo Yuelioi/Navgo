@@ -3,19 +3,16 @@ syntax = "v1"
 import "./base.api"
 
 type Comment {
-	ID           string `json:"id"`
-	CollectionId string `json:"collection_id"`
-	Nickname     string `json:"nickname"`
-	Message      string `json:"message"`
+	Model
+	Nickname string     `json:"nickname"`
+	Content  string     `json:"content" gorm:"column:content;unique"`
+	Date     string     `json:"date"`
+	Replies  []*Comment `gorm:"foreignKey:ParentID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"replies"`
+	ParentID *uint      `json:"parent_id,omitempty"`
 }
 
-type CommentRequest {
-	CollectionId string `json:"collection_id"`
-	Nickname     string `json:"nickname"`
-	Message      string `json:"message"`
-}
 type CommentsResponse {
-	Comments []Comment `json:"comments"`
+	Comments []*Comment `json:"comments"`
 }
 
 @server (
@@ -26,11 +23,11 @@ type CommentsResponse {
 service main {
 	@doc "获取页面评论"
 	@handler Comment
-	get /comments (IDRequest) returns (CommentsResponse)
+	get /comments (AnyRequest) returns (CommentsResponse)
 
 	@doc "发布评论"
 	@handler AddComment
-	post /comment (CommentRequest) returns (IDResponse)
+	post /comment (Comment) returns (IDResponse)
 
 	@doc "删除评论"
 	@handler DeleteComment

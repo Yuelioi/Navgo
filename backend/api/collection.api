@@ -2,7 +2,23 @@ syntax = "v1"
 
 import "./base.api"
 
-// 可修改的字段
+
+
+// 所有分类
+type CollectionsData {
+	Category *Category `json:"category"` // 使用 inline 标签将 Category 字段内联
+	Groups   []*Group  `json:"groups"`
+}
+
+// 一个子分类
+type Group {
+	Category    *Category     `json:"category" yaml:",inline"` // 使用 inline 标签将 Category 字段内联
+	Collections []*Collection `json:"collections"`
+}
+
+type CollectionsResponse {
+	Datas []*CollectionsData `json:"datas"`
+}
 
 @server (
 	prefix: /v1

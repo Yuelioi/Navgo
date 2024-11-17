@@ -6,17 +6,11 @@ collections:
     link: https://blueprintue.com/
     description: ""
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/7098b-blueprintue.com.png
-    view: 0
   - title: 贝塞尔练习
     link: https://bezier.method.ac/
     description: ""
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/709cd-bezier.method.ac.png
-    view: 0
   - title: 贝塞尔游戏 The Bézier Game
     link: https://bezier.method.ac/
     description: The Bézier Game
     proxy: false
-    thumbnail: ""
-    view: 0

@@ -28,8 +28,8 @@ func NewCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Collec
 }
 
 type CC struct {
-	ID        string `json:"id"`
-	Thumbnail string `json:"thumbnail"`
+	ID      string `json:"id"`
+	Favicon string `json:"favicon"`
 }
 
 func (l *CollectionLogic) Collection(req *types.AnyRequest) (resp *types.Collection, err error) {
@@ -41,7 +41,7 @@ func (l *CollectionLogic) Collection(req *types.AnyRequest) (resp *types.Collect
 	result := make([]*CC, 0)
 
 	for _, c := range cos {
-		result = append(result, &CC{c.CID, c.Thumbnail})
+		result = append(result, &CC{c.CID, c.Favicon})
 	}
 
 	data, _ := json.Marshal(result)

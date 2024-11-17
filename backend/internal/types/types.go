@@ -3,32 +3,43 @@
 
 package types
 
+type Announce struct {
+	Model
+	Title   string `json:"title"`
+	Content string `json:"content" gorm:"column:content;unique"`
+	Date    string `json:"date"`
+}
+
+type AnnouncesData struct {
+	Announces []*Announce `json:"announces"`
+}
+
 type AnyRequest struct {
 }
 
 type Category struct {
 	Model
 	CID   string `json:"cid,optional" gorm:"column:cid"`
-	Depth int    `json:"depth,optional"`
+	Depth int    `json:"depth,optional,omitempty" yaml:",omitempty"`
 	Title string `json:"title"`
 	Order int    `json:"order,optional"`
-	Path  string `json:"path,optional" gorm:"column:path;unique"`
+	Path  string `json:"path,optional,omitempty" gorm:"column:path;unique"`
 }
 
 type Collection struct {
 	Model
-	CID         string    `json:"cid,optional" gorm:"column:cid"`
+	CID         string    `json:"cid,optional,omitempty" gorm:"column:cid"`
 	Title       string    `json:"title"`
 	Link        string    `json:"link"`
-	Order       int       `json:"order,optional" gorm:"column:order"`
-	Path        string    `json:"path,optional" gorm:"column:path;unique"`
-	Proxy       bool      `json:"proxy,optional" gorm:"column:proxy"`
-	CategoryID  string    `json:"-" gorm:"column:category_id;index"` // 外键字段
-	Category    *Category `json:"category" gorm:"foreignKey:CategoryID;references:ID"`
 	Description string    `json:"description,optional"`
-	Thumbnail   string    `json:"thumbnail,optional"`
-	Tags        []string  `json:"tags,optional" gorm:"type:json"`
-	View        int       `json:"view,optional"`
+	Order       int       `json:"order,optional,omitempty" gorm:"column:order"`
+	Path        string    `json:"path,optional,omitempty" gorm:"column:path;unique"`
+	Proxy       bool      `json:"proxy,optional,omitempty" gorm:"column:proxy"`
+	CategoryID  string    `json:"-,omitempty" gorm:"column:category_id;index"` // 外键字段
+	Category    *Category `json:"category,omitempty" gorm:"foreignKey:CategoryID;references:ID"`
+	Favicon     string    `json:"favicon,optional,omitempty"`
+	Tags        []string  `json:"tags,optional,omitempty" gorm:"type:json"`
+	View        int       `json:"view,optional,omitempty"`
 }
 
 type CollectionsData struct {
@@ -41,20 +52,16 @@ type CollectionsResponse struct {
 }
 
 type Comment struct {
-	ID           string `json:"id"`
-	CollectionId string `json:"collection_id"`
-	Nickname     string `json:"nickname"`
-	Message      string `json:"message"`
-}
-
-type CommentRequest struct {
-	CollectionId string `json:"collection_id"`
-	Nickname     string `json:"nickname"`
-	Message      string `json:"message"`
+	Model
+	Nickname string     `json:"nickname"`
+	Content  string     `json:"content" gorm:"column:content;unique"`
+	Date     string     `json:"date"`
+	Replies  []*Comment `gorm:"foreignKey:ParentID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"replies"`
+	ParentID *uint      `json:"parent_id,omitempty"`
 }
 
 type CommentsResponse struct {
-	Comments []Comment `json:"comments"`
+	Comments []*Comment `json:"comments"`
 }
 
 type Group struct {
@@ -76,9 +83,7 @@ type Model struct {
 	UpdatedAt string `json:"-"`
 }
 
-type Record struct {
-	Model
-	IP string
+type Statistics struct {
 }
 
 type TagRequest struct {

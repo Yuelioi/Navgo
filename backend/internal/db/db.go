@@ -34,10 +34,24 @@ func init() {
 		panic("failed to connect database")
 	}
 
-	err = DB.AutoMigrate(&types.Category{}, &types.Collection{}, &types.Comment{}, &types.Record{})
+	err = DB.AutoMigrate(&types.Category{}, &types.Collection{}, &types.Comment{}, &types.Announce{})
 
-	m := New(global.ConfInst.Collection.Resource)
-	m.Read()
-	m.Build()
-	m.Reduce()
+	managers := make([]Manager, 0)
+	managers = append(
+		managers,
+		NewCollectionManager(global.ConfInst.Resource.Collections),
+		NewAnnounceManager(
+			filepath.Join(global.ConfInst.Resource.Announces, global.ConfInst.Resource.MetaFile),
+		),
+		NewCommentManager(
+			filepath.Join(global.ConfInst.Resource.Comments, global.ConfInst.Resource.MetaFile),
+		),
+	)
+
+	for _, manager := range managers {
+		manager.Read()
+		manager.Build()
+		manager.Reduce()
+	}
+
 }

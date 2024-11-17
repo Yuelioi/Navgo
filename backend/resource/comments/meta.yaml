@@ -1,0 +1,10 @@
+comments:
+    - model:
+        id: 0
+        createdat: ""
+        updatedat: ""
+      nickname: system
+      content: test
+      date: ""
+      replies: []
+      parentid: null

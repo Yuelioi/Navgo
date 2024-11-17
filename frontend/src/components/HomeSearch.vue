@@ -1,9 +1,9 @@
 <template>
   <div class="flex w-full justify-center">
-    <div class="w-1/2 flex flex-col items-center">
+    <div class="xl:w-1/2 w-full flex flex-col items-center">
       <div role="tablist" class="w-full tabs tabs-lifted rounded-none mt-6">
         <a
-          class="tab [--tab-bg:#0f172a] dark:[--tab-bg:#a3a7af]"
+          class="tab [--tab-bg:#0f172a] dark:[--tab-bg:#646872]"
           :class="{ 'tab-active': searchItem.active }"
           v-for="searchItem in searchList"
           @click="switchSearch(searchItem.name)">
@@ -12,12 +12,13 @@
       </div>
 
       <label
-        class="input ring-0 input-bordered rounded-none w-full flex items-center transition ease-in-out">
+        class="input ring-0 input-bordered rounded-none w-full flex focus-within:bg-none border-base-content items-center transition ease-in-out">
         <input
           type="text"
           class="grow ring-0 !outline-none"
           :placeholder="currentSearch?.placeholder"
           v-model="searchValue"
+          ref="searchRef"
           @keyup="handleEnter($event)"
           @input="handleSearchChange" />
 
@@ -31,13 +32,15 @@
         </div>
       </label>
 
-      <div class="relative w-full" v-if="searchValue.length > 0 && currentSearch?.name == '站内'">
-        <div class="absolute flex items-center justify-center">
+      <div
+        class="relative w-full"
+        v-if="searchValue.length > 0 && searchResults.length > 0 && currentSearch?.name == '站内'">
+        <div class="absolute flex w-full items-center justify-center">
           <div
-            class="h-96 shadow-lg z-10 overflow-y-scroll flex flex-col rounded-b-2xl bg-base-300 space-y-2">
+            class="h-96 shadow-lg z-10 w-full overflow-y-scroll flex flex-col rounded-b-2xl bg-base-300 space-y-2">
             <div
               class="bg-base-200 rounded-md m-4 hover:inset-1 hover:bg-neutral/30 hover:cursor-pointer"
-              v-for="item in result"
+              v-for="item in searchResults"
               @click="open(item.item.link)">
               <div class="p-4 flex items-center space-x-3">
                 <div class=""><span class="icon-[lucide--menu] size-5"></span></div>
@@ -90,7 +93,8 @@ interface Search {
 const currentSearch = ref<Search>()
 const searchValue = ref('')
 
-const result = ref<FuseResult<Collection>[]>([])
+const searchResults = ref<FuseResult<Collection>[]>([])
+const searchRef = useTemplateRef<HTMLInputElement>('searchRef')
 
 const searchList = ref([
   {
@@ -140,14 +144,11 @@ function switchSearch(name: string) {
 
 function handleSearchChange() {
   if (searchValue.value !== '' && currentSearch.value?.name === '站内') {
-    console.log(collectionsList.value)
-
     const { results } = useFuse(searchValue.value, collectionsList.value, options)
-    result.value = results.value
-    console.log(results.value)
+    searchResults.value = results.value
     showSearch.value = true
   } else {
-    result.value = []
+    searchResults.value = []
   }
 }
 
@@ -166,8 +167,30 @@ function handleEnter(event: KeyboardEvent) {
   }
 }
 
+// 处理快捷键
+function handleKeyDown(event: KeyboardEvent) {
+  // Tab , 切换搜索引擎并选择
+  if (event.key === 'Tab' && searchValue.value.length === 0) {
+    event.preventDefault()
+    const idx = searchList.value.findIndex((ele) => {
+      return ele.name === currentSearch.value?.name
+    })
+
+    const nextID = (idx + 1) % searchList.value.length
+    switchSearch(searchList.value[nextID].name)
+    searchRef.value?.select()
+  }
+
+  // Esc 清除搜索
+  if (event.key === 'Escape') {
+    event.preventDefault()
+    searchValue.value = ''
+  }
+}
+
 onMounted(() => {
   switchSearch(currentSearchName.value)
+  document.addEventListener('keydown', handleKeyDown)
 })
 </script>
 

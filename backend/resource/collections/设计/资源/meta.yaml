@@ -6,17 +6,11 @@ collections:
     link: https://www.zcool.com.cn/
     description: 站酷ZCOOL,中国设计师互动平台.深耕设计领域十五年,站酷聚集了1500万设计师、摄影师、插画师、艺术家、创意人,提供创意设计素材,正版商业高清图片,创意设计师群体中具有较高的影响力与号召力。
     proxy: false
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/a0e20-www.zcool.com.cn.png
-    view: 0
   - title: 新片场
     link: https://www.xinpianchang.com/
     description: 新片场汇聚全球原创优质视频及创作人，提供4K、无广告、无水印视频观看，专业的视频艺术学习教程，正版视觉素材交易等，与百万创作人一起成长。
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/25103-www.xinpianchang.com.png
-    view: 0
   - title: 美叶
     link: https://www.meiye.art/
     description: 美叶，为设计师，创意人提供有价值的设计参考。灵感采集，优质素材获取，时刻Follow最新流行设计趋势
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/541e9-www.meiye.art.png
-    view: 0

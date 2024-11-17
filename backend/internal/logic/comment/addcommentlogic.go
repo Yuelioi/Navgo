@@ -24,7 +24,7 @@ func NewAddCommentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AddCom
 	}
 }
 
-func (l *AddCommentLogic) AddComment(req *types.CommentRequest) (resp *types.IDResponse, err error) {
+func (l *AddCommentLogic) AddComment(req *types.Comment) (resp *types.IDResponse, err error) {
 	// todo: add your logic here and delete this line
 
 	return

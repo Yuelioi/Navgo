@@ -6,6 +6,7 @@ package handler
 import (
 	"net/http"
 
+	announce "backend/internal/handler/announce"
 	collection "backend/internal/handler/collection"
 	comment "backend/internal/handler/comment"
 	service "backend/internal/handler/service"
@@ -17,6 +18,18 @@ import (
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// 获取通知
+				Method:  http.MethodGet,
+				Path:    "/announces",
+				Handler: announce.AnnouncesHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/v1"),
+	)
+
 	server.AddRoutes(
 		[]rest.Route{
 			{
@@ -92,10 +105,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
-				// 增加页面浏览量
-				Method:  http.MethodPost,
+				// 获取网站数量
+				Method:  http.MethodGet,
 				Path:    "/statistics",
 				Handler: statistics.StatisticsHandler(serverCtx),
+			},
+			{
+				// 增加网站访问量
+				Method:  http.MethodPost,
+				Path:    "/statistics",
+				Handler: statistics.AddVistorHandler(serverCtx),
 			},
 		},
 		rest.WithPrefix("/v1"),

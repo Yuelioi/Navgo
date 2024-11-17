@@ -6,29 +6,19 @@ collections:
     link: https://www.mojidict.com/
     description: 学日语的
     proxy: false
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/82cf7-www.mojidict.com.png
-    view: 0
   - title: 在线输入各国语言
     link: https://www.lexilogos.com/keyboard/japanese.php
     description: ""
     proxy: false
-    thumbnail: http://nav.yuelili.com/wp-content/uploads/c3082-www.lexilogos.com.png
-    view: 0
   - title: 剑桥词典
     link: https://dictionary.cambridge.org/
     description: The most popular dictionary and thesaurus for learners of English. Meanings and definitions of words with pronunciations and translations.
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/e116a-dictionary.cambridge.org.png
-    view: 0
   - title: 牛津词典
     link: https://www.oxfordlearnersdictionaries.com/
     description: The largest and most trusted free online dictionary for learners of British and American English with definitions, pictures, example sentences, synonyms, antonyms, word origins, audio pronunciation, and more. Look up the meanings of words, abbreviations, phrases, and idioms in our free English Dictionary.
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/477e3-www.oxfordlearnersdictionaries.com.png
-    view: 0
   - title: 文字转语音
     link: https://soundoftext.com/
     description: ""
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/a496f-soundoftext.com.png
-    view: 0

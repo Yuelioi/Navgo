@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"backend/internal/logic/collection"
@@ -15,9 +16,11 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func saveFile(w http.ResponseWriter, file multipart.File) (string, error) {
+func saveFile(w http.ResponseWriter, file multipart.File, cid string) (string, error) {
 	// 保存文件到本地
-	outFile, err := os.Create("uploaded_file.png")
+
+	target := filepath.Join(cid)
+	outFile, err := os.Create(target + ".png")
 	if err != nil {
 		http.Error(w, "Unable to create file", http.StatusInternalServerError)
 		return "", err
@@ -61,7 +64,7 @@ func parseForm(r *http.Request) (*types.Collection, error) {
 		CategoryID:  "",
 		Category:    cat,
 		Description: description,
-		Thumbnail:   "",
+		Favicon:     "",
 		Tags:        []string{},
 		View:        0,
 	}, nil
@@ -84,18 +87,15 @@ func AddCollectionHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			http.Error(w, "Unable to parse link", http.StatusInternalServerError)
 			return
 		}
-		file, _, err := r.FormFile("file")
-		if err != nil {
-			http.Error(w, "Unable to retrieve file", http.StatusInternalServerError)
-			return
+		file, _, err := r.FormFile("favicon")
+		if err == nil {
+			defer file.Close()
+			icon, err := saveFile(w, file, req.CID)
+			if err != nil {
+				return
+			}
+			req.Favicon = icon
 		}
-		defer file.Close()
-
-		icon, err := saveFile(w, file)
-		if err != nil {
-			return
-		}
-		req.Thumbnail = icon
 
 		l := collection.NewAddCollectionLogic(r.Context(), svcCtx)
 		resp, err := l.AddCollection(req)

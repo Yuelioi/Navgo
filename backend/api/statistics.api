@@ -1,0 +1,22 @@
+syntax = "v1"
+
+import "./base.api"
+
+type Statistics {
+}
+
+@server (
+	prefix: /v1
+	group: statistics
+)
+
+service main {
+	@doc "获取网站数量"
+	@handler Statistics
+	get /statistics (AnyRequest) returns (int)
+
+	@doc "增加网站访问量"
+	@handler AddVistor
+	post /statistics (AnyRequest) returns (IDRequest)
+
+}

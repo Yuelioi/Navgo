@@ -43,7 +43,7 @@ type Collection struct {
 	Description string `json:"description,optional"`
 	Country     string `json:"country,optional"`
 	Proxy       bool   `json:"proxy,optional"`
-	Thumbnail   string `json:"thumbnail,optional"`
+	Favicon     string `json:"favicon,optional"`
 	// Tags        []string `json:"tags,optional" gorm:"type:json"`
 	View int `json:"view,optional"`
 }

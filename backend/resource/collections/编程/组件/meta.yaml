@@ -6,11 +6,7 @@ collections:
     link: https://uiverse.io/
     description: ""
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/20b3f-uiverse.io.png
-    view: 0
   - title: Ant Design
     link: https://ant.design/index-cn
     description: 蚂蚁集团UI设计语言以及React组件库
     proxy: false
-    thumbnail: https://nav.yuelili.com/wp-content/uploads/Page-1@2x.png
-    view: 0

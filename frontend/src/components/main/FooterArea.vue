@@ -1,7 +1,7 @@
 <template>
-  <div class="card bg-base-200 shadow-xl w-4/5 self-center sticky" v-if="!isScrollDown">
+  <div class="card bg-base-200 shadow-xl w-4/5 my-8 self-center hidden sticky lg:block">
     <div class="card-body flex-row justify-between">
-      <div class="left flex flex-col space-y-4">
+      <div class="left xl:flex flex-col space-y-4 hidden">
         <h2 class="card-title">月离离导航站</h2>
         <p>站长很懒,所以懒得写介绍</p>
         <p class="text-sm">Copyright © 2024 月离离导航站 | 皖ICP备19025249号</p>
@@ -58,7 +58,7 @@ let { isScrollDown } = storeToRefs(store)
 const lastScrollTop = ref(0)
 
 const handleScroll = () => {
-  console.log(window)
+  console.log(111)
 
   const currentScrollTop = window.scrollY || document.documentElement.scrollTop
   // 如果当前滚动位置大于上次滚动位置，说明是向下滚动
@@ -68,10 +68,16 @@ const handleScroll = () => {
 
 onMounted(() => {
   // 检测滚动
-  window.addEventListener('scroll', handleScroll)
+
+  document.addEventListener('scroll', () => {
+    console.log(111)
+  })
+  window.addEventListener('scroll', () => {
+    console.log(111)
+  })
 })
 
 onBeforeMount(() => {
-  window.removeEventListener('scroll', handleScroll)
+  document.removeEventListener('scroll', handleScroll)
 })
 </script>

@@ -1,16 +1,23 @@
-import axios from 'axios'
+import axios, { type AxiosRequestConfig } from 'axios'
 import * as components from './types'
 export * from './types'
 
 const apiUrl = '/api'
 
 /**
+ * @description "获取通知"
+ */
+export function announces() {
+  return axios.get<components.AnnouncesData>(apiUrl + `/v1/announces`)
+}
+
+/**
  * @description "增加页面"
  * @param req
  * @param headers
  */
-export function addCollection(req: components.Collection) {
-  return axios.post<components.Collection>(apiUrl + `/v1/collection`, req)
+export function addCollection(req: FormData, config: AxiosRequestConfig<any>) {
+  return axios.post<components.Collection>(apiUrl + `/v1/collection`, req, config)
 }
 
 /**
@@ -66,8 +73,8 @@ export function deleteComment(req: components.IDRequest) {
  * @description "获取页面评论"
  * @param req
  */
-export function comment(req: components.IDRequest) {
-  return axios.get<components.CommentsResponse>(apiUrl + `/v1/comments`)
+export function comments() {
+  return axios.get<{ data: components.CommentsResponse }>(apiUrl + `/v1/comments`)
 }
 
 /**

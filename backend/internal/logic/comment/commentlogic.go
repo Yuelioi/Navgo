@@ -3,6 +3,7 @@ package comment
 import (
 	"context"
 
+	"backend/internal/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -24,8 +25,13 @@ func NewCommentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CommentLo
 	}
 }
 
-func (l *CommentLogic) Comment(req *types.IDRequest) (resp *types.CommentsResponse, err error) {
-	// todo: add your logic here and delete this line
+func (l *CommentLogic) Comment(req *types.AnyRequest) (resp *types.CommentsResponse, err error) {
 
+	var datas []*types.Comment
+	if err = db.DB.Model(types.Comment{}).Order("date DESC").Find(&datas).Error; err == nil {
+		resp = &types.CommentsResponse{
+			Comments: datas,
+		}
+	}
 	return
 }
