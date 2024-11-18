@@ -43,11 +43,9 @@ func (m *CollectionManager) Read() error {
 			return nil
 		}
 
-		short, _ := strings.CutPrefix(path, m.Root)
-		short, _ = strings.CutPrefix(short, "\\")
-		relativeDirPath := filepath.Dir(short) // 父级相对路径
-
-		depth := len(strings.Split(relativeDirPath, "\\"))
+		relativeDirPath, _ := filepath.Rel(m.Root, filepath.Dir(path))
+		relativeDirPathList := strings.Split(relativeDirPath, string(filepath.Separator))
+		depth := len(relativeDirPathList)
 
 		if info.Name() == constants.ConfInst.Resource.MetaFile {
 			meta, err := readCollectionsMeta(path)
@@ -63,10 +61,10 @@ func (m *CollectionManager) Read() error {
 				meta.Category.Depth = depth
 			} else {
 				// 正常导航级别
-				paths := strings.Split(relativeDirPath, "\\")
+
 				cats := make([]string, 0)
 
-				for _, id := range paths {
+				for _, id := range relativeDirPathList {
 					if v, ok := m.catIDs[id]; ok {
 						cats = append(cats, v)
 
@@ -82,7 +80,8 @@ func (m *CollectionManager) Read() error {
 				// 补充目录的Path
 				cat := meta.Category
 				cat.Depth = depth
-				cat.Path = strings.Join(cats, "\\")
+				cat.Path = filepath.Join(cats...)
+
 				meta.Category = cat
 
 				for i, c := range meta.Collections {
@@ -93,7 +92,7 @@ func (m *CollectionManager) Read() error {
 					}
 
 					collectionCid := rawUrl.Host
-					collectionPath := strings.Join(append(cats, collectionCid), "\\")
+					collectionPath := filepath.Join(append(cats, collectionCid)...)
 
 					// 补充页面信息, 使用主机名作为ID
 					meta.Collections[i].CID = collectionCid

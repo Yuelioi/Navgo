@@ -1,25 +1,4 @@
-comments:
-    - nickname: system
-      content: 系统评论测试
+comments:    
+    - nickname: "system"
+      content: "系统评论测试"
       date: "2024-11-19"
-    - nickname: "11"
-      content: 测试
-      date: "20241119"
-    - nickname: "1123"
-      content: 测试22
-      date: "20241119"
-    - nickname: "1123"
-      content: 测试22324515
-      date: "20241119"
-    - nickname: "1123125"
-      content: 测试22324515125
-      date: "20241119"
-    - nickname: "1123125125"
-      content: 测试22324515125215
-      date: "20241119"
-    - nickname: "1123125125"
-      content: 测试22324515125215125125
-      date: "20241119"
-    - nickname: "125"
-      content: 测试 124
-      date: "20241119"

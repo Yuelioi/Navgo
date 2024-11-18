@@ -2,45 +2,31 @@ package main
 
 import (
 	"fmt"
-
-	"gopkg.in/yaml.v3"
+	"path"
 )
 
-type Model struct {
-	Name string `json:"name"`
-	Age  int    `json:"age"`
-}
-
-type User struct {
-	Model `json:"-" yaml:"-"`
-	Email string `json:"email"`
-}
-
-// func (m Model) MarshalYAML() (interface{}, error) {
-// 	return nil, nil // 返回 nil 以跳过 Model 字段的序列化
-// }
-
-// 自定义 User 的 MarshalYAML 方法
-func (u User) MarshalYAML() (interface{}, error) {
-	return struct {
-		Email string `json:"email"`
-	}{
-		Email: u.Email,
-	}, nil
+// GetDepth 计算路径的深度
+func GetDepth(root, relativeDirPath string) int {
+	depth := 0
+	for relativeDirPath != "" {
+		relativeDirPath, _ = path.Split(relativeDirPath)
+		depth++
+	}
+	return depth - 1 // 减去根目录
 }
 
 func main() {
-	m := &User{
-		Model: Model{Name: "John", Age: 30},
-		Email: "231515",
-	}
+	// 测试路径
+	root := "C:\\Users\\User"
+	relativeDirPathWindows := "C:\\Users\\User\\Documents\\Projects"
+	// relativeDirPathLinux := "/home/user/documents/projects"
 
-	// 这里将会调用 YamlMarshal 方法
-	data, err := yaml.Marshal(m)
-	if err != nil {
-		fmt.Println("Error marshaling:", err)
-		return
-	}
+	fmt.Printf(root)
 
-	fmt.Println(string(data)) // 输出将只包含 Email 字段
+	// 计算路径深度
+	depthWindows := GetDepth(root, relativeDirPathWindows)
+	// depthLinux := GetDepth(relativeDirPathLinux)
+
+	fmt.Printf("Depth of Windows path '%s': %d\n", relativeDirPathWindows, depthWindows)
+	// fmt.Printf("Depth of Linux path '%s': %d\n", relativeDirPathLinux, depthLinux)
 }
