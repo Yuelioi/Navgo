@@ -69,9 +69,8 @@ export interface Comment {
 }
 
 export interface CommentRequest {
-  collection_id: string
   nickname: string
-  message: string
+  content: string
 }
 
 export interface CommentsResponse {
@@ -104,4 +103,17 @@ export interface TagRequest {
 
 export interface TagsResponse {
   tags: Array<string>
+}
+export interface SiteStats {
+  last_day_visitors: number // 昨日访问者数量
+  total_visitors: number // 总访问者数量
+  links_count: number // 链接数量
+}
+
+export interface Statistics {
+  iD: number
+  createdAt: string
+  updatedAt: string
+  ip: string // 访问者的 IP 地址
+  date: string // 访问日期和时间
 }

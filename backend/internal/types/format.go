@@ -87,6 +87,7 @@ func (g AnnouncesData) MarshalYAML() (interface{}, error) {
 		Announces: announces,
 	}, nil
 }
+
 func (g CommentsResponse) MarshalYAML() (interface{}, error) {
 	datas := make([]*comment, len(g.Comments))
 
@@ -102,5 +103,14 @@ func (g CommentsResponse) MarshalYAML() (interface{}, error) {
 		Comments []*comment
 	}{
 		Comments: datas,
+	}, nil
+}
+
+func (g Comment) MarshalYAML() (interface{}, error) {
+
+	return comment{
+		Nickname: g.Nickname,
+		Content:  g.Content,
+		Date:     g.Date,
 	}, nil
 }

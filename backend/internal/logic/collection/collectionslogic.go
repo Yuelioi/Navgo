@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"backend/internal/db"
+	"backend/internal/common/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 

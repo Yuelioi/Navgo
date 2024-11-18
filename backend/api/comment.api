@@ -6,9 +6,9 @@ type Comment {
 	Model
 	Nickname string     `json:"nickname"`
 	Content  string     `json:"content" gorm:"column:content;unique"`
-	Date     string     `json:"date"`
-	Replies  []*Comment `gorm:"foreignKey:ParentID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"replies"`
-	ParentID *uint      `json:"parent_id,omitempty"`
+	Date     string     `json:"date,optional"`
+	Replies  []*Comment `gorm:"foreignKey:ParentID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"replies,optional"`
+	ParentID *uint      `json:"parent_id,omitempty,optional"`
 }
 
 type CommentsResponse {

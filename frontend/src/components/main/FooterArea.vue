@@ -24,7 +24,7 @@
               </svg>
             </div>
             <div class="stat-title">总浏览量</div>
-            <div class="stat-value">31K</div>
+            <div class="stat-value">{{ siteStats?.total_visitors }}</div>
             <div class="stat-desc"></div>
           </div>
 
@@ -33,7 +33,7 @@
               <span class="icon-[lucide--link] size-6"></span>
             </div>
             <div class="stat-title">网址数量</div>
-            <div class="stat-value">1,200</div>
+            <div class="stat-value">{{ siteStats?.links_count }}</div>
             <div class="stat-desc"></div>
           </div>
 
@@ -42,7 +42,7 @@
               <span class="icon-[lucide--users-round] size-6"></span>
             </div>
             <div class="stat-title">昨日访客</div>
-            <div class="stat-value">1,200</div>
+            <div class="stat-value">{{ siteStats?.last_day_visitors }}</div>
             <div class="stat-desc"></div>
           </div>
         </div>
@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 const store = useBasicStore()
-let { isScrollDown } = storeToRefs(store)
+let { isScrollDown, siteStats } = storeToRefs(store)
 
 const lastScrollTop = ref(0)
 

@@ -40,9 +40,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   try {
-    if (to.name !== 'comment') {
-      await loadData()
-    }
+    await loadData()
 
     next()
   } catch (error) {}

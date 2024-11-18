@@ -17,7 +17,7 @@ export function announces() {
  * @param headers
  */
 export function addCollection(req: FormData, config: AxiosRequestConfig<any>) {
-  return axios.post<components.Collection>(apiUrl + `/v1/collection`, req, config)
+  return axios.post<{ code: number; msg: string }>(apiUrl + `/v1/collection`, req, config)
 }
 
 /**
@@ -57,7 +57,9 @@ export function collections() {
  */
 export function addComment(req: components.CommentRequest) {
   return axios.post<{
+    code: number
     data: components.IDResponse
+    msg: string
   }>(apiUrl + `/v1/comment`, req)
 }
 
@@ -74,15 +76,19 @@ export function deleteComment(req: components.IDRequest) {
  * @param req
  */
 export function comments() {
-  return axios.get<{ data: components.CommentsResponse }>(apiUrl + `/v1/comments`)
+  return axios.get<{ data: components.CommentsResponse; code: number; msg: string }>(
+    apiUrl + `/v1/comments`
+  )
 }
 
 /**
  * @description "增加页面浏览量"
  * @param req
  */
-export function statistics(req: components.IDRequest) {
-  return axios.post<components.IDResponse>(apiUrl + `/v1/statistics/${req.id}`)
+export function statistics() {
+  return axios.get<{
+    data: components.SiteStats
+  }>(apiUrl + `/v1/statistics`)
 }
 
 /**

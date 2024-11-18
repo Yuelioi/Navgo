@@ -55,9 +55,9 @@ type Comment struct {
 	Model
 	Nickname string     `json:"nickname"`
 	Content  string     `json:"content" gorm:"column:content;unique"`
-	Date     string     `json:"date"`
-	Replies  []*Comment `gorm:"foreignKey:ParentID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"replies"`
-	ParentID *uint      `json:"parent_id,omitempty"`
+	Date     string     `json:"date,optional"`
+	Replies  []*Comment `gorm:"foreignKey:ParentID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"replies,optional"`
+	ParentID *uint      `json:"parent_id,omitempty,optional"`
 }
 
 type CommentsResponse struct {
@@ -83,7 +83,16 @@ type Model struct {
 	UpdatedAt string `json:"-"`
 }
 
+type SiteStats struct {
+	LastDayVisitors int `json:"last_day_visitors"` // 昨日访问者数量
+	TotalVisitors   int `json:"total_visitors"`    // 总访问者数量
+	LinksCount      int `json:"links_count"`       // 链接数量
+}
+
 type Statistics struct {
+	Model
+	IP   string `json:"ip"`   // 访问者的 IP 地址
+	Date string `json:"date"` // 访问日期和时间
 }
 
 type TagRequest struct {

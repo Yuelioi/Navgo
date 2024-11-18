@@ -110,12 +110,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/statistics",
 				Handler: statistics.StatisticsHandler(serverCtx),
 			},
-			{
-				// 增加网站访问量
-				Method:  http.MethodPost,
-				Path:    "/statistics",
-				Handler: statistics.AddVistorHandler(serverCtx),
-			},
 		},
 		rest.WithPrefix("/v1"),
 	)

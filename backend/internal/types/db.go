@@ -1,26 +1,26 @@
 package types
 
 import (
-	"time"
+	"backend/internal/common/utils"
 
 	"gorm.io/gorm"
 )
 
 func (m *Model) BeforeCreate(tx *gorm.DB) (err error) {
-	now := time.Now().Format(time.RFC3339)
+	now := utils.Today()
 	m.CreatedAt = now
 	m.UpdatedAt = now
 	return
 }
 
 func (m *Model) BeforeUpdate(tx *gorm.DB) (err error) {
-	now := time.Now().Format(time.RFC3339)
+	now := utils.Today()
 	m.UpdatedAt = now
 	return
 }
 
 func (m *Announce) BeforeCreate(tx *gorm.DB) (err error) {
-	now := time.Now().Format("2006-01-02")
+	now := utils.Today()
 	if m.Date == "" {
 		m.Date = now
 	}
@@ -33,7 +33,7 @@ func (m *Announce) BeforeUpdate(tx *gorm.DB) (err error) {
 }
 
 func (m *Comment) BeforeCreate(tx *gorm.DB) (err error) {
-	now := time.Now().Format("2006-01-02")
+	now := utils.Today()
 	if m.Date == "" {
 		m.Date = now
 	}

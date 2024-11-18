@@ -1,4 +1,4 @@
-import type { Collection } from './../api/types'
+import type { Collection, SiteStats } from './../api/types'
 import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 import type { Category, CollectionsData } from '@/api/types'
@@ -21,6 +21,8 @@ export const useBasicStore = defineStore('basic', () => {
 
   const isScrollDown = ref(false)
 
+  const siteStats = ref<SiteStats>()
+
   return {
     isAdmin,
     dbVersion,
@@ -33,6 +35,7 @@ export const useBasicStore = defineStore('basic', () => {
     isScrollDown,
     currentSearchName,
     likeCollectionsList,
-    showMyCollection
+    showMyCollection,
+    siteStats
   }
 })

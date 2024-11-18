@@ -9,10 +9,10 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-// 增加页面浏览量
+// 获取网站数量
 func StatisticsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.IDRequest
+		var req types.AnyRequest
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return

@@ -81,6 +81,7 @@
                 <kbd class="kbd">Esc</kbd>
                 <div class="kbd">删除搜索关键词</div>
               </div>
+              <div class="">单击收藏 / 再次单击取消收藏</div>
             </div>
           </div>
         </Transition>

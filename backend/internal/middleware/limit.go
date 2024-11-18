@@ -1,9 +1,13 @@
 package middleware
 
 import (
+	"backend/internal/common/utils"
+	"errors"
 	"net/http"
 	"sync"
 	"time"
+
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func Limit() func(next http.HandlerFunc) http.HandlerFunc {
@@ -17,7 +21,7 @@ func Limit() func(next http.HandlerFunc) http.HandlerFunc {
 
 	return func(next http.HandlerFunc) http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
-			ip := getIPFromRequest(r)
+			ip := utils.GetIPFromRequest(r)
 
 			mu.Lock()
 			record, exists := accessRecords[ip]
@@ -31,8 +35,8 @@ func Limit() func(next http.HandlerFunc) http.HandlerFunc {
 			}
 
 			// 检查访问次数
-			if record.count >= 10 {
-				http.Error(w, "Too many requests, please try again later.", http.StatusTooManyRequests)
+			if record.count >= 60 {
+				httpx.ErrorCtx(r.Context(), w, errors.New("请求太多啦, 请稍后重试"))
 				mu.Unlock()
 				return
 			}
@@ -47,17 +51,4 @@ func Limit() func(next http.HandlerFunc) http.HandlerFunc {
 			next.ServeHTTP(w, r)
 		}
 	}
-}
-
-// getIPFromRequest 从请求中提取客户端的 IP 地址
-func getIPFromRequest(r *http.Request) string {
-	ip := r.Header.Get("X-Real-IP")
-	if ip == "" {
-		ip = r.Header.Get("X-Forwarded-For")
-	}
-	if ip == "" {
-		ip = r.RemoteAddr
-	}
-	println(ip)
-	return ip
 }

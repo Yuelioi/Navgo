@@ -3,7 +3,7 @@ package comment
 import (
 	"context"
 
-	"backend/internal/db"
+	"backend/internal/common/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 

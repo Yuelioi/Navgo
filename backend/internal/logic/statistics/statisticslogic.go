@@ -3,6 +3,8 @@ package statistics
 import (
 	"context"
 
+	"backend/internal/common/db"
+	"backend/internal/common/utils"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -15,7 +17,7 @@ type StatisticsLogic struct {
 	svcCtx *svc.ServiceContext
 }
 
-// 增加页面浏览量
+// 获取网站数量
 func NewStatisticsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *StatisticsLogic {
 	return &StatisticsLogic{
 		Logger: logx.WithContext(ctx),
@@ -24,8 +26,20 @@ func NewStatisticsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Statis
 	}
 }
 
-func (l *StatisticsLogic) Statistics(req *types.IDRequest) (resp *types.IDResponse, err error) {
-	// todo: add your logic here and delete this line
+func (l *StatisticsLogic) Statistics(req *types.AnyRequest) (resp *types.SiteStats, err error) {
 
+	var yesterday int64
+	var all int64
+	var links int64
+
+	db.DB.Model(types.Statistics{}).Where("date = ?", utils.Yesterday()).Count(&yesterday)
+	db.DB.Model(types.Statistics{}).Count(&all)
+	db.DB.Model(types.Collection{}).Count(&links)
+
+	resp = &types.SiteStats{
+		LastDayVisitors: int(yesterday),
+		TotalVisitors:   int(all),
+		LinksCount:      int(links),
+	}
 	return
 }

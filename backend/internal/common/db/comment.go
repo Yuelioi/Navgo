@@ -4,7 +4,6 @@ import (
 	"backend/internal/types"
 	"fmt"
 	"os"
-	"path/filepath"
 
 	"gopkg.in/yaml.v3"
 	"gorm.io/gorm/clause"
@@ -23,50 +22,7 @@ func NewCommentManager(root string) *CommentManager {
 	}
 }
 
-func (m *CommentManager) init() error {
-	root := filepath.Dir(m.Root)
-
-	if _, err := os.Stat(root); os.IsNotExist(err) {
-		err := os.MkdirAll(root, os.ModePerm)
-		if err != nil {
-			return err
-		}
-	}
-
-	if _, err := os.Stat(m.Root); os.IsNotExist(err) {
-		f, err := os.OpenFile(m.Root, os.O_CREATE, os.ModePerm)
-		if err != nil {
-			return err
-		}
-		defer f.Close()
-
-		datas := &types.CommentsResponse{
-			Comments: []*types.Comment{{
-				Nickname: "system",
-				Content:  "test",
-			}},
-		}
-
-		data, err := yaml.Marshal(datas)
-		if err != nil {
-			return err
-		}
-		_, err = f.Write(data)
-		if err != nil {
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *CommentManager) Read() error {
-
-	// 1.初始化判断
-	err := m.init()
-	if err != nil {
-		return err
-	}
 
 	// 2. 读取meta文件
 	meta := &types.CommentsResponse{}

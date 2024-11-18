@@ -26,7 +26,7 @@ export default {
         light: {
           primary: '#3056d3',
           secondary: '#00aeec',
-          accent: '#f980ad',
+          accent: '#ff6a9b',
           neutral: '#22212c',
           'neutral-content': '#f8fafc',
 
@@ -37,8 +37,8 @@ export default {
 
           info: '#3056d3',
           success: '#00bd8d',
-          warning: '#ffa200',
-          error: '#ff8589'
+          warning: '#fd621d',
+          error: '#f14767'
         }
       },
       {

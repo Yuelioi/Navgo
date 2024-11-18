@@ -1,7 +1,7 @@
 package db
 
 import (
-	"backend/internal/global"
+	"backend/internal/common/constants"
 	"backend/internal/types"
 	"fmt"
 	"io/fs"
@@ -49,7 +49,7 @@ func (m *CollectionManager) Read() error {
 
 		depth := len(strings.Split(relativeDirPath, "\\"))
 
-		if info.Name() == global.ConfInst.Resource.MetaFile {
+		if info.Name() == constants.ConfInst.Resource.MetaFile {
 			meta, err := readCollectionsMeta(path)
 			if err != nil {
 				fmt.Printf("meta %s err: %v\n", path, err.Error())

@@ -3,12 +3,12 @@ package collection
 import (
 	"context"
 	"errors"
-	"io"
 	"os"
 	"path/filepath"
 
-	"backend/internal/db"
-	"backend/internal/global"
+	"backend/internal/common/cache"
+	"backend/internal/common/constants"
+	"backend/internal/common/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -31,83 +31,45 @@ func NewAddCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Add
 	}
 }
 
-func initDst(inReviewDir, inReviewMeta string) error {
-	if _, err := os.Stat(inReviewDir); os.IsNotExist(err) {
-		return os.MkdirAll(inReviewDir, os.ModePerm)
-	}
-
-	if _, err := os.Stat(inReviewMeta); os.IsNotExist(err) {
-
-		f, err := os.OpenFile(inReviewMeta, os.O_RDWR|os.O_CREATE, os.ModePerm)
-		if err != nil {
-			return err
-		}
-		defer f.Close()
-		_, err = f.Write([]byte(
-			`title: 待审核
-cid: InReview
-order: 1
-collections:
-`,
-		))
-		if err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
 func (l *AddCollectionLogic) AddCollection(req *types.Collection) (resp *types.Collection, err error) {
 
 	// TODO 临时提交也加入重复计算
 
 	// 检测是否重复
-	var c *types.Collection
-	if err = db.DB.Model(&types.Collection{}).Where("cid =?", req.CID).First(&c).Error; err == nil {
+	var exists bool
+	db.DB.Model(&types.Collection{}).Where("cid =?", req.CID).Scan(&exists)
+	if exists {
 		return nil, errors.New("重复提交")
 	}
 
-	inReviewDir := filepath.Join(global.ConfInst.Resource.Collections, "_待审核")
-	inReviewMeta := filepath.Join(inReviewDir, global.ConfInst.Resource.MetaFile)
+	inReviewDir := filepath.Join(constants.ConfInst.Resource.Collections, "_待审核")
+	inReviewMeta := filepath.Join(inReviewDir, constants.ConfInst.Resource.MetaFile)
 
-	err = initDst(inReviewDir, inReviewMeta)
-	if err != nil {
-		return nil, err
-	}
-
-	f, err := os.OpenFile(inReviewMeta, os.O_RDWR|os.O_CREATE, os.ModePerm)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-
-	yamlFile, err := io.ReadAll(f)
+	yamlFile, err := os.ReadFile(inReviewMeta)
 	if err != nil {
 		return nil, err
 	}
 
 	meta := &types.Group{}
-	yaml.Unmarshal(yamlFile, meta)
+	err = yaml.Unmarshal(yamlFile, meta)
+	if err != nil {
+		return
+	}
+
+	// 添加新的集合
 	meta.Collections = append(meta.Collections, req)
 
+	// 重新序列化为 YAML
 	data, err := yaml.Marshal(meta)
 	if err != nil {
-		return nil, err
+		return
 	}
 
-	// 截断文件并写入新内容
-	_, err = f.Seek(0, 0) // 移动文件指针到文件开头
-	if err != nil {
-		return nil, err
-	}
-	err = f.Truncate(0) // 清空文件内容
-	if err != nil {
-		return nil, err
-	}
-	_, err = f.Write(data)
-	if err != nil {
-		return nil, err
-	}
+	// 写入文件，覆盖原有内容
+	err = os.WriteFile(inReviewMeta, data, os.ModePerm)
+
+	// 缓存增加该条记录
+	cache.Cache.Add(req.CID, req)
 
 	return
 }

@@ -1,6 +1,7 @@
 package collection
 
 import (
+	"errors"
 	"io"
 	"mime/multipart"
 	"net/http"
@@ -9,6 +10,8 @@ import (
 	"path/filepath"
 	"strconv"
 
+	"backend/internal/common/cache"
+	global "backend/internal/common/constants"
 	"backend/internal/logic/collection"
 	"backend/internal/svc"
 	"backend/internal/types"
@@ -16,13 +19,21 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func saveFile(w http.ResponseWriter, file multipart.File, cid string) (string, error) {
+func saveFile(w http.ResponseWriter, r *http.Request, file multipart.File, dir, cid string) (string, error) {
 	// 保存文件到本地
 
-	target := filepath.Join(cid)
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		// 如果目录不存在，创建目录
+		if err := os.MkdirAll(dir, os.ModePerm); err != nil {
+			return "", err
+		}
+
+	}
+
+	target := filepath.Join(dir, cid)
 	outFile, err := os.Create(target + ".png")
 	if err != nil {
-		http.Error(w, "Unable to create file", http.StatusInternalServerError)
+		httpx.ErrorCtx(r.Context(), w, errors.New("unable to create file"))
 		return "", err
 
 	}
@@ -31,12 +42,13 @@ func saveFile(w http.ResponseWriter, file multipart.File, cid string) (string, e
 	// 将文件内容保存到本地
 	_, err = io.Copy(outFile, file)
 	if err != nil {
-		http.Error(w, "Unable to save file", http.StatusInternalServerError)
+		httpx.ErrorCtx(r.Context(), w, errors.New("unable to save file"))
 		return "", err
 	}
 	return "", nil
 }
 
+// 解析表单
 func parseForm(r *http.Request) (*types.Collection, error) {
 	link := r.FormValue("link")
 	title := r.FormValue("title")
@@ -77,20 +89,29 @@ func AddCollectionHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 
 		// 解析 multipart 表单
 		if err := r.ParseMultipartForm(10 << 20); err != nil {
-			http.Error(w, "Unable to parse multipart form", http.StatusBadRequest)
+			httpx.ErrorCtx(r.Context(), w, errors.New("无法解析字段"))
 			return
 		}
 
 		// 获取表单字段
 		req, err := parseForm(r)
 		if err != nil {
-			http.Error(w, "Unable to parse link", http.StatusInternalServerError)
+			httpx.ErrorCtx(r.Context(), w, errors.New("无法解析链接"))
 			return
 		}
+
+		// 验证是否存在
+
+		if cache.Cache.Exists(req.CID) {
+			httpx.ErrorCtx(r.Context(), w, errors.New("已经提交过啦,正在审核中"))
+			return
+		}
+
+		// 保存文件
 		file, _, err := r.FormFile("favicon")
 		if err == nil {
 			defer file.Close()
-			icon, err := saveFile(w, file, req.CID)
+			icon, err := saveFile(w, r, file, global.ConfInst.Resource.Icons, req.CID)
 			if err != nil {
 				return
 			}

@@ -15,7 +15,7 @@
         <div class="p-4">
           <div class="flex w-full gap-4 items-center">
             <div class="btn btn-neutral btn-sm btn-ghost" @click="addLike">
-              <span class="icon-[lucide--square-plus] size-5"></span>
+              <span class="icon-[lucide--square-plus] size-6"></span>
             </div>
             <div class="btn btn-primary btn-sm btn-ghost" @click="saveCollections()">
               <span class="icon-[lucide--save] size-6"></span>
