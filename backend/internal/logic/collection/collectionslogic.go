@@ -2,6 +2,7 @@ package collection
 
 import (
 	"context"
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -55,7 +56,7 @@ func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.Colle
 		var group *types.Group
 
 		// 顶级分类
-		topID := strings.Split(collection.Category.Path, "\\")[0]
+		topID := strings.Split(collection.Category.Path, string(filepath.Separator))[0]
 
 		// 查找顶级数据
 		for _, top := range datas {
