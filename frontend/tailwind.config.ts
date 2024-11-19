@@ -8,11 +8,17 @@ export default {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   content: ['./index.html', './src/**/*.{js,ts,vue,css}'],
   theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1440px',
+      '3xl': '2560px'
+    },
     extend: {
       gridTemplateColumns: {
-        // Simple 16 column grid
-        '16': 'repeat(16, minmax(0, 1fr))',
-        one: ' minmax(550px, 50%)',
+        one: ' minmax(250px, 50%)',
         card: 'repeat(auto-fill, minmax(275px, 1fr))'
       }
     }

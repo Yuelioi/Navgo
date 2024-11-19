@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full flex-col relative">
-    <div class="w-4/5 self-center flex-1 my-8">
+    <div class="px-4 self-center flex-1 my-8">
       <!-- 公告 -->
       <div role="alert" class="alert flex overflow-hidden" v-if="currentAnnounce">
         <span class="icon-[lucide--info] size-5"></span>
