@@ -16,7 +16,7 @@
       </div>
 
       <!-- 搜索 -->
-      <HomeSearch class="mt-28 mb-16"></HomeSearch>
+      <HomeSearch class="mt-12 md:mt-24 mb-16"></HomeSearch>
 
       <!-- 导航 -->
       <div class="w-full flex-1l">
@@ -33,7 +33,11 @@
                 <AsyncGroupCard :collections="likeCollectionsList"></AsyncGroupCard>
               </div>
               <div class="select-none ml-4" v-else>
-                还没有收藏哦, 请先收藏网站, 或者在顶部"我的收藏"添加
+                <div>
+                  还没有收藏哦, 请先收藏网站,或者在
+                  <span class="font-bold px-2">"设置>我的收藏"</span>
+                  添加
+                </div>
               </div>
             </div>
           </div>

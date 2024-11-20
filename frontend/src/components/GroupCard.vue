@@ -17,9 +17,16 @@
             </div>
           </div>
 
-          <div class="pl-4 flex-1">
+          <div class="pl-4 flex-1 flex justify-between">
             <div class="items-center flex space-x-2">
               <span class="font-bold">{{ collection.title }}</span>
+            </div>
+
+            <!-- 手机端 -->
+            <div
+              class="size-12 mr-0 flex justify-center rounded-full items-center border"
+              @click.stop="like(collection)">
+              <span class="icon-[lucide--star] size-5"></span>
             </div>
 
             <div
@@ -34,7 +41,8 @@
 
         <div class="border my-2"></div>
 
-        <div class="h-6 flex items-center">
+        <!-- PC端 -->
+        <div class="h-6 md:flex items-center hidden">
           <div class="badge badge-ghost" v-if="collection.proxy">需要代理</div>
           <div class="" v-for="tag in collection.tags">
             <div class="badge badge-ghost">{{ tag }}</div>

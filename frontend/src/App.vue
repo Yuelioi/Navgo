@@ -8,7 +8,8 @@
       <!-- 主界面顶部 -->
       <HeaderArea class="h-20 shadow-md" />
       <!-- 主界面内容区域 -->
-      <div class="flex-1 w-full flex flex-col overflow-y-scroll">
+      <!-- 需要给个锚点`anchor` 用于返回顶部 -->
+      <div class="anchor flex-1 w-full flex flex-col overflow-y-scroll">
         <router-view class="content"></router-view>
         <FooterArea />
       </div>
