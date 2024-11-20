@@ -1,6 +1,6 @@
-title: 其他
-cid: other
-order: 8
+title: 图片
+cid: images
+order: 1
 collections:
   - title: The Pattern Library
     link: http://thepatternlibrary.com/

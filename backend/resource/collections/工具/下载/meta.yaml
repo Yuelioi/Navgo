@@ -1,12 +1,8 @@
-title: 软件
-cid: tool
-order: 1
+title: 下载
+cid: download
+order: 2
 collections:
   - title: 9xbuddy
     link: https://9xbuddy.org
     description: 在线下载油管/推特/P站等等
     proxy: true
-  - title: kinhdown 百度云解析
-    link: https://kinhdown.com/
-    description: ""
-    proxy: false

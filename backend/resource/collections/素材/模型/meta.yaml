@@ -1,6 +1,6 @@
-title: 其他
-cid: other
-order: 8
+title: 模型
+cid: model
+order: 7
 collections:
   - title: TurboSquid
     link: https://www.turbosquid.com/

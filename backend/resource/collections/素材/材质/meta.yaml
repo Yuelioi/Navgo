@@ -1,6 +1,6 @@
-title: 其他
-cid: other
-order: 8
+title: 材质
+cid: texture
+order: 6
 collections:
   - title: Poly Haven
     link: https://polyhaven.com/
@@ -18,6 +18,10 @@ collections:
     link: https://ambientcg.com/
     description: ""
     proxy: false
+  - title: Texturelabs
+    link: https://texturelabs.org/
+    description: 高质量纹理材质资源站，原创+免费。同名Youtube频道有相关Ps与Ae教程。
+    tags: []
   - title: cgbookcase
     link: https://www.cgbookcase.com/textures
     description: PBR纹理

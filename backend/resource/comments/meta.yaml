@@ -1,7 +1,10 @@
 comments:
-    - nickname: system
-      content: 系统评论测试
-      date: "2024-11-19"
-    - nickname: "1111"
-      content: 测试11
-      date: "20241120"
+  - nickname: system
+    content: 系统评论测试
+    date: "20241119"
+  - nickname: 思无邪
+    content: 你好，我已向贵导航站投递了几个我推荐的资源网址。页面有弹出成功投递的提示，但输入框和页面其它部位都未有更新，不知是设计如此还是投递有误。另外，很高兴看到各个填写内容有英文的填写提示，但句子开头字母没有大写。
+    date: "20241119"
+  - nickname: 系统
+    content: 感谢您的反馈, 目前投递的网站需要审核, 后续会单独增加页面, 查看审核情况
+    date: "20241121"

@@ -22,3 +22,11 @@ collections:
     link: https://soundoftext.com/
     description: ""
     proxy: false
+  - title: 语法俱乐部
+    link: https://llwslc.github.io/grammar-club/content/Preface.html
+    description: 简明的英语语法书。
+    tags: []
+  - title: Etymonline
+    link: https://www.etymonline.com/
+    description: 英语词汇词根查询站。
+    tags: []

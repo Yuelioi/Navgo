@@ -1,6 +1,6 @@
-title: 软件
-cid: tool
-order: 1
+title: 其他
+cid: other
+order: 3
 collections:
   - title: ProcessOn
     link: https://www.processon.com/
