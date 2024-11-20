@@ -63,7 +63,11 @@
 
     <div class="navbar-end">
       <div class="flex items-center space-x-4 mr-4">
-        <div class="hidden lg:block">这是一句话</div>
+        <div class="hidden lg:block mr-2">这是一句话</div>
+
+        <span
+          class="icon-[lucide--github] size-6"
+          @click="open('https://github.com/Yuelioi/Navgo')"></span>
 
         <label class="swap swap-rotate">
           <input
@@ -107,6 +111,7 @@
 
 <script setup lang="ts">
 import router from '@/router'
+import { open } from '@/utils'
 
 const store = useBasicStore()
 const { collapseNav, theme, isAdmin } = storeToRefs(store)
