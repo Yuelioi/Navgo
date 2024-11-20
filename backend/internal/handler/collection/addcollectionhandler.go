@@ -100,9 +100,9 @@ func AddCollectionHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		// 验证是否存在
-
-		if cache.Cache.Exists(req.CID) {
+		// 验证审核区是否存在
+		controller := cache.Manager.GetController(cache.InReviewCacheID)
+		if controller.Exists(req.CID) {
 			httpx.ErrorCtx(r.Context(), w, errors.New("已经提交过啦,正在审核中"))
 			return
 		}

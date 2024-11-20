@@ -17,7 +17,7 @@
 </template>
 
 <style scoped>
-.content {
+/* .content {
   background-image: linear-gradient(
       #d9d9d9 1px,
       transparent 1px,
@@ -50,5 +50,5 @@
     );
 
   background-size: 25px 25px;
-}
+} */
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar bg-base-200">
+  <div class="navbar bg-base-200 hidden md:flex">
     <div class="navbar-start space-x-2 ml-4">
       <div class="flex items-center">
         <button class="btn btn-ghost btn-sm" v-if="collapseNav" @click="collapseNav = !collapseNav">
@@ -18,11 +18,7 @@
             <span class="icon-[lucide--send] size-5"></span>
           </div>
         </button>
-        <button class="btn btn-ghost btn-sm" @click="router.push({ name: 'like' })">
-          <div class="tooltip tooltip-bottom" data-tip="我的收藏">
-            <span class="icon-[lucide--star] size-5"></span>
-          </div>
-        </button>
+
         <button class="btn btn-ghost btn-sm" @click="router.push({ name: 'comment' })">
           <div class="tooltip tooltip-bottom" data-tip="留言板">
             <span class="icon-[lucide--clipboard-pen] size-5"></span>
@@ -30,43 +26,20 @@
         </button>
         <button
           class="btn btn-ghost btn-sm"
-          @mousemove="showSettingWindow = true"
+          @click="router.push({ name: 'setting' })"
           @click.ctrl="isAdmin = !isAdmin">
           <div class="tooltip tooltip-bottom" data-tip="设置">
             <span class="icon-[lucide--settings] size-5"></span>
           </div>
         </button>
         <button
-          class="btn btn-ghost btn-sm relative"
+          class="btn btn-ghost btn-sm relative hidden md:block"
           @mousemove="showHotkeyWindow = true"
           @mouseleave="showHotkeyWindow = false">
           <div class="tooltip tooltip-bottom" data-tip="帮助">
             <span class="icon-[lucide--message-circle-question] size-5"></span>
           </div>
         </button>
-
-        <Transition>
-          <div
-            class="absolute z-10 top-24"
-            v-if="showSettingWindow"
-            @mouseleave="showSettingWindow = false">
-            <div class="flex bg-base-200 flex-col p-6 rounded-lg h-80 w-96 space-y-4 ring-2">
-              <div class="font-bold flex items-center justify-between">
-                <span>设置</span>
-                <span class="icon-[lucide--x] size-5" @click="showSettingWindow = false"></span>
-              </div>
-              <div class="divider"></div>
-              <div class="flex items-center w-full justify-between">
-                <kbd class="font-bold">显示我的收藏</kbd>
-                <div class="form-control">
-                  <label class="label cursor-pointer">
-                    <input type="checkbox" class="toggle" v-model="showMyCollection" />
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Transition>
 
         <Transition>
           <div class="absolute z-10 top-24" v-if="showHotkeyWindow">
@@ -90,7 +63,7 @@
 
     <div class="navbar-end">
       <div class="flex items-center space-x-4 mr-4">
-        <div class="">这是一句话</div>
+        <div class="hidden lg:block">这是一句话</div>
 
         <label class="swap swap-rotate">
           <input
@@ -106,16 +79,36 @@
       </div>
     </div>
   </div>
+
+  <!-- 手机端 -->
+
+  <div class="btm-nav z-10 md:hidden">
+    <button class="" @click="router.push({ name: 'home' })">
+      <span class="icon-[lucide--house] size-5"></span>
+      <span class="btm-nav-label">主页</span>
+    </button>
+    <button class="" @click="router.push({ name: 'post' })">
+      <span class="icon-[lucide--send] size-5"></span>
+      <span class="btm-nav-label">投稿</span>
+    </button>
+    <button class="" @click="router.push({ name: 'comment' })">
+      <span class="icon-[lucide--clipboard-pen] size-5"></span>
+      <span class="btm-nav-label">讨论</span>
+    </button>
+    <button class="" @click="router.push({ name: 'setting' })" @click.ctrl="isAdmin = !isAdmin">
+      <span class="icon-[lucide--settings] size-5"></span>
+      <span class="btm-nav-label">设置</span>
+    </button>
+  </div>
 </template>
 
 <script setup lang="ts">
 import router from '@/router'
 
 const store = useBasicStore()
-const { collapseNav, theme, isAdmin, showMyCollection } = storeToRefs(store)
+const { collapseNav, theme, isAdmin } = storeToRefs(store)
 
 const showHotkeyWindow = ref(false)
-const showSettingWindow = ref(false)
 
 const { switchTheme } = useTheme()
 

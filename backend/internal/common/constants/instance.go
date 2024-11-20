@@ -21,7 +21,7 @@ func clean() {
 }
 
 func init() {
-	var configFile = flag.String("f", "etc/main.yaml", "the config file")
+	var configFile = flag.String("f", "etc/config.yaml", "the config file")
 	flag.Parse()
 
 	conf.MustLoad(*configFile, &ConfInst)

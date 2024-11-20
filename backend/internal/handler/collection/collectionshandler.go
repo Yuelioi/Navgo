@@ -1,6 +1,7 @@
 package collection
 
 import (
+	"errors"
 	"net/http"
 
 	"backend/internal/common/db"
@@ -10,6 +11,7 @@ import (
 	"backend/internal/types"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
+	"gorm.io/gorm"
 )
 
 // 页面集合
@@ -30,10 +32,7 @@ func CollectionsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		}
 
 		// 每天请求时, 追加记录
-		var exists bool
-		db.DB.Model(types.Statistics{}).Where("ip = ?", ip).Where("date = ?", now).Scan(&exists)
-
-		if exists {
+		if err := db.DB.Model(types.Statistics{}).Where("date =? And ip = ?", ip, now).Error; errors.Is(err, gorm.ErrRecordNotFound) {
 			db.DB.Model(types.Statistics{}).Create(s)
 		}
 

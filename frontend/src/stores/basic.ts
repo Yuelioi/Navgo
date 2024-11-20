@@ -18,6 +18,8 @@ export const useBasicStore = defineStore('basic', () => {
   const collapseNav = useStorage('collapseNav', false)
   const isAdmin = useStorage('isAdmin', false)
   const showMyCollection = useStorage('showMyCollection', true)
+  const showWebCollection = useStorage('showWebCollection', true)
+  const showFooter = useStorage('showFooter', true)
 
   const isScrollDown = ref(false)
 
@@ -36,6 +38,8 @@ export const useBasicStore = defineStore('basic', () => {
     currentSearchName,
     likeCollectionsList,
     showMyCollection,
-    siteStats
+    showWebCollection,
+    siteStats,
+    showFooter
   }
 })

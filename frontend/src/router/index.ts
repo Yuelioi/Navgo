@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import SiteView from '../views/SiteView.vue'
 import PostView from '@/views/PostView.vue'
-import LikeView from '@/views/LikeView.vue'
 import CommentView from '@/views/CommentView.vue'
+import SettingView from '@/views/SettingView.vue'
 
 import { loadData } from '@/stores/data'
 
@@ -25,15 +25,16 @@ const router = createRouter({
       name: 'post',
       component: PostView
     },
-    {
-      path: '/like',
-      name: 'like',
-      component: LikeView
-    },
+
     {
       path: '/comment',
       name: 'comment',
       component: CommentView
+    },
+    {
+      path: '/setting',
+      name: 'setting',
+      component: SettingView
     }
   ]
 })

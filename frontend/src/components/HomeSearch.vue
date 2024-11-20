@@ -189,7 +189,11 @@ function handleKeyDown(event: KeyboardEvent) {
 }
 
 onMounted(() => {
-  switchSearch(currentSearchName.value)
+  if (currentSearchName.value) {
+    switchSearch(currentSearchName.value)
+  } else {
+    switchSearch('百度')
+  }
   document.addEventListener('keydown', handleKeyDown)
 })
 </script>

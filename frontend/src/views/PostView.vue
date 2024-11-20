@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden h-full">
+  <div class="overflow-hidden h-full w-full container">
     <div class="sticky top-1/4 xl:block hidden">
       <div class="absolute right-16">
         <div class="card card-compact bg-base-100 p-4 w-64 shadow-xl">
@@ -16,49 +16,60 @@
       </div>
     </div>
 
-    <div class="flex w-full h-full items-center justify-center">
-      <div
-        class="grid grid-cols-one space-y-4 self-center bg-base-300 rounded-md p-8 items-center justify-center">
-        <div class="join input input-bordered gap-2 w-full hover:border-info">
-          <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
-            <span class="text-sm select-none">网址</span>
-            <span class="icon-[lucide--link-2] size-5"></span>
+    <div class="flex p-4 h-full">
+      <div class="grid w-full p-6 space-y-2 bg-base-300 rounded-md">
+        <div class="">投稿</div>
+        <div class="divider my-0"></div>
+
+        <div class="">
+          <div class="join input input-bordered gap-2 w-full hover:border-info">
+            <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
+              <span class="text-sm select-none">网址</span>
+              <span class="icon-[lucide--link-2] size-5"></span>
+            </div>
+            <div class="divider"></div>
+            <input
+              type="text"
+              class="grow input-bordered"
+              placeholder="https://"
+              v-model="form.link" />
           </div>
-          <div class="divider"></div>
-          <input
-            type="text"
-            class="grow input-bordered"
-            placeholder="https://"
-            v-model="form.link" />
-        </div>
-        <div v-if="errorFields?.link" class="text-warning !my-1">
-          {{ errorFields.link[0].message }}
-        </div>
-
-        <div class="join input input-bordered gap-2 w-full hover:border-info">
-          <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
-            <span class="text-sm select-none">名称</span>
-
-            <span class="icon-[lucide--case-lower] size-5"></span>
+          <div v-if="errorFields?.link" class="text-warning !my-1">
+            {{ errorFields.link[0].message }}
           </div>
-          <div class="divider"></div>
-
-          <input type="text" class="grow input-bordered" placeholder="Name" v-model="form.title" />
-        </div>
-        <div v-if="errorFields?.title" class="text-warning !my-1">
-          {{ errorFields.title[0].message }}
         </div>
 
-        <div class="join input input-bordered gap-2 w-full hover:border-info select-none">
-          <div class="flex border-r-2 items-center justify-center pr-3 space-x-2">
-            <span class="text-sm select-none">代理</span>
-            <span class="icon-[lucide--utility-pole]"></span>
+        <div class="">
+          <div class="join flex input input-bordered gap-2 w-full hover:border-info">
+            <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
+              <span class="text-sm select-none">名称</span>
+              <span class="icon-[lucide--case-lower] size-5"></span>
+            </div>
+            <div class="divider"></div>
+
+            <input
+              type="text"
+              class="grow input-bordered"
+              placeholder="Name"
+              v-model="form.title" />
           </div>
-          <div class="divider"></div>
-          <div class="flex flex-1 items-center select-none">
-            <span class="text-sm opacity-45">如果需要科学上网, 请打勾</span>
+          <div v-if="errorFields?.title" class="text-warning !my-1">
+            {{ errorFields.title[0].message }}
+          </div>
+        </div>
 
-            <input type="checkbox" checked class="ml-auto checkbox" v-model="proxy" />
+        <div class="">
+          <div class="join input input-bordered gap-2 w-full hover:border-info select-none">
+            <div class="flex border-r-2 items-center justify-center pr-3 space-x-2">
+              <span class="text-sm select-none">代理</span>
+              <span class="icon-[lucide--utility-pole]"></span>
+            </div>
+            <div class="divider"></div>
+            <div class="flex flex-1 items-center select-none">
+              <span class="text-sm opacity-45">如果需要科学上网, 请打勾</span>
+
+              <input type="checkbox" checked class="ml-auto checkbox" v-model="proxy" />
+            </div>
           </div>
         </div>
 

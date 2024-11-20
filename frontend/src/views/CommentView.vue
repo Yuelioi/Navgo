@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full grid grid-cols-one justify-center">
-    <div class="p-6 my-8 w-full bg-base-200">
+  <div class="h-full pb-32 md:pb-12 container">
+    <div class="p-6 my-8 w-full h-full bg-base-200 rounded-lg">
       <div class="flex flex-col h-full space-y-8 justify-between">
         <!-- 评论区 -->
         <div class="flex flex-col space-y-4 overflow-y-scroll">
@@ -24,27 +24,31 @@
 
         <!-- 发布 -->
         <div class="w-full flex flex-col">
-          <textarea
-            class="textarea textarea-bordered w-full"
-            placeholder="提交建议或者反馈"
-            v-model="form.content"></textarea>
+          <div class="">
+            <textarea
+              class="textarea textarea-bordered w-full"
+              placeholder="提交建议或者反馈"
+              v-model="form.content"></textarea>
 
-          <div v-if="errorFields?.content" class="text-warning !my-1">
-            {{ errorFields.content[0].message }}
+            <div v-if="errorFields?.content" class="text-warning top-full !my-1">
+              {{ errorFields.content[0].message }}
+            </div>
           </div>
+
           <div class="flex items-center mt-2">
             <label
               for="text"
               class="input input-bordered flex items-center input-sm gap-2 max-w-xs">
-              <span class="select-none">昵称</span>
+              <span class="select-none text-nowrap">昵称</span>
               <input type="text" placeholder="张三" class="" v-model="form.nickname" />
             </label>
-            <div v-if="errorFields?.nickname" class="text-warning !my-1">
-              {{ errorFields.nickname[0].message }}
-            </div>
             <button class="ml-auto btn btn-primary btn-sm" :disabled="!pass" @click="submitComment">
               提交
             </button>
+          </div>
+
+          <div v-if="errorFields?.nickname" class="text-warning !my-1">
+            {{ errorFields.nickname[0].message }}
           </div>
         </div>
       </div>

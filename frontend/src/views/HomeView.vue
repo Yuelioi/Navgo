@@ -1,8 +1,8 @@
 <template>
-  <div class="flex w-full flex-col relative">
-    <div class="px-4 self-center flex-1 my-8">
+  <div class="flex flex-col relative w-full container">
+    <div class="self-center flex-1 my-8 w-full">
       <!-- 公告 -->
-      <div role="alert" class="alert flex overflow-hidden" v-if="currentAnnounce">
+      <div role="alert" class="alert flex w-full overflow-hidden" v-if="currentAnnounce">
         <span class="icon-[lucide--info] size-5"></span>
         <Transition name="goon" mode="out-in">
           <div class="flex w-full" :key="currentAnnounce.title">
@@ -19,23 +19,20 @@
       <HomeSearch class="mt-28 mb-16"></HomeSearch>
 
       <!-- 导航 -->
-      <div class="">
+      <div class="w-full flex-1l">
         <!-- 个人收藏 -->
         <div
           class="card relative bg-base-200 shadow-md hover:shadow-lg my-8"
           id="love"
           v-if="showMyCollection">
-          <div
-            class="text-neutral-content absolute top-0 p-2 w-full flex items-center bg-gradient-to-r from-neutral to-transparent rounded-t-md">
-            <span class="icon-[lucide--star] size-5 ml-4 mr-2"></span>
-            <span class="font-bold text-lg">我的收藏</span>
-          </div>
-          <div class="card-body mt-6 min-h-36">
+          <CatTitle :title="'我的收藏'"></CatTitle>
+
+          <div class="card-body mt-6 min-h-36 px-1">
             <div class="flex flex-col w-full space-x-4">
               <div class="grid grid-cols-card relative" v-if="likeCollectionsList.length > 0">
                 <AsyncGroupCard :collections="likeCollectionsList"></AsyncGroupCard>
               </div>
-              <div class="select-none" v-else>
+              <div class="select-none ml-4" v-else>
                 还没有收藏哦, 请先收藏网站, 或者在顶部"我的收藏"添加
               </div>
             </div>
@@ -46,33 +43,30 @@
         <div
           class="card relative bg-base-200 shadow-md hover:shadow-lg my-8"
           :id="data.category.cid"
+          v-if="showWebCollection"
           v-for="(data, index) in collectionsDatas">
-          <div
-            class="text-neutral-content absolute top-0 p-2 w-full flex items-center bg-gradient-to-r from-neutral to-transparent rounded-t-md">
-            <span :class="icons[index]" class="size-5 ml-4 mr-2"></span>
-            <span class="font-bold text-lg">{{ data.category.title }}</span>
-          </div>
-          <div class="card-body mt-6">
-            <div class="flex flex-col w-full space-x-4">
-              <div role="tablist" class="tabs tabs-bordered w-full">
-                <template v-for="(group, groupIndex) in data.groups">
-                  <input
-                    type="radio"
-                    :name="data.category.cid"
-                    role="tab"
-                    class="tab text-nowrap first:ml-4"
-                    :checked="groupIndex === 0"
-                    :aria-label="group.category.title"
-                    @click="group.show = true" />
-                  <div role="tabpanel" class="tab-content my-6">
-                    <KeepAlive>
-                      <div class="grid grid-cols-card relative">
-                        <AsyncGroupCard :collections="group.collections"></AsyncGroupCard>
-                      </div>
-                    </KeepAlive>
-                  </div>
-                </template>
-              </div>
+          <!-- 分类标题 -->
+          <CatTitle :title="data.category.title"></CatTitle>
+
+          <div class="card-body px-1 md:px-4">
+            <div role="tablist" class="tabs tabs-bordered">
+              <template v-for="(group, groupIndex) in data.groups">
+                <input
+                  type="radio"
+                  :name="data.category.cid"
+                  role="tab"
+                  class="tab first:ml-4 px-1 sm:px-4 text-nowrap"
+                  :checked="groupIndex === 0"
+                  :aria-label="group.category.title"
+                  @click="group.show = true" />
+                <div role="tabpanel" class="tab-content my-6">
+                  <KeepAlive>
+                    <div class="grid grid-cols-card relative">
+                      <AsyncGroupCard :collections="group.collections"></AsyncGroupCard>
+                    </div>
+                  </KeepAlive>
+                </div>
+              </template>
             </div>
           </div>
         </div>
@@ -85,7 +79,8 @@ import type { Announce } from '@/api'
 import { getAnnounces } from '@/logic'
 
 const store = useBasicStore()
-const { collectionsDatas, likeCollectionsList, showMyCollection } = storeToRefs(store)
+const { collectionsDatas, likeCollectionsList, showMyCollection, showWebCollection } =
+  storeToRefs(store)
 
 const AsyncGroupCard = defineAsyncComponent({
   loader: () => import('../components/GroupCard.vue')

@@ -42,8 +42,8 @@ func (m *AnnounceManager) init() error {
 
 		datas := &types.AnnouncesData{
 			Announces: []*types.Announce{{
-				Title:   "示例",
-				Content: "示例2",
+				Title:   "第一个公告",
+				Content: "欢迎使用公告",
 				Date:    "2024/11/16",
 			}},
 		}

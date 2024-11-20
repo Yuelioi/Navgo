@@ -3,17 +3,14 @@ package collection
 import (
 	"context"
 	"errors"
-	"os"
-	"path/filepath"
 
 	"backend/internal/common/cache"
-	"backend/internal/common/constants"
 	"backend/internal/common/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
-	"gopkg.in/yaml.v3"
+	"gorm.io/gorm"
 )
 
 type AddCollectionLogic struct {
@@ -32,44 +29,14 @@ func NewAddCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Add
 }
 
 func (l *AddCollectionLogic) AddCollection(req *types.Collection) (resp *types.Collection, err error) {
-
-	// TODO 临时提交也加入重复计算
-
-	// 检测是否重复
-	var exists bool
-	db.DB.Model(&types.Collection{}).Where("cid =?", req.CID).Scan(&exists)
-	if exists {
+	// 检测数据库是否重复
+	err = db.DB.Model(&types.Collection{}).Where("cid =?", req.CID).Error
+	if !errors.Is(err, gorm.ErrRecordNotFound) {
 		return nil, errors.New("重复提交")
 	}
 
-	inReviewDir := filepath.Join(constants.ConfInst.Resource.Collections, "_待审核")
-	inReviewMeta := filepath.Join(inReviewDir, constants.ConfInst.Resource.MetaFile)
-
-	yamlFile, err := os.ReadFile(inReviewMeta)
-	if err != nil {
-		return nil, err
-	}
-
-	meta := &types.Group{}
-	err = yaml.Unmarshal(yamlFile, meta)
-	if err != nil {
-		return
-	}
-
-	// 添加新的集合
-	meta.Collections = append(meta.Collections, req)
-
-	// 重新序列化为 YAML
-	data, err := yaml.Marshal(meta)
-	if err != nil {
-		return
-	}
-
-	// 写入文件，覆盖原有内容
-	err = os.WriteFile(inReviewMeta, data, os.ModePerm)
-
-	// 缓存增加该条记录
-	cache.Cache.Add(req.CID, req)
+	controller := cache.Manager.GetController(cache.InReviewCacheID)
+	err = controller.Add("", req)
 
 	return
 }

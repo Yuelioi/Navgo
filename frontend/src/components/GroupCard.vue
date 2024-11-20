@@ -1,5 +1,5 @@
 <template>
-  <div class="basis-1/5 p-4 cursor-pointer" v-for="collection in collections">
+  <div class="p-4 cursor-pointer" v-for="collection in collections">
     <!-- 单个链接卡片 -->
     <div
       class="bg-base-300 shadow-md p-4 group hover:ring-2 ring-primary hover:scale-105 rounded-md">
@@ -22,7 +22,9 @@
               <span class="font-bold">{{ collection.title }}</span>
             </div>
 
-            <div class="tooltip static tooltip-bottom" :data-tip="collection.description">
+            <div
+              class="tooltip static tooltip-bottom hidden md:block"
+              :data-tip="collection.description">
               <div class="flex text-left">
                 <span class="line-clamp-1">{{ collection.description }}</span>
               </div>

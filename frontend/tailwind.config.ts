@@ -8,6 +8,18 @@ export default {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   content: ['./index.html', './src/**/*.{js,ts,vue,css}'],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1rem',
+        md: '1.5rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+        '3xl': '8rem'
+      }
+    },
     screens: {
       sm: '640px',
       md: '768px',
