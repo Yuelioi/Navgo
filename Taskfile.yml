@@ -10,6 +10,10 @@ tasks:
     dir: frontend
     cmds:
       - pnpm dev
+  pnpm-build:
+    dir: frontend
+    cmds:
+      - pnpm build
   go-dev:
     dir: backend
     cmds:

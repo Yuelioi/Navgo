@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden h-full w-full container">
-    <div class="sticky top-1/4 xl:block hidden">
+    <!-- <div class="sticky top-1/4 xl:block hidden">
       <div class="absolute right-16">
         <div class="card card-compact bg-base-100 p-4 w-64 shadow-xl">
           <div class="card-body">
@@ -14,9 +14,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="flex p-4 h-full">
+    <div class="flex mt-8 h-full">
       <div class="grid w-full p-6 space-y-2 bg-base-300 rounded-md">
         <div class="">投稿</div>
         <div class="divider my-0"></div>
