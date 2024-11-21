@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 
 	"backend/internal/common/biz"
@@ -10,6 +9,7 @@ import (
 	"backend/internal/handler"
 	"backend/internal/middleware"
 
+	"github.com/zeromicro/go-zero/core/logc"
 	"github.com/zeromicro/go-zero/rest"
 	"github.com/zeromicro/go-zero/rest/httpx"
 
@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	fmt.Print("开始启动服务")
+	logc.Info(context.Background(), "启动服务中")
 	server := rest.MustNewServer(
 		constants.ConfInst.RestConf,
 	)

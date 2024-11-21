@@ -6,11 +6,13 @@ type _Manager struct {
 	Controllers map[string]Controller
 }
 
-func New() *_Manager {
-	m := &_Manager{}
+func init() {
+	m := &_Manager{
+		Controllers: make(map[string]Controller),
+	}
 
 	m.RegisterController(NewInReviewCache())
-	return m
+	Manager = m
 }
 
 func (m *_Manager) GetController(name string) Controller {
@@ -26,6 +28,7 @@ func (m *_Manager) RegisterController(controllers ...Controller) error {
 		if err != nil {
 			return err
 		}
+		m.Controllers[c.ID()] = c
 	}
 	return nil
 }

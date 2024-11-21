@@ -91,7 +91,7 @@ func (m *AnnounceManager) Build() error {
 	DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "content"}},
 		UpdateAll: true,
-	}).CreateInBatches(m.announcesMeta, 10)
+	}).Create(m.announcesMeta)
 	return nil
 }
 

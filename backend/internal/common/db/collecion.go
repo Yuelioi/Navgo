@@ -124,7 +124,7 @@ func (m *CollectionManager) Build() error {
 	DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "path"}},
 		UpdateAll: true,
-	}).CreateInBatches(cats, 10)
+	}).CreateInBatches(cats, 20)
 
 	DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "path"}},

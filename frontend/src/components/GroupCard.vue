@@ -17,14 +17,14 @@
             </div>
           </div>
 
-          <div class="pl-4 flex-1 flex justify-between">
+          <div class="pl-4 flex-1 flex md:flex-col justify-between">
             <div class="items-center flex space-x-2">
               <span class="font-bold">{{ collection.title }}</span>
             </div>
 
             <!-- 手机端 -->
             <div
-              class="size-12 mr-0 flex justify-center rounded-full items-center border"
+              class="size-12 md:hidden mr-0 flex justify-center rounded-full items-center border"
               @click.stop="like(collection)">
               <span class="icon-[lucide--star] size-5"></span>
             </div>

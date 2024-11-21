@@ -30,13 +30,16 @@ func NewAddCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Add
 
 func (l *AddCollectionLogic) AddCollection(req *types.Collection) (resp *types.Collection, err error) {
 	// 检测数据库是否重复
-	err = db.DB.Model(&types.Collection{}).Where("cid =?", req.CID).Error
+	var c types.Collection
+	err = db.DB.Model(&types.Collection{}).Where("cid =?", req.CID).First(&c).Error
 	if !errors.Is(err, gorm.ErrRecordNotFound) {
 		return nil, errors.New("重复提交")
 	}
 
 	controller := cache.Manager.GetController(cache.InReviewCacheID)
-	err = controller.Add("", req)
+	if controller != nil {
+		err = controller.Add("", req)
+	}
 
 	return
 }

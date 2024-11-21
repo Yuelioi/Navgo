@@ -32,7 +32,9 @@ func CollectionsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		}
 
 		// 每天请求时, 追加记录
-		if err := db.DB.Model(types.Statistics{}).Where("date =? And ip = ?", ip, now).Error; errors.Is(err, gorm.ErrRecordNotFound) {
+		var stats types.Statistics
+		err := db.DB.Model(types.Statistics{}).Where("date =? And ip = ?", ip, now).First(&stats).Error
+		if errors.Is(err, gorm.ErrRecordNotFound) {
 			db.DB.Model(types.Statistics{}).Create(s)
 		}
 
