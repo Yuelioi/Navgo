@@ -6,7 +6,8 @@
     </div>
     <div class="right relative flex flex-col flex-1 h-full">
       <!-- 主界面顶部 -->
-      <HeaderArea class="h-20 shadow-md" />
+      <HeaderArea class="h-20 shadow-md hidden md:flex" />
+      <MobileHeader class="md:hidden" />
       <!-- 主界面内容区域 -->
       <!-- 需要给个锚点`anchor` 用于返回顶部 -->
       <div class="anchor flex-1 w-full flex flex-col overflow-y-scroll">

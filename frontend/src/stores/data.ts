@@ -47,7 +47,6 @@ export async function loadData() {
 
   // 加载网站数据
   const siteData = await statistics()
-  console.log(siteData)
 
   siteStats.value = siteData.data.data
 }

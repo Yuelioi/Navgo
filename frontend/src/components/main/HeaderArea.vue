@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar bg-base-200 hidden md:flex">
+  <div class="navbar bg-base-200">
     <div class="navbar-start space-x-2 ml-4">
       <div class="flex items-center">
         <button class="btn btn-ghost btn-sm" v-if="collapseNav" @click="collapseNav = !collapseNav">
@@ -64,72 +64,58 @@
     <div class="navbar-end">
       <div class="flex items-center space-x-4 mr-4">
         <div class="hidden lg:block mr-2">这是一句话</div>
+        <div class="" @click="showLoginWindow = true">
+          <span class="icon-[lucide--user-round] size-6"></span>
+        </div>
 
-        <span
-          class="icon-[lucide--github] size-6"
-          @click="open('https://github.com/Yuelioi/Navgo')"></span>
+        <div class="" @click="open('https://github.com/Yuelioi/Navgo')">
+          <span class="icon-[lucide--github] size-6"></span>
+        </div>
 
-        <label class="swap swap-rotate">
-          <input
-            type="checkbox"
-            class="theme-controller"
-            value="synthwave"
-            @click="changeTheme()"
-            :checked="theme == 'dark'" />
+        <div class="">
+          <label class="swap swap-rotate">
+            <input
+              type="checkbox"
+              class="theme-controller"
+              value="synthwave"
+              @click="changeTheme()"
+              :checked="theme == 'dark'" />
 
-          <span class="icon-[lucide--sun] size-6 swap-on fill-current"></span>
-          <span class="icon-[lucide--moon] size-6 swap-off fill-current"></span>
-        </label>
+            <span class="icon-[lucide--sun] size-6 swap-on fill-current"></span>
+            <span class="icon-[lucide--moon] size-6 swap-off fill-current"></span>
+          </label>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 手机端 -->
-  <div class="btm-nav z-10 md:hidden">
-    <button class="" @click="router.push({ name: 'home' })">
-      <span class="icon-[lucide--house] size-5"></span>
-      <span class="btm-nav-label">主页</span>
-    </button>
-    <button class="" @click="router.push({ name: 'post' })">
-      <span class="icon-[lucide--send] size-5"></span>
-      <span class="btm-nav-label">投稿</span>
-    </button>
-    <button class="" @click="router.push({ name: 'comment' })">
-      <span class="icon-[lucide--clipboard-pen] size-5"></span>
-      <span class="btm-nav-label">讨论</span>
-    </button>
-    <button class="" @click="router.push({ name: 'setting' })" @click.ctrl="isAdmin = !isAdmin">
-      <span class="icon-[lucide--settings] size-5"></span>
-      <span class="btm-nav-label">设置</span>
-    </button>
-    <button class="" @click="scrollToTop">
-      <span class="icon-[lucide--arrow-up-from-line] size-5"></span>
-      <span class="btm-nav-label">返回顶部</span>
-    </button>
+    <VDialog title="hello" :show="showLoginWindow">
+      <div class="">
+        <div class="">11</div>
+        <div class="">登录</div>
+        <div class="">邮箱/用户名</div>
+        <div class="">密码</div>
+        <div class="">登录按钮</div>
+      </div>
+    </VDialog>
   </div>
 </template>
 
 <script setup lang="ts">
 import router from '@/router'
 import { open } from '@/utils'
+import { VDialog } from '@/plugins/dialog'
 
 const store = useBasicStore()
 const { collapseNav, theme, isAdmin } = storeToRefs(store)
 
 const showHotkeyWindow = ref(false)
+const showLoginWindow = ref(true)
 
 const { switchTheme } = useTheme()
 
 function changeTheme() {
   theme.value = theme.value == 'light' ? 'dark' : 'light'
   switchTheme(theme.value)
-}
-
-function scrollToTop() {
-  document.querySelector('.anchor')?.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  })
 }
 </script>
 
