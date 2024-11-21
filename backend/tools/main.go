@@ -2,21 +2,16 @@ package main
 
 import (
 	"fmt"
-	"net/url"
 )
 
 func main() {
-	template := `  - cid: %s
-    title: %s
+	template := `  -title: %s
     link: %s
-    description: ""
-    country: "%s"
-    proxy: %t
-    favicon:
-    view: 0`
+    description: %s
+    proxy: %t`
 
-	link := "https://www.nyadm.net/"
-	resp, err := generate(link)
+	link := "https://tools.miku.ac/"
+	meta, err := queryMeta(link)
 	if err != nil {
 		fmt.Printf("err: %v\n", err)
 	}
@@ -27,9 +22,6 @@ func main() {
 		proxy = true
 	}
 
-	pureUrl, _ := url.Parse(link)
-	cid := pureUrl.Host
-
-	data := fmt.Sprintf(template, cid, resp.SiteTitle, link, resp.Address.Country, proxy)
+	data := fmt.Sprintf(template, meta.Title, link, meta.Description, proxy)
 	fmt.Println(data)
 }

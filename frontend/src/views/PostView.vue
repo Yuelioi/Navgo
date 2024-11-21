@@ -23,7 +23,7 @@
 
         <div class="">
           <div class="join input input-bordered gap-2 w-full hover:border-info">
-            <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
+            <div class="flex items-center justify-center pr-2 space-x-2">
               <span class="text-sm select-none">网址</span>
               <span class="icon-[lucide--link-2] size-5"></span>
             </div>
@@ -41,11 +41,11 @@
 
         <div class="">
           <div class="join flex input input-bordered gap-2 w-full hover:border-info">
-            <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
+            <div class="flex items-center justify-center pr-2 space-x-2">
               <span class="text-sm select-none">名称</span>
               <span class="icon-[lucide--case-lower] size-5"></span>
             </div>
-            <div class="divider"></div>
+            <!-- <div class="divider divider-neutral"></div> -->
 
             <input
               type="text"
@@ -60,7 +60,7 @@
 
         <div class="">
           <div class="join input input-bordered gap-2 w-full hover:border-info select-none">
-            <div class="flex border-r-2 items-center justify-center pr-3 space-x-2">
+            <div class="flex items-center justify-center pr-3 space-x-2">
               <span class="text-sm select-none">代理</span>
               <span class="icon-[lucide--utility-pole]"></span>
             </div>
@@ -75,10 +75,10 @@
 
         <!-- 图标 -->
         <div
-          class="flex border rounded-lg input-bordered select-none w-full hover:border-info"
+          class="flex border rounded-lg input-bordered items-center select-none w-full hover:border-info"
           contenteditable="true"
           @paste.prevent="handlePaste">
-          <div class="flex items-center justify-center w-full h-36 relative">
+          <div class="flex items-center justify-center w-full relative h-full min-h-48">
             <div class="absolute inset-3 left-4 w-fit">
               <div class="flex items-center justify-center space-x-2">
                 <span class="select-none">图标</span>
@@ -91,7 +91,9 @@
               class="flex w-full h-full items-center justify-center"
               @drop.prevent="handleDrag"
               v-if="icon === null">
-              <button class="h-full inline-flex items-center space-x-4" @click="openFileInput">
+              <button
+                class="h-full inline-flex items-center space-x-4 btn-wide"
+                @click="openFileInput">
                 <span class="select-none">拖拽/粘贴/上传</span>
                 <span class="icon-[lucide--arrow-big-up-dash] size-8"></span>
               </button>
@@ -103,15 +105,13 @@
                 accept="image/*" />
             </div>
 
-            <div
-              class="indicator border size-24 rounded-md border-base-content border-dashed"
-              v-if="icon !== null">
-              <div class="indicator-item">
-                <span class="btn btn-sm icon-[lucide--circle-x]" @click="icon = null"></span>
-              </div>
-              <div class="avatar p-2">
-                <div class="rounded-xl">
+            <div class="indicator size-36 rounded-md flex" v-if="icon !== null">
+              <div class="avatar justify-center">
+                <div class="rounded-xl p-2 border border-dashed border-base-content">
                   <img ref="iconRef" @error="imageLoadError" />
+                  <div class="indicator-item">
+                    <span class="btn btn-sm icon-[lucide--circle-x]" @click="icon = null"></span>
+                  </div>
                 </div>
               </div>
             </div>

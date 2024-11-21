@@ -28,7 +28,10 @@
     "frontend/vite.config.ts": true,
     "frontend/postcss.config.js": true,
     "frontend/src/main.ts": true,
-    "frontend/src/style.css": true
+    "frontend/src/style.css": true,
+    "frontend/src/hooks": true,
+    "frontend/public": true,
+    "frontend/e2e": true
   },
   "hide-files.files": [
     "frontend/auto-imports.d.ts",
@@ -53,7 +56,10 @@
     "frontend/vite.config.ts",
     "frontend/postcss.config.js",
     "frontend/src/main.ts",
-    "frontend/src/style.css"
+    "frontend/src/style.css",
+    "frontend/src/hooks",
+    "frontend/public",
+    "frontend/e2e"
   ],
   "commentTranslate.source": "Google"
 }

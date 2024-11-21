@@ -96,6 +96,16 @@ func urlToHostPort(link string) (string, error) {
 	return net.JoinHostPort(host, port), nil
 }
 
+func urlToHostName(link string) (string, error) {
+	// 提取主机名
+	u, err := url.Parse(link)
+	if err != nil {
+		return "", err
+	}
+
+	return u.Hostname(), nil
+}
+
 func rebuild() {
 	r := "C:\\Users\\yl\\Downloads\\output.yaml"
 

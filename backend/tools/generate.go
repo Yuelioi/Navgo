@@ -1,92 +1,83 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
 	"io"
-	"mime/multipart"
 	"net/http"
+	"net/url"
+	"os"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
 type Response struct {
-	Code            int     `json:"code"`
-	Cache           bool    `json:"cache"`
-	Lang            string  `json:"lang"`
-	Address         Address `json:"address"`
-	PrimaryIP       string  `json:"primary_ip"`
-	SiteTitle       string  `json:"site_title"`
-	SiteKeywords    string  `json:"site_keywords"`
-	SiteDescription string  `json:"site_description"`
-	FaviconIcon     string  `json:"favicon_icon"`
-	ServerID        int     `json:"server_id"`
-	URL             string  `json:"url"`
+	Link        string `json:"link"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Proxy       bool   `json:"proxy"`
 }
 
-// Address 结构体用于解析地址信息
-type Address struct {
-	Status      string  `json:"status"`
-	Country     string  `json:"country"`
-	CountryCode string  `json:"countryCode"`
-	Region      string  `json:"region"`
-	RegionName  string  `json:"regionName"`
-	City        string  `json:"city"`
-	Zip         string  `json:"zip"`
-	Lat         float64 `json:"lat"`
-	Lon         float64 `json:"lon"`
-	Timezone    string  `json:"timezone"`
-	Isp         string  `json:"isp"`
-	Org         string  `json:"org"`
-	As          string  `json:"as"`
-	Query       string  `json:"query"`
-}
+func queryMeta(link string) (*Response, error) {
 
-func generate(link string) (*Response, error) {
-
-	url := "https://apiv2.iotheme.cn/webinfo/get.php"
-	method := "POST"
-
-	payload := &bytes.Buffer{}
-	writer := multipart.NewWriter(payload)
-	_ = writer.WriteField("url", link)
-	_ = writer.WriteField("type", "json")
-	_ = writer.WriteField("key", "WyJNakF5TVRJMk16Z3hNalkzIiwiYTIxMVNHTktOR05LVDB0RVJscDRWMDVFTkRWaGRYVlBTR0o0UjJ4cSJd")
-	err := writer.Close()
+	_, err := url.Parse(link)
 	if err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
 
-	client := &http.Client{}
-	req, err := http.NewRequest(method, url, payload)
-
+	res, err := http.Get(link)
 	if err != nil {
-		fmt.Println(err)
-		return nil, err
-	}
-	req.Header.Add("referer", "https://nav.yuelili.com/")
-	req.Header.Add("Cookie", "PHPSESSID=0ufc4ll9vsk34r4cmmhi4ftfr3")
-
-	req.Header.Set("Content-Type", writer.FormDataContentType())
-	res, err := client.Do(req)
-	if err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
 	defer res.Body.Close()
 
-	body, err := io.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println(err)
+	// 检查响应状态码
+	if res.StatusCode != 200 {
 		return nil, err
 	}
 
-	resp := &Response{}
-	err = json.Unmarshal(body, resp)
+	doc, err := goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
+	}
+
+	title := doc.Find("title").Text()
+	description := doc.Find("meta[name='description']").AttrOr("content", "")
+
+	resp := &Response{
+		Title:       title,
+		Link:        link,
+		Proxy:       false,
+		Description: description,
+	}
+
+	err = downloadFavicon(link)
+	if err != nil {
 		return nil, err
 	}
 
 	return resp, err
+}
+
+func downloadFavicon(link string) error {
+	resp, err := http.Get(link)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	host, err := urlToHostName(link)
+	if err != nil {
+		return err
+	}
+
+	f, err := os.Create(host + ".png")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	_, err = io.Copy(f, resp.Body)
+	if err != nil {
+		return err
+	}
+	return nil
 }

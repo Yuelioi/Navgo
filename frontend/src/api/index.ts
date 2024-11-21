@@ -8,7 +8,7 @@ const apiUrl = '/api'
  * @description "获取通知"
  */
 export function announces() {
-  return axios.get<components.AnnouncesData>(apiUrl + `/v1/announces`)
+  return axios.get<{ data: components.AnnouncesData }>(apiUrl + `/v1/announces`)
 }
 
 /**

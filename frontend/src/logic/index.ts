@@ -54,10 +54,10 @@ export async function getLikes() {
   return []
 }
 
-export async function getAnnounces() {
+export async function getAnnounces(): Promise<api.AnnouncesData> {
   // 先清除历史记录 再添加
   // await db.clearData('announces')
-  return await query('announces', api.announces)
+  return (await api.announces()).data.data
 }
 
 export async function net(id: string) {

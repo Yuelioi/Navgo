@@ -1,0 +1,8 @@
+title: 综合
+cid: all
+order: 1
+collections:
+  - title: MikuTools - 一个轻量的工具集合
+    link: https://tools.miku.ac/
+    description: 一个轻量的工具集合
+    proxy: false

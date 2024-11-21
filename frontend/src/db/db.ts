@@ -161,6 +161,6 @@ class IndexDB {
 
 const db = new IndexDB('core')
 
-db.init(['collections', 'announces', 'likes'])
+db.init(['collections', 'likes'])
 
 export { db }

@@ -113,6 +113,7 @@ const currentAnnounce = ref<Announce>({
 
 onMounted(async () => {
   const data = await getAnnounces()
+
   announces.value = data['announces']
   currentAnnounce.value = announces.value[0]
   setInterval(() => {

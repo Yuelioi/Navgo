@@ -3,25 +3,22 @@
     <transition name="fade">
       <div
         v-if="show"
-        class="fixed top-0 left-0 z-40 w-screen h-screen bg-base-300 opacity-50 overlay base-300"></div>
+        class="fixed top-0 left-0 z-40 w-screen h-screen bg-base-300 opacity-50"></div>
     </transition>
     <transition name="bounce">
       <div v-if="show" class="fixed inset-0 flex items-center justify-center z-50">
-        <div
-          ref="dialogRef"
-          class="w-[80%] overflow-hidden min-w-[375px] min-h-[500px] max-h-[75vh] flex flex-col rounded-lg bg-base-200 overflow-y-auto">
-          <header
-            class="flex px-4 py-2 items-center text-sm text-base-100 justify-between bg-base-300 font-bold">
+        <div ref="dialogRef" class="overflow-hidden p-4 flex flex-col rounded-lg overflow-y-auto">
+          <header class="flex px-4 py-2 items-center text-sm justify-between bg-base-300">
             <slot name="header">
-              <span>{{ title }}</span>
+              <span class="font-bold">{{ title }}</span>
             </slot>
-
             <span class="icon-[ic--round-close] size-6 mx-1" @click="show = false"></span>
           </header>
-          <main
-            class="text-base-content bg-base-100 shadow-lg rounded-lg overflow-x-hidden overflow-y-scroll">
+
+          <main class="text-base-content bg-base-200 shadow-lg rounded-lg overflow-y-auto">
             <slot></slot>
           </main>
+
           <footer>
             <slot name="footer"></slot>
           </footer>
@@ -42,16 +39,9 @@ defineProps({
 const show = defineModel('show', { default: false, required: true })
 const dialogRef = ref<HTMLElement | null>(null)
 
-const closeDialog = () => {
-  show.value = false
-}
-
 const handleClickOutside = (e: MouseEvent) => {
-  console.log(dialogRef.value)
-  console.log(e.target)
-
   if (dialogRef.value && !dialogRef.value.contains(e.target as Node)) {
-    closeDialog()
+    show.value = false
   }
 }
 

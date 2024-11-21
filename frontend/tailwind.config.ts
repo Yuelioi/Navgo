@@ -42,40 +42,50 @@ export default {
     themes: [
       {
         light: {
-          primary: '#3056d3',
-          secondary: '#00aeec',
-          accent: '#ff6a9b',
-          neutral: '#22212c',
-          'neutral-content': '#f8fafc',
-
+          primary: '#444dc8',
+          'primary-content': '#d5dcf7',
+          secondary: '#d65c4e',
+          'secondary-content': '#100302',
+          accent: '#38d05c',
+          'accent-content': '#011003',
+          neutral: '#262931',
+          'neutral-content': '#cfd0d2',
           'base-100': '#ebecf0',
           'base-200': '#f6f6f7',
           'base-300': '#ffffff',
-          'base-content': '#0f172a',
-
-          info: '#3056d3',
-          success: '#00bd8d',
-          warning: '#fd621d',
-          error: '#f14767'
+          'base-content': '#121414',
+          info: '#2563EB',
+          'info-content': '#d2e2ff',
+          success: '#16A34A',
+          'success-content': '#000a02',
+          warning: '#D97706',
+          'warning-content': '#110500',
+          error: '#DC2626',
+          'error-content': '#ffd9d4'
         }
       },
       {
         dark: {
-          primary: '#3056d3',
-          secondary: '#4ac7ff',
-          accent: '#ff6699',
-          neutral: '#a3a7af',
-          'neutral-content': '#f8fafc',
-
-          'base-100': '#16181d',
-          'base-200': '#2a2e37',
-          'base-300': '#2f323c',
-          'base-content': '#f8fafc',
-
-          info: '#3056d3',
-          success: '#00bd8d',
-          warning: '#ffa200',
-          error: '#dc4244'
+          primary: '#444dc8',
+          'primary-content': '#d5dcf7',
+          secondary: '#bc2f5b',
+          'secondary-content': '#f7d7dc',
+          accent: '#58c27c',
+          'accent-content': '#030e05',
+          neutral: '#3d4451',
+          'neutral-content': '#d5d6da',
+          'base-100': '#1f2937',
+          'base-200': '#19222e',
+          'base-300': '#141c26',
+          'base-content': '#cdd0d3',
+          info: '#2563EB',
+          'info-content': '#d2e2ff',
+          success: '#16A34A',
+          'success-content': '#000a02',
+          warning: '#D97706',
+          'warning-content': '#110500',
+          error: '#DC2626',
+          'error-content': '#ffd9d4'
         }
       }
     ]
