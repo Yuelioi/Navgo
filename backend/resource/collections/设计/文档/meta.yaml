@@ -2,3 +2,6 @@ title: 文档
 cid: docs
 order: 6
 collections:
+  - title: 数字色彩漫游指南
+    link: https://hg2dc.com/
+    description: 这是一系列文章，旨在帮助您（图像制作者）在充满数字色彩的世界中生存。如果您对数字色彩感到困惑，那不是您的错

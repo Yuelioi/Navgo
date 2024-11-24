@@ -5,24 +5,57 @@ collections:
   - title: LookAE.com
     link: https://www.lookae.com/
     description: LookAE.com 是大众脸为您提供的CG后期技术交流平台，欢迎您的到来。
-    proxy: false
   - title: C4DSKY
     link: https://c4dsky.com/
     description: AK Element 3d Videocopilot ,AEP ​cinema 4d AE C4D R20 教程 插件 中文字幕教程 汉化插件CG教程 CG素材-C4DSKY-书生-fcpx videohive 免费AE模板 Realflow
-    proxy: false
   - title: 龋齿一号GFXCamp
     link: https://www.gfxcamp.com/
     description: 最新最热CG资源分享,龋齿一号GFXCamp,CG营地,视频素材,AE模板,CG教程,插件,软件
-    proxy: false
   - title: flashback
     link: https://flashbackj.com/
     description: 外国正版插件/PDF购买网站
-    proxy: false
   - title: aescripts
     link: https://aescripts.com/
     description: Just a moment...
-    proxy: false
+  - title: 韬客AE
+    link: https://www.talkae.com/
+    description: AE插件,脚本,模板
+  - title: C4D中国网 - Cinema 4D 设计与资源平台
+    link: https://www.c4dcn.com/
+    description: C4D中国网是 Cinema 4D (C4D) 设计师的专属平台，提供C4D相关教程、资源、插件下载以及创作灵感，致力于为C4D用户提供全面的支持。
+  - title: AboutCG - 数字艺术与CG设计社区
+    link: https://www.aboutcg.com/
+    description: AboutCG 是一个专注于数字艺术和计算机图形设计的社区，提供专业的CG教程、资源分享、行业资讯和创作者交流平台。
+  - title: CGown - 3D 动画与模型资源平台
+    link: https://www.cgown.com/
+    description: CGown 是一个为 3D 动画和模型制作提供资源的平台，提供各种3D模型、材质、纹理、动画以及相关工具，适用于CG艺术家和设计师。
+  - title: VFXCool - CG 与影视特效资源平台
+    link: https://www.vfxcool.com/
+    description: VFXCool 专注于CG与影视特效行业，提供高质量的教程、插件、素材及创意资源，帮助设计师和艺术家提升制作效率与技能。
+  - title: CGPeers - CG 资源共享与学习社区
+    link: https://cgpeers.to/
+    description: CGPeers 是一个面向计算机图形（CG）艺术家的资源共享与学习平台，提供大量教程、插件、素材等资源，是CG从业者的优质工具。
+  - title: 画忆妙妙屋
+    link: https://www.iiicg.com/
+    description: CGc场景资源
+  - title: CG资源网 - CG 设计与影视素材下载平台
+    link: https://www.cgzyw.com/
+    description: CG资源网提供丰富的CG设计与影视素材，包括模型、贴图、特效模板、插件和教程，是设计师和影视后期制作者的资源宝库。
   - title: BOOTH
     link: https://booth.pm/zh-cn
     description: 外国正版软件/脚本/模型购买
-    proxy: false
+  - title: 魔顿网 - 免费C4D资源下载，魔顿让设计更高效
+    link: http://www.modown.cn/
+    description: 免费C4D资源下载 | 魔顿让设计更高效，提供免费c4d模型、插件、纹理贴图等资源分享
+  - title: 果味酱CG小屋
+    link: https://www.aegwj.com/
+    description: aepr 免费素材插件脚本预设模板，国外教程中文字幕
+  - title: CGer.com
+    link: https://www.cger.com
+    description: CG儿,Ghostxx,CG网站,设计网站,网站收藏,设计网站,建筑网站导航,艺术设计网站,网站导航,资源下载,教程下载 - CGer资源网
+  - title: CG Persia
+    link: https://cgpersia.com/
+    description:
+  - title: MOTIONBOX
+    link: https://motion-box.net/
+    description: 工程分享

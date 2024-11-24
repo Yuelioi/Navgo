@@ -1,28 +1,12 @@
 <template>
-  <div class="overflow-hidden h-full w-full container">
-    <!-- <div class="sticky top-1/4 xl:block hidden">
-      <div class="absolute right-16">
-        <div class="card card-compact bg-base-100 p-4 w-64 shadow-xl">
-          <div class="card-body">
-            <h2 class="card-title">使用说明</h2>
-            <ul class="steps steps-vertical">
-              <li class="step step-accent font-bold">输入网址</li>
-              <li class="step step-accent font-bold">单击一键填写</li>
-              <li class="step step-accent font-bold">上传图片(非必要)</li>
-              <li class="step step-accent font-bold">提交</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <div class="flex mt-8 h-full">
-      <div class="grid w-full p-6 space-y-2 bg-base-300 rounded-md">
+  <div class="h-full w-full container">
+    <div class="flex py-8 h-full">
+      <div class="grid w-full p-6 space-y-2 shadow-xl">
         <div class="">投稿</div>
         <div class="divider my-0"></div>
 
         <div class="">
-          <div class="join input input-bordered gap-2 w-full hover:border-info">
+          <div class="join input input-bordered gap-2 w-full">
             <div class="flex items-center justify-center pr-2 space-x-2">
               <span class="text-sm select-none">网址</span>
               <span class="icon-[lucide--link-2] size-5"></span>
@@ -40,12 +24,11 @@
         </div>
 
         <div class="">
-          <div class="join flex input input-bordered gap-2 w-full hover:border-info">
+          <div class="join flex input input-bordered gap-2 w-full">
             <div class="flex items-center justify-center pr-2 space-x-2">
               <span class="text-sm select-none">名称</span>
               <span class="icon-[lucide--case-lower] size-5"></span>
             </div>
-            <!-- <div class="divider divider-neutral"></div> -->
 
             <input
               type="text"
@@ -58,24 +41,9 @@
           </div>
         </div>
 
-        <div class="">
-          <div class="join input input-bordered gap-2 w-full hover:border-info select-none">
-            <div class="flex items-center justify-center pr-3 space-x-2">
-              <span class="text-sm select-none">代理</span>
-              <span class="icon-[lucide--utility-pole]"></span>
-            </div>
-            <div class="divider"></div>
-            <div class="flex flex-1 items-center select-none">
-              <span class="text-sm opacity-45">如果需要科学上网, 请打勾</span>
-
-              <input type="checkbox" checked class="ml-auto checkbox" v-model="proxy" />
-            </div>
-          </div>
-        </div>
-
         <!-- 图标 -->
         <div
-          class="flex border rounded-lg input-bordered items-center select-none w-full hover:border-info"
+          class="flex border rounded-lg input-bordered items-center select-none w-full focus-within:outline-info"
           contenteditable="true"
           @paste.prevent="handlePaste">
           <div class="flex items-center justify-center w-full relative h-full min-h-48">
@@ -118,7 +86,7 @@
           </div>
         </div>
         <textarea
-          class="textarea w-full textarea-bordered hover:border-info"
+          class="textarea w-full textarea-bordered"
           placeholder="网址介绍"
           v-model="form.description"></textarea>
         <div v-if="errorFields?.description" class="text-warning !my-1">
@@ -143,7 +111,7 @@ import { addCollection } from '@/api'
 import { net } from '@/logic'
 import { useAsyncValidator } from '@vueuse/integrations/useAsyncValidator'
 import type { Rules } from 'async-validator'
-
+import { imageLoadError } from '@/utils'
 const fileInput = useTemplateRef<HTMLInputElement | null>('fileInput')
 const iconRef = useTemplateRef<HTMLImageElement>('iconRef')
 
@@ -170,15 +138,7 @@ const rules: Rules = {
 
 const { pass, errorFields } = useAsyncValidator(form, rules)
 
-const proxy = ref(false)
 const icon = ref<File | null>(null)
-
-function imageLoadError(event: Event) {
-  const target = event.target as HTMLImageElement
-  if (target) {
-    target.style.display = 'none'
-  }
-}
 
 // 处理拖拽图片事件
 function handleDrag(event: DragEvent) {
@@ -239,7 +199,6 @@ async function queryMeta() {
     Message({ message: '获取成功...' })
     form.link = form.link || data.title
     form.description = form.description || data.description || ''
-    proxy.value = data.proxy || false
   } else {
     Message({ message: '获取失败...', type: 'warn' })
   }
@@ -251,7 +210,6 @@ async function handleSubmit() {
   formData.append('title', form.title)
   formData.append('link', form.link)
   formData.append('description', form.description)
-  formData.append('proxy', proxy.value.toString())
 
   if (icon.value) {
     formData.append('favicon', icon.value, icon.value?.name)

@@ -2,3 +2,9 @@ title: 综合
 cid: all
 order: 10
 collections:
+  - title: Pixabay - 免费图片、视频与音乐资源平台
+    link: https://pixabay.com/
+    description: Pixabay 提供高质量的免费图片、插画、视频和音乐资源，可商用且无需署名，是设计师和创作者的优质素材库。
+  - title: 爱给网 - 免费素材共享平台
+    link: https://www.aigei.com/
+    description: 爱给网是一个提供免费音效、音乐、模型、视频素材的共享平台，适用于设计师、动画师和视频创作者获取优质资源。

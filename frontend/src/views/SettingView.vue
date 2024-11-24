@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="flex w-full mt-8">
-      <div class="flex bg-base-200 w-full flex-col p-6 space-y-4">
+      <div class="flex w-full flex-col p-6 space-y-4 border rounded-md">
         <div class="font-bold flex items-center justify-between">
           <span class="font-bold">个性化设置</span>
         </div>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="mt-12 overflow-y-scroll">
-      <div class="flex bg-base-200 w-full flex-col p-6 space-y-4">
+      <div class="flex shadow-md border rounded-md w-full flex-col p-6 space-y-4">
         <div class="font-bold flex items-center justify-between">
           <span class="font-bold">收藏设置</span>
         </div>
@@ -65,7 +65,7 @@
             <div class="font-bold">尚未保存</div>
           </div>
         </div>
-        <table class="table bg-base-200 rounded-none">
+        <table class="table rounded-none">
           <!-- head -->
           <thead>
             <tr class="font-bold">
@@ -118,18 +118,11 @@
 <script setup lang="ts">
 import { type Collection } from '@/api'
 import { db } from '@/db/db'
-
+import { imageLoadError } from '@/utils'
 const isModify = ref(false)
 
 const store = useBasicStore()
 const { likeCollectionsList, showMyCollection, showWebCollection, showFooter } = storeToRefs(store)
-
-function imageLoadError(event: Event) {
-  const target = event.target as HTMLImageElement
-  if (target) {
-    target.style.display = 'none'
-  }
-}
 
 function removeCollection(id: number) {
   likeCollectionsList.value.splice(id, 1)
@@ -148,7 +141,6 @@ async function saveCollections() {
         cid: parsedUrl.hostname,
         title: collection.title,
         description: collection.description,
-        proxy: collection.proxy,
         link: collection.link,
         favicon: collection.favicon
       }
@@ -164,7 +156,8 @@ function addLike() {
     likeCollectionsList.value.push({
       cid: '',
       title: '',
-      link: ''
+      link: '',
+      category: { title: '' }
     })
     isModify.value = true
   } else {

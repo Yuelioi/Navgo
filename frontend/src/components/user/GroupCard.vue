@@ -1,9 +1,9 @@
 <template>
-  <div class="p-4 cursor-pointer" v-for="collection in collections">
+  <div class="p-2 md:p-4 cursor-pointer" v-for="collection in collections">
     <!-- 单个链接卡片 -->
     <div
-      class="bg-base-300 shadow-md p-4 group hover:ring-2 ring-primary hover:scale-105 rounded-md">
-      <div class="h-28 flex flex-col">
+      class="bg-base-100 shadow-md px-4 md:py-4 group hover:ring-2 ring-primary hover:scale-105 rounded-md">
+      <div class="h-20 md:h-28 flex flex-col">
         <div class="flex flex-row flex-1 items-center relative" @click="open(collection.link)">
           <div class="avatar static size-12">
             <div class="h-full rounded-xl">
@@ -39,11 +39,10 @@
           </div>
         </div>
 
-        <div class="border my-2"></div>
+        <div class="border hidden md:block my-2"></div>
 
         <!-- PC端 -->
         <div class="h-6 md:flex items-center hidden">
-          <div class="badge badge-ghost" v-if="collection.proxy">需要代理</div>
           <div class="" v-for="tag in collection.tags">
             <div class="badge badge-ghost">{{ tag }}</div>
           </div>
@@ -72,6 +71,8 @@ import router from '@/router'
 import { db } from '@/db/db'
 import type { Collection } from '@/api'
 
+import { imageLoadError } from '@/utils'
+
 const store = useBasicStore()
 
 const { likeCollectionsList, isAdmin } = storeToRefs(store)
@@ -79,13 +80,6 @@ const { likeCollectionsList, isAdmin } = storeToRefs(store)
 const props = defineProps<{
   collections: Collection[]
 }>()
-
-function imageLoadError(event: Event) {
-  const target = event.target as HTMLImageElement
-  if (target) {
-    target.style.display = 'none'
-  }
-}
 
 async function like(collection: Collection) {
   const id = likeCollectionsList.value.findIndex((ele) => {
@@ -100,7 +94,6 @@ async function like(collection: Collection) {
       cid: collection.cid,
       title: collection.title,
       description: collection.description,
-      proxy: collection.proxy,
       link: collection.link,
       favicon: collection.favicon
     }

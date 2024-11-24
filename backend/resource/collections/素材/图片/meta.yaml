@@ -5,16 +5,12 @@ collections:
   - title: The Pattern Library
     link: http://thepatternlibrary.com/
     description: 随机背景
-    proxy: false
   - title: pixabay 图片视频
     link: https://pixabay.com/
     description: Just a moment...
-    proxy: false
   - title: IconPark | 字节
     link: https://iconpark.oceanengine.com/home
     description: IconPark, park your icon. Made by ByteDance
-    proxy: false
   - title: Font Awesome
     link: https://fontawesome.com/
     description: The world’s most popular and easiest to use icon set just got an upgrade. More icons. More styles. More Options.
-    proxy: false

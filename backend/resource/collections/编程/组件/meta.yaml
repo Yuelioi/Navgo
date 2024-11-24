@@ -5,8 +5,6 @@ collections:
   - title: 组件CSS样式库
     link: https://uiverse.io/
     description: ""
-    proxy: false
   - title: Ant Design
     link: https://ant.design/index-cn
     description: 蚂蚁集团UI设计语言以及React组件库
-    proxy: false

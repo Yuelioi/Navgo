@@ -22,17 +22,17 @@
       <div class="w-full flex-1l">
         <!-- 个人收藏 -->
         <div
-          class="card relative bg-base-200 shadow-md hover:shadow-lg my-8"
+          class="card bg-base-200 shadow-md hover:shadow-lg my-8"
           id="love"
           v-if="showMyCollection">
           <CatTitle :title="'我的收藏'"></CatTitle>
 
-          <div class="card-body mt-6 min-h-36 px-1">
+          <div class="card-body md:mt-6 px-1">
             <div class="flex flex-col w-full space-x-4">
               <div class="grid grid-cols-card relative" v-if="likeCollectionsList.length > 0">
                 <AsyncGroupCard :collections="likeCollectionsList"></AsyncGroupCard>
               </div>
-              <div class="select-none ml-4" v-else>
+              <div class="select-none mx-4" v-else>
                 <div>
                   还没有收藏哦, 请先收藏网站,或者在
                   <span class="font-bold px-2">"设置>我的收藏"</span>
@@ -45,7 +45,7 @@
 
         <!-- 网站导航 -->
         <div
-          class="card relative bg-base-200 shadow-md hover:shadow-lg my-8"
+          class="card bg-base-200 shadow-md hover:shadow-lg my-8"
           :id="data.category.cid"
           v-if="showWebCollection"
           v-for="(data, index) in collectionsDatas">
@@ -87,7 +87,7 @@ const { collectionsDatas, likeCollectionsList, showMyCollection, showWebCollecti
   storeToRefs(store)
 
 const AsyncGroupCard = defineAsyncComponent({
-  loader: () => import('../components/GroupCard.vue')
+  loader: () => import('../components/user/GroupCard.vue')
 })
 
 const announces = ref<Announce[]>([])

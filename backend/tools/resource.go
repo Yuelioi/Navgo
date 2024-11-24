@@ -40,12 +40,11 @@ type Collection struct {
 	Link  string `json:"link"`
 	// CategoryID string `json:"-" gorm:"column:category_id;index"` // 外键字段
 	// Category    Category `json:"category" gorm:"foreignKey:CategoryID;references:CID"`
-	Description string `json:"description,optional"`
-	Country     string `json:"country,optional"`
-	Proxy       bool   `json:"proxy,optional"`
-	Favicon     string `json:"favicon,optional"`
-	// Tags        []string `json:"tags,optional" gorm:"type:json"`
-	View int `json:"view,optional"`
+	Description string   `json:"description,optional"`
+	Country     string   `json:"country,optional"`
+	Favicon     string   `json:"favicon,optional"`
+	Tags        []string `json:"tags,optional" gorm:"type:text[]"`
+	View        int      `json:"view,optional"`
 }
 
 // err => 需要代理
@@ -122,10 +121,9 @@ func rebuild() {
 			}
 			c[index].CID = parseUlr.Hostname()
 			err = ping(site.Link)
-			c[index].Proxy = false
 			if err != nil {
 				fmt.Println("ping err", site.Link, err)
-				c[index].Proxy = true
+				c[index].Tags = append(c[index].Tags, "代理")
 			}
 
 		}

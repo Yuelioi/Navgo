@@ -4,9 +4,9 @@
 export interface AnyRequest {}
 
 export interface Category {
-  iD: number
-  createdAt: string
-  updatedAt: string
+  id?: number
+  createdAt?: string
+  updatedAt?: string
   cid?: string
   depth?: number
   title: string
@@ -32,12 +32,11 @@ export interface Collection {
   createdAt?: string
   updatedAt?: string
   cid: string
-  proxy?: boolean
   title: string
   link: string
   path?: string
   categoryID?: string // 外键字段
-  category?: Category
+  category: Category
   description?: string
   country?: string
   favicon?: string

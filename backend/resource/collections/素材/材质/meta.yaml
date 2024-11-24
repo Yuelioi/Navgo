@@ -5,19 +5,15 @@ collections:
   - title: Poly Haven
     link: https://polyhaven.com/
     description: The Public 3D Asset Library
-    proxy: false
   - title: Hdri Sky
     link: https://hdri-skies.com/
     description: ""
-    proxy: false
   - title: Textures for 3D
     link: https://www.textures.com/
     description: Textures for 3D, graphic design and Photoshop!
-    proxy: false
   - title: ambientcg
     link: https://ambientcg.com/
     description: ""
-    proxy: false
   - title: Texturelabs
     link: https://texturelabs.org/
     description: 高质量纹理材质资源站，原创+免费。同名Youtube频道有相关Ps与Ae教程。
@@ -25,20 +21,15 @@ collections:
   - title: cgbookcase
     link: https://www.cgbookcase.com/textures
     description: PBR纹理
-    proxy: false
   - title: 材质忍者
     link: https://texture.ninja/
     description: ""
-    proxy: false
   - title: Texturebox
     link: https://texturebox.com/category
     description: Texturebox - Free and Premium Seamless PBR textures, photoscanned 3d models for archviz and games
-    proxy: false
   - title: MaterialX Library
     link: https://matlib.gpuopen.com/main/materials/all
     description: MaterialX 库是完全免费提供的高质量材料和相关纹理的集合。
-    proxy: false
   - title: ponzu 贴图在线生成!
     link: https://www.ponzu.gg/
     description: ""
-    proxy: false

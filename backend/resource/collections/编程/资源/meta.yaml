@@ -5,44 +5,33 @@ collections:
   - title: 在线生成MD表格
     link: http://web.chacuo.net/charsettextmarkdown
     description: ""
-    proxy: false
   - title: 代码片段生成器
     link: https://snippet-generator.app/
     description: 哈哈哈 懒癌必备
-    proxy: false
   - title: codepen 在线写html
     link: https://codepen.io/
     description: Attention Required! | Cloudflare
-    proxy: false
   - title: CSS格式化
     link: http://www.lonniebest.com/FormatCSS/
     description: This is, quite possibly, the best computer automated card trick on the Internet.
-    proxy: false
   - title: 在线编程 | 多语言
     link: https://rextester.com/l/octave_online_compiler
     description: compile c# online
-    proxy: false
   - title: 在线编程2 | 多语言
     link: https://www.onlinegdb.com/
     description: Online GDB is online compiler and debugger for C/C++. You can compile, run and debug code with gdb online. Using gcc/g++ as compiler and gdb as debugger. Currently C and C++ languages are supported.
-    proxy: false
   - title: regex101 正则
     link: https://regex101.com/
     description: ""
-    proxy: false
   - title: Overleaf | Latex
     link: https://www.overleaf.com/
     description: An online LaTeX editor that’s easy to use. No installation, real-time collaboration, version control, hundreds of LaTeX templates, and more.
-    proxy: false
   - title: 力扣
     link: https://leetcode.cn/
     description: 力扣
-    proxy: false
   - title: AtCoder
     link: https://atcoder.jp/
     description: AtCoder is a programming contest site for anyone from beginners to experts. We hold weekly programming contests online.
-    proxy: false
   - title: Codeforces
     link: http://codeforces.com/
     description: Codeforces. Programming competitions and contests, programming community
-    proxy: false

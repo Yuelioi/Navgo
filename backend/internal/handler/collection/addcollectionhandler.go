@@ -8,7 +8,6 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
-	"strconv"
 
 	"backend/internal/common/cache"
 	global "backend/internal/common/constants"
@@ -52,7 +51,6 @@ func saveFile(w http.ResponseWriter, r *http.Request, file multipart.File, dir, 
 func parseForm(r *http.Request) (*types.Collection, error) {
 	link := r.FormValue("link")
 	title := r.FormValue("title")
-	proxy, _ := strconv.ParseBool(r.FormValue("proxy"))
 	description := r.FormValue("description")
 
 	linkRaw, err := url.Parse(link)
@@ -72,8 +70,7 @@ func parseForm(r *http.Request) (*types.Collection, error) {
 		Link:        link,
 		Order:       order,
 		Path:        "",
-		Proxy:       proxy,
-		CategoryID:  "",
+		CategoryID:  0,
 		Category:    cat,
 		Description: description,
 		Favicon:     "",

@@ -15,7 +15,7 @@ export const useBasicStore = defineStore('basic', () => {
   const dbVersion = useStorage('currentSearch', 1)
   const currentSearchName = useStorage('currentSearch', '百度')
   const theme = useStorage('theme', 'light')
-  const collapseNav = useStorage('collapseNav', false)
+  const isCollapsedNav = useStorage('isCollapsedNav', false)
   const isAdmin = useStorage('isAdmin', false)
   const showMyCollection = useStorage('showMyCollection', true)
   const showWebCollection = useStorage('showWebCollection', true)
@@ -32,7 +32,7 @@ export const useBasicStore = defineStore('basic', () => {
     collectionsDatas,
     collectionsList,
     collectionsMap,
-    collapseNav,
+    isCollapsedNav,
     theme,
     isScrollDown,
     currentSearchName,

@@ -1,0 +1,51 @@
+title: 其他
+cid: other
+order: 1
+collections:
+  - title: MikuTools
+    link: https://tools.miku.ac/
+    description: MikuTools - 一个轻量的工具集合
+  - title: 站搜搜
+    link: https://www.zhansousou.com/
+    description: 站搜搜（zhansousou.com）：输入网站名字直接进站，进站就是这么简单。
+  - title: 国外网站排行
+    link: https://www.egouz.com/
+    description: 看看外国人在用什么网站
+  - title: 站搜搜
+    link: https://www.zhansousou.com/
+    description: 站搜搜（zhansousou.com）：输入网站名字直接进站，进站就是这么简单。
+  - title: Pinbox
+    link: https://withpinbox.com/explore
+    description: Pinbox 的一个分区,可以看别的用户收藏了什么网站
+  - title: 八千网址导航
+    link: https://www.8kmm.com/
+    description: 八千导航(8kmm.com)是国内首屈一指的导航分类平台，收录国内外各类型网站供网友检索，八千网址导航致力于为广大用户推荐各行各业优秀网站，国内外网站大全尽在八千导航。
+  - title: 搜奇导航
+    link: https://www.sjsdh.cn/
+    description: ""
+  - title: 搜奇导航
+    link: https://www.sjsdh.cn/
+    description: ""
+  - title: 小呆CG导航
+    link: https://webjike.com/
+    description: 小呆导航是一个可自定义的简洁多领域网址导航，收录了前端开发、设计师、影视后期、日常办公等领域优质网站，为广大用户提供高效率的上网导航服务。
+    tags: [导航站]
+  - title: VFXinfo网址导航
+    link: https://cg.vfxer.me/
+    description: CG行业精英人士必备导航
+    tags: [导航站]
+  - title: Design Resources
+    link: https://designresourc.es/
+    description: Design Resources 是一个展示最佳资源、工作和网站的设计画廊。
+  - title: 搜图导航
+    link: https://www.91sotu.com/
+    description: 搜图导航精选及整理国内外优秀的设计行业网站,并且提供一站式快速搜索图像服务支持全网正版图片搜索。拥有以图搜图、智能配色、字体生成、个性定制等功能。给你带来更好的搜图体验,并且收录了十几类设计相关网站包括高清图库、灵感创意、素材资源、教程文章、设计工具、绘画涂鸦、建模贴图、设计社区、字体下载、图标下载等网站。
+  - title: 设宝导航
+    link: https://hao.sheboo.com/
+    description: 设宝导航精选设计界国内外优质好网，打造设计师最全面的设计网址导航。网站推荐包含免费素材,设计工具,图片搜索,免费图标,免费教程以及设计黑科技；还有更多有趣、冷门的优质好网等你发现！
+  - title: 奇迹秀
+    link: https://www.qijishow.com/down/navigation.html
+    description: 奇迹秀是一个公益组织，为设计师提供设计干货及资源，站内所有收集的资源都能免费下载，且资源都经过组织成员测试后再发布，保证资源绿色，大家可放心使用，
+  - title: 在线工具
+    link: https://tool.lu/
+    description: 挺杂的

@@ -3,6 +3,8 @@
 
 package types
 
+import "github.com/lib/pq"
+
 type Announce struct {
 	Model
 	Title   string `json:"title"`
@@ -34,11 +36,10 @@ type Collection struct {
 	Description string    `json:"description,optional"`
 	Order       int       `json:"order,optional,omitempty" gorm:"column:order"`
 	Path        string    `json:"path,optional,omitempty" gorm:"column:path;unique"`
-	Proxy       bool      `json:"proxy,optional,omitempty" gorm:"column:proxy"`
-	CategoryID  string    `json:"-,omitempty" gorm:"column:category_id;index"` // 外键字段
+	CategoryID  uint      `json:"-,omitempty" gorm:"column:category_id;index"` // 外键字段
 	Category    *Category `json:"category,omitempty" gorm:"foreignKey:CategoryID;references:ID"`
 	Favicon     string    `json:"favicon,optional,omitempty"`
-	Tags        []string  `json:"tags,optional,omitempty" gorm:"type:json"`
+	Tags        pq.StringArray  `json:"tags,optional,omitempty" gorm:"type:text[]"`
 	View        int       `json:"view,optional,omitempty"`
 }
 
@@ -96,9 +97,9 @@ type Statistics struct {
 }
 
 type TagRequest struct {
-	Tags []string `json:"tags"`
+	Tags pq.StringArray `json:"tags"`
 }
 
 type TagsResponse struct {
-	Tags []string `json:"tags"`
+	Tags pq.StringArray `json:"tags"`
 }

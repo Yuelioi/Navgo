@@ -5,16 +5,12 @@ collections:
   - title: TurboSquid
     link: https://www.turbosquid.com/
     description: Buy 3D models for your project from our vast online catalog of cars, people, textures, architectural models and more.
-    proxy: false
   - title: Sketchfab
     link: https://sketchfab.com/feed
-    description: With a community of over one million creators, we are the world’s largest platform to publish, share, and discover 3D content on web, mobile, AR, and VR.
-    proxy: false
+    description: 我们拥有超过一百万创作者的社区，是全球最大的在网络、移动设备、AR 和 VR 上发布、共享和发现 3D 内容的平台。
   - title: Free 3D
     link: https://free3d.com/
     description: Just a moment...
-    proxy: false
   - title: Mixamo动画库
     link: https://www.mixamo.com/#/
     description: Mixamo
-    proxy: false

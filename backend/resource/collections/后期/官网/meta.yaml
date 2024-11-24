@@ -5,28 +5,21 @@ collections:
   - title: Unreal
     link: https://www.unrealengine.com/
     description: Unreal Engine is the world’s most open and advanced real-time 3D creation tool for photoreal visuals and immersive experiences.
-    proxy: false
   - title: Nuke
     link: https://www.foundry.com/
     description: Foundry creates pioneering software for creative industries across Digital Design, Media and Entertainment.
-    proxy: false
   - title: Smith Micro
     link: https://www.smithmicro.com/
     description: Proven Solutions For Wireless Service Providers To Enrich Today&#039;s Connected Lifestyles And Engage Consumers Via Smartphones And Consumer IoT
-    proxy: false
   - title: Autodesk
     link: https://www.autodesk.com/
     description: Autodesk is a global leader in design and make technology, with expertise across architecture, engineering, construction, design, manufacturing, and entertainment.
-    proxy: false
   - title: Maxon
     link: https://www.maxon.net
     description: Maxon tools include the award-winning Cinema 4D suite of 3D modeling, simulation and animation technology, the Red Giant lineup of revolutionary editing,…
-    proxy: false
   - title: Substance
     link: https://substance3d.adobe.com/community-assets/
     description: ""
-    proxy: false
   - title: ZBrush
     link: http://pixologic.com/
     description: Find ZBrush Retailers, and stores that offer product sales, pricing and purchase.
-    proxy: false

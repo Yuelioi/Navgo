@@ -5,16 +5,12 @@ collections:
   - title: neumorphism
     link: https://neumorphism.io/#D1D8EC
     description: 拟物风格生成器
-    proxy: false
   - title: 酷背景
     link: https://coolbackgrounds.io/
     description: ""
-    proxy: false
   - title: 二维码生成
     link: https://www.qtool.net/qrcode
     description: qtool在线工具为大家提供各种在线工具,实现分享了在线开发类,查询类,站长类,代码格式化与代码压缩处理,代码在线加密与解密,生活查询,图片在线批量处理,图片生成等内容丰富实用的工具.
-    proxy: false
   - title: Javascript 混淆
     link: https://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
     description: Javascript Obfuscator - Protects JavaScript code from stealing and shrinks size - 100% Free
-    proxy: false

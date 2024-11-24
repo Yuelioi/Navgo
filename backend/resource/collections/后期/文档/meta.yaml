@@ -5,40 +5,30 @@ collections:
   - title: 动效周期表
     link: http://foxcodex.html.xdomain.jp/index.html
     description: motiontable
-    proxy: false
   - title: CGWiki
     link: https://www.tokeru.com/cgwiki/
     description: ""
-    proxy: false
   - title: Adobe Help Center
     link: https://helpx.adobe.com/cn/after-effects/user-guide.html
     description: Adobe Help Center
-    proxy: false
   - title: Houdini文档
     link: https://www.sidefx.com/docs/
     description: Houdini - 3D modeling, animation, VFX, look development, lighting and rendering | SideFX
-    proxy: false
   - title: Blender文档
     link: https://docs.blender.org/
     description: ""
-    proxy: false
   - title: C4D文档
     link: https://help.maxon.net/c4d/en-us/
     description: ""
-    proxy: false
   - title: Red Giant文档
     link: https://help.maxon.net/rg
     description: ""
-    proxy: false
   - title: RS文档
     link: https://help.maxon.net/r3d/
     description: redshift3d Home - redshift3d - Global Site
-    proxy: false
   - title: OC文档
     link: https://help.otoy.com/hc/
     description: ""
-    proxy: false
   - title: BCC文档
     link: https://borisfx.com/documentation/continuum/bcc-user-guide/
     description: ""
-    proxy: false

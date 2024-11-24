@@ -5,8 +5,6 @@ collections:
   - title: Creative COW
     link: https://creativecow.net/forums/forum/adobe-after-effects/
     description: 上古论坛,至今仍在活跃
-    proxy: false
   - title: motionisland
     link: https://blog.motionisland.com/
     description: 教程/文档/技巧
-    proxy: false

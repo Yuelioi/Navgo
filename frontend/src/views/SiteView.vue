@@ -21,7 +21,7 @@
     <div class="flex w-full h-full items-center justify-center">
       <div
         class="flex flex-col space-y-4 self-center w-1/3 bg-base-300 rounded-md p-8 items-center justify-center">
-        <div class="join input input-bordered gap-2 w-full hover:border-info">
+        <div class="join input input-bordered gap-2 w-full">
           <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
             <span class="text-sm select-none">网址</span>
             <span class="icon-[lucide--link-2] size-5"></span>
@@ -30,7 +30,7 @@
           <input type="text" class="grow input-bordered" placeholder="https://" v-model="link" />
         </div>
 
-        <div class="join input input-bordered gap-2 w-full hover:border-info">
+        <div class="join input input-bordered gap-2 w-full">
           <div class="flex border-r-2 items-center justify-center pr-2 space-x-2">
             <span class="text-sm select-none">名称</span>
             <span class="icon-[lucide--case-lower] size-5"></span>
@@ -39,7 +39,7 @@
           <input type="text" class="grow input-bordered" placeholder="Name" v-model="title" />
         </div>
 
-        <div class="join input input-bordered gap-2 w-full hover:border-info select-none">
+        <div class="join input input-bordered gap-2 w-full select-none">
           <div class="flex border-r-2 items-center justify-center pr-3 space-x-2">
             <span class="text-sm select-none">代理</span>
             <span class="icon-[lucide--utility-pole]"></span>
@@ -54,7 +54,7 @@
 
         <!-- 图标 -->
         <div
-          class="flex border rounded-lg input-bordered select-none w-full hover:border-info"
+          class="flex border rounded-lg input-bordered select-none w-full"
           contenteditable="true"
           @paste.prevent="handlePaste">
           <div class="flex items-center justify-center w-full h-36 relative">
@@ -97,7 +97,7 @@
           </div>
         </div>
         <textarea
-          class="textarea w-full textarea-bordered hover:border-info"
+          class="textarea w-full textarea-bordered"
           placeholder="网址介绍"
           v-model="description"></textarea>
 
@@ -114,7 +114,7 @@
 
 <script lang="ts" setup>
 import type { Collection } from '@/api'
-
+import { imageLoadError } from '@/utils'
 const store = useBasicStore()
 let { collectionsMap } = storeToRefs(store)
 
@@ -138,13 +138,6 @@ const title = ref('')
 const proxy = ref(false)
 const icon = ref<File | null>(null)
 const description = ref('')
-
-function imageLoadError(event: Event) {
-  const target = event.target as HTMLImageElement
-  if (target) {
-    target.style.display = 'none'
-  }
-}
 
 // 处理拖拽图片事件
 function handleDrag(event: DragEvent) {

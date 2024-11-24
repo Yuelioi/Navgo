@@ -5,4 +5,6 @@ collections:
   - title: 二次元画像检索
     link: https://ascii2d.net/
     description: ""
-    proxy: false
+  - title: 动画场景识别
+    link: https://trace.moe/
+    description: 根据图片找动画时间点

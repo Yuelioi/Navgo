@@ -66,7 +66,6 @@ func queryMeta(link string) (*types.Collection, error) {
 		CID:         URL.Host,
 		Title:       title,
 		Link:        link,
-		Proxy:       false,
 		Description: description,
 	}, nil
 }

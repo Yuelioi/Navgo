@@ -1,10 +1,10 @@
 <template>
   <div class="h-full pb-32 md:pb-12 container">
-    <div class="p-6 my-8 w-full h-full bg-base-200 rounded-lg">
+    <div class="p-6 my-8 w-full h-full shadow-md rounded-lg">
       <div class="flex flex-col h-full space-y-8 justify-between">
         <!-- 评论区 -->
         <div class="flex flex-col space-y-4 overflow-y-scroll">
-          <div class="bg-base-300 p-4 rounded-xl" v-for="comment in comments">
+          <div class="bg-base-200 p-4 rounded-xl" v-for="comment in comments">
             <div class="flex">
               <div class="avatar static size-8">
                 <div class="h-full rounded-xl">

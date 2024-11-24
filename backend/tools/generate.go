@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"io"
 	"net/http"
 	"net/url"
@@ -13,7 +14,6 @@ type Response struct {
 	Link        string `json:"link"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
-	Proxy       bool   `json:"proxy"`
 }
 
 func queryMeta(link string) (*Response, error) {
@@ -31,7 +31,7 @@ func queryMeta(link string) (*Response, error) {
 
 	// 检查响应状态码
 	if res.StatusCode != 200 {
-		return nil, err
+		return nil, errors.New("请求失败")
 	}
 
 	doc, err := goquery.NewDocumentFromReader(res.Body)
@@ -45,14 +45,13 @@ func queryMeta(link string) (*Response, error) {
 	resp := &Response{
 		Title:       title,
 		Link:        link,
-		Proxy:       false,
 		Description: description,
 	}
 
-	err = downloadFavicon(link)
-	if err != nil {
-		return nil, err
-	}
+	// err = downloadFavicon(link)
+	// if err != nil {
+	// 	return nil, err
+	// }
 
 	return resp, err
 }

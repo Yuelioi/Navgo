@@ -25,6 +25,7 @@ tasks:
     cmds:
       - powershell -Command "if (Test-Path 'backend\\internal\\types\\types.go') { Remove-Item 'backend\\internal\\types\\types.go' -Recurse -Force }"
       - goctl api go --api ./backend/api/main.api --dir backend
+      - go run ./backend/clean/afterApiBuild.go
   api-doc:
     cmds:
       - powershell -Command "Remove-Item 'backend\\doc' -Recurse -Force -ErrorAction SilentlyContinue"

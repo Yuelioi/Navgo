@@ -37,9 +37,9 @@
         v-if="searchValue.length > 0 && searchResults.length > 0 && currentSearch?.name == '站内'">
         <div class="absolute flex w-full items-center justify-center">
           <div
-            class="h-96 shadow-lg z-10 w-full overflow-y-scroll flex flex-col rounded-b-2xl bg-base-300 space-y-2">
+            class="h-96 shadow-lg z-10 w-full overflow-y-scroll flex flex-col rounded-b-2xl bg-base-200 space-y-2">
             <div
-              class="bg-base-200 rounded-md m-4 hover:inset-1 hover:bg-neutral/30 hover:cursor-pointer"
+              class="bg-base-100 rounded-md m-4 hover:inset-1 hover:bg-neutral/30 hover:cursor-pointer"
               v-for="item in searchResults"
               @click="open(item.item.link)">
               <div class="p-4 flex items-center space-x-3">
@@ -77,7 +77,7 @@ import { open } from '@/utils'
 import { useFuse } from '@vueuse/integrations/useFuse'
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
 import type { FuseResult } from 'fuse.js'
-
+import { imageLoadError } from '@/utils'
 const store = useBasicStore()
 const { currentSearchName, collectionsList } = storeToRefs(store)
 
@@ -149,13 +149,6 @@ function handleSearchChange() {
     showSearch.value = true
   } else {
     searchResults.value = []
-  }
-}
-
-function imageLoadError(event: Event) {
-  const target = event.target as HTMLImageElement
-  if (target) {
-    target.style.display = 'none'
   }
 }
 

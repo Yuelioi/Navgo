@@ -1,27 +1,24 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	template := `  -title: %s
+	template := `  - title: %s
     link: %s
-    description: %s
-    proxy: %t`
+    description: %s`
 
-	link := "https://tools.miku.ac/"
+	link := "https://www.nmod.net/"
 	meta, err := queryMeta(link)
 	if err != nil {
 		fmt.Printf("err: %v\n", err)
+		return
 	}
 
-	var proxy bool
 	err = ping(link)
 	if err != nil {
-		proxy = true
+		return
 	}
 
-	data := fmt.Sprintf(template, meta.Title, link, meta.Description, proxy)
+	data := fmt.Sprintf(template, meta.Title, link, meta.Description)
 	fmt.Println(data)
 }

@@ -48,7 +48,7 @@ func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.Colle
 	datas := make([]*types.CollectionsData, 0)
 
 	var collections []*types.Collection
-	db.DB.Preload("Category").Model(&types.Collection{}).Find(&collections)
+	db.DB.Preload("Category").Find(&collections)
 
 	for _, collection := range collections {
 

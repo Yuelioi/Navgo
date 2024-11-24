@@ -1,11 +1,11 @@
 <template>
-  <div class="container hidden sticky lg:block">
+  <div class="container hidden sticky lg:block" v-if="!isAdmin">
     <div class="card bg-base-200 shadow-xl my-8 self-center" v-if="showFooter">
       <div class="card-body flex-row justify-between">
         <div class="left xl:flex flex-col space-y-4 hidden">
-          <h2 class="card-title">月离离导航站</h2>
+          <h2 class="card-title">月离导航</h2>
           <p>站长很懒,所以懒得写介绍</p>
-          <p class="text-sm">Copyright © 2024 月离离导航站 | 皖ICP备19025249号</p>
+          <p class="text-sm">Copyright © 2024 月离导航 | 皖ICP备19025249号</p>
         </div>
 
         <div class="right">
@@ -55,13 +55,11 @@
 
 <script setup lang="ts">
 const store = useBasicStore()
-let { isScrollDown, siteStats, showFooter } = storeToRefs(store)
+let { isScrollDown, siteStats, showFooter, isAdmin } = storeToRefs(store)
 
 const lastScrollTop = ref(0)
 
 const handleScroll = () => {
-  console.log(111)
-
   const currentScrollTop = window.scrollY || document.documentElement.scrollTop
   // 如果当前滚动位置大于上次滚动位置，说明是向下滚动
   isScrollDown.value = currentScrollTop > lastScrollTop.value

@@ -5,23 +5,18 @@ collections:
   - title: MOJI辞书
     link: https://www.mojidict.com/
     description: 学日语的
-    proxy: false
   - title: 在线输入各国语言
     link: https://www.lexilogos.com/keyboard/japanese.php
     description: ""
-    proxy: false
   - title: 剑桥词典
     link: https://dictionary.cambridge.org/
     description: The most popular dictionary and thesaurus for learners of English. Meanings and definitions of words with pronunciations and translations.
-    proxy: false
   - title: 牛津词典
     link: https://www.oxfordlearnersdictionaries.com/
     description: The largest and most trusted free online dictionary for learners of British and American English with definitions, pictures, example sentences, synonyms, antonyms, word origins, audio pronunciation, and more. Look up the meanings of words, abbreviations, phrases, and idioms in our free English Dictionary.
-    proxy: false
   - title: 文字转语音
     link: https://soundoftext.com/
     description: ""
-    proxy: false
   - title: 语法俱乐部
     link: https://llwslc.github.io/grammar-club/content/Preface.html
     description: 简明的英语语法书。

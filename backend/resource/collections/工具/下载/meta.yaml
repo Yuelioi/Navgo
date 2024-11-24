@@ -5,4 +5,4 @@ collections:
   - title: 9xbuddy
     link: https://9xbuddy.org
     description: 在线下载油管/推特/P站等等
-    proxy: true
+    tags: [代理]

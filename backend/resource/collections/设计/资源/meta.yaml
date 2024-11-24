@@ -2,15 +2,9 @@ title: 资源
 cid: resource
 order: 3
 collections:
-  - title: 站酷ZCOOL
-    link: https://www.zcool.com.cn/
-    description: 站酷ZCOOL,中国设计师互动平台.深耕设计领域十五年,站酷聚集了1500万设计师、摄影师、插画师、艺术家、创意人,提供创意设计素材,正版商业高清图片,创意设计师群体中具有较高的影响力与号召力。
-    proxy: false
   - title: 新片场
     link: https://www.xinpianchang.com/
     description: 新片场汇聚全球原创优质视频及创作人，提供4K、无广告、无水印视频观看，专业的视频艺术学习教程，正版视觉素材交易等，与百万创作人一起成长。
-    proxy: false
   - title: 美叶
     link: https://www.meiye.art/
     description: 美叶，为设计师，创意人提供有价值的设计参考。灵感采集，优质素材获取，时刻Follow最新流行设计趋势
-    proxy: false

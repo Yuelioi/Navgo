@@ -33,7 +33,6 @@ type CC struct {
 }
 
 func (l *CollectionLogic) Collection(req *types.AnyRequest) (resp *types.Collection, err error) {
-	// todo: add your logic here and delete this line
 
 	var cos []*types.Collection
 	db.DB.Model(types.Collection{}).Find(&cos)

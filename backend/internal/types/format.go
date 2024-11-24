@@ -26,7 +26,6 @@ type collection struct {
 	Title       string   `json:"title"`
 	Link        string   `json:"link"`
 	Description string   `json:"description"`
-	Proxy       bool     `json:"proxy,omitempty" yaml:",omitempty"`
 	Tags        []string `json:"tags,omitempty"`
 }
 
@@ -52,7 +51,6 @@ func (g Group) MarshalYAML() (interface{}, error) {
 			Title:       c.Title,
 			Link:        c.Link,
 			Description: c.Description,
-			Proxy:       c.Proxy,
 			Tags:        c.Tags,
 		}
 	}

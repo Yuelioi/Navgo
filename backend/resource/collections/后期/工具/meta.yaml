@@ -5,12 +5,9 @@ collections:
   - title: UE在线蓝图
     link: https://blueprintue.com/
     description: ""
-    proxy: false
   - title: 贝塞尔练习
     link: https://bezier.method.ac/
     description: ""
-    proxy: false
   - title: 贝塞尔游戏 The Bézier Game
     link: https://bezier.method.ac/
     description: The Bézier Game
-    proxy: false
