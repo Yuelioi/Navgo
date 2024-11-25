@@ -6,6 +6,7 @@ type Config struct {
 	rest.RestConf
 	Resource Resource
 	Database Database
+	System   System
 }
 
 type Resource struct {
@@ -18,4 +19,10 @@ type Resource struct {
 
 type Database struct {
 	Resource string // 源文件
+}
+
+type System struct {
+	Username  string // 管理员用户名
+	Password  string // 管理员密码
+	JwtSecret []byte // JWT加密密钥
 }

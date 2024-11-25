@@ -39,3 +39,11 @@ type Collection {
 	Tags        []string  `json:"tags,optional,omitempty" gorm:"type:text[]"`
 	View        int       `json:"view,optional,omitempty"`
 }
+
+type User {
+	Model
+	Username string `json:"username" gorm:"column:username;unique"`
+	Email    string `json:"email,optional"`
+	Password string `json:"password"`
+	Nickname string `json:"nickname,optional"`
+}

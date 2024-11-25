@@ -7,11 +7,13 @@ import (
 	"net/http"
 
 	announce "backend/internal/handler/announce"
+	auth "backend/internal/handler/auth"
 	collection "backend/internal/handler/collection"
 	comment "backend/internal/handler/comment"
 	service "backend/internal/handler/service"
 	statistics "backend/internal/handler/statistics"
 	tag "backend/internal/handler/tag"
+	user "backend/internal/handler/user"
 	"backend/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -25,6 +27,18 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodGet,
 				Path:    "/announces",
 				Handler: announce.AnnouncesHandler(serverCtx),
+			},
+		},
+		rest.WithPrefix("/v1"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// 获取验证信息
+				Method:  http.MethodPost,
+				Path:    "/auth",
+				Handler: auth.AuthHandler(serverCtx),
 			},
 		},
 		rest.WithPrefix("/v1"),
@@ -129,6 +143,19 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: tag.TagsHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/v1"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// tags页面集合
+				Method:  http.MethodGet,
+				Path:    "/users",
+				Handler: user.UsersHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(string(serverCtx.Config.System.JwtSecret)),
 		rest.WithPrefix("/v1"),
 	)
 }

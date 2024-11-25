@@ -11,3 +11,8 @@ Resource:
 
 Database:
   Resource: "resource\\database\\core.db"
+
+System:
+  Username: "admin"
+  Password: "admin123"
+  JwtSecret: "yueli"

@@ -1,0 +1,19 @@
+syntax = "v1"
+
+import "./base.api"
+
+type AuthResponse {
+	token string
+}
+
+@server (
+	prefix: /v1
+	group: auth
+)
+
+service main {
+	@doc "获取验证信息"
+	@handler Auth
+	post /auth (User) returns (AuthResponse)
+
+}

@@ -26,7 +26,6 @@ func (i *InReviewCache) ID() string {
 }
 
 func (i *InReviewCache) Add(id string, item any) error {
-
 	collection, ok := item.(*types.Collection)
 	if !ok {
 		return errors.New("item is not a collection")

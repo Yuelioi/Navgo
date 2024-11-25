@@ -35,7 +35,7 @@ func init() {
 		panic("failed to connect database")
 	}
 
-	err = DB.AutoMigrate(&types.Category{}, &types.Collection{}, &types.Comment{}, &types.Announce{}, &types.Statistics{})
+	err = DB.AutoMigrate(&types.Category{}, &types.Collection{}, &types.Comment{}, &types.Announce{}, &types.Statistics{}, &types.User{})
 
 	managers := make([]Manager, 0)
 	managers = append(

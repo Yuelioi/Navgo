@@ -2,8 +2,6 @@ syntax = "v1"
 
 import "./base.api"
 
-// 可修改的字段
-
 @server (
 	prefix: /v1
 	group: service

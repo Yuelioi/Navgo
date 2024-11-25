@@ -1,0 +1,20 @@
+syntax = "v1"
+
+import "./base.api"
+
+type UserResponse {
+	Users []User
+}
+
+@server (
+	prefix: /v1
+	group: user
+	jwt: Auth // 开启 jwt 认证
+)
+
+service main {
+	@doc "tags页面集合"
+	@handler Users
+	get /users (AnyRequest) returns (UserResponse)
+
+}

@@ -3,7 +3,7 @@ package announce
 import (
 	"context"
 
-	"backend/internal/common/db"
+	"backend/internal/common/dao/announce"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -26,12 +26,5 @@ func NewAnnouncesLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Announc
 }
 
 func (l *AnnouncesLogic) Announces(req *types.AnyRequest) (resp *types.AnnouncesData, err error) {
-
-	var datas []*types.Announce
-	if err = db.DB.Model(types.Announce{}).Order("date DESC").Find(&datas).Error; err == nil {
-		resp = &types.AnnouncesData{
-			Announces: datas,
-		}
-	}
-	return
+	return announce.All()
 }

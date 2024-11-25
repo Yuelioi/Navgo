@@ -1,2 +1,2 @@
 export { VAlert } from './src/instance'
-export const version = '2024-11-21'
+//  version = '2024-11-21'

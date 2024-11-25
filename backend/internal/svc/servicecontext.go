@@ -6,6 +6,10 @@ import (
 
 type ServiceContext struct {
 	Config config.Config
+	Auth   struct {
+		AccessSecret string
+		AccessExpire int64
+	}
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {

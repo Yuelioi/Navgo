@@ -8,4 +8,4 @@ export const VDialogPlugin: Plugin = {
     app.component('VDialog', VDialog)
   }
 }
-export const version = '2024-11-21'
+// export const version = '2024-11-21'

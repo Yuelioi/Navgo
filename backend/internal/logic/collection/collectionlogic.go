@@ -2,10 +2,7 @@ package collection
 
 import (
 	"context"
-	"encoding/json"
-	"os"
 
-	"backend/internal/common/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -34,20 +31,5 @@ type CC struct {
 
 func (l *CollectionLogic) Collection(req *types.AnyRequest) (resp *types.Collection, err error) {
 
-	var cos []*types.Collection
-	db.DB.Model(types.Collection{}).Find(&cos)
-
-	result := make([]*CC, 0)
-
-	for _, c := range cos {
-		result = append(result, &CC{c.CID, c.Favicon})
-	}
-
-	data, _ := json.Marshal(result)
-
-	f, _ := os.Create("demo.json")
-	defer f.Close()
-
-	f.Write(data)
 	return
 }

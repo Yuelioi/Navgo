@@ -6,6 +6,7 @@ import (
 	"sort"
 	"strings"
 
+	"backend/internal/common/dao/collection"
 	"backend/internal/common/db"
 	"backend/internal/svc"
 	"backend/internal/types"
@@ -47,8 +48,10 @@ func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.Colle
 
 	datas := make([]*types.CollectionsData, 0)
 
-	var collections []*types.Collection
-	db.DB.Preload("Category").Find(&collections)
+	collections, err := collection.All()
+	if err != nil {
+		return
+	}
 
 	for _, collection := range collections {
 

@@ -6,8 +6,10 @@ toolchain go1.23.3
 
 require (
 	github.com/PuerkitoBio/goquery v1.10.0
+	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/lib/pq v1.10.9
 	github.com/zeromicro/go-zero v1.7.3
+	golang.org/x/crypto v0.28.0
 	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/driver/sqlite v1.5.6
 	gorm.io/gorm v1.25.12

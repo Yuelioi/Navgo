@@ -1,17 +1,15 @@
 package collection
 
 import (
-	"errors"
 	"net/http"
 
-	"backend/internal/common/db"
+	"backend/internal/common/dao/statistic"
 	"backend/internal/common/utils"
 	"backend/internal/logic/collection"
 	"backend/internal/svc"
 	"backend/internal/types"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
-	"gorm.io/gorm"
 )
 
 // 页面集合
@@ -23,19 +21,13 @@ func CollectionsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		now := utils.Today()
 		ip := utils.GetIPFromRequest(r)
 
-		s := &types.Statistics{
-			IP:   ip,
-			Date: now,
-		}
-
-		// 每天请求时, 追加记录
-		var stats types.Statistics
-		err := db.DB.Model(types.Statistics{}).Where("date =? And ip = ?", ip, now).First(&stats).Error
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			db.DB.Model(types.Statistics{}).Create(s)
+		//  添加每日访问(限定ip以及今日)
+		err := statistic.AddCustomer(ip)
+		if err != nil {
+			httpx.ErrorCtx(r.Context(), w, err)
+			return
 		}
 
 		l := collection.NewCollectionsLogic(r.Context(), svcCtx)

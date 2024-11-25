@@ -19,6 +19,10 @@ type AnnouncesData struct {
 type AnyRequest struct {
 }
 
+type AuthResponse struct {
+	Token string
+}
+
 type Category struct {
 	Model
 	CID   string `json:"cid,optional" gorm:"column:cid"`
@@ -102,4 +106,16 @@ type TagRequest struct {
 
 type TagsResponse struct {
 	Tags pq.StringArray `json:"tags"`
+}
+
+type User struct {
+	Model
+	Username string `json:"username" gorm:"column:username;unique"`
+	Email    string `json:"email,optional"`
+	Password string `json:"password"`
+	Nickname string `json:"nickname,optional"`
+}
+
+type UserResponse struct {
+	Users []User
 }
