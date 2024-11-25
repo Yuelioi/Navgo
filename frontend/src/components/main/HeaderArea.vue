@@ -1,5 +1,5 @@
 <template>
-  <div class="md:h-20">
+  <div class="md:h-20 bg-base-100">
     <template v-if="isAdmin">
       <AdminHeader></AdminHeader>
     </template>

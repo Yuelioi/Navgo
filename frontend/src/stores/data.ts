@@ -19,6 +19,7 @@ export async function loadData() {
   switchTheme(theme.value)
 
   // 加载导航信息
+
   const guideData = await getCollections()
 
   collectionsDatas.value.length = 0

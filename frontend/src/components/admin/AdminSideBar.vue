@@ -127,7 +127,7 @@ const adminNavs = reactive<Nav[]>([
     cid: 'comment',
     title: '评论',
     icon: 'icon-[lucide--message-square-more]',
-    target: 'comment'
+    target: 'adminComment'
   }
 ])
 </script>

@@ -2,7 +2,10 @@
   <div class="flex flex-col relative w-full container">
     <div class="self-center flex-1 my-8 w-full">
       <!-- 公告 -->
-      <div role="alert" class="alert flex w-full overflow-hidden" v-if="currentAnnounce">
+      <div
+        role="alert"
+        class="alert flex w-full bg-base-100 overflow-hidden"
+        v-if="currentAnnounce">
         <span class="icon-[lucide--info] size-5"></span>
         <Transition name="goon" mode="out-in">
           <div class="flex w-full" :key="currentAnnounce.title">
@@ -22,10 +25,10 @@
       <div class="w-full flex-1l">
         <!-- 个人收藏 -->
         <div
-          class="card bg-base-200 shadow-md hover:shadow-lg my-8"
+          class="card rounded-md bg-base-100 shadow-md hover:shadow-lg my-8"
           id="love"
           v-if="showMyCollection">
-          <CatTitle :title="'我的收藏'"></CatTitle>
+          <CatTitle :title="'我的收藏'" :icon="'icon-[lucide--star]'"></CatTitle>
 
           <div class="card-body md:mt-6 px-1">
             <div class="flex flex-col w-full space-x-4">
@@ -45,14 +48,14 @@
 
         <!-- 网站导航 -->
         <div
-          class="card bg-base-200 shadow-md hover:shadow-lg my-8"
+          class="card rounded-md bg-base-100 shadow-md hover:shadow-lg my-8"
           :id="data.category.cid"
           v-if="showWebCollection"
           v-for="(data, index) in collectionsDatas">
           <!-- 分类标题 -->
-          <CatTitle :title="data.category.title"></CatTitle>
+          <CatTitle :title="data.category.title" :icon="icons[index]"></CatTitle>
 
-          <div class="card-body px-1 md:px-4">
+          <div class="card-body px-1 py-1 md:px-4">
             <div role="tablist" class="tabs tabs-bordered">
               <template v-for="(group, groupIndex) in data.groups">
                 <input
@@ -63,7 +66,7 @@
                   :checked="groupIndex === 0"
                   :aria-label="group.category.title"
                   @click="group.show = true" />
-                <div role="tabpanel" class="tab-content my-6">
+                <div role="tabpanel" class="tab-content my-1">
                   <KeepAlive>
                     <div class="grid grid-cols-card relative">
                       <AsyncGroupCard :collections="group.collections"></AsyncGroupCard>
@@ -82,6 +85,8 @@
 import type { Announce } from '@/api'
 import { getAnnounces } from '@/logic'
 
+import { icons } from '@/stores/icons'
+
 const store = useBasicStore()
 const { collectionsDatas, likeCollectionsList, showMyCollection, showWebCollection } =
   storeToRefs(store)
@@ -91,16 +96,6 @@ const AsyncGroupCard = defineAsyncComponent({
 })
 
 const announces = ref<Announce[]>([])
-
-const icons = [
-  'icon-[lucide--box]',
-  'icon-[lucide--sparkle]',
-  'icon-[lucide--youtube]',
-  'icon-[lucide--square-code]',
-  'icon-[lucide--leaf]',
-  'icon-[lucide--briefcase-business]',
-  'icon-[lucide--plane]'
-]
 
 const currentAnnounce = ref<Announce>({
   iD: 0,

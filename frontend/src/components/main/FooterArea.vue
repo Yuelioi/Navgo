@@ -1,6 +1,6 @@
 <template>
   <div class="container hidden sticky lg:block" v-if="!isAdmin">
-    <div class="card bg-base-200 shadow-xl my-8 self-center" v-if="showFooter">
+    <div class="card rounded-md bg-base-100 shadow-xl my-8 self-center" v-if="showFooter">
       <div class="card-body flex-row justify-between">
         <div class="left xl:flex flex-col space-y-4 hidden">
           <h2 class="card-title">月离导航</h2>

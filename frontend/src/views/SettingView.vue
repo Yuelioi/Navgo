@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="flex w-full mt-8">
-      <div class="flex w-full flex-col p-6 space-y-4 border rounded-md">
+      <div class="flex w-full flex-col p-6 space-y-4 bg-base-100 border rounded-md">
         <div class="font-bold flex items-center justify-between">
           <span class="font-bold">个性化设置</span>
         </div>
@@ -44,8 +44,8 @@
       </div>
     </div>
 
-    <div class="mt-12 overflow-y-scroll">
-      <div class="flex shadow-md border rounded-md w-full flex-col p-6 space-y-4">
+    <div class="mt-12">
+      <div class="flex shadow-md border rounded-md bg-base-100 w-full flex-col p-6 space-y-4">
         <div class="font-bold flex items-center justify-between">
           <span class="font-bold">收藏设置</span>
         </div>

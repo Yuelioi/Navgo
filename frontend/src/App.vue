@@ -1,5 +1,5 @@
 <template>
-  <main class="flex w-screen h-screen bg-base-100 text-base-content">
+  <main class="flex w-screen h-screen bg-base-200 text-base-content">
     <div>
       <!-- 主界面左侧栏 -->
       <SideArea></SideArea>

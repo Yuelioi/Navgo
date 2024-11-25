@@ -1,7 +1,7 @@
 <template>
-  <div class="container py-8">
-    <div class="p-4 rounded-lg shadow-lg flex flex-col">
-      <div class="flex items-center space-x-4">
+  <div class="container py-8 bg-gradient-to-br">
+    <div class="p-4 bg-base-100 rounded-lg shadow-lg flex flex-col">
+      <div class="flex w-full items-center space-x-4">
         <!-- 分类筛选 -->
         <div class="dropdown dropdown-bottom">
           <div tabindex="0" role="button" class="btn m-1">
@@ -30,6 +30,9 @@
           <input type="text" class="grow" placeholder="Search" v-model="searchValue" />
           <span class="icon-[lucide--search]"></span>
         </label>
+        <div class="!ml-auto !mr-4 btn btn-sm">
+          <span class="icon-[lucide--save] size-6"></span>
+        </div>
       </div>
 
       <div class="divider"></div>
@@ -45,6 +48,7 @@
                 <th class="">标题</th>
                 <th class="">链接</th>
                 <th class="">描述</th>
+                <th class="">标签</th>
                 <th class="">操作</th>
               </tr>
             </thead>
@@ -82,16 +86,28 @@
                     class="input w-full overflow-hidden"
                     v-model="collection.description" />
                 </td>
+                <td class="group w-48 overflow-x-hidden">
+                  <div class="join items-center">
+                    <div class="group-hover:hidden space-x-1 space-y-1">
+                      <div class="badge badge-primary" v-for="tag in collection.tags">
+                        {{ tag }}
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      class="input w-full input-md hidden group-hover:block"
+                      v-model="collection.tags"
+                      @change="updateTags(collection)" />
+                  </div>
+                </td>
                 <th class="w-min">
                   <div class="flex max-w-fit space-x-3">
                     <button
-                      class="btn btn-sm btn-square btn-info btn-outline"
+                      class="btn btn-sm btn-square btn-outline shadow-xl"
                       @click="removeCollection()">
                       <span class="icon-[lucide--save] size-6"></span>
                     </button>
-                    <button
-                      class="btn btn-sm btn-square btn-error btn-outline"
-                      @click="removeCollection()">
+                    <button class="btn btn-sm btn-square btn-outline" @click="removeCollection()">
                       <span class="icon-[lucide--square-x] size-6"></span>
                     </button>
                   </div>
@@ -225,6 +241,10 @@ function validatePage() {
   }
 }
 
+function updateTags(collection: Collection) {
+  collection.tags = collection.tags?.toString().split(',')
+}
+
 function jump() {
   validatePage()
 }
@@ -274,3 +294,9 @@ onMounted(async () => {
   })
 })
 </script>
+
+<style scoped>
+tr:hover {
+  background: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
+}
+</style>

@@ -63,7 +63,7 @@ const router = createRouter({
         },
         {
           path: 'comment',
-          name: 'comment',
+          name: 'adminComment',
           component: () => import('@/components/admin/AdminComment.vue')
         }
       ]

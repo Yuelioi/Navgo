@@ -1,11 +1,11 @@
 <template>
   <Transition name="slide-fade">
-    <div class="bg-base-100 float-left w-full h-full">
-      <ul class="menu menu-lg rounded-box">
+    <div class="w-full h-full">
+      <ul class="menu rounded-box">
         <li v-for="(nav, index) in navs" @click="scrollToSection(nav.cid)">
           <a class="">
-            <span :class="icons[index]"></span>
-            <span v-if="!isCollapsedNav">{{ nav.title }}</span>
+            <span :class="icons[index]" class="size-5"></span>
+            <span v-if="!isCollapsedNav" class="text-base">{{ nav.title }}</span>
           </a>
         </li>
       </ul>
@@ -15,19 +15,10 @@
 
 <script setup lang="ts">
 import router from '@/router'
+import { icons } from '@/stores/icons'
 
 const store = useBasicStore()
 const { navs, isCollapsedNav } = storeToRefs(store)
-
-const icons = [
-  'icon-[lucide--box]',
-  'icon-[lucide--sparkle]',
-  'icon-[lucide--youtube]',
-  'icon-[lucide--square-code]',
-  'icon-[lucide--leaf]',
-  'icon-[lucide--briefcase-business]',
-  'icon-[lucide--plane]'
-]
 
 function scrollToSection(cid?: string) {
   if (router.currentRoute.value.name != 'home') {

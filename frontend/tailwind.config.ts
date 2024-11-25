@@ -11,13 +11,13 @@ export default {
     container: {
       center: true,
       padding: {
-        DEFAULT: '1rem',
-        sm: '1rem',
-        md: '1.5rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-        '3xl': '8rem'
+        DEFAULT: '0.25rem',
+        sm: '0.5rem',
+        md: '1rem',
+        lg: '1.5rem',
+        xl: '2rem',
+        '2xl': '3rem',
+        '3xl': '4rem'
       }
     },
     screens: {
@@ -51,8 +51,8 @@ export default {
           neutral: '#262931',
           'neutral-content': '#cfd0d2',
           'base-100': '#ffffff',
-          'base-200': '#F8F9FA',
-          'base-300': '#E9ECEF',
+          'base-200': '#f6f9fb',
+          'base-300': '#e4eaed',
           'base-content': '#121414',
           info: '#2563EB',
           'info-content': '#d2e2ff',

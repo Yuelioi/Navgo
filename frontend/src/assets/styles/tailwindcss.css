@@ -6,4 +6,8 @@
   .input:hover {
     @apply border-info;
   }
+
+  .input:focus-within {
+    outline: none;
+  }
 }

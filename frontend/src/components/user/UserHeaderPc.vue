@@ -37,7 +37,8 @@
 
         <Transition>
           <div class="absolute z-10 top-24" v-if="showHotkeyWindow">
-            <div class="flex bg-base-200 flex-col p-6 rounded-lg h-80 w-96 space-y-4 ring-2">
+            <div
+              class="flex bg-base-100 flex-col p-6 rounded-lg h-80 w-96 space-y-4 ring-1 ring-primary">
               <div class="font-bold"><span>帮助</span></div>
               <div class="divider"></div>
               <div class="flex items-center w-full justify-between">

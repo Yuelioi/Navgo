@@ -1,8 +1,7 @@
 <template>
   <div class="p-2 md:p-4 cursor-pointer" v-for="collection in collections">
     <!-- 单个链接卡片 -->
-    <div
-      class="bg-base-100 shadow-md px-4 md:py-4 group hover:ring-2 ring-primary hover:scale-105 rounded-md">
+    <div class="bg-base-100 shadow-lg px-4 md:py-4 group hover:ring-2 ring-primary rounded-md">
       <div class="h-20 md:h-28 flex flex-col">
         <div class="flex flex-row flex-1 items-center relative" @click="open(collection.link)">
           <div class="avatar static size-12">
@@ -19,7 +18,7 @@
 
           <div class="pl-4 flex-1 flex md:flex-col justify-between">
             <div class="items-center flex space-x-2">
-              <span class="font-bold">{{ collection.title }}</span>
+              <span class="font-bold line-clamp-1">{{ collection.title }}</span>
             </div>
 
             <!-- 手机端 -->
@@ -29,17 +28,18 @@
               <span class="icon-[lucide--star] size-5"></span>
             </div>
 
+            <!-- PC端描述 -->
             <div
               class="tooltip static tooltip-bottom hidden md:block"
               :data-tip="collection.description">
-              <div class="flex text-left">
+              <div class="flex text-left text-sm opacity-35">
                 <span class="line-clamp-1">{{ collection.description }}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="border hidden md:block my-2"></div>
+        <div class="border border-neutral-content/50 hidden md:block my-2"></div>
 
         <!-- PC端 -->
         <div class="h-6 md:flex items-center hidden">
