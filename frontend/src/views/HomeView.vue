@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col relative w-full container">
+  <div class="flex flex-col relative container">
     <div class="self-center flex-1 my-8 w-full">
       <!-- 公告 -->
       <div
@@ -66,7 +66,7 @@
                   :checked="groupIndex === 0"
                   :aria-label="group.category.title"
                   @click="group.show = true" />
-                <div role="tabpanel" class="tab-content my-1">
+                <div role="tabpanel" class="tab-content my-1" v-if="group.show">
                   <KeepAlive>
                     <div class="grid grid-cols-card relative">
                       <AsyncGroupCard :collections="group.collections"></AsyncGroupCard>

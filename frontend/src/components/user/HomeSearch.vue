@@ -50,6 +50,8 @@
                     <div class="avatar static size-8">
                       <div class="h-full rounded-xl">
                         <img
+                          loading="lazy"
+                          height="320"
                           :src="'https://cdn.yuelili.com/nav/icons/' + item.item.cid + '.png'"
                           @error="imageLoadError"
                           class="h-full rounded-full" />

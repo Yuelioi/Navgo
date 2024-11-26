@@ -7,13 +7,7 @@
     <div class="right relative flex flex-col flex-1 h-full">
       <!-- 主界面顶部 -->
       <HeaderArea />
-      <!-- 主界面内容区域 -->
-      <!-- 需要给个锚点`anchor` 用于返回顶部 -->
-      <!-- pb-20 给手机端菜单预留空间 -->
-      <div class="anchor flex-1 w-full flex flex-col overflow-y-scroll pb-20 md:pb-0">
-        <router-view class="content"></router-view>
-        <FooterArea />
-      </div>
+      <ContentArea></ContentArea>
     </div>
   </main>
 </template>

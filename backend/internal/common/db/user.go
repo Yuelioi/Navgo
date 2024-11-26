@@ -1,6 +1,7 @@
 package db
 
 import (
+	"backend/internal/common/biz"
 	"backend/internal/common/constants"
 	"backend/internal/types"
 
@@ -8,26 +9,31 @@ import (
 )
 
 type UserManager struct {
+	user *types.User
 }
 
-func NewUserManager(root string) *UserManager {
+func NewUserManager() *UserManager {
 	return &UserManager{}
 }
 
 func (m *UserManager) Read() error {
+	hashedPwd, err := biz.HashPassword(constants.ConfInst.System.Password)
+	if err != nil {
+		return err
+	}
+
+	m.user = &types.User{
+		Username: constants.ConfInst.System.Username,
+		Password: hashedPwd,
+	}
 	return nil
 }
 
 func (m *UserManager) Build() error {
-	user := types.User{
-		Username: constants.SVCInst.Config.System.Username,
-		Password: constants.SVCInst.Config.System.Password,
-	}
-
 	DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "username"}},
 		UpdateAll: true,
-	}).Create(user)
+	}).Create(m.user)
 	return nil
 }
 

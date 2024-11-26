@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 md:p-4 cursor-pointer" v-for="collection in collections">
+  <div class="p-2 md:p-4 cursor-pointer" v-for="collection in collections.slice(0, max)">
     <!-- 单个链接卡片 -->
     <div class="bg-base-100 shadow-lg px-4 md:py-4 group hover:ring-2 ring-primary rounded-md">
       <div class="h-20 md:h-28 flex flex-col">
@@ -25,7 +25,7 @@
             <div
               class="size-12 md:hidden mr-0 flex justify-center rounded-full items-center border"
               @click.stop="like(collection)">
-              <span class="icon-[lucide--star] size-5"></span>
+              <span class="icon-[lucide--star] bg-slate-950 size-5"></span>
             </div>
 
             <!-- PC端描述 -->
@@ -48,9 +48,11 @@
           </div>
 
           <div class="ml-auto space-x-2">
-            <span class="icon-[lucide--star] size-5" @click="like(collection)"></span>
             <span
-              v-if="isAdmin"
+              class="icon-[lucide--star] size-5"
+              :class="{ 'icon-[line-md--star-filled]': collection.like }"
+              @click="like(collection)"></span>
+            <span
               class="icon-[lucide--square-arrow-right] size-5"
               @click="
                 router.push({
@@ -63,6 +65,12 @@
       </div>
     </div>
   </div>
+  <div
+    class="col-start-1 col-span-full text-center w-full my-4"
+    v-if="collections.length > max"
+    @click="max = max + limit">
+    <div class="btn btn-outline btn-sm">显示更多</div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -71,18 +79,25 @@ import router from '@/router'
 import { db } from '@/db/db'
 import type { Collection } from '@/api'
 
-import { imageLoadError } from '@/utils'
+import { imageLoadError, isMobileDevice } from '@/utils'
 
 const store = useBasicStore()
 
-const { likeCollectionsList, isAdmin } = storeToRefs(store)
+let limit = 5
+
+if (!isMobileDevice()) {
+  limit = limit * 2
+}
+const max = ref(limit)
+
+const { likeCollectionsList } = storeToRefs(store)
 
 const props = defineProps<{
   collections: Collection[]
 }>()
 
 async function like(collection: Collection) {
-  const id = likeCollectionsList.value.findIndex((ele) => {
+  const id = likeCollectionsList.value.findIndex((ele: Collection) => {
     return ele.cid === collection.cid
   })
   if (id == -1) {
@@ -97,10 +112,12 @@ async function like(collection: Collection) {
       link: collection.link,
       favicon: collection.favicon
     }
+    collection.like = true
 
     await db.addData('likes', serializableCollection)
   } else {
     likeCollectionsList.value.splice(id, 1)
+    collection.like = false
     await db.deleteData('likes', collection.cid)
   }
 }

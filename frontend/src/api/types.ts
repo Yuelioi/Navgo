@@ -42,6 +42,7 @@ export interface Collection {
   favicon?: string
   tags?: Array<string>
   view?: number
+  like: boolean
 }
 
 export interface CollectionsData {

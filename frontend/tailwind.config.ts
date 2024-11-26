@@ -13,11 +13,11 @@ export default {
       padding: {
         DEFAULT: '0.25rem',
         sm: '0.5rem',
-        md: '1rem',
-        lg: '1.5rem',
-        xl: '2rem',
-        '2xl': '3rem',
-        '3xl': '4rem'
+        md: '0.75rem',
+        lg: '1rem',
+        xl: '1.25rem',
+        '2xl': '1.5rem',
+        '3xl': '2rem'
       }
     },
     screens: {
@@ -31,7 +31,7 @@ export default {
     extend: {
       gridTemplateColumns: {
         one: ' minmax(250px, 50%)',
-        card: 'repeat(auto-fill, minmax(275px, 1fr))'
+        card: 'repeat(auto-fill, minmax(255px, 1fr))'
       }
     }
   },

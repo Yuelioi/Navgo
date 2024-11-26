@@ -2,10 +2,7 @@
   <div class="navbar">
     <div class="navbar-start space-x-2 ml-4">
       <div class="flex items-center">
-        <button
-          class="btn btn-ghost btn-sm"
-          @click="router.push({ name: 'setting' })"
-          @click.ctrl="isAdmin = !isAdmin">
+        <button class="btn btn-ghost btn-sm" @click="router.push({ name: 'setting' })">
           <div class="tooltip tooltip-bottom" data-tip="设置">
             <span class="icon-[lucide--settings] size-5"></span>
           </div>
@@ -35,11 +32,9 @@
 
 <script setup lang="ts">
 import router from '@/router'
-import { open } from '@/utils'
-import { VDialog } from '@/plugins/dialog'
 
 const store = useBasicStore()
-const { theme, isAdmin } = storeToRefs(store)
+const { theme } = storeToRefs(store)
 
 const { switchTheme } = useTheme()
 

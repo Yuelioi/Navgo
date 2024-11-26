@@ -13,7 +13,7 @@
           </div>
           <input
             type="text"
-            class="grow input-bordered max-w-max"
+            class="grow input-bordered"
             placeholder="https://"
             v-model="form.link" />
         </div>
@@ -269,7 +269,7 @@ async function queryMeta() {
   const data = await net(form.link)
   if (data) {
     Message({ message: '获取成功...' })
-    form.link = form.link || data.title
+    form.title = form.title || data.title
     form.description = form.description || data.description || ''
   } else {
     Message({ message: '获取失败...', type: 'warn' })

@@ -58,6 +58,13 @@ func parseForm(r *http.Request) (*types.Collection, error) {
 		return nil, err
 	}
 
+	if link == "" {
+		return nil, errors.New("请填写链接")
+	}
+	if title == "" {
+		return nil, errors.New("请填写名称")
+	}
+
 	// 获取当前分类的页面数
 	order := 1
 

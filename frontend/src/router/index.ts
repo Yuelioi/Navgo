@@ -10,23 +10,35 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        loadData: true
+      }
     },
     {
       path: '/post',
       name: 'post',
-      component: () => import('@/views/PostView.vue')
+      component: () => import('@/views/PostView.vue'),
+      meta: {
+        loadData: true
+      }
     },
 
     {
       path: '/comment',
       name: 'comment',
-      component: () => import('@/views/CommentView.vue')
+      component: () => import('@/views/CommentView.vue'),
+      meta: {
+        loadData: true
+      }
     },
     {
       path: '/setting',
       name: 'setting',
-      component: () => import('@/views/SettingView.vue')
+      component: () => import('@/views/SettingView.vue'),
+      meta: {
+        loadData: true
+      }
     },
     {
       path: '/admin',
@@ -73,7 +85,20 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   try {
-    await loadData()
+    const basicStore = useBasicStore()
+
+    const { isAdmin } = storeToRefs(basicStore)
+
+    if (/^\/admin/.test(to.fullPath)) {
+      // TODO 判断是否有权限
+      isAdmin.value = true
+    } else {
+      isAdmin.value = false
+    }
+
+    if (to.meta['loadData']) {
+      await loadData()
+    }
 
     next()
   } catch (error) {}

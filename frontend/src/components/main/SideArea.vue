@@ -32,7 +32,7 @@
           <a class="">
             <span class="icon-[lucide--chevrons-left] size-5" v-if="!isCollapsedNav"></span>
             <span class="icon-[lucide--chevrons-right] size-5" v-else></span>
-            <span v-if="!isCollapsedNav" class="text-base">折叠菜单</span>
+            <span v-if="!isCollapsedNav" class="text-base">折叠</span>
           </a>
         </li>
       </ul>

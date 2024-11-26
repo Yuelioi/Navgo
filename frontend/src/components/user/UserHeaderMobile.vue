@@ -1,6 +1,6 @@
 <template>
   <!-- 手机端 -->
-  <div class="btm-nav z-10">
+  <div class="btm-nav z-10" :class="{ hidden: !isCollapsedNav && isMobileDevice() }">
     <button class="" @click="router.push({ name: 'home' })">
       <span class="icon-[lucide--house] size-5"></span>
       <span class="btm-nav-label">主页</span>
@@ -13,7 +13,7 @@
       <span class="icon-[lucide--clipboard-pen] size-5"></span>
       <span class="btm-nav-label">讨论</span>
     </button>
-    <button class="" @click="router.push({ name: 'setting' })" @click.ctrl="isAdmin = !isAdmin">
+    <button class="" @click="router.push({ name: 'setting' })">
       <span class="icon-[lucide--settings] size-5"></span>
       <span class="btm-nav-label">设置</span>
     </button>
@@ -27,8 +27,10 @@
 <script setup lang="ts">
 import router from '@/router'
 
+import { isMobileDevice } from '@/utils'
 const store = useBasicStore()
-const { theme, isAdmin } = storeToRefs(store)
+
+const { isCollapsedNav } = storeToRefs(store)
 
 const { switchTheme } = useTheme()
 

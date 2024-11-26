@@ -35,7 +35,10 @@ func init() {
 		panic("failed to connect database")
 	}
 
-	err = DB.AutoMigrate(&types.Category{}, &types.Collection{}, &types.Comment{}, &types.Announce{}, &types.Statistics{}, &types.User{})
+	err = DB.AutoMigrate(
+		&types.Category{}, &types.Collection{},
+		&types.Comment{}, &types.Announce{}, &types.Statistics{},
+		&types.User{})
 
 	managers := make([]Manager, 0)
 	managers = append(
@@ -47,6 +50,7 @@ func init() {
 		NewCommentManager(
 			filepath.Join(constants.ConfInst.Resource.Comments, constants.ConfInst.Resource.MetaFile),
 		),
+		NewUserManager(),
 	)
 
 	for _, manager := range managers {

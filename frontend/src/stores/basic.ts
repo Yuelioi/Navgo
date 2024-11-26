@@ -15,6 +15,10 @@ export const useBasicStore = defineStore('basic', () => {
   const dbVersion = useStorage('currentSearch', 1)
   const currentSearchName = useStorage('currentSearch', '百度')
   const theme = useStorage('theme', 'light')
+
+  const token = useStorage('token', '')
+
+  // 是否折叠侧栏
   const isCollapsedNav = useStorage('isCollapsedNav', false)
   const isAdmin = useStorage('isAdmin', false)
   const showMyCollection = useStorage('showMyCollection', true)
@@ -26,6 +30,7 @@ export const useBasicStore = defineStore('basic', () => {
   const siteStats = ref<SiteStats>()
 
   return {
+    token,
     isAdmin,
     dbVersion,
     navs,

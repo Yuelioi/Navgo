@@ -198,7 +198,6 @@ async function queryMeta() {
     Message({ message: '获取成功...' })
     title.value = title.value || data.title
     description.value = description.value || data.description || ''
-    proxy.value = data.proxy || false
   } else {
     Message({ message: '获取失败...', type: 'warn' })
   }

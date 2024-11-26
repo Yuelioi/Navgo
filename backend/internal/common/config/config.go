@@ -24,5 +24,5 @@ type Database struct {
 type System struct {
 	Username  string // 管理员用户名
 	Password  string // 管理员密码
-	JwtSecret []byte // JWT加密密钥
+	JwtSecret string // JWT加密密钥
 }

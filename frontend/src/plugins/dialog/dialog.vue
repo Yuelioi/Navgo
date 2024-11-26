@@ -7,18 +7,19 @@
     </transition>
     <transition name="bounce">
       <div v-if="show" class="fixed inset-0 flex items-center justify-center z-50">
-        <div ref="dialogRef" class="overflow-hidden p-4 flex flex-col rounded-lg overflow-y-auto">
-          <header class="flex px-4 py-2 items-center text-sm justify-between bg-base-300">
+        <div
+          ref="dialogRef"
+          class="overflow-hidden bg-base-100 p-4 flex flex-col rounded-lg overflow-y-auto">
+          <header class="flex px-4 py-2 items-center text-sm justify-between">
             <slot name="header">
-              <span class="font-bold">{{ title }}</span>
+              <span class="font-bold text-base-content">{{ title }}</span>
             </slot>
             <span class="icon-[ic--round-close] size-6 mx-1" @click="show = false"></span>
           </header>
-
-          <main class="text-base-content bg-base-200 shadow-lg rounded-lg overflow-y-auto">
+          <div class="border my-1"></div>
+          <main class="text-base-content overflow-y-auto">
             <slot></slot>
           </main>
-
           <footer>
             <slot name="footer"></slot>
           </footer>

@@ -8,3 +8,8 @@ export function imageLoadError(event: Event) {
     target.style.display = 'none'
   }
 }
+
+export function isMobileDevice() {
+  // return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  return screen.width < 426
+}

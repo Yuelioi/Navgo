@@ -3,7 +3,8 @@ package constants
 import (
 	"backend/internal/common/config"
 	"backend/internal/svc"
-	"flag"
+	"log"
+	"os"
 	"path/filepath"
 
 	"github.com/zeromicro/go-zero/core/conf"
@@ -21,10 +22,17 @@ func clean() {
 }
 
 func init() {
-	var configFile = flag.String("f", "etc/config.yaml", "the config file")
-	flag.Parse()
+	// var configFile = flag.String("f", "etc/config.yaml", "the config file")
+	// flag.Parse()
 
-	conf.MustLoad(*configFile, &ConfInst)
+	confData, err := os.ReadFile("etc/config.yaml")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	conf.LoadFromYamlBytes(confData, &ConfInst)
+
+	// conf.MustLoad(*configFile, &ConfInst)
 
 	clean()
 

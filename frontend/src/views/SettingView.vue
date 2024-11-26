@@ -157,7 +157,8 @@ function addLike() {
       cid: '',
       title: '',
       link: '',
-      category: { title: '' }
+      category: { title: '' },
+      like: false
     })
     isModify.value = true
   } else {

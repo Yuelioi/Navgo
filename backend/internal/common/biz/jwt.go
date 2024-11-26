@@ -1,13 +1,13 @@
 package biz
 
 import (
+	"backend/internal/common/constants"
 	"fmt"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var jwtSecret = "123"
 var expireTime = time.Hour
 
 func Validate(tokenString string) (bool, error) {
@@ -18,7 +18,7 @@ func Validate(tokenString string) (bool, error) {
 		}
 
 		// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
-		return jwtSecret, nil
+		return []byte(constants.ConfInst.System.JwtSecret), nil
 	})
 	if err != nil {
 		return false, err
@@ -54,6 +54,6 @@ func Generate(username, role string) (string, error) {
 		"iat":      time.Now().Unix(),                 // 签发时间
 	})
 
-	tokenString, err := tokens.SignedString(jwtSecret)
+	tokenString, err := tokens.SignedString([]byte(constants.ConfInst.System.JwtSecret))
 	return tokenString, err
 }

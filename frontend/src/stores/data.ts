@@ -18,8 +18,14 @@ export async function loadData() {
 
   switchTheme(theme.value)
 
-  // 加载导航信息
+  // 加载我的收藏
+  const likeData = await getLikes()
+  likeCollectionsList.value = likeData
+  likeCollectionsList.value.forEach((el) => {
+    el.like = true
+  })
 
+  // 加载导航信息
   const guideData = await getCollections()
 
   collectionsDatas.value.length = 0
@@ -31,20 +37,24 @@ export async function loadData() {
   collectionsDatas.value.forEach((ele) => {
     // 填充导航菜单
     navs.value.push(ele.category)
-    // 设置第一组group可见
+    // 设置第一组group可见, 防止首屏加载太多
     ele.groups[0].show = true
 
     ele.groups.forEach((group) => {
       group.collections.forEach((item) => {
+        // 添加like
+        if (
+          likeCollectionsList.value.some((ele) => {
+            return ele.cid === item.cid
+          })
+        ) {
+          item.like = true
+        }
         collectionsMap.value.set(item.cid, item)
         collectionsList.value.push(item)
       })
     })
   })
-
-  // 加载我的收藏
-  const likeData = await getLikes()
-  likeCollectionsList.value = likeData
 
   // 加载网站数据
   const siteData = await statistics()

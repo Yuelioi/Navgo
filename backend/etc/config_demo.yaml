@@ -3,16 +3,16 @@ Host: 0.0.0.0
 Port: 8888
 
 Resource:
-  Announces: "resource\\announces"
-  Collections: "resource\\collections"
-  Icons: "resource\\icons"
-  Comments: "resource\\comments"
-  MetaFile: "meta.yaml"
+  Announces: resource\\announces
+  Collections: resource\\collections
+  Icons: resource\\icons
+  Comments: resource\\comments
+  MetaFile: meta.yaml
 
 Database:
-  Resource: "resource\\database\\core.db"
+  Resource: resource\\database\\core.db
 
 System:
-  Username: "admin"
-  Password: "admin123"
-  JwtSecret: "yueli"
+  Username: admin
+  Password: admin
+  JwtSecret: yuelilili # 需要8字符以上
