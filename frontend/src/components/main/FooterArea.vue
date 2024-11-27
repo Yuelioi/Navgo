@@ -1,6 +1,6 @@
 <template>
   <div class="container hidden sticky lg:block">
-    <div class="card rounded-md bg-base-100 shadow-xl my-8 self-center" v-if="showFooter">
+    <div class="card rounded-md bg-base-100 shadow-xl my-8 self-center" v-if="showSetting.footer">
       <div class="card-body flex-row justify-between">
         <div class="left xl:flex flex-col space-y-4 hidden">
           <h2 class="card-title">月离导航</h2>
@@ -55,7 +55,7 @@
 
 <script setup lang="ts">
 const store = useBasicStore()
-let { isScrollDown, siteStats, showFooter } = storeToRefs(store)
+let { isScrollDown, siteStats, showSetting } = storeToRefs(store)
 
 const lastScrollTop = ref(0)
 

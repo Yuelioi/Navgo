@@ -4,6 +4,11 @@ import { defineStore } from 'pinia'
 import type { Category, CollectionsData } from '@/api/types'
 
 import { useStorage } from '@vueuse/core'
+import type { Search } from '@/models/search'
+
+import { defaultSearchList } from '@/consts/search'
+import type { ShowSetting } from '@/models/show'
+import { defaultShowSetting } from '@/consts/show'
 
 export const useBasicStore = defineStore('basic', () => {
   const collectionsDatas = ref<Array<CollectionsData>>([])
@@ -18,16 +23,17 @@ export const useBasicStore = defineStore('basic', () => {
 
   const token = useStorage('token', '')
 
+  const showSetting = useStorage<ShowSetting>('', defaultShowSetting)
+
   // 是否折叠侧栏
-  const isCollapsedNav = useStorage('isCollapsedNav', false)
+
   const isAdmin = useStorage('isAdmin', false)
-  const showMyCollection = useStorage('showMyCollection', true)
-  const showWebCollection = useStorage('showWebCollection', true)
-  const showFooter = useStorage('showFooter', true)
 
   const isScrollDown = ref(false)
 
   const siteStats = ref<SiteStats>()
+
+  const searchList = useStorage<Search[]>('searchList', defaultSearchList)
 
   return {
     token,
@@ -37,14 +43,12 @@ export const useBasicStore = defineStore('basic', () => {
     collectionsDatas,
     collectionsList,
     collectionsMap,
-    isCollapsedNav,
+    showSetting,
     theme,
     isScrollDown,
     currentSearchName,
     likeCollectionsList,
-    showMyCollection,
-    showWebCollection,
     siteStats,
-    showFooter
+    searchList
   }
 })

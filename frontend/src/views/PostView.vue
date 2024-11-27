@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full container">
-    <div class="flex py-8 h-full">
+  <div class="container">
+    <div class="flex h-full">
       <div class="grid w-full p-6 space-y-2 bg-base-100 rounded-lg shadow-lg">
         <div class="">投稿</div>
         <div class="divider my-0"></div>

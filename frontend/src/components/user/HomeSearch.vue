@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-full justify-center">
     <div class="xl:w-1/2 w-full flex flex-col items-center">
-      <div role="tablist" class="w-full tabs tabs-lifted rounded-none mt-6">
+      <div role="tablist" class="w-full tabs tabs-boxed rounded-none mt-6">
         <a
           class="tab [--tab-bg:#0f172a] dark:[--tab-bg:#646872]"
           :class="{ 'tab-active': searchItem.active }"
@@ -12,7 +12,7 @@
       </div>
 
       <label
-        class="input ring-0 input-bordered rounded-none w-full flex focus-within:bg-none border-base-content items-center transition ease-in-out">
+        class="input ring-0 input-bordered w-full flex border-base-content items-center transition ease-in-out">
         <input
           type="text"
           class="grow ring-0 !outline-none"
@@ -80,47 +80,17 @@ import { useFuse } from '@vueuse/integrations/useFuse'
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
 import type { FuseResult } from 'fuse.js'
 import { imageLoadError } from '@/utils'
+import type { Search } from '@/models/search'
 const store = useBasicStore()
-const { currentSearchName, collectionsList } = storeToRefs(store)
+const { currentSearchName, collectionsList, searchList } = storeToRefs(store)
 
 const showSearch = ref(false)
-
-interface Search {
-  name: string
-  url: string
-  active?: boolean
-  placeholder: string
-}
 
 const currentSearch = ref<Search>()
 const searchValue = ref('')
 
 const searchResults = ref<FuseResult<Collection>[]>([])
 const searchRef = useTemplateRef<HTMLInputElement>('searchRef')
-
-const searchList = ref([
-  {
-    name: '百度',
-    url: 'https://www.baidu.com/s?wd=',
-    active: true,
-    placeholder: '百度一下'
-  },
-  {
-    name: '必应',
-    url: 'https://www.bing.com/search?q=',
-    placeholder: '必应一下'
-  },
-  {
-    name: '谷歌',
-    url: 'https://www.google.com/search?q=',
-    placeholder: '谷歌一下'
-  },
-  {
-    name: '站内',
-    url: '/search?q=',
-    placeholder: '站内搜索'
-  }
-])
 
 const options = computed<UseFuseOptions<Collection>>(() => ({
   fuseOptions: {

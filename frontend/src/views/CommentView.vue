@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full pb-32 md:pb-12 container">
+  <div class="container">
     <div class="p-6 my-8 w-full h-full bg-base-100 shadow-md rounded-lg">
       <div class="flex flex-col h-full space-y-8 justify-between">
         <!-- 评论区 -->

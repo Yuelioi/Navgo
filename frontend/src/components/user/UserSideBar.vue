@@ -5,7 +5,7 @@
         <li v-for="(nav, index) in navs" @click="scrollToSection(nav.cid)">
           <a class="">
             <span :class="icons[index]" class="size-5"></span>
-            <span v-if="!isCollapsedNav" class="text-base">{{ nav.title }}</span>
+            <span v-if="!showSetting.siderBar" class="text-base">{{ nav.title }}</span>
           </a>
         </li>
       </ul>
@@ -18,7 +18,7 @@ import router from '@/router'
 import { icons } from '@/stores/icons'
 
 const store = useBasicStore()
-const { navs, isCollapsedNav } = storeToRefs(store)
+const { navs, showSetting } = storeToRefs(store)
 
 function scrollToSection(cid?: string) {
   if (router.currentRoute.value.name != 'home') {

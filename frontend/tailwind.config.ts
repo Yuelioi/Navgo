@@ -57,8 +57,8 @@ export default {
           info: '#2563EB',
           'info-content': '#d2e2ff',
           success: '#16A34A',
-          'success-content': '#000a02',
-          warning: '#D97706',
+          'success-content': '#f6f9fb',
+          warning: '#f3a034',
           'warning-content': '#110500',
           error: '#DC2626',
           'error-content': '#ffd9d4'

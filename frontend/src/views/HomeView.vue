@@ -5,7 +5,7 @@
       <div
         role="alert"
         class="alert flex w-full bg-base-100 overflow-hidden"
-        v-if="currentAnnounce">
+        v-if="currentAnnounce && showSetting.announce">
         <span class="icon-[lucide--info] size-5"></span>
         <Transition name="goon" mode="out-in">
           <div class="flex w-full" :key="currentAnnounce.title">
@@ -27,7 +27,7 @@
         <div
           class="card rounded-md bg-base-100 shadow-md hover:shadow-lg my-8"
           id="love"
-          v-if="showMyCollection">
+          v-if="showSetting.likes">
           <CatTitle :title="'我的收藏'" :icon="'icon-[lucide--star]'"></CatTitle>
 
           <div class="card-body md:mt-6 px-1">
@@ -50,7 +50,7 @@
         <div
           class="card rounded-md bg-base-100 shadow-md hover:shadow-lg my-8"
           :id="data.category.cid"
-          v-if="showWebCollection"
+          v-if="showSetting.collections"
           v-for="(data, index) in collectionsDatas">
           <!-- 分类标题 -->
           <CatTitle :title="data.category.title" :icon="icons[index]"></CatTitle>
@@ -88,8 +88,7 @@ import { getAnnounces } from '@/logic'
 import { icons } from '@/stores/icons'
 
 const store = useBasicStore()
-const { collectionsDatas, likeCollectionsList, showMyCollection, showWebCollection } =
-  storeToRefs(store)
+const { collectionsDatas, likeCollectionsList, showSetting } = storeToRefs(store)
 
 const AsyncGroupCard = defineAsyncComponent({
   loader: () => import('../components/user/GroupCard.vue')
