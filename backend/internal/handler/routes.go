@@ -160,7 +160,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: user.UsersHandler(serverCtx),
 			},
 		},
-		rest.WithJwt(serverCtx.Auth.AccessSecret),
+		rest.WithJwt(serverCtx.Config.System.JwtSecret),
 		rest.WithPrefix("/v1"),
 	)
 }
