@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="p-6 my-8 w-full h-full bg-base-100 shadow-md rounded-lg">
+    <div class="p-6 w-full h-full bg-base-100 shadow-md rounded-lg z-10 relative">
       <div class="flex flex-col h-full space-y-8 justify-between">
         <!-- 评论区 -->
         <div class="flex flex-col space-y-4 overflow-y-scroll">
@@ -29,10 +29,6 @@
               class="textarea textarea-bordered w-full"
               placeholder="提交建议或者反馈"
               v-model="form.content"></textarea>
-
-            <div v-if="errorFields?.content" class="text-warning top-full !my-1">
-              {{ errorFields.content[0].message }}
-            </div>
           </div>
 
           <div class="flex items-center mt-2">
@@ -42,13 +38,7 @@
               <span class="select-none text-nowrap">昵称</span>
               <input type="text" placeholder="张三" class="" v-model="form.nickname" />
             </label>
-            <button class="ml-auto btn btn-primary btn-sm" :disabled="!pass" @click="submitComment">
-              提交
-            </button>
-          </div>
-
-          <div v-if="errorFields?.nickname" class="text-warning !my-1">
-            {{ errorFields.nickname[0].message }}
+            <button class="ml-auto btn btn-primary btn-sm" @click="submitComment">提交</button>
           </div>
         </div>
       </div>
@@ -59,29 +49,7 @@
 <script setup lang="ts">
 import { addComment, comments as getComments, type Comment } from '@/api'
 
-import type { Rules } from 'async-validator'
-
-import { useAsyncValidator } from '@vueuse/integrations/useAsyncValidator'
-
 const form = reactive({ nickname: '', content: '' })
-const rules: Rules = {
-  nickname: {
-    type: 'string',
-    min: 2,
-    required: true
-  },
-
-  content: [
-    {
-      type: 'string',
-      min: 2,
-      max: 200,
-      required: true
-    }
-  ]
-}
-
-const { pass, errorFields } = useAsyncValidator(form, rules)
 
 const comments = ref<Comment[]>([])
 

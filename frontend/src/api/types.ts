@@ -28,21 +28,20 @@ export interface AnnouncesData {
 }
 
 export interface Collection {
-  id?: number
-  createdAt?: string
-  updatedAt?: string
+  // createdAt?: string
+  // updatedAt?: string
   cid: string
   title: string
   link: string
   path?: string
-  categoryID?: string // 外键字段
+  categoryID?: string
   category: Category
-  description?: string
-  country?: string
+  description: string
+
   favicon?: string
   tags?: Array<string>
-  view?: number
-  like: boolean
+  // view?: number
+  like?: boolean
 }
 
 export interface CollectionsData {
@@ -89,12 +88,6 @@ export interface IDRequest {
 
 export interface IDResponse {
   id: string
-}
-
-export interface Model {
-  iD: number
-  createdAt: string
-  updatedAt: string
 }
 
 export interface TagRequest {

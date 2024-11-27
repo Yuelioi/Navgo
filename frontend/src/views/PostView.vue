@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="flex h-full">
-      <div class="grid w-full p-6 space-y-2 bg-base-100 rounded-lg shadow-lg">
+      <div class="grid w-full p-6 space-y-2 z-10 bg-base-100 rounded-lg shadow-lg">
         <div class="">投稿</div>
         <div class="divider my-0"></div>
 
@@ -18,9 +18,6 @@
               placeholder="https://"
               v-model="form.link" />
           </div>
-          <div v-if="errorFields?.link" class="text-warning !my-1">
-            {{ errorFields.link[0].message }}
-          </div>
         </div>
 
         <div class="">
@@ -35,9 +32,6 @@
               class="grow input-bordered"
               placeholder="Name"
               v-model="form.title" />
-          </div>
-          <div v-if="errorFields?.title" class="text-warning !my-1">
-            {{ errorFields.title[0].message }}
           </div>
         </div>
 
@@ -89,17 +83,12 @@
           class="textarea w-full textarea-bordered"
           placeholder="网址介绍"
           v-model="form.description"></textarea>
-        <div v-if="errorFields?.description" class="text-warning !my-1">
-          {{ errorFields.description[0].message }}
-        </div>
 
         <div class="flex justify-between w-full">
           <div class="tooltip tooltip-bottom" data-tip="自动补全信息">
             <button class="btn btn-sm btn-primary" @click="queryMeta">一键填写</button>
           </div>
-          <button class="btn btn-sm btn-primary" :disabled="!pass" @click="handleSubmit">
-            提交
-          </button>
+          <button class="btn btn-sm btn-primary" @click="handleSubmit">提交</button>
         </div>
       </div>
     </div>
@@ -109,34 +98,11 @@
 <script setup lang="ts">
 import { addCollection } from '@/api'
 import { net } from '@/logic'
-import { useAsyncValidator } from '@vueuse/integrations/useAsyncValidator'
-import type { Rules } from 'async-validator'
 import { imageLoadError } from '@/utils'
 const fileInput = useTemplateRef<HTMLInputElement | null>('fileInput')
 const iconRef = useTemplateRef<HTMLImageElement>('iconRef')
 
 const form = reactive({ link: '', title: '', description: '' })
-const rules: Rules = {
-  link: {
-    type: 'url',
-    min: 5,
-    required: true
-  },
-  title: {
-    type: 'string',
-    min: 2,
-    required: true
-  },
-  description: [
-    {
-      type: 'string',
-      max: 200,
-      required: true
-    }
-  ]
-}
-
-const { pass, errorFields } = useAsyncValidator(form, rules)
 
 const icon = ref<File | null>(null)
 

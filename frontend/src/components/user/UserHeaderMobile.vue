@@ -1,6 +1,6 @@
 <template>
   <!-- 手机端 -->
-  <div class="btm-nav z-10" :class="{ hidden: !isCollapsedNav && isMobileDevice() }">
+  <div class="btm-nav z-10" :class="{ hidden: !showSetting.siderBar && isMobileDevice() }">
     <button class="" @click="router.push({ name: 'home' })">
       <span class="icon-[lucide--house] size-5"></span>
       <span class="btm-nav-label">主页</span>
@@ -30,7 +30,7 @@ import router from '@/router'
 import { isMobileDevice } from '@/utils'
 const store = useBasicStore()
 
-const { isCollapsedNav } = storeToRefs(store)
+const { showSetting } = storeToRefs(store)
 
 const { switchTheme } = useTheme()
 

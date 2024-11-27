@@ -11,5 +11,5 @@ export function imageLoadError(event: Event) {
 
 export function isMobileDevice() {
   // return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-  return screen.width < 426
+  return screen.width < 768
 }

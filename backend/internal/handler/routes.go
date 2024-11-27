@@ -112,6 +112,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/net",
 				Handler: service.NetHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/net",
+				Handler: service.WallpaperHandler(serverCtx),
+			},
 		},
 		rest.WithPrefix("/v1"),
 	)
@@ -155,7 +160,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: user.UsersHandler(serverCtx),
 			},
 		},
-		rest.WithJwt(string(serverCtx.Config.System.JwtSecret)),
+		rest.WithJwt(serverCtx.Auth.AccessSecret),
 		rest.WithPrefix("/v1"),
 	)
 }

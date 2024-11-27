@@ -1,11 +1,11 @@
 <template>
   <Transition name="slide-fade">
     <div class="w-full h-full">
-      <ul class="menu rounded-box">
+      <ul class="menu rounded-box lg:menu-lg">
         <li v-for="(nav, index) in navs" @click="scrollToSection(nav.cid)">
           <a class="">
             <span :class="icons[index]" class="size-5"></span>
-            <span v-if="!showSetting.siderBar" class="text-base">{{ nav.title }}</span>
+            <span v-if="!showSetting.siderBar" class="text-base lg:text-lg">{{ nav.title }}</span>
           </a>
         </li>
       </ul>

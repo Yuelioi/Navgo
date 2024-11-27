@@ -23,11 +23,10 @@ export const useBasicStore = defineStore('basic', () => {
 
   const token = useStorage('token', '')
 
-  const showSetting = useStorage<ShowSetting>('', defaultShowSetting)
-
-  // 是否折叠侧栏
+  const showSetting = useStorage<ShowSetting>('showSetting', defaultShowSetting)
 
   const isAdmin = useStorage('isAdmin', false)
+  const opacity = useStorage('opacity', 0.5)
 
   const isScrollDown = ref(false)
 
@@ -36,6 +35,7 @@ export const useBasicStore = defineStore('basic', () => {
   const searchList = useStorage<Search[]>('searchList', defaultSearchList)
 
   return {
+    opacity,
     token,
     isAdmin,
     dbVersion,

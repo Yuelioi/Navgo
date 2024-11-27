@@ -33,7 +33,7 @@
         </button>
 
         <Transition>
-          <div class="absolute z-10 top-24" v-if="showHotkeyWindow">
+          <div class="absolute z-20 top-24" v-if="showHotkeyWindow">
             <div
               class="flex bg-base-100 flex-col p-6 rounded-lg h-80 w-96 space-y-4 ring-1 ring-primary">
               <div class="font-bold"><span>帮助</span></div>

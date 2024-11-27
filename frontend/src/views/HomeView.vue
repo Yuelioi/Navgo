@@ -4,7 +4,7 @@
       <!-- 公告 -->
       <div
         role="alert"
-        class="alert flex w-full bg-base-100 overflow-hidden"
+        class="alert flex w-full overflow-hidden"
         v-if="currentAnnounce && showSetting.announce">
         <span class="icon-[lucide--info] size-5"></span>
         <Transition name="goon" mode="out-in">
@@ -19,18 +19,18 @@
       </div>
 
       <!-- 搜索 -->
-      <HomeSearch class="mt-12 md:mt-24 mb-16"></HomeSearch>
+      <HomeSearch class="mt-12 md:mt-24 mb-16 z-50 relative"></HomeSearch>
 
       <!-- 导航 -->
-      <div class="w-full flex-1l">
+      <div class="w-full flex flex-col lg:space-y-16">
         <!-- 个人收藏 -->
         <div
-          class="card rounded-md bg-base-100 shadow-md hover:shadow-lg my-8"
+          class="card rounded-md shadow-md hover:shadow-lg hover:z-10 my-8 bg-base-100"
           id="love"
           v-if="showSetting.likes">
           <CatTitle :title="'我的收藏'" :icon="'icon-[lucide--star]'"></CatTitle>
 
-          <div class="card-body md:mt-6 px-1">
+          <div class="card-body md:mt-2 px-1 pb-2 md:pb-4">
             <div class="flex flex-col w-full space-x-4">
               <div class="grid grid-cols-card relative" v-if="likeCollectionsList.length > 0">
                 <AsyncGroupCard :collections="likeCollectionsList"></AsyncGroupCard>
@@ -48,7 +48,7 @@
 
         <!-- 网站导航 -->
         <div
-          class="card rounded-md bg-base-100 shadow-md hover:shadow-lg my-8"
+          class="card rounded-md shadow-md hover:shadow-lg hover:z-10 bg-base-100"
           :id="data.category.cid"
           v-if="showSetting.collections"
           v-for="(data, index) in collectionsDatas">

@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-lg flex flex-col h-full bg-base-100">
+  <div class="shadow-lg md:flex flex-col h-full hidden bg-base-100">
     <!-- 侧栏logo -->
     <div class="h-20 flex items-center justify-center text-lg">
       <div

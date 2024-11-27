@@ -12,12 +12,12 @@ export default {
       center: true,
       padding: {
         DEFAULT: '0.25rem',
-        sm: '0.5rem',
-        md: '0.75rem',
-        lg: '1rem',
-        xl: '1.25rem',
-        '2xl': '1.5rem',
-        '3xl': '2rem'
+        sm: '0.75rem',
+        md: '1.25rem',
+        lg: '1.5rem',
+        xl: '2rem',
+        '2xl': '2.5rem',
+        '3xl': '6rem'
       }
     },
     screens: {
@@ -31,7 +31,7 @@ export default {
     extend: {
       gridTemplateColumns: {
         one: ' minmax(250px, 50%)',
-        card: 'repeat(auto-fill, minmax(255px, 1fr))'
+        card: 'repeat(auto-fill, minmax(275px, 1fr))'
       }
     }
   },
@@ -52,7 +52,7 @@ export default {
           'neutral-content': '#cfd0d2',
           'base-100': '#ffffff',
           'base-200': '#f6f9fb',
-          'base-300': '#e4eaed',
+          'base-300': '#f3f3f4',
           'base-content': '#121414',
           info: '#2563EB',
           'info-content': '#d2e2ff',

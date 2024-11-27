@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-full justify-center">
     <div class="xl:w-1/2 w-full flex flex-col items-center">
-      <div role="tablist" class="w-full tabs tabs-boxed rounded-none mt-6">
+      <div role="tablist" class="w-full tabs tabs-boxed rounded-none mt-6 bg-transparent">
         <a
           class="tab [--tab-bg:#0f172a] dark:[--tab-bg:#646872]"
           :class="{ 'tab-active': searchItem.active }"
@@ -39,7 +39,7 @@
           <div
             class="h-96 shadow-lg z-10 w-full overflow-y-scroll flex flex-col rounded-b-2xl bg-base-200 space-y-2">
             <div
-              class="bg-base-100 rounded-md m-4 hover:inset-1 hover:bg-neutral/30 hover:cursor-pointer"
+              class="rounded-md m-4 hover:inset-1 hover:bg-neutral/30 hover:cursor-pointer"
               v-for="item in searchResults"
               @click="open(item.item.link)">
               <div class="p-4 flex items-center space-x-3">
@@ -116,6 +116,7 @@ function switchSearch(name: string) {
 
 function handleSearchChange() {
   if (searchValue.value !== '' && currentSearch.value?.name === '站内') {
+    // @ts-ignore
     const { results } = useFuse(searchValue.value, collectionsList.value, options)
     searchResults.value = results.value
     showSearch.value = true

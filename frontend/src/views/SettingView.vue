@@ -1,6 +1,6 @@
 <template>
   <div class="container flex flex-col space-y-8">
-    <div role="alert" class="alert alert-info flex rounded-md">
+    <div role="alert" class="alert alert-info z-10 flex rounded-md">
       <span class="icon-[lucide--info] size-5"></span>
       <div class="flex w-full">
         <span class="font-bold transition-transform">注意</span>
@@ -9,12 +9,40 @@
         </span>
       </div>
     </div>
-    <div class="flex w-full flex-col p-6 space-y-4 bg-base-100 border rounded-md shadow-md">
+    <div
+      class="flex z-10 w-full flex-col p-6 space-y-4 bg-base-100 border border-neutral-content/50 rounded-md shadow-md">
       <div class="font-bold flex items-center justify-between">
         <span class="font-bold">个性化设置</span>
       </div>
       <div class="divider"></div>
+
       <div class="flex flex-col">
+        <div class="flex md:hidden items-center w-full justify-between">
+          <span class="font-bold">夜间模式</span>
+          <label class="label cursor-pointer">
+            <input
+              type="checkbox"
+              class="toggle"
+              value="synthwave"
+              @click="changeTheme()"
+              :checked="theme == 'dark'" />
+          </label>
+        </div>
+        <div class="flex items-center w-full justify-between">
+          <span class="font-bold">背景不透明度</span>
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="10"
+                class="range"
+                @input="opacity = opacityPercentage / 100"
+                v-model="opacityPercentage" />
+            </label>
+          </div>
+        </div>
         <div class="flex items-center w-full justify-between">
           <span class="font-bold">显示我的收藏</span>
           <div class="form-control">
@@ -31,6 +59,7 @@
             </label>
           </div>
         </div>
+
         <div class="flex items-center w-full justify-between">
           <span class="font-bold">显示公告</span>
           <div class="form-control">
@@ -50,7 +79,8 @@
       </div>
     </div>
 
-    <div class="flex w-full flex-col p-6 space-y-4 bg-base-100 border rounded-md shadow-md">
+    <div
+      class="hidden z-10 md:flex w-full flex-col p-6 space-y-4 bg-base-100 border border-neutral-content/50 rounded-md shadow-md">
       <div class="flex items-center">
         <span class="font-bold">搜索设置</span>
 
@@ -63,7 +93,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>序号</th>
+            <th class="hidden md:block">序号</th>
             <th>名称</th>
             <th>搜索链接</th>
             <th>占位符</th>
@@ -73,20 +103,37 @@
         <tbody>
           <template v-for="(search, index) in searchList" :key="search.name">
             <tr class="group">
-              <th>{{ index + 1 }}</th>
-              <td><input type="text" class="input input-bordered" v-model="search.name" /></td>
+              <th class="hidden md:block">{{ index + 1 }}</th>
               <td>
-                <input type="text" class="w-full input input-bordered" v-model="search.url" />
+                <input
+                  type="text"
+                  class="w-full min-w-[13vw] input input-bordered"
+                  v-model="search.name" />
               </td>
               <td>
-                <input type="text" class="input input-bordered" v-model="search.placeholder" />
+                <input
+                  type="text"
+                  class="w-full min-w-[20vw] input input-bordered"
+                  v-model="search.url" />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="w-full min-w-[20vw] input input-bordered"
+                  v-model="search.placeholder" />
               </td>
               <td width="200">
-                <div class="hidden group-hover:flex gap-2">
-                  <button class="btn btn-sm" @click="" v-if="index > 1">
+                <div class="flex md:hidden group-hover:flex gap-2">
+                  <button
+                    class="btn btn-sm hidden md:block"
+                    @click="swap(searchList, index, index - 1)"
+                    :disabled="index == 0">
                     <span class="icon-[lucide--arrow-up]"></span>
                   </button>
-                  <button class="btn btn-sm" @click="removeCollection(index)">
+                  <button
+                    class="btn btn-sm hidden md:block"
+                    @click="swap(searchList, index, index + 1)"
+                    :disabled="index == searchList.length - 1">
                     <span class="icon-[lucide--arrow-down]"></span>
                   </button>
                   <button class="btn btn-error btn-sm" @click="removeSearch(index)">删除</button>
@@ -98,7 +145,8 @@
       </table>
     </div>
 
-    <div class="flex shadow-md border rounded-md bg-base-100 w-full flex-col p-6 space-y-4">
+    <div
+      class="hidden z-10 md:flex shadow-md border border-neutral-content/50 rounded-md bg-base-100 w-full flex-col p-6 space-y-4">
       <div class="flex items-center justify-between">
         <span class="font-bold">收藏设置</span>
         <div class="flex gap-4 items-center">
@@ -119,7 +167,7 @@
       <table class="table rounded-none">
         <thead>
           <tr class="font-bold">
-            <th class="font-bold">图标</th>
+            <th class="font-bold hidden md:block">图标</th>
             <th class="font-bold">标题</th>
             <th class="font-bold">链接</th>
             <th class="font-bold">描述</th>
@@ -127,8 +175,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(collection, index) in likeCollectionsList" class="group">
-            <td>
+          <tr
+            v-for="(collection, index) in likeCollectionsList"
+            class="group"
+            :key="collection.link">
+            <td class="hidden md:block">
               <div class="avatar static size-12">
                 <div class="h-full rounded-xl">
                   <img
@@ -153,15 +204,24 @@
                 class="input w-full overflow-y-hidden"
                 v-model="collection.description" />
             </td>
-            <td width="200">
-              <div class="max-w-fit hidden group-hover:flex space-x-2">
-                <button class="btn btn-sm" @click="removeCollection(index)">
+            <td width="md:200">
+              <div class="md:flex hidden group-hover:flex space-x-2">
+                <!-- TODO 允许排序 但是需要加个order属性 -->
+                <!-- <button
+                  class="btn btn-sm"
+                  @click="swap(likeCollectionsList, index, index - 1)"
+                  :disabled="index == 0">
                   <span class="icon-[lucide--arrow-up]"></span>
                 </button>
-                <button class="btn btn-sm" @click="removeCollection(index)">
+                <button
+                  class="btn btn-sm"
+                  @click="swap(likeCollectionsList, index, index + 1)"
+                  :disabled="index == likeCollectionsList.length - 1">
                   <span class="icon-[lucide--arrow-down]"></span>
+                </button> -->
+                <button class="btn ml-auto btn-error btn-sm" @click="removeCollection(index)">
+                  删除
                 </button>
-                <button class="btn btn-error btn-sm" @click="removeCollection(index)">删除</button>
               </div>
             </td>
           </tr>
@@ -178,10 +238,21 @@ import { imageLoadError } from '@/utils'
 import { defaultSearchList } from '@/consts/search'
 import { useCloned } from '@vueuse/core'
 
+const { switchTheme } = useTheme()
+
+function changeTheme() {
+  theme.value = theme.value == 'light' ? 'dark' : 'light'
+  switchTheme(theme.value)
+}
+
 const isModify = ref(false)
 
+const opacityPercentage = ref(0)
+
 const store = useBasicStore()
-const { likeCollectionsList, showSetting, searchList } = storeToRefs(store)
+const { likeCollectionsList, showSetting, searchList, theme, opacity } = storeToRefs(store)
+
+opacityPercentage.value = opacity.value * 100
 
 function removeCollection(id: number) {
   likeCollectionsList.value.splice(id, 1)
@@ -245,7 +316,8 @@ function addLike() {
       title: '',
       link: '',
       category: { title: '' },
-      like: false
+      like: false,
+      description: ''
     })
     isModify.value = true
   } else {
