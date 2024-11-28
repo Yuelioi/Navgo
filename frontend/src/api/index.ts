@@ -2,7 +2,8 @@ import axios, { type AxiosRequestConfig } from 'axios'
 import * as components from './types'
 export * from './types'
 
-const apiUrl = 'http://localhost:9200'
+// const apiUrl = 'http://localhost:9200'
+const apiUrl = '/api'
 
 /**
  * @description "获取通知"
