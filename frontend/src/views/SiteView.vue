@@ -204,8 +204,6 @@ async function queryMeta() {
 }
 
 function handleSubmit() {
-  console.log(collection.value)
-
   const formData = new FormData()
   // 添加表单字段
   formData.append('title', title.value)

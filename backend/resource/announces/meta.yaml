@@ -5,3 +5,6 @@ announces:
   - title: 系统公告
     content: 已支持壁纸背景, 请在设置打开
     date: 2024/11/28
+  - title: 系统公告
+    content: 已支持自定义壁纸, 设置 => 壁纸设置
+    date: 2024/11/29

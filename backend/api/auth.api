@@ -20,4 +20,8 @@ service main {
 	@handler Auth
 	post /auth (User) returns (AuthResponse)
 
+	@doc "验证token信息"
+	@handler CheckToken
+	get /auth (IDRequest) returns (AuthResponse)
+
 }

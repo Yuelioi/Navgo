@@ -10,7 +10,7 @@ import (
 
 var expireTime = time.Hour
 
-func Validate(tokenString string) (bool, error) {
+func Validate(tokenString string) (string, error) {
 	parsedToken, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
 		// Don't forget to validate the alg is what you expect:
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
@@ -21,29 +21,29 @@ func Validate(tokenString string) (bool, error) {
 		return []byte(constants.ConfInst.Auth.AccessSecret), nil
 	})
 	if err != nil {
-		return false, err
+		return "", err
 	}
 
 	claims, ok := parsedToken.Claims.(jwt.MapClaims)
 	if !ok {
-		return false, fmt.Errorf("invalid claims")
+		return "", fmt.Errorf("invalid claims")
 	}
 	// 验证是否过期
 	exp, ok := claims["exp"].(float64)
 	if !ok {
-		return false, fmt.Errorf("exp not found in token")
+		return "", fmt.Errorf("exp not found in token")
 	}
 
 	if time.Unix(int64(exp), 0).Before(time.Now()) {
-		return false, fmt.Errorf("token has expired")
+		return "", fmt.Errorf("token has expired")
 	}
 
 	// 提取用户名或用户ID
-	_, ok = claims["username"].(string)
+	username, ok := claims["username"].(string)
 	if !ok {
-		return false, fmt.Errorf("username not found in token")
+		return "", fmt.Errorf("username not found in token")
 	}
-	return true, nil
+	return username, nil
 }
 
 func Generate(username, role string) (string, error) {

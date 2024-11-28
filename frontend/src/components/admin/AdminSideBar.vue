@@ -1,15 +1,15 @@
 <template>
   <Transition name="slide-fade">
-    <div class="bg-base-100 float-left w-full h-full">
+    <div class="float-left w-full h-full">
       <ul class="menu" v-for="(nav, index) in adminNavs">
         <!-- 有子级 && 没折叠 -->
-        <li v-if="!isCollapsedNav && nav.children">
+        <li v-if="showSetting.siderBar && nav.children">
           <details>
             <summary>
               <span :class="nav.icon" class="size-5"></span>
-              <span v-if="!isCollapsedNav">{{ nav.title }}</span>
+              <span class="md:text-lg">{{ nav.title }}</span>
             </summary>
-            <ul v-if="nav.children && !isCollapsedNav">
+            <ul v-if="nav.children">
               <li v-for="(child, index) in nav.children">
                 <a
                   class=""
@@ -19,7 +19,7 @@
                     })
                   ">
                   <span :class="child.icon"></span>
-                  <span v-if="!isCollapsedNav">{{ child.title }}</span>
+                  <span>{{ child.title }}</span>
                 </a>
               </li>
             </ul>
@@ -36,31 +36,7 @@
           <!-- 没子级 -->
           <a v-if="!nav.children">
             <span :class="nav.icon" class="size-5"></span>
-            <span v-if="!isCollapsedNav">{{ nav.title }}</span>
-          </a>
-          <!-- 有子级 && 折叠 -->
-          <a v-else>
-            <div class="dropdown dropdown-right inline">
-              <div class="" tabindex="0" role="button">
-                <span role="button" :class="nav.icon" class="size-5"></span>
-              </div>
-              <ul
-                v-if="isCollapsedNav"
-                tabindex="0"
-                class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                <li v-for="(child, index) in nav.children">
-                  <a
-                    @click.stop="
-                      router.push({
-                        name: child.target
-                      })
-                    ">
-                    <span :class="child.icon"></span>
-                    {{ child.title }}
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <span class="md:text-lg">{{ nav.title }}</span>
           </a>
         </li>
       </ul>
@@ -72,7 +48,7 @@
 import router from '@/router'
 
 const store = useBasicStore()
-const { isCollapsedNav } = storeToRefs(store)
+const { showSetting } = storeToRefs(store)
 
 interface Nav {
   cid: string

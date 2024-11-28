@@ -2,12 +2,7 @@ package main
 
 import (
 	"context"
-	"embed"
-	"io/fs"
 	"net/http"
-	"os"
-	"path"
-	"strings"
 
 	"backend/internal/common/biz"
 	"backend/internal/common/constants"
@@ -21,52 +16,13 @@ import (
 	_ "backend/internal/common/db"
 )
 
-const basename = "/web" // 虚拟路由根路径
-
-//go:embed public
-var assets embed.FS
-
-type NotFoundHandler struct {
-	fs         http.FileSystem
-	fileServer http.Handler
-}
-
-func (n NotFoundHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	filePath := strings.TrimPrefix(path.Clean(r.URL.Path), basename)
-	if len(filePath) == 0 {
-		filePath = basename
-	}
-
-	file, err := n.fs.Open(filePath)
-	switch {
-	case err == nil:
-		n.fileServer.ServeHTTP(w, r)
-		_ = file.Close()
-		return
-	case os.IsNotExist(err):
-		r.URL.Path = "/"
-		n.fileServer.ServeHTTP(w, r)
-		return
-	default:
-		http.Error(w, "not found", http.StatusNotFound)
-		return
-	}
-}
-
 func main() {
 	logc.Info(context.Background(), "启动服务中")
-
-	sub, _ := fs.Sub(assets, "public")
-	fs := http.FS(sub)
-	fileServer := http.FileServer(fs)
 
 	server := rest.MustNewServer(
 
 		constants.ConfInst.RestConf,
-		rest.WithNotFoundHandler(&NotFoundHandler{ // 自定义 NotFoundHandler，对虚拟路由做处理
-			fs:         fs,
-			fileServer: fileServer,
-		}),
+		// middleware.Frontend(),
 	)
 
 	// 跨域中间件

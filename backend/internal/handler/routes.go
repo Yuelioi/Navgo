@@ -20,10 +20,7 @@ import (
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
-	
-
-
-  server.AddRoutes(
+	server.AddRoutes(
 		[]rest.Route{
 			{
 				// 获取通知
@@ -42,6 +39,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/auth",
 				Handler: auth.AuthHandler(serverCtx),
+			},
+			{
+				// 验证token信息
+				Method:  http.MethodGet,
+				Path:    "/auth",
+				Handler: auth.CheckTokenHandler(serverCtx),
 			},
 		},
 		rest.WithPrefix("/v1"),
@@ -166,8 +169,4 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/v1"),
 	)
-
-
-
-	
 }

@@ -49,17 +49,18 @@
 
           <div class="ml-auto space-x-2">
             <span
-              class="icon-[lucide--star] size-5"
-              :class="{ 'icon-[line-md--star-filled]': collection.like }"
+              v-if="collection.like"
+              class="icon-[line-md--star-filled] bg-warning size-5"
               @click="like(collection)"></span>
-            <span
+            <span v-else class="icon-[lucide--star] size-5" @click="like(collection)"></span>
+            <!-- <span
               class="icon-[lucide--square-arrow-right] size-5"
               @click="
                 router.push({
                   name: 'site',
                   params: { id: collection.cid }
                 })
-              "></span>
+              "></span> -->
           </div>
         </div>
       </div>
@@ -100,9 +101,8 @@ async function like(collection: Collection) {
   const id = likeCollectionsList.value.findIndex((ele: Collection) => {
     return ele.cid === collection.cid
   })
-  if (id == -1) {
-    likeCollectionsList.value.push(collection)
 
+  if (id == -1) {
     // 将 collection 转换为可序列化的对象
     const serializableCollection = {
       id: collection.cid,
@@ -110,9 +110,12 @@ async function like(collection: Collection) {
       title: collection.title,
       description: collection.description,
       link: collection.link,
-      favicon: collection.favicon
+      favicon: collection.favicon,
+      like: true
     }
     collection.like = true
+
+    likeCollectionsList.value.push(collection)
 
     await db.addData('likes', serializableCollection)
   } else {

@@ -17,6 +17,13 @@
           @click="router.push({ name: 'home' })">
           <div class="tooltip tooltip-bottom text-lg" data-tip="主页">月离导航</div>
         </button>
+
+        <button
+          v-if="showSetting.siderBar"
+          class="btn btn-ghost btn-sm"
+          @click="router.push({ name: 'home' })">
+          <span class="icon-[lucide--home] size-6"></span>
+        </button>
       </div>
     </div>
 

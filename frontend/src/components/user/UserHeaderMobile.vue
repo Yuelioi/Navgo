@@ -34,8 +34,6 @@ const store = useBasicStore()
 
 const { showSetting } = storeToRefs(store)
 
-const { switchTheme } = useTheme()
-
 function scrollToTop() {
   document.querySelector('.anchor')?.scrollTo({
     top: 0,

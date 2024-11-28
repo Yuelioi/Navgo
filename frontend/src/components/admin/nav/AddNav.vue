@@ -1,7 +1,8 @@
 <template>
-  <div class="w-full flex p-8 h-full space-x-4 bg-base-200">
+  <div class="w-full flex p-8 h-full space-x-4">
     <!-- 内容区 -->
-    <div class="flex p-8 flex-col flex-1 space-y-4 bg-base-100 border">
+    <div
+      class="flex p-8 flex-col flex-1 space-y-4 bg-base-100/50 backdrop-blur-md z-10 rounded-md border">
       <div class="">投稿</div>
       <div class="divider my-0"></div>
 
@@ -48,7 +49,7 @@
 
             <ul
               tabindex="0"
-              class="menu ml-6 flex-col flex-nowrap w-56 dropdown-content bg-base-100 rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
+              class="menu ml-6 flex-col flex-nowrap w-56 dropdown-content rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
               <li>
                 <a class="text-nowrap" @click="resetCategory">全部</a>
               </li>
@@ -98,7 +99,7 @@
     </div>
 
     <div class="h-full w-64 flex flex-col space-y-2">
-      <div class="border bg-base-100 p-4 flex flex-col">
+      <div class="border bg-base-100/50 backdrop-blur-md z-10 rounded-md p-4 flex flex-col">
         <div class="">发布设置</div>
         <div class="divider my-1"></div>
         <div class="flex">
@@ -110,55 +111,13 @@
           </div>
         </div>
       </div>
-      <div class="border bg-base-100 p-4 flex flex-col">
+      <div class="border bg-base-100/50 backdrop-blur-md z-10 rounded-md p-4 flex flex-col">
         <div class="">图标设置</div>
         <div class="divider my-1"></div>
-        <div class="flex">
-          <div
-            class="flex border rounded-lg input-bordered items-center select-none w-full focus-within:outline-info"
-            contenteditable="true"
-            @paste.prevent="handlePaste">
-            <div class="flex items-center justify-center w-full relative h-full min-h-48">
-              <div class="absolute inset-3 w-fit">
-                <div class="flex items-center justify-center space-x-2">
-                  <span class="select-none">图标</span>
-                  <span class="icon-[lucide--image]"></span>
-                </div>
-              </div>
 
-              <!-- 上传图片 -->
-              <div
-                class="flex w-full h-full items-center justify-center"
-                @drop.prevent="handleDrag"
-                v-if="icon === null">
-                <button
-                  class="h-full inline-flex w-full justify-center items-center space-x-4"
-                  @click="openFileInput">
-                  <span class="select-none">拖拽/粘贴/上传</span>
-                  <span class="icon-[lucide--arrow-big-up-dash] size-8"></span>
-                </button>
-                <input
-                  type="file"
-                  @change="onFileChange"
-                  ref="fileInput"
-                  class="hidden"
-                  accept="image/*" />
-              </div>
-
-              <div class="indicator size-36 rounded-md flex" v-if="icon !== null">
-                <div class="avatar justify-center">
-                  <div class="rounded-xl p-2 border border-dashed border-base-content">
-                    <img ref="iconRef" @error="imageLoadError" />
-                    <div class="indicator-item">
-                      <span class="btn btn-sm icon-[lucide--circle-x]" @click="icon = null"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <DragBox v-model:icon="icon" :title="'图标'"></DragBox>
       </div>
+
       <!-- 图标 -->
     </div>
   </div>
@@ -287,13 +246,7 @@ async function handleSubmit() {
     formData.append('favicon', icon.value, icon.value?.name)
   }
 
-  const config = {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  }
-
-  const result = await addCollection(formData, config)
+  const result = await addCollection(formData)
   if (result.data.code > 0) {
     Message({ message: '提交成功' })
   } else {

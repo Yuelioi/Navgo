@@ -36,13 +36,9 @@
         class="relative w-full"
         v-if="searchValue.length > 0 && searchResults.length > 0 && currentSearch?.name == '站内'">
         <div class="absolute flex w-full items-center justify-center">
-          <div
-            class="h-96 shadow-lg z-10 w-full overflow-y-scroll flex flex-col rounded-b-2xl backdrop-blur-sm space-y-2">
-            <div
-              class="rounded-md m-4 hover:inset-1 hover:bg-neutral/50 hover:cursor-pointer"
-              v-for="item in searchResults"
-              @click="open(item.item.link)">
-              <div class="p-4 flex items-center space-x-3">
+          <div class="h-96 z-10 w-full overflow-y-scroll flex flex-col space-y-4">
+            <div class="m-4" v-for="item in searchResults" @click="open(item.item.link)">
+              <div class="p-4 rounded-lg flex items-center space-x-3 bg-base-100/70 drop-shadow-md">
                 <div class=""><span class="icon-[lucide--menu] size-5"></span></div>
                 <div class="flex flex-col flex-1">
                   <div class="flex justify-between w-full">
@@ -80,7 +76,7 @@ import { useFuse } from '@vueuse/integrations/useFuse'
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
 import type { FuseResult } from 'fuse.js'
 import { imageLoadError } from '@/utils'
-import type { Search } from '@/models/search'
+import type { Search } from '@/models'
 const store = useBasicStore()
 const { currentSearchName, collectionsList, searchList } = storeToRefs(store)
 
@@ -104,7 +100,7 @@ const options = computed<UseFuseOptions<Collection>>(() => ({
 
 function switchSearch(name: string) {
   searchValue.value = ''
-  searchList.value.forEach((ele) => {
+  searchList.value.forEach((ele: Search) => {
     ele.active = false
     if (ele.name == name) {
       currentSearch.value = ele
@@ -138,7 +134,7 @@ function handleKeyDown(event: KeyboardEvent) {
   // Tab , 切换搜索引擎并选择
   if (event.key === 'Tab' && searchValue.value.length === 0) {
     event.preventDefault()
-    const idx = searchList.value.findIndex((ele) => {
+    const idx = searchList.value.findIndex((ele: Search) => {
       return ele.name === currentSearch.value?.name
     })
 

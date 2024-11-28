@@ -25,6 +25,7 @@ func (m *UserManager) Read() error {
 	m.user = &types.User{
 		Username: constants.ConfInst.System.Username,
 		Password: hashedPwd,
+		Role:     "admin",
 	}
 	return nil
 }

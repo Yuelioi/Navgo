@@ -1,5 +1,5 @@
 <template>
-  <div class="wave relative overflow-hidden md:h-20">
+  <div class="wave relative hidden md:block overflow-hidden md:h-20">
     <template v-if="isAdmin">
       <AdminHeader></AdminHeader>
     </template>
@@ -10,8 +10,17 @@
 </template>
 
 <script setup lang="ts">
-const store = useBasicStore()
-const { isAdmin } = storeToRefs(store)
+const route = useRoute()
+
+const isAdmin = ref(false)
+
+watch(route, () => {
+  if (route.fullPath.startsWith('/admin')) {
+    isAdmin.value = true
+  } else {
+    isAdmin.value = false
+  }
+})
 </script>
 
 <style scoped>

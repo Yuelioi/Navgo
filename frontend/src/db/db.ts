@@ -1,6 +1,6 @@
 class IndexDB {
   dbName: string
-  version = 1
+  version = 2
 
   constructor(name: string) {
     this.dbName = name
@@ -161,6 +161,6 @@ class IndexDB {
 
 const db = new IndexDB('core')
 
-db.init(['collections', 'likes'])
+db.init(['collections', 'likes', 'wallpaper'])
 
 export { db }

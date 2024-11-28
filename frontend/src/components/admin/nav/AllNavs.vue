@@ -1,15 +1,15 @@
 <template>
-  <div class="container py-8 bg-gradient-to-br">
-    <div class="p-4 bg-base-100 rounded-lg shadow-lg flex flex-col">
+  <div class="container py-8 z-10">
+    <div class="p-4 backdrop-blur-md rounded-lg shadow-lg flex flex-col">
       <div class="flex w-full items-center space-x-4">
         <!-- 分类筛选 -->
         <div class="dropdown dropdown-bottom">
-          <div tabindex="0" role="button" class="btn m-1">
+          <div tabindex="0" role="button" class="btn bg-base-100/50 backdrop-blur-sm m-1">
             {{ currentCategory?.title || '分类筛选' }}
           </div>
           <ul
             tabindex="0"
-            class="menu flex-col flex-nowrap w-56 dropdown-content bg-base-100 rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
+            class="menu flex-col flex-nowrap w-56 dropdown-content rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
             <li>
               <a class="text-nowrap" @click="currentCategory = undefined">全部</a>
             </li>
@@ -42,7 +42,7 @@
           <table class="table rounded-none table-sm table-pin-rows">
             <!-- head -->
             <thead>
-              <tr class="font-bold">
+              <tr class="font-bold bg-base-100/20">
                 <th class="text-center">索引</th>
                 <th class="">图标</th>
                 <th class="">标题</th>
@@ -117,10 +117,12 @@
           </table>
 
           <div class="join">
-            <button class="join-item btn" @click="currentPage = 1">
+            <button class="join-item btn bg-base-100/50 backdrop-blur-md" @click="currentPage = 1">
               <span class="icon-[lucide--chevron-first]"></span>
             </button>
-            <button class="join-item btn" @click="currentPage = Math.max(1, currentPage - 1)">
+            <button
+              class="join-item btn bg-base-100/50"
+              @click="currentPage = Math.max(1, currentPage - 1)">
               <span class="icon-[lucide--chevron-left]"></span>
             </button>
             <input
@@ -132,16 +134,15 @@
               :aria-label="currentPage.toString()" />
 
             <button
-              class="join-item btn"
+              class="join-item btn bg-base-100/50"
               @click="currentPage = Math.min(patination, currentPage + 1)">
               <span class="icon-[lucide--chevron-right]"></span>
             </button>
-            <button class="join-item btn" @click="currentPage = patination">
+            <button class="join-item btn bg-base-100/50" @click="currentPage = patination">
               <span class="icon-[lucide--chevron-last]"></span>
             </button>
             <label
-              class="join-item input input-bordered flex items-center gap-2"
-              @click.stop="jump"
+              class="join-item input border-none leading-4 bg-base-100/50 input-bordered flex items-center gap-2"
               @keyup="jumpKey($event)">
               <input type="text" class="grow" placeholder="跳转" v-model="searchPage" />
               <span class="opacity-50">/{{ patination }}</span>
@@ -193,7 +194,7 @@ const filteredFullCollections: Ref<Collection[]> = computed(() => {
     })
 
     currentPage.value = 1
-
+    // @ts-ignore
     const { results } = useFuse(searchValue.value, tmpCollections, options)
     return results.value.map((result) => result.item)
   } else {
@@ -236,7 +237,7 @@ const options = computed<UseFuseOptions<Collection>>(() => ({
 
 function validatePage() {
   const x = Number(searchPage.value)
-  if (x >= 1 && x <= patination.value) {
+  if (x >= 1 && x <= patination.value && currentPage.value != x) {
     currentPage.value = x
   }
 }
@@ -297,6 +298,6 @@ onMounted(async () => {
 
 <style scoped>
 tr:hover {
-  background: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
+  background: var(--fallback-b2, oklch(var(--b2) / 0.5));
 }
 </style>

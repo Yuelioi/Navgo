@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
 import { loadData } from '@/stores/data'
+import { auth, checkToken } from '@/api'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,14 +87,14 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   try {
     const basicStore = useBasicStore()
-
-    const { isAdmin } = storeToRefs(basicStore)
+    const { token } = storeToRefs(basicStore)
 
     if (/^\/admin/.test(to.fullPath)) {
-      // TODO 判断是否有权限
-      isAdmin.value = true
+      const resp = await checkToken({ id: token.value })
+      if (resp.data['code'] >= 0) {
+        console.log(resp.data)
+      }
     } else {
-      isAdmin.value = false
     }
 
     if (to.meta['loadData']) {

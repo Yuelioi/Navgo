@@ -4,15 +4,15 @@
       <!-- 公告 -->
       <div
         role="alert"
-        class="alert flex w-full backdrop-blur-sm shadow-md border-1 border-opacity-25 bg-base-200/20 overflow-hidden"
+        class="alert flex w-full backdrop-blur-sm shadow-md border-1 overflow-hidden border-opacity-25 bg-base-200/20"
         v-if="currentAnnounce && showSetting.announce">
         <span class="icon-[lucide--info] size-5"></span>
         <Transition name="goon" mode="out-in">
-          <div class="flex w-full" :key="currentAnnounce.title">
-            <span class="font-bold transition-transform">
+          <div class="flex w-full line-clamp-1" :key="currentAnnounce.content">
+            <span class="font-bold transition-transform truncate">
               {{ currentAnnounce.title }}
             </span>
-            <span class="ml-8">{{ currentAnnounce.content }}</span>
+            <span class="mx-2 md:ml-8 truncate">{{ currentAnnounce.content }}</span>
             <span class="ml-auto">{{ currentAnnounce.date }}</span>
           </div>
         </Transition>

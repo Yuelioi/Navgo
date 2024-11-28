@@ -29,7 +29,27 @@
 
 <script setup lang="ts">
 const store = useBasicStore()
-const { isAdmin, showSetting } = storeToRefs(store)
+const { showSetting } = storeToRefs(store)
+
+const route = useRoute()
+
+const isAdmin = ref(false)
+
+watch(route, () => {
+  if (route.fullPath.startsWith('/admin')) {
+    isAdmin.value = true
+  } else {
+    isAdmin.value = false
+  }
+})
+
+onMounted(() => {
+  if (route.fullPath.startsWith('/admin')) {
+    isAdmin.value = true
+  } else {
+    isAdmin.value = false
+  }
+})
 </script>
 
 <style>

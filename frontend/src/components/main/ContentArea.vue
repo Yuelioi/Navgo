@@ -10,25 +10,55 @@
       :class="{ 'mb-4': showSetting.footer }"></router-view>
     <FooterArea />
     <img
-      v-if="showSetting.wallpaper && currentWallpaper"
+      v-if="wallpaperSetting.show && currentWallpaper"
       :src="currentWallpaper"
       alt="Loading..."
       class="w-full h-full fixed pointer-events-none object-cover"
-      :style="{ opacity: opacity }" />
+      :style="{ opacity: wallpaperSetting.opacity }" />
+
+    <img
+      @click="scrollToTop"
+      src="https://cdn.yuelili.com/web/assets/christmas.gif"
+      class="absolute size-32 bottom-12 right-8 z-20"
+      alt="" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { wallpaper } from '@/api'
+import { db } from '@/db/db'
 import { isMobileDevice } from '@/utils'
-
-const currentWallpaper = ref('')
+import { computedAsync } from '@vueuse/core'
 
 const store = useBasicStore()
-const { showSetting, opacity } = storeToRefs(store)
+const { showSetting, wallpaperSetting, localWallpaper } = storeToRefs(store)
+
+const currentWallpaper = computedAsync(async () => {
+  if (wallpaperSetting.value.useLocal) {
+    return localWallpaper.value
+  } else {
+    return '' + (await wallpaper())['data']['data']['id']
+  }
+})
+
+async function loadLocalWallpaper() {
+  if (wallpaperSetting.value.useLocal) {
+    const data = await db.queryData('wallpaper', 'wallpaper')
+
+    if (data) {
+      localWallpaper.value = data['data']
+    }
+  }
+}
+
+function scrollToTop() {
+  document.querySelector('.anchor')?.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
 
 onMounted(async () => {
-  currentWallpaper.value = '' + (await wallpaper())['data']['data']['id']
-  console.log(currentWallpaper.value)
+  await loadLocalWallpaper()
 })
 </script>

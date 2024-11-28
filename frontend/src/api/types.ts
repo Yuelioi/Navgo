@@ -124,5 +124,12 @@ export interface User {
 export interface UserResponse {}
 export interface UserResponseParams {}
 
-export interface AuthResponse {}
+export interface AuthResponse {
+  username: string
+  email: string
+  nickname: string
+  role: string
+  token: string
+}
+
 export interface AuthResponseParams {}

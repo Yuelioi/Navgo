@@ -2,6 +2,12 @@ import axios, { type AxiosRequestConfig } from 'axios'
 import * as components from './types'
 export * from './types'
 
+const formHeader = {
+  headers: {
+    'Content-Type': 'multipart/form-data'
+  }
+}
+
 // const apiUrl = 'http://localhost:9200'
 const apiUrl = '/api'
 
@@ -17,8 +23,8 @@ export function announces() {
  * @param req
  * @param headers
  */
-export function addCollection(req: FormData, config: AxiosRequestConfig<any>) {
-  return axios.post<{ code: number; msg: string }>(apiUrl + `/v1/collection`, req, config)
+export function addCollection(req: FormData) {
+  return axios.post<{ code: number; msg: string }>(apiUrl + `/v1/collection`, req, formHeader)
 }
 
 /**
@@ -123,12 +129,20 @@ export function net(id: string) {
 }
 
 /**
+ * @description "验证token信息"
+ * @param req
+ */
+export function checkToken(req: components.IDRequest) {
+  return axios.get<{ code: number; data: components.AuthResponse }>(apiUrl + `/v1/auth`, req)
+}
+
+/**
  * @description "获取验证信息"
  * @param req
  * @param headers
  */
 export function auth(req: components.User) {
-  return axios.post<components.AuthResponse>(apiUrl + `/v1/auth`, req)
+  return axios.post<{ data: components.AuthResponse }>(apiUrl + `/v1/auth`, req, formHeader)
 }
 
 /**

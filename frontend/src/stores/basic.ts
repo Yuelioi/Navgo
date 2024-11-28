@@ -4,11 +4,9 @@ import { defineStore } from 'pinia'
 import type { Category, CollectionsData } from '@/api/types'
 
 import { useStorage } from '@vueuse/core'
-import type { Search } from '@/models/search'
+import type { Search, ShowSetting, WallpaperSetting } from '@/models'
 
-import { defaultSearchList } from '@/consts/search'
-import type { ShowSetting } from '@/models/show'
-import { defaultShowSetting } from '@/consts/show'
+import { defaultSearchList, defaultShowSetting, defaultWallpaperSetting } from '@/consts'
 
 export const useBasicStore = defineStore('basic', () => {
   const collectionsDatas = ref<Array<CollectionsData>>([])
@@ -20,25 +18,22 @@ export const useBasicStore = defineStore('basic', () => {
   const dbVersion = useStorage('dbVersion', 1)
   const currentSearchName = useStorage('currentSearch', '百度')
   const theme = useStorage('theme', 'light')
-
   const token = useStorage('token', '')
 
+  const searchList = useStorage<Search[]>('searchList', defaultSearchList)
   const showSetting = useStorage<ShowSetting>('showSetting', defaultShowSetting)
+  const wallpaperSetting = useStorage<WallpaperSetting>('wallpaperSetting', defaultWallpaperSetting)
 
-  const isAdmin = useStorage('isAdmin', false)
-  const opacity = useStorage('opacity', 0.5)
-
+  const currentWallpaper = ref('')
+  const localWallpaper = ref('')
   const isScrollDown = ref(false)
-
   const siteStats = ref<SiteStats>()
 
-  const searchList = useStorage<Search[]>('searchList', defaultSearchList)
-
   return {
-    opacity,
     token,
-    isAdmin,
     dbVersion,
+    localWallpaper,
+    currentWallpaper,
     navs,
     collectionsDatas,
     collectionsList,
@@ -49,6 +44,7 @@ export const useBasicStore = defineStore('basic', () => {
     currentSearchName,
     likeCollectionsList,
     siteStats,
-    searchList
+    searchList,
+    wallpaperSetting
   }
 })

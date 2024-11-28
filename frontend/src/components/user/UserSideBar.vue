@@ -9,10 +9,17 @@
           </a>
         </li>
 
-        <li class="mt-auto">
-          <a>
-            <span class="icon-[lucide--github] size-6"></span>
-            <span>Github</span>
+        <div class="mt-auto"></div>
+
+        <li v-if="token">
+          <a
+            @click="
+              router.push({
+                name: 'allNavs'
+              })
+            ">
+            <span class="icon-[lucide--activity] size-6"></span>
+            <span>后台</span>
           </a>
         </li>
         <li>
@@ -22,16 +29,23 @@
           </a>
         </li>
 
+        <li>
+          <a>
+            <span class="icon-[lucide--github] size-6"></span>
+            <span>Github</span>
+          </a>
+        </li>
+
         <VDialog title="登录" v-model:show="showLoginWindow">
           <div class="p-4">
             <div class="w-96 p-2 space-y-4">
               <label class="input input-bordered flex items-center gap-2">
                 <span class="icon-[lucide--user]"></span>
-                <input type="text" class="grow" placeholder="Username" />
+                <input type="text" class="grow" placeholder="Username" v-model="form.username" />
               </label>
               <label class="input input-bordered flex items-center gap-2">
                 <span class="icon-[lucide--key-round]"></span>
-                <input type="password" class="grow" value="password" />
+                <input type="password" class="grow" v-model="form.password" />
               </label>
 
               <input
@@ -53,9 +67,18 @@ import { icons } from '@/stores/icons'
 
 const showLoginWindow = ref(false)
 const store = useBasicStore()
-const { navs } = storeToRefs(store)
+const { navs, token } = storeToRefs(store)
 
 import { VDialog } from '@/plugins/dialog'
+import { auth, type User } from '@/api'
+
+const form = reactive<User>({
+  iD: 0,
+  createdAt: '',
+  updatedAt: '',
+  username: '',
+  password: ''
+})
 
 function scrollToSection(cid?: string) {
   if (router.currentRoute.value.name != 'home') {
@@ -72,7 +95,18 @@ function scrollToSection(cid?: string) {
   }
 }
 
-function login() {}
+async function login() {
+  if (form) {
+    const resp = await auth(form)
+    token.value = resp.data.data.token
+    showLoginWindow.value = false
+    Message({ message: '登录成功' })
+  }
+}
+
+onMounted(() => {
+  token
+})
 </script>
 
 <style scoped>

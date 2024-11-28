@@ -1,6 +1,8 @@
 <template>
   <div class="container flex flex-col space-y-8">
-    <div role="alert" class="alert bg-info/20 border-none backdrop-blur-md z-10 flex rounded-md">
+    <div
+      role="alert"
+      class="alert bg-info/75 text-info-content border-none backdrop-blur-md z-10 flex rounded-md">
       <span class="icon-[lucide--info] size-5"></span>
       <div class="flex w-full">
         <span class="font-bold transition-transform">注意</span>
@@ -27,7 +29,7 @@
     <div
       class="flex backdrop-blur-md z-10 w-full flex-col p-6 space-y-4 bg-base-100/50 border border-neutral-content/50 rounded-md shadow-md">
       <div class="font-bold flex items-center justify-between">
-        <span class="font-bold">个性化设置</span>
+        <span class="font-bold">显示设置</span>
       </div>
       <div class="divider"></div>
 
@@ -77,31 +79,52 @@
             </label>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="flex items-center w-full justify-between">
-          <span>显示壁纸</span>
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <input type="checkbox" class="toggle" v-model="showSetting.wallpaper" />
-            </label>
-          </div>
-        </div>
-        <div class="flex items-center w-full justify-between" v-if="showSetting.wallpaper">
-          <span>壁纸不透明度</span>
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <input
-                type="range"
-                min="0"
-                max="100"
-                step="10"
-                class="range"
-                @input="opacity = opacityPercentage / 100"
-                v-model="opacityPercentage" />
-            </label>
-          </div>
+    <div
+      class="flex backdrop-blur-md z-10 w-full flex-col p-6 space-y-4 bg-base-100/50 border border-neutral-content/50 rounded-md shadow-md">
+      <div class="font-bold flex items-center justify-between">
+        <span class="font-bold">壁纸设置</span>
+      </div>
+      <div class="divider"></div>
+      <div class="flex items-center w-full justify-between">
+        <span>显示壁纸</span>
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <input type="checkbox" class="toggle" v-model="wallpaperSetting.show" />
+          </label>
         </div>
       </div>
+      <div class="flex items-center w-full justify-between">
+        <span>使用本地壁纸</span>
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <input
+              type="checkbox"
+              class="toggle"
+              v-model="wallpaperSetting.useLocal"
+              @change="loadLocalWallpaper" />
+          </label>
+        </div>
+      </div>
+
+      <div class="flex items-center w-full justify-between" v-if="wallpaperSetting.show">
+        <span>壁纸不透明度</span>
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              step="10"
+              class="range"
+              @input="wallpaperSetting.opacity = opacityPercentage / 100"
+              v-model="opacityPercentage" />
+          </label>
+        </div>
+      </div>
+      <DragBox :title="'壁纸'" v-model:icon="icon" v-if="wallpaperSetting.useLocal"></DragBox>
     </div>
 
     <div
@@ -260,28 +283,60 @@
 import { type Collection } from '@/api'
 import { db } from '@/db/db'
 import { imageLoadError } from '@/utils'
-import { defaultSearchList } from '@/consts/search'
+import { defaultSearchList } from '@/consts'
 import { useCloned } from '@vueuse/core'
 
 const { switchTheme } = useTheme()
 
-function changeTheme() {
-  theme.value = theme.value == 'light' ? 'dark' : 'light'
-  switchTheme(theme.value)
-}
-
+const icon = ref<File | null>(null)
 const isModify = ref(false)
-
 const opacityPercentage = ref(0)
 
 const store = useBasicStore()
-const { likeCollectionsList, showSetting, searchList, theme, opacity } = storeToRefs(store)
+const {
+  likeCollectionsList,
+  localWallpaper,
+  currentWallpaper,
+  showSetting,
+  searchList,
+  theme,
+  wallpaperSetting
+} = storeToRefs(store)
 
-opacityPercentage.value = opacity.value * 100
+opacityPercentage.value = wallpaperSetting.value.opacity * 100
+
+watch(icon, async (newFile) => {
+  if (newFile) {
+    const reader = new FileReader()
+
+    // 定义读取操作完成时的回调函数
+    reader.onload = (event) => {
+      // event.target.result包含了读取的结果
+      const dataUrl = event.target?.result
+      db.addData('wallpaper', {
+        id: 'wallpaper',
+        data: dataUrl
+      })
+      localWallpaper.value = dataUrl as string
+      currentWallpaper.value = dataUrl as string
+    }
+
+    // 开始读取文件，这里我们希望得到一个data URL
+    reader.readAsDataURL(newFile)
+  } else {
+    localWallpaper.value = ''
+    await db.deleteData('wallpaper', 'wallpaper')
+  }
+})
 
 function removeCollection(id: number) {
   likeCollectionsList.value.splice(id, 1)
   isModify.value = true
+}
+
+function changeTheme() {
+  theme.value = theme.value == 'light' ? 'dark' : 'light'
+  switchTheme(theme.value)
 }
 
 function resetSearch() {
@@ -360,4 +415,29 @@ function addSearch() {
     Message({ message: '最多添加7个搜索喔!' })
   }
 }
+
+async function loadLocalWallpaper() {
+  if (wallpaperSetting.value.useLocal) {
+    const data = await db.queryData('wallpaper', 'wallpaper')
+
+    if (data) {
+      localWallpaper.value = data['data']
+
+      const [mediaType, base64Data] = data['data'].split(';base64,')
+      const mimeType = mediaType.split(':')[1]
+
+      fetch(`data:${mimeType};base64,${base64Data}`)
+        .then((res) => res.blob())
+        .then((blob) => {
+          const file = new File([blob], 'image.png', { type: mimeType })
+          icon.value = file
+        })
+        .catch((err) => console.error('Error converting Data URL to File:', err))
+    }
+  }
+}
+
+onMounted(async () => {
+  await loadLocalWallpaper()
+})
 </script>
