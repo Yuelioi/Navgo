@@ -40,7 +40,11 @@ func (l *AuthLogic) Auth(req *types.User) (resp *types.AuthResponse, err error) 
 			return nil, errors.New("token 生成失败")
 		}
 		return &types.AuthResponse{
-			Token: token,
+			Username: user.Username,
+			Email:    user.Email,
+			Nickname: user.Nickname,
+			Role:     user.Role,
+			Token:    token,
 		}, err
 	}
 

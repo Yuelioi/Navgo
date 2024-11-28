@@ -7,6 +7,8 @@ type Config struct {
 	Resource Resource
 	Database Database
 	System   System
+	Auth     Auth
+	Api      Api
 }
 
 type Resource struct {
@@ -14,7 +16,13 @@ type Resource struct {
 	Announces   string // 通知文件夹
 	Comments    string // 评论文件夹
 	Icons       string // 图标文件夹
-	MetaFile    string // 元数据文件名
+	MetaFile    string // 元数据文件
+	Wallpaper   string // 壁纸文件夹
+}
+
+type Auth struct {
+	AccessSecret string
+	AccessExpire int64
 }
 
 type Database struct {
@@ -22,7 +30,10 @@ type Database struct {
 }
 
 type System struct {
-	Username  string // 管理员用户名
-	Password  string // 管理员密码
-	JwtSecret string // JWT加密密钥
+	Username string // 管理员用户名
+	Password string // 管理员密码
+}
+
+type Api struct {
+	Wallpaper string // 壁纸接口
 }

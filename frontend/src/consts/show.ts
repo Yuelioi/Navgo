@@ -3,5 +3,6 @@ export const defaultShowSetting = {
   likes: true,
   footer: true,
   collections: true,
-  announce: true
+  announce: true,
+  wallpaper: true
 }

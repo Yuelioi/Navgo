@@ -13,6 +13,6 @@ service main {
 	post /net (IDRequest) returns (Collection)
 
 	@handler wallpaper
-	get /net (AnyRequest) returns (IDResponse)
+	get /wallpaper (AnyRequest) returns (IDResponse)
 
 }

@@ -44,6 +44,7 @@ type User {
 	Model
 	Username string `json:"username" gorm:"column:username;unique"`
 	Email    string `json:"email,optional"`
+	Role     string `json:"role,optional"`
 	Password string `json:"password"`
 	Nickname string `json:"nickname,optional"`
 }

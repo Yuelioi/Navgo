@@ -20,7 +20,10 @@ import (
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
-	server.AddRoutes(
+	
+
+
+  server.AddRoutes(
 		[]rest.Route{
 			{
 				// 获取通知
@@ -114,7 +117,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/net",
+				Path:    "/wallpaper",
 				Handler: service.WallpaperHandler(serverCtx),
 			},
 		},
@@ -160,7 +163,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: user.UsersHandler(serverCtx),
 			},
 		},
-		rest.WithJwt(serverCtx.Config.System.JwtSecret),
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/v1"),
 	)
+
+
+
+	
 }

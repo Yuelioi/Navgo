@@ -1,0 +1,25 @@
+Name: main
+Host: 0.0.0.0
+Port: 9200
+
+Resource:
+  Announces: resource\\announces
+  Collections: resource\\collections
+  Icons: resource\\icons
+  Comments: resource\\comments
+  MetaFile: meta.yaml
+  Wallpaper: resource\\wallpaper
+
+Database:
+  Resource: resource\\database\\core.db
+
+System:
+  Username: admin
+  Password: admin
+
+Auth:
+  AccessSecret: yuelilili
+  AccessExpire:
+
+Api:
+  Wallpaper: /wallpaper/

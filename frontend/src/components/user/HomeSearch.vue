@@ -37,9 +37,9 @@
         v-if="searchValue.length > 0 && searchResults.length > 0 && currentSearch?.name == '站内'">
         <div class="absolute flex w-full items-center justify-center">
           <div
-            class="h-96 shadow-lg z-10 w-full overflow-y-scroll flex flex-col rounded-b-2xl bg-base-200 space-y-2">
+            class="h-96 shadow-lg z-10 w-full overflow-y-scroll flex flex-col rounded-b-2xl backdrop-blur-sm space-y-2">
             <div
-              class="rounded-md m-4 hover:inset-1 hover:bg-neutral/30 hover:cursor-pointer"
+              class="rounded-md m-4 hover:inset-1 hover:bg-neutral/50 hover:cursor-pointer"
               v-for="item in searchResults"
               @click="open(item.item.link)">
               <div class="p-4 flex items-center space-x-3">

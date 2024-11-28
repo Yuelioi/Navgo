@@ -2,7 +2,7 @@ import axios, { type AxiosRequestConfig } from 'axios'
 import * as components from './types'
 export * from './types'
 
-const apiUrl = '/api'
+const apiUrl = 'http://localhost:9200'
 
 /**
  * @description "获取通知"
@@ -119,4 +119,20 @@ export function net(id: string) {
       withCredentials: false // 如果不需要发送凭证，可以设置为 false
     }
   )
+}
+
+/**
+ * @description "获取验证信息"
+ * @param req
+ * @param headers
+ */
+export function auth(req: components.User) {
+  return axios.post<components.AuthResponse>(apiUrl + `/v1/auth`, req)
+}
+
+/**
+ * @description
+ */
+export function wallpaper() {
+  return axios.get<{ data: components.IDResponse }>(apiUrl + `/v1/wallpaper`)
 }

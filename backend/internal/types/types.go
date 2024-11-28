@@ -20,7 +20,11 @@ type AnyRequest struct {
 }
 
 type AuthResponse struct {
-	Token string
+	Username string `json:"username" gorm:"column:username;unique"`
+	Email    string `json:"email,optional"`
+	Nickname string `json:"nickname,optional"`
+	Role     string `json:"role"`
+	Token    string `json:"token"`
 }
 
 type Category struct {
@@ -112,6 +116,7 @@ type User struct {
 	Model
 	Username string `json:"username" gorm:"column:username;unique"`
 	Email    string `json:"email,optional"`
+	Role     string `json:"role,optional"`
 	Password string `json:"password"`
 	Nickname string `json:"nickname,optional"`
 }

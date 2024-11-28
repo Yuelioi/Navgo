@@ -1,7 +1,7 @@
 <template>
   <div class="p-2 md:p-4 cursor-pointer" v-for="collection in collections.slice(0, max)">
     <!-- 单个链接卡片 -->
-    <div class="shadow-lg px-4 md:py-4 bg-base-300 group hover:ring-2 ring-primary rounded-md">
+    <div class="shadow-lg backdrop-blur-md px-4 md:py-4 group hover:ring-2 ring-primary rounded-md">
       <div class="h-20 md:h-28 flex flex-col">
         <div class="flex flex-row flex-1 items-center relative" @click="open(collection.link)">
           <div class="avatar static size-12">
@@ -44,7 +44,7 @@
         <!-- PC端 -->
         <div class="h-6 md:flex items-center hidden">
           <div class="" v-for="tag in collection.tags">
-            <div class="badge badge-ghost">{{ tag }}</div>
+            <div class="badge badge-ghost opacity-50">{{ tag }}</div>
           </div>
 
           <div class="ml-auto space-x-2">

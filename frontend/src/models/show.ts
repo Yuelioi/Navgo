@@ -4,4 +4,5 @@ export interface ShowSetting {
   footer: boolean
   collections: boolean
   announce: boolean
+  wallpaper: boolean
 }

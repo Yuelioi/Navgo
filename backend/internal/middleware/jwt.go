@@ -34,7 +34,7 @@ func JWTAuth(next http.Handler) http.Handler {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 				return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 			}
-			return constants.ConfInst.System.JwtSecret, nil
+			return constants.ConfInst.Auth.AccessSecret, nil
 		})
 
 		if err != nil {

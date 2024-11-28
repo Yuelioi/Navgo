@@ -1,6 +1,6 @@
 <template>
-  <div class="container hidden sticky lg:block">
-    <div class="card rounded-md bg-base-100 shadow-xl my-8 self-center" v-if="showSetting.footer">
+  <div class="container hidden sticky z-10 lg:block">
+    <div class="card rounded-md shadow-lg backdrop-blur-md my-8" v-if="showSetting.footer">
       <div class="card-body flex-row justify-between">
         <div class="left xl:flex flex-col space-y-4 hidden">
           <h2 class="card-title">月离导航</h2>
@@ -9,7 +9,7 @@
         </div>
 
         <div class="right">
-          <div class="stats shadow">
+          <div class="stats shadow-md bg-base-100/50 backdrop-blur-sm">
             <div class="stat">
               <div class="stat-figure text-primary">
                 <svg

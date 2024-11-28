@@ -9,17 +9,26 @@
       class="content py-8 lg:py-12"
       :class="{ 'mb-4': showSetting.footer }"></router-view>
     <FooterArea />
-    <!-- <img
-      src="/wallpaper.png"
-      alt=""
-      class="w-full h-full fixed pointer-events-none"
-      :style="{ opacity: opacity }" /> -->
+    <img
+      v-if="showSetting.wallpaper && currentWallpaper"
+      :src="currentWallpaper"
+      alt="Loading..."
+      class="w-full h-full fixed pointer-events-none object-cover"
+      :style="{ opacity: opacity }" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { wallpaper } from '@/api'
 import { isMobileDevice } from '@/utils'
+
+const currentWallpaper = ref('')
 
 const store = useBasicStore()
 const { showSetting, opacity } = storeToRefs(store)
+
+onMounted(async () => {
+  currentWallpaper.value = '' + (await wallpaper())['data']['data']['id']
+  console.log(currentWallpaper.value)
+})
 </script>

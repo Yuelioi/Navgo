@@ -17,7 +17,7 @@ export const useBasicStore = defineStore('basic', () => {
   const likeCollectionsList = ref<Collection[]>([])
   const navs = reactive<Category[]>([])
 
-  const dbVersion = useStorage('currentSearch', 1)
+  const dbVersion = useStorage('dbVersion', 1)
   const currentSearchName = useStorage('currentSearch', '百度')
   const theme = useStorage('theme', 'light')
 

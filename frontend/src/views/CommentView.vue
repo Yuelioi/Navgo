@@ -1,10 +1,11 @@
 <template>
   <div class="container">
-    <div class="p-6 w-full h-full bg-base-100 shadow-md rounded-lg z-10 relative">
+    <div
+      class="p-6 w-full h-full bg-base-100/50 backdrop-blur-md shadow-md rounded-lg z-10 relative">
       <div class="flex flex-col h-full space-y-8 justify-between">
         <!-- 评论区 -->
         <div class="flex flex-col space-y-4 overflow-y-scroll">
-          <div class="bg-base-200 p-4 rounded-xl" v-for="comment in comments">
+          <div class="bg-base-100/70 p-4 rounded-xl" v-for="comment in comments">
             <div class="flex">
               <div class="avatar static size-8">
                 <div class="h-full rounded-xl">
@@ -26,7 +27,7 @@
         <div class="w-full flex flex-col">
           <div class="">
             <textarea
-              class="textarea textarea-bordered w-full"
+              class="textarea textarea-bordered bg-base-100/70 w-full"
               placeholder="提交建议或者反馈"
               v-model="form.content"></textarea>
           </div>
@@ -34,7 +35,7 @@
           <div class="flex items-center mt-2">
             <label
               for="text"
-              class="input input-bordered flex items-center input-sm gap-2 max-w-xs">
+              class="input bg-base-100/70 input-bordered flex items-center input-sm gap-2 max-w-xs">
               <span class="select-none text-nowrap">昵称</span>
               <input type="text" placeholder="张三" class="" v-model="form.nickname" />
             </label>

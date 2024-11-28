@@ -32,10 +32,6 @@ func parseForm(r *http.Request) (*types.User, error) {
 func AuthHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req *types.User
-		if err := httpx.Parse(r, &req); err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
-			return
-		}
 
 		req, err := parseForm(r)
 		if err != nil {

@@ -1,6 +1,6 @@
 <template>
   <div class="container flex flex-col space-y-8">
-    <div role="alert" class="alert alert-info z-10 flex rounded-md">
+    <div role="alert" class="alert bg-info/20 border-none backdrop-blur-md z-10 flex rounded-md">
       <span class="icon-[lucide--info] size-5"></span>
       <div class="flex w-full">
         <span class="font-bold transition-transform">注意</span>
@@ -9,8 +9,23 @@
         </span>
       </div>
     </div>
+
     <div
-      class="flex z-10 w-full flex-col p-6 space-y-4 bg-base-100 border border-neutral-content/50 rounded-md shadow-md">
+      class="flex z-10 backdrop-blur-md w-full flex-col p-6 space-y-4 bg-base-100/50 border border-neutral-content/50 rounded-md shadow-md">
+      <div class="font-bold"><span>Tips</span></div>
+      <div class="divider"></div>
+      <div class="flex items-center w-full justify-between">
+        <kbd class="kbd">Tab</kbd>
+        <div class="kbd">切换搜索引擎</div>
+      </div>
+      <div class="flex items-center w-full justify-between">
+        <kbd class="kbd">Esc</kbd>
+        <div class="kbd">删除搜索关键词</div>
+      </div>
+    </div>
+
+    <div
+      class="flex backdrop-blur-md z-10 w-full flex-col p-6 space-y-4 bg-base-100/50 border border-neutral-content/50 rounded-md shadow-md">
       <div class="font-bold flex items-center justify-between">
         <span class="font-bold">个性化设置</span>
       </div>
@@ -28,8 +43,51 @@
               :checked="theme == 'dark'" />
           </label>
         </div>
+
         <div class="flex items-center w-full justify-between">
-          <span class="font-bold">背景不透明度</span>
+          <span>显示我的收藏</span>
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <input type="checkbox" class="toggle" v-model="showSetting.likes" />
+            </label>
+          </div>
+        </div>
+        <div class="flex items-center w-full justify-between">
+          <span>显示网站收藏</span>
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <input type="checkbox" class="toggle" v-model="showSetting.collections" />
+            </label>
+          </div>
+        </div>
+
+        <div class="flex items-center w-full justify-between">
+          <span>显示公告</span>
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <input type="checkbox" class="toggle" v-model="showSetting.announce" />
+            </label>
+          </div>
+        </div>
+        <div class="flex items-center w-full justify-between">
+          <span>显示页脚</span>
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <input type="checkbox" class="toggle" v-model="showSetting.footer" />
+            </label>
+          </div>
+        </div>
+
+        <div class="flex items-center w-full justify-between">
+          <span>显示壁纸</span>
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <input type="checkbox" class="toggle" v-model="showSetting.wallpaper" />
+            </label>
+          </div>
+        </div>
+        <div class="flex items-center w-full justify-between" v-if="showSetting.wallpaper">
+          <span>壁纸不透明度</span>
           <div class="form-control">
             <label class="label cursor-pointer">
               <input
@@ -43,44 +101,11 @@
             </label>
           </div>
         </div>
-        <div class="flex items-center w-full justify-between">
-          <span class="font-bold">显示我的收藏</span>
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <input type="checkbox" class="toggle" v-model="showSetting.likes" />
-            </label>
-          </div>
-        </div>
-        <div class="flex items-center w-full justify-between">
-          <span class="font-bold">显示网站收藏</span>
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <input type="checkbox" class="toggle" v-model="showSetting.collections" />
-            </label>
-          </div>
-        </div>
-
-        <div class="flex items-center w-full justify-between">
-          <span class="font-bold">显示公告</span>
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <input type="checkbox" class="toggle" v-model="showSetting.announce" />
-            </label>
-          </div>
-        </div>
-        <div class="flex items-center w-full justify-between">
-          <span class="font-bold">显示页脚</span>
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <input type="checkbox" class="toggle" v-model="showSetting.footer" />
-            </label>
-          </div>
-        </div>
       </div>
     </div>
 
     <div
-      class="hidden z-10 md:flex w-full flex-col p-6 space-y-4 bg-base-100 border border-neutral-content/50 rounded-md shadow-md">
+      class="hidden backdrop-blur-md z-10 md:flex w-full flex-col p-6 space-y-4 bg-base-100/50 border border-neutral-content/50 rounded-md shadow-md">
       <div class="flex items-center">
         <span class="font-bold">搜索设置</span>
 
@@ -146,7 +171,7 @@
     </div>
 
     <div
-      class="hidden z-10 md:flex shadow-md border border-neutral-content/50 rounded-md bg-base-100 w-full flex-col p-6 space-y-4">
+      class="hidden z-10 md:flex shadow-md border border-neutral-content/50 rounded-md bg-base-100/50 w-full flex-col p-6 space-y-4">
       <div class="flex items-center justify-between">
         <span class="font-bold">收藏设置</span>
         <div class="flex gap-4 items-center">

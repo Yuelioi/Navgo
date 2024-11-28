@@ -6,8 +6,17 @@
   .input:hover {
     @apply border-info;
   }
+  .input {
+    @apply bg-base-100/50;
+  }
 
   .input:focus-within {
     outline: none;
+  }
+  .textarea:focus {
+    outline: none;
+  }
+  .textarea {
+    @apply bg-base-100/50;
   }
 }

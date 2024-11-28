@@ -25,7 +25,7 @@ func init() {
 	// var configFile = flag.String("f", "etc/config.yaml", "the config file")
 	// flag.Parse()
 
-	confData, err := os.ReadFile("etc/config.yaml")
+	confData, err := os.ReadFile("etc/main.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}

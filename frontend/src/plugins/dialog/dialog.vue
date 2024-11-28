@@ -9,7 +9,7 @@
       <div v-if="show" class="fixed inset-0 flex items-center justify-center z-50">
         <div
           ref="dialogRef"
-          class="overflow-hidden bg-base-100 p-4 flex flex-col rounded-lg overflow-y-auto">
+          class="overflow-hidden bg-base-100/50 backdrop-blur-md p-4 flex flex-col rounded-lg shadow-lg overflow-y-auto">
           <header class="flex px-4 py-2 items-center text-sm justify-between">
             <slot name="header">
               <span class="font-bold text-base-content">{{ title }}</span>

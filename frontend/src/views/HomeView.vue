@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col relative container">
+  <div class="flex flex-col relative container z-10">
     <div class="self-center flex-1 my-8 w-full">
       <!-- 公告 -->
       <div
         role="alert"
-        class="alert flex w-full overflow-hidden"
+        class="alert flex w-full backdrop-blur-sm shadow-md border-1 border-opacity-25 bg-base-200/20 overflow-hidden"
         v-if="currentAnnounce && showSetting.announce">
         <span class="icon-[lucide--info] size-5"></span>
         <Transition name="goon" mode="out-in">
@@ -25,7 +25,7 @@
       <div class="w-full flex flex-col lg:space-y-16">
         <!-- 个人收藏 -->
         <div
-          class="card rounded-md shadow-md hover:shadow-lg hover:z-10 my-8 bg-base-100"
+          class="card rounded-md shadow-md hover:shadow-lg my-8"
           id="love"
           v-if="showSetting.likes">
           <CatTitle :title="'我的收藏'" :icon="'icon-[lucide--star]'"></CatTitle>
@@ -48,14 +48,14 @@
 
         <!-- 网站导航 -->
         <div
-          class="card rounded-md shadow-md hover:shadow-lg hover:z-10 bg-base-100"
+          class="card rounded-md shadow-md hover:shadow-lg"
           :id="data.category.cid"
           v-if="showSetting.collections"
           v-for="(data, index) in collectionsDatas">
           <!-- 分类标题 -->
           <CatTitle :title="data.category.title" :icon="icons[index]"></CatTitle>
 
-          <div class="card-body px-1 py-1 md:px-4">
+          <div class="card-body group px-1 py-1 md:px-4">
             <div role="tablist" class="tabs tabs-bordered">
               <template v-for="(group, groupIndex) in data.groups">
                 <input

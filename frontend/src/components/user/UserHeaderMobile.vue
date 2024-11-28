@@ -1,6 +1,8 @@
 <template>
   <!-- 手机端 -->
-  <div class="btm-nav z-10" :class="{ hidden: !showSetting.siderBar && isMobileDevice() }">
+  <div
+    class="btm-nav z-40 bg-base-100/60 backdrop-blur-md"
+    :class="{ hidden: !showSetting.siderBar && isMobileDevice() }">
     <button class="" @click="router.push({ name: 'home' })">
       <span class="icon-[lucide--house] size-5"></span>
       <span class="btm-nav-label">主页</span>

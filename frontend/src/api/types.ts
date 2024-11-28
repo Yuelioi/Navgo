@@ -110,3 +110,19 @@ export interface Statistics {
   ip: string // 访问者的 IP 地址
   date: string // 访问日期和时间
 }
+
+export interface User {
+  iD: number
+  createdAt: string
+  updatedAt: string
+  username: string
+  email?: string
+  password: string
+  nickname?: string
+}
+
+export interface UserResponse {}
+export interface UserResponseParams {}
+
+export interface AuthResponse {}
+export interface AuthResponseParams {}

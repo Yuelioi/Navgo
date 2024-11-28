@@ -2,7 +2,11 @@ package service
 
 import (
 	"context"
+	"math/rand/v2"
+	"os"
+	"path/filepath"
 
+	"backend/internal/common/constants"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -24,7 +28,23 @@ func NewWallpaperLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Wallpap
 }
 
 func (l *WallpaperLogic) Wallpaper(req *types.AnyRequest) (resp *types.IDResponse, err error) {
-	// todo: add your logic here and delete this line
+
+	root := constants.ConfInst.Resource.Wallpaper
+	wallpapers := make([]string, 0)
+
+	filepath.WalkDir(root, func(path string, d os.DirEntry, err error) error {
+		if d.IsDir() {
+			return nil
+		}
+		wallpapers = append(wallpapers, d.Name())
+		return nil
+	})
+
+	id := rand.IntN(len(wallpapers))
+
+	resp = &types.IDResponse{
+		ID: constants.ConfInst.Api.Wallpaper + wallpapers[id],
+	}
 
 	return
 }

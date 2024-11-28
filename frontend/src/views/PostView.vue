@@ -1,12 +1,13 @@
 <template>
   <div class="container">
     <div class="flex h-full">
-      <div class="grid w-full p-6 space-y-2 z-10 bg-base-100 rounded-lg shadow-lg">
+      <div
+        class="grid w-full p-6 space-y-2 backdrop-blur-md z-10 bg-base-100/50 rounded-lg shadow-lg">
         <div class="">投稿</div>
         <div class="divider my-0"></div>
 
         <div class="">
-          <div class="join input input-bordered gap-2 w-full">
+          <div class="join bg-transparent input input-bordered gap-2 w-full">
             <div class="flex items-center justify-center pr-2 space-x-2">
               <span class="text-sm select-none">网址</span>
               <span class="icon-[lucide--link-2] size-5"></span>
@@ -21,7 +22,7 @@
         </div>
 
         <div class="">
-          <div class="join flex input input-bordered gap-2 w-full">
+          <div class="join bg-transparent flex input input-bordered gap-2 w-full">
             <div class="flex items-center justify-center pr-2 space-x-2">
               <span class="text-sm select-none">名称</span>
               <span class="icon-[lucide--case-lower] size-5"></span>
@@ -80,7 +81,7 @@
           </div>
         </div>
         <textarea
-          class="textarea w-full textarea-bordered"
+          class="textarea w-full textarea-bordered bg-transparent"
           placeholder="网址介绍"
           v-model="form.description"></textarea>
 

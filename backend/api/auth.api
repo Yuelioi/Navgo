@@ -3,7 +3,11 @@ syntax = "v1"
 import "./base.api"
 
 type AuthResponse {
-	token string
+	Username string `json:"username" gorm:"column:username;unique"`
+	Email    string `json:"email,optional"`
+	Nickname string `json:"nickname,optional"`
+	Role     string `json:"role"`
+	Token    string `json:"token"`
 }
 
 @server (

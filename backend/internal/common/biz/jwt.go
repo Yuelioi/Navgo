@@ -18,7 +18,7 @@ func Validate(tokenString string) (bool, error) {
 		}
 
 		// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
-		return []byte(constants.ConfInst.System.JwtSecret), nil
+		return []byte(constants.ConfInst.Auth.AccessSecret), nil
 	})
 	if err != nil {
 		return false, err
@@ -54,6 +54,6 @@ func Generate(username, role string) (string, error) {
 		"iat":      time.Now().Unix(),                 // 签发时间
 	})
 
-	tokenString, err := tokens.SignedString([]byte(constants.ConfInst.System.JwtSecret))
+	tokenString, err := tokens.SignedString([]byte(constants.ConfInst.Auth.AccessSecret))
 	return tokenString, err
 }
