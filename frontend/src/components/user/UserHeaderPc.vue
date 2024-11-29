@@ -49,10 +49,10 @@
         <label class="swap swap-rotate">
           <input type="checkbox" class="theme-controller" />
           <span
-            class="icon-[lucide--sun] size-6 swap-on fill-current"
+            class="icon-[lucide--sun] size-5 swap-on fill-current"
             @click="changeTheme()"></span>
           <span
-            class="icon-[lucide--moon] size-6 swap-off fill-current"
+            class="icon-[lucide--moon] size-5 swap-off fill-current"
             @click="changeTheme()"></span>
         </label>
       </button>

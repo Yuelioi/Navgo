@@ -53,6 +53,7 @@ func main() {
 	httpx.SetOkHandler(func(ctx context.Context, data any) any {
 		return biz.Success(data)
 	})
-
+	logc.Info(context.Background(), "服务启动完毕")
 	server.Start()
+
 }

@@ -4,12 +4,16 @@
       <div class="flex w-full items-center space-x-4">
         <!-- 分类筛选 -->
         <div class="dropdown dropdown-bottom">
-          <div tabindex="0" role="button" class="btn bg-base-100/50 backdrop-blur-sm m-1">
+          <div
+            tabindex="0"
+            role="button"
+            aria-label="分类筛选"
+            class="btn bg-base-100/50 backdrop-blur-sm m-1">
             {{ currentCategory?.title || '分类筛选' }}
           </div>
           <ul
             tabindex="0"
-            class="menu flex-col flex-nowrap w-56 dropdown-content rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
+            class="menu flex-col bg-base-100 flex-nowrap w-56 dropdown-content rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
             <li>
               <a class="text-nowrap" @click="currentCategory = undefined">全部</a>
             </li>
@@ -59,6 +63,7 @@
                   <div class="avatar static size-12 group">
                     <div class="h-full rounded-xl">
                       <img
+                        :alt="collection.title"
                         :src="'https://cdn.yuelili.com/nav/icons/' + collection?.cid + '.png'"
                         @error="imageLoadError"
                         class="h-full rounded-full" />
@@ -103,11 +108,15 @@
                 <th class="w-min">
                   <div class="flex max-w-fit space-x-3">
                     <button
+                      aria-label="移除"
                       class="btn btn-sm btn-square btn-outline shadow-xl"
                       @click="removeCollection()">
                       <span class="icon-[lucide--save] size-6"></span>
                     </button>
-                    <button class="btn btn-sm btn-square btn-outline" @click="removeCollection()">
+                    <button
+                      aria-label="移除"
+                      class="btn btn-sm btn-square btn-outline"
+                      @click="removeCollection()">
                       <span class="icon-[lucide--square-x] size-6"></span>
                     </button>
                   </div>
@@ -117,10 +126,14 @@
           </table>
 
           <div class="join">
-            <button class="join-item btn bg-base-100/50 backdrop-blur-md" @click="currentPage = 1">
+            <button
+              aria-label="首页"
+              class="join-item btn bg-base-100/50 backdrop-blur-md"
+              @click="currentPage = 1">
               <span class="icon-[lucide--chevron-first]"></span>
             </button>
             <button
+              aria-label="上一首页"
               class="join-item btn bg-base-100/50"
               @click="currentPage = Math.max(1, currentPage - 1)">
               <span class="icon-[lucide--chevron-left]"></span>
@@ -134,6 +147,7 @@
               :aria-label="currentPage.toString()" />
 
             <button
+              aria-label="下一页"
               class="join-item btn bg-base-100/50"
               @click="currentPage = Math.min(patination, currentPage + 1)">
               <span class="icon-[lucide--chevron-right]"></span>
@@ -142,6 +156,7 @@
               <span class="icon-[lucide--chevron-last]"></span>
             </button>
             <label
+              aria-label="尾页"
               class="join-item input border-none leading-4 bg-base-100/50 input-bordered flex items-center gap-2"
               @keyup="jumpKey($event)">
               <input type="text" class="grow" placeholder="跳转" v-model="searchPage" />

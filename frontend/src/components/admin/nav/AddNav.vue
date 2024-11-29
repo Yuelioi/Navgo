@@ -104,10 +104,14 @@
         <div class="divider my-1"></div>
         <div class="flex">
           <div class="tooltip tooltip-bottom" data-tip="根据网址自动补全信息">
-            <button class="btn btn-sm btn-outline" @click="queryMeta">一键填写</button>
+            <button class="btn btn-sm btn-outline" @click="queryMeta" aria-label="一键填写">
+              一键填写
+            </button>
           </div>
           <div class="flex ml-auto justify-between">
-            <button class="btn btn-sm btn-primary ml-auto" @click="handleSubmit">提交</button>
+            <button class="btn btn-sm btn-primary ml-auto" aria-label="提交" @click="handleSubmit">
+              提交
+            </button>
           </div>
         </div>
       </div>

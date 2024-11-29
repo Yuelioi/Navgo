@@ -51,13 +51,23 @@ type Collection struct {
 	View        int       `json:"view,optional,omitempty"`
 }
 
+type CollectionFilter struct {
+	Categories pq.StringArray `json:"categories,optional"`
+	Page       int      `json:"page,optional"`
+	Limit      int      `json:"limit,optional"`
+}
+
 type CollectionsData struct {
 	Category *Category `json:"category"` // 使用 inline 标签将 Category 字段内联
 	Groups   []*Group  `json:"groups"`
 }
 
-type CollectionsResponse struct {
+type CollectionsDataResponse struct {
 	Datas []*CollectionsData `json:"datas"`
+}
+
+type CollectionsResponse struct {
+	Collections []*Collection `json:"collections"`
 }
 
 type Comment struct {

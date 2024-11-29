@@ -54,8 +54,16 @@ export function collection(id: string) {
 /**
  * @description "页面集合"
  */
-export function collections() {
-  return axios.get<{ data: components.CollectionsResponse }>(apiUrl + `/v1/collections`)
+export function collections(req: components.AnyRequest) {
+  return axios.get<{ data: components.CollectionsDataResponse }>(apiUrl + `/v1/collections`, req)
+}
+
+/**
+ * @description "分页集合"
+ * @param req
+ */
+export function filteredCollections(req: components.CollectionFilter) {
+  return axios.get<components.CollectionsResponse>(apiUrl + `/v1/filteredCollections`, req)
 }
 
 /**

@@ -1,5 +1,5 @@
 <template>
-  <div class="wave relative hidden md:block overflow-hidden md:h-20">
+  <div class="relative wave md:block overflow-hidden md:h-20">
     <template v-if="isAdmin">
       <AdminHeader></AdminHeader>
     </template>
@@ -10,17 +10,8 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-
-const isAdmin = ref(false)
-
-watch(route, () => {
-  if (route.fullPath.startsWith('/admin')) {
-    isAdmin.value = true
-  } else {
-    isAdmin.value = false
-  }
-})
+import { useAdminStatus } from '@/hooks/useAdminStatus'
+const { isAdmin } = useAdminStatus()
 </script>
 
 <style scoped>
@@ -35,6 +26,7 @@ watch(route, () => {
   animation-name: rotate;
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(0.26, 0.86, 0.81, 0.26);
+  overflow: hidden;
 }
 
 .wave::before {

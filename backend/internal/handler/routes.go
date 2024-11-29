@@ -82,6 +82,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/collections",
 				Handler: collection.CollectionsHandler(serverCtx),
 			},
+			{
+				// 分页集合
+				Method:  http.MethodGet,
+				Path:    "/filteredCollections",
+				Handler: collection.FilteredCollectionsHandler(serverCtx),
+			},
 		},
 		rest.WithPrefix("/v1"),
 	)

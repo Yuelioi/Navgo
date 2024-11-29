@@ -6,9 +6,9 @@
     :class="{ hidden: !showSetting.siderBar && isMobileDevice() }"
     class="anchor flex-1 w-full flex flex-col md:pb-0 overflow-y-scroll">
     <router-view
-      class="content py-8 lg:py-12"
+      class="content md:py-12 p-4 pb-20"
       :class="{ 'mb-4': showSetting.footer }"></router-view>
-    <FooterArea />
+    <FooterArea v-if="!isAdmin" />
     <img
       v-if="wallpaperSetting.show && currentWallpaper"
       :src="currentWallpaper"
@@ -19,7 +19,7 @@
     <img
       @click="scrollToTop"
       src="https://cdn.yuelili.com/web/assets/christmas.gif"
-      class="absolute size-32 bottom-12 right-8 z-20"
+      class="absolute hidden md:size-32 bottom-12 right-8 z-20"
       alt="" />
   </div>
 </template>
@@ -58,7 +58,6 @@ function scrollToTop() {
   })
 }
 
-onMounted(async () => {
-  await loadLocalWallpaper()
-})
+import { useAdminStatus } from '@/hooks/useAdminStatus'
+const { isAdmin } = useAdminStatus()
 </script>

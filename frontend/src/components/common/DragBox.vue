@@ -17,7 +17,10 @@
         class="flex w-full h-full items-center justify-center"
         @drop.prevent="handleDrag"
         v-if="icon === null">
-        <button class="h-full inline-flex items-center space-x-4" @click="openFileInput">
+        <button
+          aria-label="上传"
+          class="h-full inline-flex items-center space-x-4"
+          @click="openFileInput">
           <span class="select-none">拖拽/粘贴/上传</span>
           <span class="icon-[lucide--arrow-big-up-dash] size-8"></span>
         </button>
@@ -27,7 +30,7 @@
       <div class="indicator size-36 rounded-md flex" v-if="icon !== null">
         <div class="avatar justify-center">
           <div class="rounded-xl p-2 border border-dashed border-base-content">
-            <img ref="iconRef" @error="imageLoadError" />
+            <img ref="iconRef" alt="图标" @error="imageLoadError" />
             <div class="indicator-item">
               <span class="btn btn-sm icon-[lucide--circle-x]" @click="icon = null"></span>
             </div>

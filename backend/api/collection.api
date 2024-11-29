@@ -2,11 +2,9 @@ syntax = "v1"
 
 import "./base.api"
 
-
-
 // 所有分类
 type CollectionsData {
-	Category *Category `json:"category"` // 使用 inline 标签将 Category 字段内联
+	Category *Category `json:"category"`
 	Groups   []*Group  `json:"groups"`
 }
 
@@ -16,8 +14,18 @@ type Group {
 	Collections []*Collection `json:"collections"`
 }
 
-type CollectionsResponse {
+type CollectionsDataResponse {
 	Datas []*CollectionsData `json:"datas"`
+}
+
+type CollectionsResponse {
+	Collections []*Collection `json:"collections"`
+}
+
+type CollectionFilter {
+	Categories []string `json:"categories,optional"`
+	Page       int      `json:"page,optional"`
+	Limit      int      `json:"limit,optional"`
 }
 
 @server (
@@ -28,7 +36,11 @@ type CollectionsResponse {
 service main {
 	@doc "页面集合"
 	@handler Collections
-	get /collections (AnyRequest) returns (CollectionsResponse)
+	get /collections (AnyRequest) returns (CollectionsDataResponse)
+
+	@doc "分页集合"
+	@handler FilteredCollections
+	get /filteredCollections (CollectionFilter) returns (CollectionsResponse)
 
 	@doc "单页面"
 	@handler Collection

@@ -15,15 +15,11 @@ import (
 // 页面集合
 func CollectionsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.AnyRequest
-		if err := httpx.Parse(r, &req); err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
-			return
-		}
 
-		ip := utils.GetIPFromRequest(r)
+		var req types.AnyRequest
 
 		//  添加每日访问(限定ip以及今日)
+		ip := utils.GetIPFromRequest(r)
 		err := statistic.AddCustomer(ip)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)

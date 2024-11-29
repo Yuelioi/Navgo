@@ -44,12 +44,23 @@ export interface Collection {
   like?: boolean
 }
 
+export interface CollectionFilter {
+  categories?: Array<string>
+  page?: number
+  limit?: number
+}
+
 export interface CollectionsData {
-  category: Category // 使用 inline 标签将 Category 字段内联
+  category: Category
   groups: Array<Group>
 }
 
-export interface CollectionsResponse {
+export interface CollectionsData {
+  category: Category
+  groups: Array<Group>
+}
+
+export interface CollectionsDataResponse {
   datas: Array<CollectionsData>
 }
 export interface CollectionResponse {
@@ -76,8 +87,11 @@ export interface CommentsResponse {
   comments: Array<Comment>
 }
 
+export interface CollectionsResponse {
+  collections: Array<Collection>
+}
 export interface Group {
-  category: Category // 使用 inline 标签将 Category 字段内联
+  category: Category
   collections: Array<Collection>
   show: boolean
 }

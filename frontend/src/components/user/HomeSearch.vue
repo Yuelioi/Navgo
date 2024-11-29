@@ -6,6 +6,7 @@
           class="tab [--tab-bg:#0f172a] dark:[--tab-bg:#646872]"
           :class="{ 'tab-active': searchItem.active }"
           v-for="searchItem in searchList"
+          role="tab"
           @click="switchSearch(searchItem.name)">
           {{ searchItem.name }}
         </a>
@@ -46,6 +47,7 @@
                     <div class="avatar static size-8">
                       <div class="h-full rounded-xl">
                         <img
+                          :alt="item.item.title"
                           loading="lazy"
                           height="320"
                           :src="'https://cdn.yuelili.com/nav/icons/' + item.item.cid + '.png'"

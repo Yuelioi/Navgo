@@ -7,6 +7,7 @@
           <div class="avatar static size-12">
             <div class="h-full rounded-xl">
               <img
+                :alt="collection.title"
                 :src="'https://cdn.yuelili.com/nav/icons/' + collection.cid + '.png'"
                 @error="imageLoadError"
                 class="h-full rounded-full" />

@@ -31,25 +31,8 @@
 const store = useBasicStore()
 const { showSetting } = storeToRefs(store)
 
-const route = useRoute()
-
-const isAdmin = ref(false)
-
-watch(route, () => {
-  if (route.fullPath.startsWith('/admin')) {
-    isAdmin.value = true
-  } else {
-    isAdmin.value = false
-  }
-})
-
-onMounted(() => {
-  if (route.fullPath.startsWith('/admin')) {
-    isAdmin.value = true
-  } else {
-    isAdmin.value = false
-  }
-})
+import { useAdminStatus } from '@/hooks/useAdminStatus'
+const { isAdmin } = useAdminStatus()
 </script>
 
 <style>

@@ -3,12 +3,10 @@
     <div
       role="alert"
       class="alert bg-info/75 text-info-content border-none backdrop-blur-md z-10 flex rounded-md">
-      <span class="icon-[lucide--info] size-5"></span>
+      <span class="icon-[lucide--info] size-5 hidden md:block"></span>
       <div class="flex w-full">
-        <span class="font-bold transition-transform">注意</span>
-        <span class="ml-8">
-          个人收藏只会存在本地浏览器,请勿删除当前页面浏览器数据 (虽然一般也不会删除)
-        </span>
+        <span class="hidden md:block font-bold transition-transform">注意</span>
+        <span class="md:ml-8 text-left">个人收藏只会存在本地浏览器,请勿删除当前页面浏览器数据</span>
       </div>
     </div>
 
@@ -231,6 +229,7 @@
               <div class="avatar static size-12">
                 <div class="h-full rounded-xl">
                   <img
+                    :alt="collection.title"
                     :src="'https://cdn.yuelili.com/nav/icons/' + collection.cid + '.png'"
                     @error="imageLoadError"
                     class="h-full rounded-full" />

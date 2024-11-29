@@ -6,14 +6,14 @@
         role="alert"
         class="alert flex w-full backdrop-blur-sm shadow-md border-1 overflow-hidden border-opacity-25 bg-base-200/20"
         v-if="currentAnnounce && showSetting.announce">
-        <span class="icon-[lucide--info] size-5"></span>
+        <span class="icon-[lucide--info] size-5 hidden md:block"></span>
         <Transition name="goon" mode="out-in">
-          <div class="flex w-full line-clamp-1" :key="currentAnnounce.content">
-            <span class="font-bold transition-transform truncate">
+          <div class="flex w-full" :key="currentAnnounce.content">
+            <span class="font-bold transition-transform line-clamp-1">
               {{ currentAnnounce.title }}
             </span>
-            <span class="mx-2 md:ml-8 truncate">{{ currentAnnounce.content }}</span>
-            <span class="ml-auto">{{ currentAnnounce.date }}</span>
+            <span class="mx-2 md:ml-8 line-clamp-1">{{ currentAnnounce.content }}</span>
+            <span class="ml-auto hidden md:block">{{ currentAnnounce.date }}</span>
           </div>
         </Transition>
       </div>
@@ -56,17 +56,25 @@
           <CatTitle :title="data.category.title" :icon="icons[index]"></CatTitle>
 
           <div class="card-body group px-1 py-1 md:px-4">
-            <div role="tablist" class="tabs tabs-bordered">
+            <div role="tablist" class="tabs tabs-bordered" aria-label="Tabs">
               <template v-for="(group, groupIndex) in data.groups">
                 <input
                   type="radio"
                   :name="data.category.cid"
                   role="tab"
                   class="tab first:ml-4 px-1 sm:px-4 text-nowrap"
+                  :id="`${data.category.cid}-tab-${groupIndex}`"
+                  :aria-controls="`${data.category.cid}-tabpanel-${groupIndex}`"
+                  :tabindex="groupIndex === 0 ? 0 : -1"
                   :checked="groupIndex === 0"
                   :aria-label="group.category.title"
                   @click="group.show = true" />
-                <div role="tabpanel" class="tab-content my-1" v-if="group.show">
+                <div
+                  role="tabpanel"
+                  class="tab-content my-1"
+                  :id="`${data.category.cid}-tabpanel-${groupIndex}`"
+                  :aria-labelledby="`${data.category.cid}-tab-${groupIndex}`"
+                  v-if="group.show">
                   <KeepAlive>
                     <div class="grid grid-cols-card relative">
                       <AsyncGroupCard :collections="group.collections"></AsyncGroupCard>

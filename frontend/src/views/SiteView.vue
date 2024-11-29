@@ -90,7 +90,7 @@
               </div>
               <div class="avatar p-2">
                 <div class="rounded-xl">
-                  <img ref="iconRef" @error="imageLoadError" />
+                  <img ref="iconRef" alt="图标" @error="imageLoadError" />
                 </div>
               </div>
             </div>
@@ -215,13 +215,7 @@ function handleSubmit() {
     formData.append('favicon', icon.value, icon.value?.name)
   }
 
-  const config = {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  }
-
-  addCollection(formData, config)
+  addCollection(formData)
 }
 
 onMounted(() => {
