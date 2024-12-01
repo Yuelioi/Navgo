@@ -20,8 +20,17 @@ service main {
 	@handler Auth
 	post /auth (User) returns (AuthResponse)
 
+}
+
+@server (
+	prefix: /v1
+	group: auth
+	jwt: Auth
+)
+service main {
+
 	@doc "验证token信息"
 	@handler CheckToken
-	get /auth (IDRequest) returns (AuthResponse)
+	get /auth (AuthRequest) returns (AuthResponse)
 
 }

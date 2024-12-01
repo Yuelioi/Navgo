@@ -44,12 +44,6 @@ export interface Collection {
   like?: boolean
 }
 
-export interface CollectionFilter {
-  categories?: Array<string>
-  page?: number
-  limit?: number
-}
-
 export interface CollectionsData {
   category: Category
   groups: Array<Group>
@@ -87,7 +81,25 @@ export interface CommentsResponse {
   comments: Array<Comment>
 }
 
+export interface CollectionFilter {
+  categories?: Array<string>
+  page: number
+  page_size?: number
+  keyword: string
+}
+
+export interface CollectionUpdateParams {
+  cid: string
+  title: string
+  link: string
+  description?: string
+  category_path?: string
+  tags?: Array<string>
+}
+
 export interface CollectionsResponse {
+  count: number
+  totalPages: number
   collections: Array<Collection>
 }
 export interface Group {
@@ -104,6 +116,19 @@ export interface IDResponse {
   id: string
 }
 
+export interface Nav {
+  cid?: string
+  title: string
+  full_title: string
+  order?: number
+  path?: string
+  children?: Nav[]
+}
+
+export interface NavsResponse {
+  navs: Array<Nav>
+}
+
 export interface TagRequest {
   tags: Array<string>
 }
@@ -111,6 +136,7 @@ export interface TagRequest {
 export interface TagsResponse {
   tags: Array<string>
 }
+
 export interface SiteStats {
   last_day_visitors: number // 昨日访问者数量
   total_visitors: number // 总访问者数量

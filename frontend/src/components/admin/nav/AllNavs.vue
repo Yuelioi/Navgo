@@ -4,15 +4,10 @@
       <div class="flex w-full items-center space-x-4">
         <!-- 分类筛选 -->
         <div class="dropdown dropdown-bottom">
-          <div
-            tabindex="0"
-            role="button"
-            aria-label="分类筛选"
-            class="btn bg-base-100/50 backdrop-blur-sm m-1">
-            {{ currentCategory?.title || '分类筛选' }}
+          <div tabindex="0" role="button" aria-label="分类筛选" class="btn bg-base-100/50 backdrop-blur-sm m-1">
+            {{ currentCategory?.full_title || '分类筛选' }}
           </div>
-          <ul
-            tabindex="0"
+          <ul tabindex="0"
             class="menu flex-col bg-base-100 flex-nowrap w-56 dropdown-content rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
             <li>
               <a class="text-nowrap" @click="currentCategory = undefined">全部</a>
@@ -31,7 +26,8 @@
           </ul>
         </div>
         <label class="input input-bordered flex items-center gap-2">
-          <input type="text" class="grow" placeholder="Search" v-model="searchValue" />
+          <input type="text" class="grow" placeholder="Search" v-model="collectionFilter.keyword"
+            @keydown="fetchKeyword" />
           <span class="icon-[lucide--search]"></span>
         </label>
         <div class="!ml-auto !mr-4 btn btn-sm">
@@ -57,19 +53,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(collection, index) in filteredCollections">
+              <tr v-for="(collection, index) in categoryFilters?.collections">
                 <td class="text-center">{{ index + 1 }}</td>
                 <td>
                   <div class="avatar static size-12 group">
                     <div class="h-full rounded-xl">
-                      <img
-                        :alt="collection.title"
-                        :src="'https://cdn.yuelili.com/nav/icons/' + collection?.cid + '.png'"
-                        @error="imageLoadError"
+                      <img :alt="collection.title"
+                        :src="'https://cdn.yuelili.com/nav/icons/' + collection?.cid + '.png'" @error="imageLoadError"
                         class="h-full rounded-full" />
                       <div class="btn flex p-0 btn-secondary" @click="uploadImage(collection)">
-                        <span
-                          class="hidden group-hover:block icon-[lucide--arrow-big-up-dash] size-8"></span>
+                        <span class="hidden group-hover:block icon-[lucide--arrow-big-up-dash] size-8"></span>
                         <span class="group-hover:hidden text-sm">
                           暂无
                           <br />
@@ -86,10 +79,7 @@
                   <input type="text" class="input w-full" v-model="collection.link" @invalid="" />
                 </td>
                 <td>
-                  <textarea
-                    type="text"
-                    class="input w-full overflow-hidden"
-                    v-model="collection.description" />
+                  <textarea type="text" class="input w-full overflow-hidden" v-model="collection.description" />
                 </td>
                 <td class="group w-48 overflow-x-hidden">
                   <div class="join items-center">
@@ -98,25 +88,18 @@
                         {{ tag }}
                       </div>
                     </div>
-                    <input
-                      type="text"
-                      class="input w-full input-md hidden group-hover:block"
-                      v-model="collection.tags"
+                    <input type="text" class="input w-full input-md hidden group-hover:block" v-model="collection.tags"
                       @change="updateTags(collection)" />
                   </div>
                 </td>
                 <th class="w-min">
                   <div class="flex max-w-fit space-x-3">
-                    <button
-                      aria-label="移除"
-                      class="btn btn-sm btn-square btn-outline shadow-xl"
-                      @click="removeCollection()">
+                    <button aria-label="保存" class="btn btn-sm btn-square btn-outline shadow-xl"
+                      @click="saveCollection(collection)">
                       <span class="icon-[lucide--save] size-6"></span>
                     </button>
-                    <button
-                      aria-label="移除"
-                      class="btn btn-sm btn-square btn-outline"
-                      @click="removeCollection()">
+                    <button aria-label="移除" class="btn btn-sm btn-square btn-outline"
+                      @click="removeCollection(collection)">
                       <span class="icon-[lucide--square-x] size-6"></span>
                     </button>
                   </div>
@@ -126,41 +109,33 @@
           </table>
 
           <div class="join">
-            <button
-              aria-label="首页"
-              class="join-item btn bg-base-100/50 backdrop-blur-md"
-              @click="currentPage = 1">
+            <button aria-label="首页" class="join-item btn bg-base-100/50 backdrop-blur-md"
+              @click="collectionFilter.page = 1">
               <span class="icon-[lucide--chevron-first]"></span>
             </button>
-            <button
-              aria-label="上一首页"
-              class="join-item btn bg-base-100/50"
-              @click="currentPage = Math.max(1, currentPage - 1)">
+            <button aria-label="上一首页" class="join-item btn bg-base-100/50"
+              @click="collectionFilter.page = Math.max(1, collectionFilter.page - 1)">
               <span class="icon-[lucide--chevron-left]"></span>
             </button>
-            <input
-              :key="currentPage"
-              class="join-item btn btn-square"
-              type="radio"
-              name="options"
-              checked
-              :aria-label="currentPage.toString()" />
+            <input :key="collectionFilter.page" class="join-item btn btn-square" type="radio" name="options" checked
+              :aria-label="collectionFilter.page.toString()" />
 
-            <button
-              aria-label="下一页"
-              class="join-item btn bg-base-100/50"
-              @click="currentPage = Math.min(patination, currentPage + 1)">
+            <button aria-label="下一页" class="join-item btn bg-base-100/50" @click="
+              collectionFilter.page = Math.min(
+                categoryFilters.totalPages,
+                collectionFilter.page + 1
+              )
+              ">
               <span class="icon-[lucide--chevron-right]"></span>
             </button>
-            <button class="join-item btn bg-base-100/50" @click="currentPage = patination">
+            <button class="join-item btn bg-base-100/50" @click="collectionFilter.page = categoryFilters.totalPages">
               <span class="icon-[lucide--chevron-last]"></span>
             </button>
-            <label
-              aria-label="尾页"
+            <label aria-label="尾页"
               class="join-item input border-none leading-4 bg-base-100/50 input-bordered flex items-center gap-2"
               @keyup="jumpKey($event)">
               <input type="text" class="grow" placeholder="跳转" v-model="searchPage" />
-              <span class="opacity-50">/{{ patination }}</span>
+              <span class="opacity-50">/{{ categoryFilters.totalPages }}</span>
               <span class="icon-[lucide--corner-down-left]"></span>
             </label>
           </div>
@@ -171,95 +146,39 @@
 </template>
 
 <script setup lang="ts">
-import type { Collection, CollectionsData } from '@/api/types'
+import type { Collection } from '@/api/types'
 import * as api from '@/api/index'
 import { imageLoadError } from '@/utils'
 
-import { useFuse } from '@vueuse/integrations/useFuse'
-import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
+const collectionFilter = reactive<api.CollectionFilter>({
+  categories: [],
+  page: 1,
+  page_size: 20,
+  keyword: ''
+})
 
-const searchValue = ref('')
-
-const collectionsDatas = ref<Array<CollectionsData>>([])
-const collections: Ref<Collection[]> = ref([])
-
-const pageSize = 20
-const currentPage = ref(1)
 const searchPage = ref(1)
 
-interface Nav {
-  title: string
-  cid: string
-  path: string
-  parent?: Nav
-  children?: Nav[]
-}
-
-const currentCategory = ref<Nav>()
-
-const filteredFullCollections: Ref<Collection[]> = computed(() => {
-  if (searchValue.value) {
-    const tmpCollections = collections.value.filter((ele) => {
-      if (!currentCategory.value?.title) {
-        return ele
-      }
-      if (ele.category?.path === currentCategory.value?.path) {
-        return ele
-      }
-    })
-
-    currentPage.value = 1
-    // @ts-ignore
-    const { results } = useFuse(searchValue.value, tmpCollections, options)
-    return results.value.map((result) => result.item)
-  } else {
-    if (!currentCategory.value?.path) {
-      return collections.value
-    }
-
-    currentPage.value = 1
-
-    return collections.value.filter((ele) => {
-      if (ele.category?.path === currentCategory.value?.path) {
-        return ele
-      }
-    })
-  }
+const currentCategory = ref<api.Nav>()
+const categoryFilters = ref<api.CollectionsResponse>({
+  count: 1,
+  totalPages: 1,
+  collections: []
 })
 
-const filteredCollections: Ref<Collection[]> = computed(() => {
-  return filteredFullCollections.value.slice(
-    (currentPage.value - 1) * pageSize,
-    currentPage.value * pageSize
-  )
-})
-
-const patination: Ref<number> = computed(() => {
-  return ((filteredFullCollections.value.length / pageSize) | 0) + 1
-})
-
-const navs = reactive<Nav[]>([])
-
-const options = computed<UseFuseOptions<Collection>>(() => ({
-  fuseOptions: {
-    keys: ['link', 'title', 'description'],
-    includeScore: true,
-    shouldSort: true,
-    threshold: 0.2
-  },
-  resultLimit: 0
-}))
+const navs = reactive<api.Nav[]>([])
 
 function validatePage() {
   const x = Number(searchPage.value)
-  if (x >= 1 && x <= patination.value && currentPage.value != x) {
-    currentPage.value = x
+  if (x >= 1 && x <= categoryFilters.value.totalPages && collectionFilter.page != x) {
+    collectionFilter.page = x
   }
 }
 
 function updateTags(collection: Collection) {
   collection.tags = collection.tags?.toString().split(',')
 }
+
 
 function jump() {
   validatePage()
@@ -270,44 +189,73 @@ function jumpKey(event: KeyboardEvent) {
   }
 }
 
-function uploadImage(collection: Collection) {}
-function removeCollection() {}
 
-onMounted(async () => {
-  const resp = await api.collections()
-  collectionsDatas.value = resp.data.data.datas
+async function fetchCollections() {
 
-  collectionsDatas.value.forEach((ele) => {
-    // 设置第一组group可见
-    ele.groups[0].show = true
+  // 重置分页, 会自动触发更新
+  if (collectionFilter.page != 1) {
+    collectionFilter.page = 1
+    return
+  }
 
-    // 初始化导航菜单
-    const parent: Nav = {
-      title: ele.category.title,
-      cid: ele.category.cid || '',
-      path: ele.category.path || '',
-      children: []
+  // 正常更新
+  const resp = await api.filteredCollections(collectionFilter)
+  categoryFilters.value = resp.data.data
+}
+
+watch(() => currentCategory.value,
+  async (x, y) => {
+    // 分类变化
+    if (x != y) {
+      collectionFilter.categories = [currentCategory.value?.path as string]
     }
 
-    ele.groups.forEach((group) => {
-      // 填充导航菜单
-      if (parent.children) {
-        parent.children.push({
-          title: group.category.title,
-          cid: group.category.cid || '',
-          path: group.category.path || '',
-          parent: parent
-        })
-      }
+    await fetchCollections()
 
-      // 填充导航
-      group.collections.forEach((item) => {
-        collections.value.push(item)
-      })
-    })
-
-    navs.push(parent)
   })
+
+async function fetchKeyword(event: KeyboardEvent) {
+  if (event.key == "Enter") {
+    await fetchCollections()
+  }
+}
+
+
+
+
+watch(() => [collectionFilter.page],
+  async () => {
+    const resp = await api.filteredCollections(collectionFilter)
+    categoryFilters.value = resp.data.data
+  })
+
+function uploadImage(collection: Collection) { }
+
+
+async function saveCollection(collection: Collection) {
+
+
+  const resp = await api.updateCollection(collection)
+  if (resp.data.code >= 0) {
+    Message({ message: "修改成功" })
+  } else {
+    Message({ message: resp.data.msg, type: "wanning" })
+  }
+
+}
+function removeCollection(collection: Collection) { }
+
+onMounted(async () => {
+  const resp = await api.filteredCollections({
+    page: 1,
+    keyword: ''
+  })
+  categoryFilters.value = resp.data.data
+
+  const resp2 = await api.navs()
+  Object.assign(navs, resp2.data.data.navs)
+
+
 })
 </script>
 

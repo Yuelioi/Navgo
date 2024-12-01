@@ -21,4 +21,9 @@ func main() {
 
 	data := fmt.Sprintf(template, meta.Title, link, meta.Description)
 	fmt.Println(data)
+
+	// wallhaven
+	// downloader := New()
+	// downloader.start(1, 10)
+
 }

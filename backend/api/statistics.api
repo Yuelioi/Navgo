@@ -22,6 +22,6 @@ type SiteStats {
 service main {
 	@doc "获取网站数量"
 	@handler Statistics
-	get /statistics (AnyRequest) returns (SiteStats)
+	get /statistics  returns (SiteStats)
 
 }

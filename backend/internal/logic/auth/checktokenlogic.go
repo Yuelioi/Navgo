@@ -26,8 +26,8 @@ func NewCheckTokenLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CheckT
 	}
 }
 
-func (l *CheckTokenLogic) CheckToken(req *types.IDRequest) (resp *types.AuthResponse, err error) {
-	username, err := biz.Validate(req.ID)
+func (l *CheckTokenLogic) CheckToken(req *types.AuthRequest) (resp *types.AuthResponse, err error) {
+	username, err := biz.Validate(req.Authorization)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +39,7 @@ func (l *CheckTokenLogic) CheckToken(req *types.IDRequest) (resp *types.AuthResp
 		Email:    u.Email,
 		Nickname: u.Nickname,
 		Role:     u.Role,
-		Token:    req.ID,
+		Token:    req.Authorization,
 	}
 
 	return

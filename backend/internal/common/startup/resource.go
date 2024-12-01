@@ -39,7 +39,7 @@ func initDst(inReviewDir, inReviewMeta, defaultContent string) error {
 
 func init() {
 	// 初始化审核区
-	inReviewCollectionsDir := filepath.Join(constants.ConfInst.Resource.Collections, "_待审核")
+	inReviewCollectionsDir := filepath.Join(constants.ConfInst.Resource.Pending)
 	inReviewCollectionsMeta := filepath.Join(inReviewCollectionsDir, constants.ConfInst.Resource.MetaFile)
 	inReviewCollectionContent := `title: 待审核
 cid: InReview

@@ -5,7 +5,6 @@ import (
 
 	"backend/internal/logic/comment"
 	"backend/internal/svc"
-	"backend/internal/types"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
@@ -13,14 +12,9 @@ import (
 // 获取页面评论
 func CommentHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.AnyRequest
-		if err := httpx.Parse(r, &req); err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
-			return
-		}
 
 		l := comment.NewCommentLogic(r.Context(), svcCtx)
-		resp, err := l.Comment(&req)
+		resp, err := l.Comment()
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

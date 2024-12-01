@@ -6,7 +6,7 @@
     :class="{ hidden: !showSetting.siderBar && isMobileDevice() }"
     class="anchor flex-1 w-full flex flex-col md:pb-0 overflow-y-scroll">
     <router-view
-      class="content md:py-12 p-4 pb-20"
+      class="content md:py-12 pb-20"
       :class="{ 'mb-4': showSetting.footer }"></router-view>
     <FooterArea v-if="!isAdmin" />
     <img
@@ -60,4 +60,8 @@ function scrollToTop() {
 
 import { useAdminStatus } from '@/hooks/useAdminStatus'
 const { isAdmin } = useAdminStatus()
+
+onMounted(() => {
+  loadLocalWallpaper()
+})
 </script>

@@ -26,7 +26,7 @@ func NewStatisticsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Statis
 	}
 }
 
-func (l *StatisticsLogic) Statistics(req *types.AnyRequest) (resp *types.SiteStats, err error) {
+func (l *StatisticsLogic) Statistics() (resp *types.SiteStats, err error) {
 
 	var yesterday int64
 	var all int64

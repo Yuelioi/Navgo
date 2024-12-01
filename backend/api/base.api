@@ -1,7 +1,5 @@
 syntax = "v1"
 
-type AnyRequest {}
-
 type Model {
 	ID        uint   `json:"-" gorm:"primarykey"`
 	CreatedAt string `json:"-"`
@@ -9,7 +7,11 @@ type Model {
 }
 
 type IDRequest {
-	ID string `json:"id"`
+	ID string `form:"id"`
+}
+
+type AuthRequest {
+	Authorization string `header:"authorization"`
 }
 
 type IDResponse {
@@ -18,11 +20,12 @@ type IDResponse {
 
 type Category {
 	Model
-	CID   string `json:"cid,optional" gorm:"column:cid"`
-	Depth int    `json:"depth,optional,omitempty" yaml:",omitempty"`
-	Title string `json:"title"`
-	Order int    `json:"order,optional"`
-	Path  string `json:"path,optional,omitempty" gorm:"column:path;unique"`
+	CID       string `json:"cid,optional" gorm:"column:cid"`
+	Depth     int    `json:"depth,optional,omitempty" yaml:",omitempty"`
+	Title     string `json:"title"`
+	FullTitle string `json:"full_title"`
+	Order     int    `json:"order,optional"`
+	Path      string `json:"path,optional,omitempty" gorm:"column:path;unique"`
 }
 
 type Collection {
@@ -38,6 +41,12 @@ type Collection {
 	Favicon     string    `json:"favicon,optional,omitempty"`
 	Tags        []string  `json:"tags,optional,omitempty" gorm:"type:text[]"`
 	View        int       `json:"view,optional,omitempty"`
+}
+
+type CollectionsResponse {
+	Count       int           `json:"count"`
+	TotalPages  int           `json:"totalPages"`
+	Collections []*Collection `json:"collections"`
 }
 
 type User {

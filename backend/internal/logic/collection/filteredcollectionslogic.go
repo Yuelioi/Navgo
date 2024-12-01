@@ -26,13 +26,10 @@ func NewFilteredCollectionsLogic(ctx context.Context, svcCtx *svc.ServiceContext
 }
 
 func (l *FilteredCollectionsLogic) FilteredCollections(req *types.CollectionFilter) (resp *types.CollectionsResponse, err error) {
-	collections, err := collection.FilterCollections(req)
+	resp, err = collection.FilterCollections(req)
 	if err != nil {
 		return nil, err
 	}
 
-	resp = &types.CollectionsResponse{
-		Collections: collections,
-	}
 	return
 }

@@ -44,7 +44,7 @@ func sortCollections(datas []*types.CollectionsData) []*types.CollectionsData {
 	return datas
 }
 
-func (l *CollectionsLogic) Collections(req *types.AnyRequest) (resp *types.CollectionsDataResponse, err error) {
+func (l *CollectionsLogic) Collections() (resp *types.CollectionsDataResponse, err error) {
 
 	datas := make([]*types.CollectionsData, 0)
 

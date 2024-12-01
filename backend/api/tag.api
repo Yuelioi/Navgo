@@ -25,7 +25,7 @@ type TagRequest {
 service main {
 	@doc "tags页面集合"
 	@handler Tags
-	get /tags (AnyRequest) returns (TagsResponse)
+	get /tags  returns (TagsResponse)
 
 	@doc "单tag"
 	@handler Tag

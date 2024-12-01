@@ -1,4 +1,4 @@
-import axios, { type AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 import * as components from './types'
 export * from './types'
 
@@ -8,6 +8,21 @@ const formHeader = {
   }
 }
 
+function withAuth() {
+  const store = useBasicStore()
+  const { token } = storeToRefs(store)
+
+  return {
+    headers: { Authorization: token.value }
+  }
+}
+
+type ApiResponse<T> = {
+  code: number
+  data: T
+  msg: string
+}
+
 // const apiUrl = 'http://localhost:9200'
 const apiUrl = '/api'
 
@@ -15,7 +30,14 @@ const apiUrl = '/api'
  * @description "获取通知"
  */
 export function announces() {
-  return axios.get<{ data: components.AnnouncesData }>(apiUrl + `/v1/announces`)
+  return axios.get<ApiResponse<components.AnnouncesData>>(apiUrl + `/v1/announces`)
+}
+
+/**
+ * @description "菜单集合"
+ */
+export function navs() {
+  return axios.get<ApiResponse<components.NavsResponse>>(apiUrl + `/v1/navs`)
 }
 
 /**
@@ -24,7 +46,7 @@ export function announces() {
  * @param headers
  */
 export function addCollection(req: FormData) {
-  return axios.post<{ code: number; msg: string }>(apiUrl + `/v1/collection`, req, formHeader)
+  return axios.post<ApiResponse<null>>(apiUrl + `/v1/collection`, req, formHeader)
 }
 
 /**
@@ -32,7 +54,7 @@ export function addCollection(req: FormData) {
  * @param req
  */
 export function deleteCollection(req: components.IDRequest) {
-  return axios.delete<components.Collection>(apiUrl + `/v1/collection`)
+  return axios.delete<ApiResponse<components.Collection>>(apiUrl + `/v1/collection`)
 }
 
 /**
@@ -40,22 +62,22 @@ export function deleteCollection(req: components.IDRequest) {
  * @param req
  * @param headers
  */
-export function updateCollection(req: components.Collection) {
-  return axios.put<components.Collection>(apiUrl + `/v1/collection`, req)
+export function updateCollection(req: components.CollectionUpdateParams) {
+  return axios.put<ApiResponse<components.Collection>>(apiUrl + `/v1/collection`, req, withAuth())
 }
 
 /**
  * @description "单页面"
  */
 export function collection(id: string) {
-  return axios.get<components.Collection>(apiUrl + `/v1/collection/${id}`)
+  return axios.get<ApiResponse<components.Collection>>(apiUrl + `/v1/collection/${id}`)
 }
 
 /**
  * @description "页面集合"
  */
-export function collections(req: components.AnyRequest) {
-  return axios.get<{ data: components.CollectionsDataResponse }>(apiUrl + `/v1/collections`, req)
+export function collections() {
+  return axios.get<ApiResponse<components.CollectionsDataResponse>>(apiUrl + `/v1/collections`)
 }
 
 /**
@@ -63,7 +85,10 @@ export function collections(req: components.AnyRequest) {
  * @param req
  */
 export function filteredCollections(req: components.CollectionFilter) {
-  return axios.get<components.CollectionsResponse>(apiUrl + `/v1/filteredCollections`, req)
+  return axios.post<ApiResponse<components.CollectionsResponse>>(
+    apiUrl + `/v1/filteredCollections`,
+    req
+  )
 }
 
 /**
@@ -71,11 +96,7 @@ export function filteredCollections(req: components.CollectionFilter) {
  * @param req
  */
 export function addComment(req: components.CommentRequest) {
-  return axios.post<{
-    code: number
-    data: components.IDResponse
-    msg: string
-  }>(apiUrl + `/v1/comment`, req)
+  return axios.post<ApiResponse<components.IDResponse>>(apiUrl + `/v1/comment`, req)
 }
 
 /**
@@ -83,7 +104,7 @@ export function addComment(req: components.CommentRequest) {
  * @param req
  */
 export function deleteComment(req: components.IDRequest) {
-  return axios.delete<components.IDResponse>(apiUrl + `/v1/comment`)
+  return axios.delete<ApiResponse<components.IDResponse>>(apiUrl + `/v1/comment`)
 }
 
 /**
@@ -91,9 +112,7 @@ export function deleteComment(req: components.IDRequest) {
  * @param req
  */
 export function comments() {
-  return axios.get<{ data: components.CommentsResponse; code: number; msg: string }>(
-    apiUrl + `/v1/comments`
-  )
+  return axios.get<ApiResponse<components.CommentsResponse>>(apiUrl + `/v1/comments`)
 }
 
 /**
@@ -101,9 +120,7 @@ export function comments() {
  * @param req
  */
 export function statistics() {
-  return axios.get<{
-    data: components.SiteStats
-  }>(apiUrl + `/v1/statistics`)
+  return axios.get<ApiResponse<components.SiteStats>>(apiUrl + `/v1/statistics`)
 }
 
 /**
@@ -111,26 +128,27 @@ export function statistics() {
  * @param req
  */
 export function tag(id: string) {
-  return axios.get<components.CollectionsResponse>(apiUrl + `/v1/tag/${id}`)
+  return axios.get<ApiResponse<components.CollectionsResponse>>(apiUrl + `/v1/tag/${id}`)
 }
 
 /**
  * @description "tags页面集合"
  */
 export function tags() {
-  return axios.get<components.TagsResponse>(apiUrl + `/v1/tags`)
+  return axios.get<ApiResponse<components.TagsResponse>>(apiUrl + `/v1/tags`)
 }
 
 /**
  * @description "获取页面信息"
  */
 export function net(id: string) {
-  return axios.post<components.CollectionResponse>(
+  return axios.post<ApiResponse<components.CollectionResponse>>(
     apiUrl + `/v1/net`,
+    {},
     {
-      id: id
-    },
-    {
+      params: {
+        id: id
+      },
       withCredentials: false // 如果不需要发送凭证，可以设置为 false
     }
   )
@@ -140,8 +158,8 @@ export function net(id: string) {
  * @description "验证token信息"
  * @param req
  */
-export function checkToken(req: components.IDRequest) {
-  return axios.get<{ code: number; data: components.AuthResponse }>(apiUrl + `/v1/auth`, req)
+export function checkToken(token: string) {
+  return axios.get<ApiResponse<components.AuthResponse>>(apiUrl + `/v1/auth`, withAuth())
 }
 
 /**
@@ -150,12 +168,12 @@ export function checkToken(req: components.IDRequest) {
  * @param headers
  */
 export function auth(req: components.User) {
-  return axios.post<{ data: components.AuthResponse }>(apiUrl + `/v1/auth`, req, formHeader)
+  return axios.post<ApiResponse<components.AuthResponse>>(apiUrl + `/v1/auth`, req, formHeader)
 }
 
 /**
  * @description
  */
 export function wallpaper() {
-  return axios.get<{ data: components.IDResponse }>(apiUrl + `/v1/wallpaper`)
+  return axios.get<ApiResponse<components.IDResponse>>(apiUrl + `/v1/wallpaper`)
 }

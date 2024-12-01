@@ -19,7 +19,7 @@
       </div>
 
       <!-- 搜索 -->
-      <HomeSearch class="mt-12 md:mt-24 mb-16 z-50 relative"></HomeSearch>
+      <AsyncHomeSearch class="mt-12 md:mt-24 mb-16 z-50 relative"></AsyncHomeSearch>
 
       <!-- 导航 -->
       <div class="w-full flex flex-col lg:space-y-16">
@@ -102,6 +102,10 @@ const AsyncGroupCard = defineAsyncComponent({
   loader: () => import('../components/user/GroupCard.vue')
 })
 
+const AsyncHomeSearch = defineAsyncComponent({
+  loader: () => import('../components/user/HomeSearch.vue')
+})
+
 const announces = ref<Announce[]>([])
 
 const currentAnnounce = ref<Announce>({
@@ -111,6 +115,22 @@ const currentAnnounce = ref<Announce>({
   title: '',
   content: '',
   date: ''
+})
+
+const route = useRoute()
+const router = useRouter()
+
+function checkMsg() {
+  // 登录失败请求
+  const msg = route.query.msg
+  if (msg) {
+    Message({ message: msg as string })
+    router.replace({ query: {} })
+  }
+}
+
+watch(route, () => {
+  checkMsg()
 })
 
 onMounted(async () => {
@@ -123,6 +143,7 @@ onMounted(async () => {
     const nextIndex = (currentIndex + 1) % announces.value.length
     currentAnnounce.value = announces.value[nextIndex]
   }, 5000)
+  checkMsg()
 })
 </script>
 

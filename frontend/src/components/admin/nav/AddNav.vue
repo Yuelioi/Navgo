@@ -1,8 +1,7 @@
 <template>
   <div class="w-full flex p-8 h-full space-x-4">
     <!-- 内容区 -->
-    <div
-      class="flex p-8 flex-col flex-1 space-y-4 bg-base-100/50 backdrop-blur-md z-10 rounded-md border">
+    <div class="flex p-8 flex-col flex-1 space-y-4 bg-base-100/50 backdrop-blur-md z-10 rounded-md border">
       <div class="">投稿</div>
       <div class="divider my-0"></div>
 
@@ -12,11 +11,7 @@
             <span class="text-sm select-none">网址</span>
             <span class="icon-[lucide--link-2] size-5"></span>
           </div>
-          <input
-            type="text"
-            class="grow input-bordered"
-            placeholder="https://"
-            v-model="form.link" />
+          <input type="text" class="grow input-bordered" placeholder="https://" v-model="form.link" />
         </div>
       </div>
       <!-- 名称 -->
@@ -39,16 +34,9 @@
           </div>
 
           <div class="dropdown flex dropdown-right">
-            <input
-              tabindex="0"
-              role="button"
-              type="text"
-              class=""
-              placeholder="暂无分类"
-              v-model="form.category" />
+            <input tabindex="0" role="button" type="text" class="" placeholder="暂无分类" v-model="form.category" />
 
-            <ul
-              tabindex="0"
+            <ul tabindex="0"
               class="menu ml-6 flex-col flex-nowrap w-56 dropdown-content rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
               <li>
                 <a class="text-nowrap" @click="resetCategory">全部</a>
@@ -82,19 +70,13 @@
                 <span class="icon-[lucide--x]" @click="form.tags.splice(index, 1)"></span>
               </div>
             </div>
-            <input
-              type="text"
-              class="grow pl-4 input-bordered self-center"
-              placeholder="按回车创建标签"
-              v-model="currentTag"
+            <input type="text" class="grow pl-4 input-bordered self-center" placeholder="按回车创建标签" v-model="currentTag"
               @keyup="addTag($event)" />
           </label>
         </div>
       </div>
 
-      <textarea
-        class="textarea w-full textarea-bordered input"
-        placeholder="网址介绍"
+      <textarea class="textarea w-full textarea-bordered input" placeholder="网址介绍"
         v-model="form.description"></textarea>
     </div>
 
@@ -175,23 +157,8 @@ function addTag(event: KeyboardEvent) {
   }
 }
 
-// 处理拖拽图片事件
-function handleDrag(event: DragEvent) {
-  const file = event.dataTransfer?.files?.[0]
-  handleFile(file)
-}
-// 处理粘贴图片事件
-function handlePaste(event: ClipboardEvent) {
-  const items = event.clipboardData?.items
-  if (items && items.length > 0) {
-    for (let item of items) {
-      if (item.type.startsWith('image/')) {
-        const file = item.getAsFile()
-        handleFile(file)
-      }
-    }
-  }
-}
+
+
 // 监控icon变动
 watch(icon, () => {
   if (icon.value) {
@@ -205,26 +172,8 @@ watch(icon, () => {
   }
 })
 
-// 显示
-function handleFile(file: File | null | undefined) {
-  if (file) {
-    icon.value = file
-  }
-}
 
-// 模拟打开对话框
-function openFileInput() {
-  if (fileInput.value) {
-    fileInput.value.click()
-  }
-}
 
-// 检测打开文件
-function onFileChange(event: Event) {
-  const target = event.target as HTMLInputElement
-  const file = target.files?.[0]
-  handleFile(file)
-}
 
 // 获取网站元数据
 async function queryMeta() {
@@ -232,8 +181,8 @@ async function queryMeta() {
   const data = await net(form.link)
   if (data) {
     Message({ message: '获取成功...' })
-    form.title = form.title || data.title
-    form.description = form.description || data.description || ''
+    form.title = form.title || data.data.title
+    form.description = form.description || data.data.description || ''
   } else {
     Message({ message: '获取失败...', type: 'warn' })
   }

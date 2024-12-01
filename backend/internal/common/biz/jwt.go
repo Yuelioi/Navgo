@@ -8,8 +8,6 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var expireTime = time.Hour
-
 func Validate(tokenString string) (string, error) {
 	parsedToken, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
 		// Don't forget to validate the alg is what you expect:
@@ -48,10 +46,10 @@ func Validate(tokenString string) (string, error) {
 
 func Generate(username, role string) (string, error) {
 	tokens := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"username": username,                          // 用户名
-		"role":     role,                              // 角色
-		"exp":      time.Now().Add(expireTime).Unix(), // 过期时间
-		"iat":      time.Now().Unix(),                 // 签发时间
+		"username": username,                                                                                       // 用户名
+		"role":     role,                                                                                           // 角色
+		"exp":      time.Now().Add(time.Duration(constants.SVCInst.Config.Auth.AccessExpire) * time.Second).Unix(), // 过期时间
+		"iat":      time.Now().Unix(),                                                                              // 签发时间
 	})
 
 	tokenString, err := tokens.SignedString([]byte(constants.ConfInst.Auth.AccessSecret))

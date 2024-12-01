@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"net/http"
 
 	"backend/internal/common/biz"
@@ -20,12 +21,18 @@ func main() {
 	logc.Info(context.Background(), "启动服务中")
 
 	server := rest.MustNewServer(
-
 		constants.ConfInst.RestConf,
+
+		// 注册前端端口
 		// middleware.Frontend(),
+
+		// 验证失败处理
+		rest.WithUnauthorizedCallback(func(w http.ResponseWriter, r *http.Request, err error) {
+			httpx.ErrorCtx(r.Context(), w, biz.AuthError)
+		}),
 	)
 
-	// 跨域中间件
+	// 中间件
 	server.Use(middleware.CORS())
 	server.Use(middleware.Limit())
 
@@ -35,24 +42,25 @@ func main() {
 
 	// 统一错误处理
 	httpx.SetErrorHandler(func(err error) (int, any) {
-		// var e *biz.Error
-		// switch {
-		// case errors.As(err, &e):
-		// 	return http.StatusOK, biz.Fail(e)
-		// default:
-		// 	return http.StatusInternalServerError, biz.NewError(500, e.Error())
-		// }
-		return http.StatusOK, biz.Result{
-			Code: -1,
-			Msg:  err.Error(),
-			Data: nil,
+		var e *biz.Error
+		switch {
+		case errors.As(err, &e):
+			return http.StatusOK, biz.Fail(e)
+		default:
+			return http.StatusOK, biz.Result{
+				Code: -500,
+				Msg:  err.Error(),
+				Data: nil,
+			}
 		}
+
 	})
 
 	// 统一成功处理
 	httpx.SetOkHandler(func(ctx context.Context, data any) any {
 		return biz.Success(data)
 	})
+
 	logc.Info(context.Background(), "服务启动完毕")
 	server.Start()
 

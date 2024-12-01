@@ -33,10 +33,10 @@ func (i *InReviewCache) Add(id string, item any) error {
 
 	i.storage.Collections = append(i.storage.Collections, collection)
 
-	return i.AfterModify()
+	return i.AfterModify(id)
 }
 
-func (i *InReviewCache) AfterModify() error {
+func (i *InReviewCache) AfterModify(id string) error {
 	data, err := yaml.Marshal(i.storage)
 	if err != nil {
 		return err
@@ -54,9 +54,13 @@ func (i *InReviewCache) Exists(id string) bool {
 	return false
 }
 
+func (i *InReviewCache) Get(id string) (any, error) {
+	return nil, nil
+}
+
 // Preload implements Manager.
-func (i *InReviewCache) Preload() error {
-	inReviewDir := filepath.Join(constants.ConfInst.Resource.Collections, "_待审核")
+func (i *InReviewCache) Preload(data any) error {
+	inReviewDir := filepath.Join(constants.ConfInst.Resource.Collections, constants.ConfInst.Resource.Pending)
 	inReviewMeta := filepath.Join(inReviewDir, constants.ConfInst.Resource.MetaFile)
 	i.inReviewMeta = inReviewMeta
 
@@ -76,5 +80,5 @@ func (i *InReviewCache) Preload() error {
 
 // Remove implements Manager.
 func (i *InReviewCache) Remove(id string) error {
-	panic("unimplemented")
+	return nil
 }

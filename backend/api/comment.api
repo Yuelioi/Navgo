@@ -23,11 +23,21 @@ type CommentsResponse {
 service main {
 	@doc "获取页面评论"
 	@handler Comment
-	get /comments (AnyRequest) returns (CommentsResponse)
+	get /comments  returns (CommentsResponse)
 
 	@doc "发布评论"
 	@handler AddComment
 	post /comment (Comment) returns (IDResponse)
+
+}
+
+@server (
+	prefix: /v1
+	group: comment
+	jwt: Auth
+)
+
+service main {
 
 	@doc "删除评论"
 	@handler DeleteComment

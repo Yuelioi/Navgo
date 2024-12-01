@@ -154,7 +154,7 @@
                 <input
                   type="text"
                   class="w-full min-w-[13vw] input input-bordered"
-                  v-model="search.name" />
+                  v-model.lazy="search.name" />
               </td>
               <td>
                 <input
@@ -166,7 +166,7 @@
                 <input
                   type="text"
                   class="w-full min-w-[20vw] input input-bordered"
-                  v-model="search.placeholder" />
+                  v-model.lazy="search.placeholder" />
               </td>
               <td width="200">
                 <div class="flex md:hidden group-hover:flex gap-2">

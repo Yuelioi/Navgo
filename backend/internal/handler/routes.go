@@ -40,6 +40,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/auth",
 				Handler: auth.AuthHandler(serverCtx),
 			},
+		},
+		rest.WithPrefix("/v1"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
 			{
 				// 验证token信息
 				Method:  http.MethodGet,
@@ -47,6 +53,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: auth.CheckTokenHandler(serverCtx),
 			},
 		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/v1"),
 	)
 
@@ -57,18 +64,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/collection",
 				Handler: collection.AddCollectionHandler(serverCtx),
-			},
-			{
-				// 删除页面
-				Method:  http.MethodDelete,
-				Path:    "/collection",
-				Handler: collection.DeleteCollectionHandler(serverCtx),
-			},
-			{
-				// 更新页面
-				Method:  http.MethodPut,
-				Path:    "/collection",
-				Handler: collection.UpdateCollectionHandler(serverCtx),
 			},
 			{
 				// 单页面
@@ -84,11 +79,36 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				// 分页集合
-				Method:  http.MethodGet,
+				Method:  http.MethodPost,
 				Path:    "/filteredCollections",
 				Handler: collection.FilteredCollectionsHandler(serverCtx),
 			},
+			{
+				// 页面集合
+				Method:  http.MethodGet,
+				Path:    "/navs",
+				Handler: collection.NavsHandler(serverCtx),
+			},
 		},
+		rest.WithPrefix("/v1"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// 删除页面
+				Method:  http.MethodDelete,
+				Path:    "/collection",
+				Handler: collection.DeleteCollectionHandler(serverCtx),
+			},
+			{
+				// 更新页面
+				Method:  http.MethodPut,
+				Path:    "/collection",
+				Handler: collection.UpdateCollectionHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/v1"),
 	)
 
@@ -101,18 +121,25 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: comment.AddCommentHandler(serverCtx),
 			},
 			{
-				// 删除评论
-				Method:  http.MethodDelete,
-				Path:    "/comment",
-				Handler: comment.DeleteCommentHandler(serverCtx),
-			},
-			{
 				// 获取页面评论
 				Method:  http.MethodGet,
 				Path:    "/comments",
 				Handler: comment.CommentHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/v1"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// 删除评论
+				Method:  http.MethodDelete,
+				Path:    "/comment",
+				Handler: comment.DeleteCommentHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 		rest.WithPrefix("/v1"),
 	)
 

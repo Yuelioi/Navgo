@@ -18,6 +18,7 @@ type Resource struct {
 	Icons       string // 图标文件夹
 	MetaFile    string // 元数据文件
 	Wallpaper   string // 壁纸文件夹
+	Pending     string // 待审核文件夹
 }
 
 type Auth struct {

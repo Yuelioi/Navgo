@@ -7,7 +7,6 @@ import (
 	"backend/internal/common/utils"
 	"backend/internal/logic/collection"
 	"backend/internal/svc"
-	"backend/internal/types"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
@@ -15,8 +14,6 @@ import (
 // 页面集合
 func CollectionsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-
-		var req types.AnyRequest
 
 		//  添加每日访问(限定ip以及今日)
 		ip := utils.GetIPFromRequest(r)
@@ -27,7 +24,7 @@ func CollectionsHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		}
 
 		l := collection.NewCollectionsLogic(r.Context(), svcCtx)
-		resp, err := l.Collections(&req)
+		resp, err := l.Collections()
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

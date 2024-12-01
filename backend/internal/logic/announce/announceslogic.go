@@ -25,6 +25,6 @@ func NewAnnouncesLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Announc
 	}
 }
 
-func (l *AnnouncesLogic) Announces(req *types.AnyRequest) (resp *types.AnnouncesData, err error) {
+func (l *AnnouncesLogic) Announces() (resp *types.AnnouncesData, err error) {
 	return announce.All()
 }

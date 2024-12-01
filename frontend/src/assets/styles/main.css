@@ -1,2 +1,17 @@
 @import './base.css';
 @import './tailwindcss.css';
+
+@font-face {
+  font-family: 'Douyin';
+  src: url('/fonts/DouyinSansBold.otf') format('otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1,
+h2,
+span,
+p,
+div {
+  font-family: 'Douyin';
+}

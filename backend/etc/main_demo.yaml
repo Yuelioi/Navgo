@@ -9,6 +9,7 @@ Resource:
   Comments: resource\\comments
   MetaFile: meta.yaml
   Wallpaper: resource\\wallpaper
+  Pending: resource\\pending
 
 Database:
   Resource: resource\\database\\core.db

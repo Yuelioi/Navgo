@@ -16,7 +16,8 @@ type AnnouncesData struct {
 	Announces []*Announce `json:"announces"`
 }
 
-type AnyRequest struct {
+type AuthRequest struct {
+	Authorization string `header:"authorization"`
 }
 
 type AuthResponse struct {
@@ -29,11 +30,12 @@ type AuthResponse struct {
 
 type Category struct {
 	Model
-	CID   string `json:"cid,optional" gorm:"column:cid"`
-	Depth int    `json:"depth,optional,omitempty" yaml:",omitempty"`
-	Title string `json:"title"`
-	Order int    `json:"order,optional"`
-	Path  string `json:"path,optional,omitempty" gorm:"column:path;unique"`
+	CID       string `json:"cid,optional" gorm:"column:cid"`
+	Depth     int    `json:"depth,optional,omitempty" yaml:",omitempty"`
+	Title     string `json:"title"`
+	FullTitle string `json:"full_title"`
+	Order     int    `json:"order,optional"`
+	Path      string `json:"path,optional,omitempty" gorm:"column:path;unique"`
 }
 
 type Collection struct {
@@ -52,13 +54,23 @@ type Collection struct {
 }
 
 type CollectionFilter struct {
+	Keyword    string   `json:"keyword,optional"`
 	Categories pq.StringArray `json:"categories,optional"`
-	Page       int      `json:"page,optional"`
-	Limit      int      `json:"limit,optional"`
+	Page       int      `json:"page,optional,default=1"`
+	PageSize   int      `json:"page_size,optional,default=20"`
+}
+
+type CollectionUpdateParams struct {
+	CID          string   `json:"cid"`
+	Title        string   `json:"title"`
+	Link         string   `json:"link"`
+	Description  string   `json:"description,optional"`
+	CategoryPath string   `json:"category_path,omitempty"`
+	Tags         pq.StringArray `json:"tags,optional,omitempty"`
 }
 
 type CollectionsData struct {
-	Category *Category `json:"category"` // 使用 inline 标签将 Category 字段内联
+	Category *Category `json:"category"`
 	Groups   []*Group  `json:"groups"`
 }
 
@@ -67,6 +79,8 @@ type CollectionsDataResponse struct {
 }
 
 type CollectionsResponse struct {
+	Count       int           `json:"count"`
+	TotalPages  int           `json:"totalPages"`
 	Collections []*Collection `json:"collections"`
 }
 
@@ -89,7 +103,7 @@ type Group struct {
 }
 
 type IDRequest struct {
-	ID string `json:"id"`
+	ID string `form:"id"`
 }
 
 type IDResponse struct {
@@ -100,6 +114,19 @@ type Model struct {
 	ID        uint   `json:"-" gorm:"primarykey"`
 	CreatedAt string `json:"-"`
 	UpdatedAt string `json:"-"`
+}
+
+type Nav struct {
+	CID       string `json:"cid,optional"`
+	Title     string `json:"title"`
+	FullTitle string `json:"full_title"`
+	Order     int    `json:"order,optional"`
+	Path      string `json:"path,optional,omitempty" gorm:"column:path;unique"`
+	Children  []Nav  `json:"children,optional"`
+}
+
+type NavsResponse struct {
+	Navs []*Nav `json:"navs"`
 }
 
 type SiteStats struct {

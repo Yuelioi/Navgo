@@ -24,7 +24,7 @@ func NewTagsLogic(ctx context.Context, svcCtx *svc.ServiceContext) *TagsLogic {
 	}
 }
 
-func (l *TagsLogic) Tags(req *types.AnyRequest) (resp *types.TagsResponse, err error) {
+func (l *TagsLogic) Tags() (resp *types.TagsResponse, err error) {
 	// todo: add your logic here and delete this line
 
 	return

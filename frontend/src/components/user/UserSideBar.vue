@@ -30,7 +30,7 @@
         </li>
 
         <li>
-          <a>
+          <a href="https://github.com/Yuelioi/Navgo" target="_blank">
             <span class="icon-[lucide--github] size-6"></span>
             <span>Github</span>
           </a>

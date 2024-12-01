@@ -156,7 +156,7 @@ onMounted(() => {
   if (currentSearchName.value) {
     switchSearch(currentSearchName.value)
   } else {
-    switchSearch('百度')
+    switchSearch(searchList.value[0].name)
   }
   document.addEventListener('keydown', handleKeyDown)
 })

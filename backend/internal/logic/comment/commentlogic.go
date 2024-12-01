@@ -25,7 +25,7 @@ func NewCommentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CommentLo
 	}
 }
 
-func (l *CommentLogic) Comment(req *types.AnyRequest) (resp *types.CommentsResponse, err error) {
+func (l *CommentLogic) Comment() (resp *types.CommentsResponse, err error) {
 
 	var datas []*types.Comment
 	if err = db.DB.Model(types.Comment{}).Order("date DESC").Find(&datas).Error; err == nil {

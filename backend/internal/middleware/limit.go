@@ -35,7 +35,7 @@ func Limit() func(next http.HandlerFunc) http.HandlerFunc {
 			}
 
 			// 检查访问次数
-			if record.count >= 60 {
+			if record.count >= 360 {
 				httpx.ErrorCtx(r.Context(), w, errors.New("请求太多啦, 请稍后重试"))
 				mu.Unlock()
 				return

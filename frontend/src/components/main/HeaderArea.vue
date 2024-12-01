@@ -1,17 +1,23 @@
 <template>
   <div class="relative wave md:block overflow-hidden md:h-20">
-    <template v-if="isAdmin">
-      <AdminHeader></AdminHeader>
+    <template v-if="isAdmin && finish">
+      <AsyncAdminHeader></AsyncAdminHeader>
     </template>
-    <template v-else>
-      <UserHeader></UserHeader>
+    <template v-if="!isAdmin && finish">
+      <AsyncUserHeader></AsyncUserHeader>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useAdminStatus } from '@/hooks/useAdminStatus'
-const { isAdmin } = useAdminStatus()
+const AsyncAdminHeader = defineAsyncComponent({
+  loader: () => import('../admin/AdminHeader.vue')
+})
+const AsyncUserHeader = defineAsyncComponent({
+  loader: () => import('../user/UserHeader.vue')
+})
+
+const { isAdmin, finish } = useAdminStatus()
 </script>
 
 <style scoped>

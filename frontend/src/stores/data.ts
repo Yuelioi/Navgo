@@ -16,6 +16,7 @@ export async function loadData() {
     siteStats
   } = storeToRefs(store)
 
+  // 切换主题
   switchTheme(theme.value)
 
   // 加载我的收藏

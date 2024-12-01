@@ -17,11 +17,11 @@
 
     <!-- 侧栏分类列表 -->
     <div class="w-56 flex-1 relative flex flex-col" v-if="showSetting.siderBar">
-      <template v-if="isAdmin">
-        <AdminSideBar></AdminSideBar>
+      <template v-if="isAdmin && finish">
+        <AsyncAdminSideBar></AsyncAdminSideBar>
       </template>
-      <template v-else>
-        <UserSideBar></UserSideBar>
+      <template v-if="!isAdmin && finish">
+        <AsyncUserSideBar></AsyncUserSideBar>
       </template>
     </div>
   </div>
@@ -32,7 +32,14 @@ const store = useBasicStore()
 const { showSetting } = storeToRefs(store)
 
 import { useAdminStatus } from '@/hooks/useAdminStatus'
-const { isAdmin } = useAdminStatus()
+const { isAdmin, finish } = useAdminStatus()
+
+const AsyncAdminSideBar = defineAsyncComponent({
+  loader: () => import('../admin/AdminSideBar.vue')
+})
+const AsyncUserSideBar = defineAsyncComponent({
+  loader: () => import('../user/UserSideBar.vue')
+})
 </script>
 
 <style>

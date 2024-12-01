@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomeView from '@/views/HomeView.vue'
-
 import { loadData } from '@/stores/data'
 import { auth, checkToken } from '@/api'
 
@@ -11,7 +9,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: () => import('@/views/HomeView.vue'),
       meta: {
         loadData: true
       }
@@ -90,12 +88,17 @@ router.beforeEach(async (to, from, next) => {
     const { token } = storeToRefs(basicStore)
 
     if (/^\/admin/.test(to.fullPath)) {
-      const resp = await checkToken({ id: token.value })
-      if (resp.data['code'] >= 0) {
-        console.log(resp.data)
+      const resp = await checkToken(token.value)
+      if (resp.data['code'] < 0) {
+        next({
+          name: 'home',
+          query: { msg: resp.data.msg }
+        })
+        return
       }
-    } else {
     }
+
+    to.params = { show: '1' }
 
     if (to.meta['loadData']) {
       await loadData()

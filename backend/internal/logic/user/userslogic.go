@@ -24,7 +24,7 @@ func NewUsersLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UsersLogic 
 	}
 }
 
-func (l *UsersLogic) Users(req *types.AnyRequest) (resp *types.UserResponse, err error) {
+func (l *UsersLogic) Users() (resp *types.UserResponse, err error) {
 	// todo: add your logic here and delete this line
 
 	return

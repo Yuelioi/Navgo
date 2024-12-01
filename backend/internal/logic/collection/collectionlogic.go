@@ -29,7 +29,7 @@ type CC struct {
 	Favicon string `json:"favicon"`
 }
 
-func (l *CollectionLogic) Collection(req *types.AnyRequest) (resp *types.Collection, err error) {
+func (l *CollectionLogic) Collection() (resp *types.Collection, err error) {
 
 	return
 }

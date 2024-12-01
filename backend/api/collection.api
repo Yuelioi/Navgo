@@ -18,14 +18,33 @@ type CollectionsDataResponse {
 	Datas []*CollectionsData `json:"datas"`
 }
 
-type CollectionsResponse {
-	Collections []*Collection `json:"collections"`
+type CollectionUpdateParams {
+	CID          string   `json:"cid"`
+	Title        string   `json:"title"`
+	Link         string   `json:"link"`
+	Description  string   `json:"description,optional"`
+	CategoryPath string   `json:"category_path,omitempty"`
+	Tags         []string `json:"tags,optional,omitempty"`
 }
 
 type CollectionFilter {
+	Keyword    string   `json:"keyword,optional"`
 	Categories []string `json:"categories,optional"`
-	Page       int      `json:"page,optional"`
-	Limit      int      `json:"limit,optional"`
+	Page       int      `json:"page,optional,default=1"`
+	PageSize   int      `json:"page_size,optional,default=20"`
+}
+
+type Nav {
+	CID       string `json:"cid,optional"`
+	Title     string `json:"title"`
+	FullTitle string `json:"full_title"`
+	Order     int    `json:"order,optional"`
+	Path      string `json:"path,optional,omitempty" gorm:"column:path;unique"`
+	Children  []Nav  `json:"children,optional"`
+}
+
+type NavsResponse {
+	Navs []*Nav `json:"navs"`
 }
 
 @server (
@@ -35,20 +54,34 @@ type CollectionFilter {
 
 service main {
 	@doc "页面集合"
+	@handler Navs
+	get /navs returns (NavsResponse)
+
+	@doc "页面集合"
 	@handler Collections
-	get /collections (AnyRequest) returns (CollectionsDataResponse)
+	get /collections  returns (CollectionsDataResponse)
 
 	@doc "分页集合"
 	@handler FilteredCollections
-	get /filteredCollections (CollectionFilter) returns (CollectionsResponse)
+	post /filteredCollections (CollectionFilter) returns (CollectionsResponse)
 
 	@doc "单页面"
 	@handler Collection
-	get /collection/:id (AnyRequest) returns (Collection)
+	get /collection/:id  returns (Collection)
 
 	@doc "增加页面"
 	@handler AddCollection
 	post /collection (Collection) returns (Collection)
+
+}
+
+@server (
+	prefix: /v1
+	group: collection
+	jwt: Auth
+)
+
+service main {
 
 	@doc "删除页面"
 	@handler DeleteCollection
@@ -56,5 +89,6 @@ service main {
 
 	@doc "更新页面"
 	@handler UpdateCollection
-	put /collection (Collection) returns (Collection)
+	put /collection (CollectionUpdateParams) returns (Collection)
+
 }

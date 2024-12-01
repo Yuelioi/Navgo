@@ -14,10 +14,15 @@ import (
 	"gorm.io/gorm/clause"
 )
 
+type CategoryMeta struct {
+	CID   string
+	Title string
+}
+
 type CollectionManager struct {
 	Root          string
 	Metas         []*types.Group
-	catIDs        map[string]string
+	catMetas      map[string]*CategoryMeta
 	collectionIDs map[string]struct{} // 用于验证数据库差异
 }
 
@@ -25,18 +30,18 @@ func NewCollectionManager(root string) *CollectionManager {
 	return &CollectionManager{
 		Root:          root,
 		Metas:         make([]*types.Group, 0, 1000),
-		catIDs:        map[string]string{},
+		catMetas:      map[string]*CategoryMeta{},
 		collectionIDs: map[string]struct{}{},
 	}
 }
 
 func (m *CollectionManager) Read() error {
 	filepath.WalkDir(m.Root, func(path string, info fs.DirEntry, err error) error {
-		if path == m.Root {
-			return nil
-		}
 
 		if info.IsDir() {
+			if path == m.Root {
+				return nil
+			}
 			if strings.HasPrefix(info.Name(), "_") {
 				return filepath.SkipDir
 			}
@@ -56,7 +61,11 @@ func (m *CollectionManager) Read() error {
 
 			if depth == 1 {
 				// 二级分类级别, 记录一下cid 并填写路径
-				m.catIDs[relativeDirPath] = meta.Category.CID
+
+				m.catMetas[relativeDirPath] = &CategoryMeta{
+					CID:   meta.Category.CID,
+					Title: meta.Category.Title,
+				}
 				meta.Category.Path = meta.Category.CID
 				meta.Category.Depth = depth
 			} else {
@@ -64,10 +73,12 @@ func (m *CollectionManager) Read() error {
 
 				cats := make([]string, 0)
 
-				for _, id := range relativeDirPathList {
-					if v, ok := m.catIDs[id]; ok {
-						cats = append(cats, v)
+				parentTitle := ""
 
+				for _, id := range relativeDirPathList {
+					if v, ok := m.catMetas[id]; ok {
+						cats = append(cats, v.CID)
+						parentTitle = v.Title
 					} else {
 						cats = append(cats, meta.Category.CID)
 					}
@@ -81,6 +92,7 @@ func (m *CollectionManager) Read() error {
 				cat := meta.Category
 				cat.Depth = depth
 				cat.Path = filepath.Join(cats...)
+				cat.FullTitle = parentTitle + "/" + meta.Category.Title
 
 				meta.Category = cat
 

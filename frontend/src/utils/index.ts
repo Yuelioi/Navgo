@@ -13,3 +13,5 @@ export function isMobileDevice() {
   // return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
   return screen.width < 768
 }
+
+export function getToken() {}

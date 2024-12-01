@@ -27,7 +27,7 @@ func NewWallpaperLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Wallpap
 	}
 }
 
-func (l *WallpaperLogic) Wallpaper(req *types.AnyRequest) (resp *types.IDResponse, err error) {
+func (l *WallpaperLogic) Wallpaper() (resp *types.IDResponse, err error) {
 
 	root := constants.ConfInst.Resource.Wallpaper
 	wallpapers := make([]string, 0)
