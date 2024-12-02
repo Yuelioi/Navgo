@@ -1,0 +1,9 @@
+title: AI
+order: 7
+collections:
+  - title: chatgpt
+    link: https://chatgpt.com/
+    description: ""
+  - title: 通义千问
+    link: https://tongyi.aliyun.com/
+    description: ""

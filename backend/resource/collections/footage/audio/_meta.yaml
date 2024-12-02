@@ -1,6 +1,12 @@
+cid: audio
 title: 音频
 order: 2
 collections:
-  - title: Soundsnap
-    link: https://www.soundsnap.com/
-    description: 无限制访问超过 500,000 种免版税音效 (SFX)。从 Soundsnap 音效库下载。
+    - title: Soundsnap
+      link: https://www.soundsnap.com/
+      description: 无限制访问超过 500,000 种免版税音效 (SFX)。从 Soundsnap 音效库下载。
+      tags: []
+    - title: Freesound
+      link: https://freesound.org/
+      description: 'Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?'
+      tags: []

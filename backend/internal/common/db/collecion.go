@@ -25,6 +25,7 @@ type CollectionManager struct {
 	Metas         []*types.Group
 	catMetas      map[string]*CategoryMeta
 	collectionIDs map[string]struct{} // 用于验证数据库差异
+	catIDs        map[string]struct{} // 用于验证数据库差异
 }
 
 func NewCollectionManager(root string) *CollectionManager {
@@ -33,6 +34,7 @@ func NewCollectionManager(root string) *CollectionManager {
 		Metas:         make([]*types.Group, 0, 1000),
 		catMetas:      map[string]*CategoryMeta{},
 		collectionIDs: map[string]struct{}{},
+		catIDs:        map[string]struct{}{},
 	}
 }
 
@@ -66,12 +68,12 @@ func (m *CollectionManager) Read() error {
 			}
 
 			if depth == 1 {
-				// 只储存分类
-
 				// 拓展分类内容
-				meta.Category.Path = meta.Category.CID
+				meta.Category.CID = relativeDirPath
+				meta.Category.Path = relativeDirPath
 				meta.Category.Depth = depth
 				meta.Category.FullTitle = meta.Category.Title
+				m.catIDs[meta.Category.Path] = struct{}{}
 			} else {
 				// 正常导航级别
 
@@ -90,10 +92,13 @@ func (m *CollectionManager) Read() error {
 
 				// 补充目录参数
 				cat := meta.Category
+				cat.CID = relativeDirPathList[1]
 				cat.Depth = depth
 				cat.Path = relativeDirPath
 				cat.FullTitle = parentTitle + "/" + meta.Category.Title
 				meta.Category = cat
+
+				m.catIDs[meta.Category.Path] = struct{}{}
 
 				if info.Name() == "comic" {
 					print(1)
@@ -160,20 +165,37 @@ func (m *CollectionManager) Build() error {
 }
 
 func (m *CollectionManager) Reduce() error {
-	var allIDs []string
-	DB.Model(&types.Collection{}).Pluck("path", &allIDs)
+	var allCollectionIDs []string
+	var toDeleteCollectionIDs []string
 
-	var toDeleteIDs []string
+	var allCationIDs []string
+	var toDeleteCatIDs []string
 
-	for _, v := range allIDs {
+	DB.Model(&types.Collection{}).Pluck("path", &allCollectionIDs)
+	DB.Model(&types.Category{}).Pluck("path", &allCationIDs)
+
+	for _, v := range allCollectionIDs {
 		if _, ok := m.collectionIDs[v]; !ok {
-			toDeleteIDs = append(toDeleteIDs, v)
+			toDeleteCollectionIDs = append(toDeleteCollectionIDs, v)
+		}
+	}
+	for _, v := range allCationIDs {
+		if _, ok := m.collectionIDs[v]; !ok {
+			toDeleteCatIDs = append(toDeleteCatIDs, v)
 		}
 	}
 
 	// 删除找到的 ID 对应的记录
-	if len(toDeleteIDs) > 0 {
-		result := DB.Where("path IN (?)", toDeleteIDs).Delete(&types.Collection{})
+	if len(toDeleteCollectionIDs) > 0 {
+		result := DB.Where("path IN (?)", toDeleteCollectionIDs).Delete(&types.Collection{})
+		if result.Error != nil {
+			return fmt.Errorf("failed to delete records: %v", result.Error)
+		}
+		fmt.Printf("Deleted %d records\n", result.RowsAffected)
+	}
+
+	if len(toDeleteCatIDs) > 0 {
+		result := DB.Where("path IN (?)", toDeleteCatIDs).Delete(&types.Collection{})
 		if result.Error != nil {
 			return fmt.Errorf("failed to delete records: %v", result.Error)
 		}

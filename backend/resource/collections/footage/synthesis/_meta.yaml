@@ -1,9 +1,23 @@
+cid: synthesis
 title: 综合
 order: 10
 collections:
-  - title: Pixabay - 免费图片、视频与音乐资源平台
-    link: https://pixabay.com/
-    description: Pixabay 提供高质量的免费图片、插画、视频和音乐资源，可商用且无需署名，是设计师和创作者的优质素材库。
-  - title: 爱给网 - 免费素材共享平台
-    link: https://www.aigei.com/
-    description: 爱给网是一个提供免费音效、音乐、模型、视频素材的共享平台，适用于设计师、动画师和视频创作者获取优质资源。
+    - title: Pixabay - 免费图片、视频与音乐资源平台
+      link: https://pixabay.com/
+      description: Pixabay 提供高质量的免费图片、插画、视频和音乐资源，可商用且无需署名，是设计师和创作者的优质素材库。
+      tags: []
+    - title: 爱给网 - 免费素材共享平台
+      link: https://www.aigei.com/
+      description: 爱给网是一个提供免费音效、音乐、模型、视频素材的共享平台，适用于设计师、动画师和视频创作者获取优质资源。
+      tags: []
+    - title: NASA
+      link: https://nasa3d.arc.nasa.gov/
+      description: NASA模型、纹理和图像资源
+      tags:
+        - 3D
+        - 模型
+        - 航空
+    - title: Substance 3D Assets Homepage
+      link: https://substance3d.adobe.com/assets/
+      description: Browse thousands of fully-customizable 3D assets for your creative projects. Explore and use models, lights, and materials created by specialists and world-class guest artists. Download up to  50  assets per month as part of the Adobe Substance 3D Collection plan.
+      tags: []

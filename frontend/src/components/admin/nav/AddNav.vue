@@ -203,6 +203,10 @@ async function handleSubmit() {
   })
   if (result && result.data.code > 0) {
     Message({ message: '提交成功' })
+    form.title = ''
+    form.link = ''
+    form.description = ''
+    icon.value = null
   } else {
     Message({ message: result.data.msg, type: 'warn' })
   }

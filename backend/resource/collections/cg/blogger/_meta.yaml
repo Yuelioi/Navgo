@@ -6,8 +6,11 @@ collections:
     description: 进阶CG资源
     tags:
       - Houdini
-      - 进阶
   - title: sgasakura
     link: https://www.sgasakura.com/
     description: MV,PV,MG,AE插件,教程
     tags: []
+  - title: gameanimation
+    link: https://gameanimation.info/
+    description: 一个动效人的博客
+    tags: [UI, UX]

@@ -36,7 +36,7 @@
       <div
         class="relative w-full"
         v-if="searchValue.length > 0 && searchResults.length > 0 && currentSearch?.name == '站内'">
-        <div class="absolute flex w-full items-center justify-center">
+        <div class="absolute flex w-full items-center justify-center shadow-lg bg-base-100">
           <div class="h-96 z-10 w-full overflow-y-scroll flex flex-col space-y-4">
             <div class="m-4" v-for="item in searchResults" @click="open(item.item.link)">
               <div class="p-4 rounded-lg flex items-center space-x-3 bg-base-100/70 drop-shadow-md">

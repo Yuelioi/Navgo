@@ -1,33 +1,61 @@
+cid: software
 title: 软件
 order: 1
 collections:
-  - title: 精品MAC应用
-    link: https://xclient.info/
-    description: 精品MAC应用分享
-  - title: 爱绿软
-    link: https://ilvruan.com/
-    description: 收集分享各类有趣好玩的绿色软件
-  - title: Eagle 素材管理
-    link: https://eagle.cool/
-    description: Unify your creative inspiration in one place. Store anything – inspiring images, design mockups, illustrations, screenshots and more.
-  - title: JOKER.PS
-    link: https://www.jokerps.com/
-    description: 软件分享
-  - title: 果核剥壳
-    link: https://www.ghxi.com/
-    description: 本站更换域名为https://www.ghxi.com。果核剥壳是一家综合科技站点，看新闻，分享破解软件、绿色软件，Windows系统。守住互联网最后的一片净土。
-  - title: 吾爱破解
-    link: https://www.52pojie.cn/
-    description: 吾爱破解论坛致力于软件安全与病毒分析的前沿，丰富的技术版块交相辉映，由无数热衷于软件加密解密及反病毒爱好者共同维护
-  - title: MSDN
-    link: https://msdn.itellyou.cn/
-    description: MSDN, 我告诉你 - 做一个安静的工具站
-  - title: Share and Download Free Software
-    link: https://en.taiwebs.com/?lang=TW
-    description: Taiwebs.com | Download games and share software full Vesion, Software, latest computer utilities - Download free webs.
-  - title: Crx搜搜
-    link: https://www.crxsoso.com/
-    description: 浏览器扩展搜搜，免翻墙
-  - title: TMPLINK 钛盘 | 临时分享网盘
-    link: https://tmp.link/
-    description: Free and easy to use temporary file transfer station
+    - title: 精品MAC应用
+      link: https://xclient.info/
+      description: 精品MAC应用分享
+      tags: []
+    - title: 爱绿软
+      link: https://ilvruan.com/
+      description: 收集分享各类有趣好玩的绿色软件
+      tags: []
+    - title: Eagle 素材管理
+      link: https://eagle.cool/
+      description: Unify your creative inspiration in one place. Store anything – inspiring images, design mockups, illustrations, screenshots and more.
+      tags: []
+    - title: JOKER.PS
+      link: https://www.jokerps.com/
+      description: 软件分享
+      tags: []
+    - title: 果核剥壳
+      link: https://www.ghxi.com/
+      description: 本站更换域名为https://www.ghxi.com。果核剥壳是一家综合科技站点，看新闻，分享破解软件、绿色软件，Windows系统。守住互联网最后的一片净土。
+      tags: []
+    - title: 吾爱破解
+      link: https://www.52pojie.cn/
+      description: 吾爱破解论坛致力于软件安全与病毒分析的前沿，丰富的技术版块交相辉映，由无数热衷于软件加密解密及反病毒爱好者共同维护
+      tags: []
+    - title: MSDN
+      link: https://msdn.itellyou.cn/
+      description: MSDN, 我告诉你 - 做一个安静的工具站
+      tags: []
+    - title: Share and Download Free Software
+      link: https://en.taiwebs.com/?lang=TW
+      description: Taiwebs.com | Download games and share software full Vesion, Software, latest computer utilities - Download free webs.
+      tags: []
+    - title: Crx搜搜
+      link: https://www.crxsoso.com/
+      description: 浏览器扩展搜搜，免翻墙
+      tags: []
+    - title: TMPLINK 钛盘 | 临时分享网盘
+      link: https://tmp.link/
+      description: Free and easy to use temporary file transfer station
+      tags: []
+    - title: 行客工作室
+      link: https://www.runker.net/
+      description: 软件下载网站，行客软件管家、分享各种精品软件下载、经典电影和各种视频教程打包下载
+      tags: []
+    - title: 8号站 - 分享开源免费实用的软件
+      link: https://www.ssdtop.com/
+      description: 为大家分享一些开源免费的实用软件。
+      tags: []
+    - title: 大眼仔
+      link: https://www.dayanzai.me/
+      description: 软件破解
+      tags: []
+    - title: ' CAD自学网'
+      link: https://www.cadzxw.com/download.html
+      description: cad,ps,3dmax,proe,creo,Solidworks,sketchup,Revit,天正等
+      tags:
+        - 下载

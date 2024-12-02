@@ -1,6 +1,40 @@
+cid: official
 title: 官网
 order: 1
 collections:
-  - title: TED
-    link: https://www.ted.com/
-    description: TED Talks are influential videos from expert speakers on education, business, science, tech and creativity, with subtitles in 100+ languages. Ideas free to stream and download.
+    - title: TED
+      link: https://www.ted.com/
+      description: TED Talks are influential videos from expert speakers on education, business, science, tech and creativity, with subtitles in 100+ languages. Ideas free to stream and download.
+      tags: []
+    - title: 日本電視台 Japanese TV
+      link: https://mov3.co/
+      description: 日本電視台, MBS每日放送, KTV, MBS, NTV, TV Asahi, TV Tokyo, MBS毎日放送, テレビ朝日, テレビ東京, 日本テレビ, 関西テレビ
+      tags: []
+    - title: "\r\n    OJAD - オンライン日本語アクセント辞書"
+      link: https://www.gavo.t.u-tokyo.ac.jp/ojad/
+      description: 会显示各种日语书 单词的各种形态, 方便记忆!
+      tags: []
+    - title: テレ朝news
+      link: https://news.tv-asahi.co.jp/
+      description: テレビ朝日が配信しているニュースサイト。政治・経済・社会・国際から、スポーツ・エンタメまで、最新ニュースをいち早くお届け。ニュース速報やアクセスランキングなど今話題のニュースもひと目でわかります。
+      tags:
+        - 新闻
+        - 日语
+    - title: JUMP
+      link: https://youngjump.jp/
+      description: 毎週木曜日発売。集英社の青年コミック誌『週刊ヤングジャンプ』の公式サイト。
+      tags:
+        - 新闻
+        - 日语
+    - title: NHKニュース 速報・最新情報
+      link: https://www3.nhk.or.jp/news/
+      description: NHKのニュースサイト「NHK NEWS WEB」。国内外の取材網を生かし、さまざまな分野のニュースをいち早く、正確にお伝えします。ニュース速報はもちろん、現場の記者が執筆した読み応えのある特集記事や、ＮＨＫならではの豊富な動画コンテンツも。
+      tags:
+        - 新闻
+        - 日语
+    - title: ニコニコ動画
+      link: https://www.nicovideo.jp/
+      description: ""
+      tags:
+        - 新闻
+        - 日语
