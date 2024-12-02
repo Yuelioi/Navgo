@@ -11,7 +11,7 @@ func init() {
 		Controllers: make(map[string]Controller),
 	}
 
-	m.RegisterController(NewInReviewCache())
+	m.RegisterController(NewInReviewCache(), NewLocalCache())
 	Manager = m
 }
 

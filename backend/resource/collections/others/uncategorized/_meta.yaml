@@ -1,0 +1,15 @@
+title: 未分类
+order: 2
+collections:
+  - title: gumroad
+    link: https://gumroad.com/
+    description: 国外爱发电
+  - title: xbeibeix
+    link: https://xbeibeix.com/api/bilibili/
+    description: 解析b站视频
+  - title: 在线屏幕录制
+    link: https://www.p2hp.com/screenrecord.html
+    description:
+  - title: MSDN, 我告诉你 - 做一个安静的工具站
+    link: https://msdn.itellyou.cn/
+    description: MSDN, 我告诉你

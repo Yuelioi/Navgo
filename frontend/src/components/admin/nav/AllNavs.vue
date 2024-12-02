@@ -4,10 +4,15 @@
       <div class="flex w-full items-center space-x-4">
         <!-- 分类筛选 -->
         <div class="dropdown dropdown-bottom">
-          <div tabindex="0" role="button" aria-label="分类筛选" class="btn bg-base-100/50 backdrop-blur-sm m-1">
+          <div
+            tabindex="0"
+            role="button"
+            aria-label="分类筛选"
+            class="btn bg-base-100/50 backdrop-blur-sm m-1">
             {{ currentCategory?.full_title || '分类筛选' }}
           </div>
-          <ul tabindex="0"
+          <ul
+            tabindex="0"
             class="menu flex-col bg-base-100 flex-nowrap w-56 dropdown-content rounded-box z-[11] p-2 shadow max-h-96 overflow-y-auto">
             <li>
               <a class="text-nowrap" @click="currentCategory = undefined">全部</a>
@@ -26,13 +31,14 @@
           </ul>
         </div>
         <label class="input input-bordered flex items-center gap-2">
-          <input type="text" class="grow" placeholder="Search" v-model="collectionFilter.keyword"
+          <input
+            type="text"
+            class="grow"
+            placeholder="Search"
+            v-model="collectionFilter.keyword"
             @keydown="fetchKeyword" />
           <span class="icon-[lucide--search]"></span>
         </label>
-        <div class="!ml-auto !mr-4 btn btn-sm">
-          <span class="icon-[lucide--save] size-6"></span>
-        </div>
       </div>
 
       <div class="divider"></div>
@@ -58,17 +64,12 @@
                 <td>
                   <div class="avatar static size-12 group">
                     <div class="h-full rounded-xl">
-                      <img :alt="collection.title"
-                        :src="'https://cdn.yuelili.com/nav/icons/' + collection?.cid + '.png'" @error="imageLoadError"
+                      <img
+                        :alt="collection.title"
+                        :src="'https://cdn.yuelili.com/nav/icons/' + collection?.cid + '.png'"
+                        @error="imageLoadError"
                         class="h-full rounded-full" />
-                      <div class="btn flex p-0 btn-secondary" @click="uploadImage(collection)">
-                        <span class="hidden group-hover:block icon-[lucide--arrow-big-up-dash] size-8"></span>
-                        <span class="group-hover:hidden text-sm">
-                          暂无
-                          <br />
-                          图片
-                        </span>
-                      </div>
+                      <DragBoxMini v-model:icon="collection.favicon"></DragBoxMini>
                     </div>
                   </div>
                 </td>
@@ -79,7 +80,10 @@
                   <input type="text" class="input w-full" v-model="collection.link" @invalid="" />
                 </td>
                 <td>
-                  <textarea type="text" class="input w-full overflow-hidden" v-model="collection.description" />
+                  <textarea
+                    type="text"
+                    class="input w-full overflow-hidden"
+                    v-model="collection.description" />
                 </td>
                 <td class="group w-48 overflow-x-hidden">
                   <div class="join items-center">
@@ -88,17 +92,24 @@
                         {{ tag }}
                       </div>
                     </div>
-                    <input type="text" class="input w-full input-md hidden group-hover:block" v-model="collection.tags"
+                    <input
+                      type="text"
+                      class="input w-full input-md hidden group-hover:block"
+                      v-model="collection.tags"
                       @change="updateTags(collection)" />
                   </div>
                 </td>
                 <th class="w-min">
                   <div class="flex max-w-fit space-x-3">
-                    <button aria-label="保存" class="btn btn-sm btn-square btn-outline shadow-xl"
+                    <button
+                      aria-label="保存"
+                      class="btn btn-sm btn-square btn-outline shadow-xl"
                       @click="saveCollection(collection)">
                       <span class="icon-[lucide--save] size-6"></span>
                     </button>
-                    <button aria-label="移除" class="btn btn-sm btn-square btn-outline"
+                    <button
+                      aria-label="移除"
+                      class="btn btn-sm btn-square btn-outline"
                       @click="removeCollection(collection)">
                       <span class="icon-[lucide--square-x] size-6"></span>
                     </button>
@@ -109,29 +120,44 @@
           </table>
 
           <div class="join">
-            <button aria-label="首页" class="join-item btn bg-base-100/50 backdrop-blur-md"
+            <button
+              aria-label="首页"
+              class="join-item btn bg-base-100/50 backdrop-blur-md"
               @click="collectionFilter.page = 1">
               <span class="icon-[lucide--chevron-first]"></span>
             </button>
-            <button aria-label="上一首页" class="join-item btn bg-base-100/50"
+            <button
+              aria-label="上一首页"
+              class="join-item btn bg-base-100/50"
               @click="collectionFilter.page = Math.max(1, collectionFilter.page - 1)">
               <span class="icon-[lucide--chevron-left]"></span>
             </button>
-            <input :key="collectionFilter.page" class="join-item btn btn-square" type="radio" name="options" checked
+            <input
+              :key="collectionFilter.page"
+              class="join-item btn btn-square"
+              type="radio"
+              name="options"
+              checked
               :aria-label="collectionFilter.page.toString()" />
 
-            <button aria-label="下一页" class="join-item btn bg-base-100/50" @click="
-              collectionFilter.page = Math.min(
-                categoryFilters.totalPages,
-                collectionFilter.page + 1
-              )
+            <button
+              aria-label="下一页"
+              class="join-item btn bg-base-100/50"
+              @click="
+                collectionFilter.page = Math.min(
+                  categoryFilters.totalPages,
+                  collectionFilter.page + 1
+                )
               ">
               <span class="icon-[lucide--chevron-right]"></span>
             </button>
-            <button class="join-item btn bg-base-100/50" @click="collectionFilter.page = categoryFilters.totalPages">
+            <button
+              class="join-item btn bg-base-100/50"
+              @click="collectionFilter.page = categoryFilters.totalPages">
               <span class="icon-[lucide--chevron-last]"></span>
             </button>
-            <label aria-label="尾页"
+            <label
+              aria-label="尾页"
               class="join-item input border-none leading-4 bg-base-100/50 input-bordered flex items-center gap-2"
               @keyup="jumpKey($event)">
               <input type="text" class="grow" placeholder="跳转" v-model="searchPage" />
@@ -149,6 +175,7 @@
 import type { Collection } from '@/api/types'
 import * as api from '@/api/index'
 import { imageLoadError } from '@/utils'
+import { VAlert } from '@/plugins/alert'
 
 const collectionFilter = reactive<api.CollectionFilter>({
   categories: [],
@@ -179,7 +206,6 @@ function updateTags(collection: Collection) {
   collection.tags = collection.tags?.toString().split(',')
 }
 
-
 function jump() {
   validatePage()
 }
@@ -189,9 +215,7 @@ function jumpKey(event: KeyboardEvent) {
   }
 }
 
-
 async function fetchCollections() {
-
   // 重置分页, 会自动触发更新
   if (collectionFilter.page != 1) {
     collectionFilter.page = 1
@@ -203,7 +227,14 @@ async function fetchCollections() {
   categoryFilters.value = resp.data.data
 }
 
-watch(() => currentCategory.value,
+async function fetchKeyword(event: KeyboardEvent) {
+  if (event.key == 'Enter') {
+    await fetchCollections()
+  }
+}
+
+watch(
+  () => currentCategory.value,
   async (x, y) => {
     // 分类变化
     if (x != y) {
@@ -211,51 +242,49 @@ watch(() => currentCategory.value,
     }
 
     await fetchCollections()
-
-  })
-
-async function fetchKeyword(event: KeyboardEvent) {
-  if (event.key == "Enter") {
-    await fetchCollections()
   }
-}
+)
 
-
-
-
-watch(() => [collectionFilter.page],
+watch(
+  () => [collectionFilter.page],
   async () => {
     const resp = await api.filteredCollections(collectionFilter)
     categoryFilters.value = resp.data.data
-  })
-
-function uploadImage(collection: Collection) { }
-
+  }
+)
 
 async function saveCollection(collection: Collection) {
-
-
-  const resp = await api.updateCollection(collection)
+  const resp = await api.updateCollection({
+    ...collection,
+    category_path: collection.category.path,
+    favicon: collection.favicon,
+    tags: JSON.stringify(collection.tags)
+  })
   if (resp.data.code >= 0) {
-    Message({ message: "修改成功" })
+    Message({ message: '修改成功' })
   } else {
-    Message({ message: resp.data.msg, type: "wanning" })
+    Message({ message: resp.data.msg, type: 'wanning' })
   }
-
 }
-function removeCollection(collection: Collection) { }
+function removeCollection(collection: Collection) {
+  // 或者使用自定义设置
+  VAlert({ alert: '确认要删除吗' }).then(async (confirmed) => {
+    if (confirmed) {
+      await api.deleteCollection({ id: collection.path })
+    }
+  })
+}
 
 onMounted(async () => {
   const resp = await api.filteredCollections({
     page: 1,
     keyword: ''
   })
+
   categoryFilters.value = resp.data.data
 
   const resp2 = await api.navs()
   Object.assign(navs, resp2.data.data.navs)
-
-
 })
 </script>
 

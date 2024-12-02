@@ -67,3 +67,16 @@ func Navs() ([]*types.Nav, error) {
 
 	return parent, nil
 }
+
+// 返回按order排序的分类
+func TopCategories() ([]*types.Category, error) {
+	var cats []*types.Category
+
+	result := db.DB.Model(&types.Category{}).Where("depth =?", 1).Order(clause.OrderByColumn{
+		Column: clause.Column{Name: "order"}, Desc: false}).Find(&cats)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+
+	return cats, nil
+}

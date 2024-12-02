@@ -105,7 +105,10 @@ router.beforeEach(async (to, from, next) => {
     }
 
     next()
-  } catch (error) {}
+  } catch (error) {
+    console.error('Navigation error:', error)
+    next(false)
+  }
 })
 
 export default router

@@ -7,7 +7,7 @@ Resource:
   Collections: resource\\collections
   Icons: resource\\icons
   Comments: resource\\comments
-  MetaFile: meta.yaml
+  MetaFile: _meta.yaml # 必须以 _ 开头, 保证优先读取
   Wallpaper: resource\\wallpaper
   Pending: resource\\pending
 

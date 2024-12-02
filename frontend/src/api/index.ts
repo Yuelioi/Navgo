@@ -2,18 +2,38 @@ import axios from 'axios'
 import * as components from './types'
 export * from './types'
 
-const formHeader = {
-  headers: {
-    'Content-Type': 'multipart/form-data'
+class Header {
+  private data: Map<string, string>
+
+  constructor() {
+    // 初始化一个空的Map来存储header数据
+    this.data = new Map<string, string>()
+  }
+
+  withForm() {
+    this.data.set('Content-Type', 'multipart/form-data')
+    return this
+  }
+
+  withAuth() {
+    const store = useBasicStore()
+    const { token } = storeToRefs(store)
+    this.data.set('Authorization', token.value)
+    return this
+  }
+
+  build(): { [key: string]: any } {
+    let obj: { [key: string]: string } = {}
+    this.data.forEach((value, key) => {
+      obj[key] = value
+    })
+    return { headers: obj }
   }
 }
 
-function withAuth() {
-  const store = useBasicStore()
-  const { token } = storeToRefs(store)
-
-  return {
-    headers: { Authorization: token.value }
+const formHeader = {
+  headers: {
+    'Content-Type': 'multipart/form-data'
   }
 }
 
@@ -54,7 +74,10 @@ export function addCollection(req: FormData) {
  * @param req
  */
 export function deleteCollection(req: components.IDRequest) {
-  return axios.delete<ApiResponse<components.Collection>>(apiUrl + `/v1/collection`)
+  return axios.delete<ApiResponse<components.Collection>>(apiUrl + `/v1/collection`, {
+    params: req,
+    ...new Header().withAuth().build()
+  })
 }
 
 /**
@@ -63,7 +86,11 @@ export function deleteCollection(req: components.IDRequest) {
  * @param headers
  */
 export function updateCollection(req: components.CollectionUpdateParams) {
-  return axios.put<ApiResponse<components.Collection>>(apiUrl + `/v1/collection`, req, withAuth())
+  return axios.put<ApiResponse<components.Collection>>(
+    apiUrl + `/v1/collection`,
+    req,
+    new Header().withForm().withAuth().build()
+  )
 }
 
 /**
@@ -159,7 +186,10 @@ export function net(id: string) {
  * @param req
  */
 export function checkToken(token: string) {
-  return axios.get<ApiResponse<components.AuthResponse>>(apiUrl + `/v1/auth`, withAuth())
+  return axios.get<ApiResponse<components.AuthResponse>>(
+    apiUrl + `/v1/auth`,
+    new Header().withAuth().build()
+  )
 }
 
 /**

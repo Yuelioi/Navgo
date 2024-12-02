@@ -1,0 +1,33 @@
+title: 格式
+order: 2
+collections:
+  - title: File Converter
+    link: https://convertio.co/zh/
+    description: Convertio - Easy tool to convert files online. More than 309 different document, image, spreadsheet, ebook, archive, presentation, audio and video formats supported.
+  - title: 图片无损放大
+    link: https://bigjpg.com/
+    description: ""
+  - title: TinyPNG
+    link: https://tinypng.com/
+    description: TinyPNG – 图片在线压缩
+  - title: 音乐解锁
+    link: https://demo.unlock-music.dev/
+    description: 音频解密
+  - title: Remove Background from Image
+    link: https://www.remove.bg/zh
+    description: 移除图片背景
+  - title: Clipping Magic：删除线上图像背景
+    link: https://zh.clippingmagic.com/
+    description: 从您的图像中 100% 自动删除背景 — 智能剪切编辑器 — 裁剪、旋转、修复颜色、增加阴影以及反射 — 免费
+  - title: 人声伴奏分离
+    link: https://vocalremover.org/
+    description: Just a moment...
+  - title: 压缩PNG图片
+    link: https://compresspng.com/
+    description: 在线
+  - title: 图片在线效果生成
+    link: https://evanw.github.io/webgl-filter/
+    description: 色彩调整,模糊,偏移,像素画等
+  - title: waifu2x
+    link: https://www.waifu2x.net/
+    description: 在线图片放大

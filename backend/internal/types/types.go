@@ -61,12 +61,12 @@ type CollectionFilter struct {
 }
 
 type CollectionUpdateParams struct {
-	CID          string   `json:"cid"`
-	Title        string   `json:"title"`
-	Link         string   `json:"link"`
-	Description  string   `json:"description,optional"`
-	CategoryPath string   `json:"category_path,omitempty"`
-	Tags         pq.StringArray `json:"tags,optional,omitempty"`
+	CID          string   `form:"cid"`
+	Title        string   `form:"title"`
+	Link         string   `form:"link"`
+	Description  string   `form:"description,optional"`
+	CategoryPath string   `form:"category_path,omitempty"`
+	Tags         pq.StringArray `form:"tags,optional,omitempty"`
 }
 
 type CollectionsData struct {

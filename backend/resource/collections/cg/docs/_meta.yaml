@@ -1,0 +1,45 @@
+title: 文档
+order: 6
+collections:
+    - title: 动效周期表
+      link: http://foxcodex.html.xdomain.jp/index.html
+      description: motiontable
+      tags:
+        - ae
+    - title: CGWiki
+      link: https://www.tokeru.com/cgwiki/
+      description: ""
+      tags: []
+    - title: Adobe Help Center
+      link: https://helpx.adobe.com/cn/after-effects/user-guide.html
+      description: Adobe 帮助中心
+      tags: []
+    - title: Houdini文档
+      link: https://www.sidefx.com/docs/
+      description: Houdini - 3D 模型 动画, VFX, 灯光,渲染
+      tags: []
+    - title: Blender文档
+      link: https://docs.blender.org/
+      description: ""
+      tags:
+        - bldender
+    - title: C4D文档
+      link: https://help.maxon.net/c4d/en-us/
+      description: ""
+      tags: []
+    - title: Red Giant文档
+      link: https://help.maxon.net/rg
+      description: ""
+      tags: []
+    - title: RS文档
+      link: https://help.maxon.net/r3d/
+      description: redshift3d Home - redshift3d - Global Site
+      tags: []
+    - title: OC文档
+      link: https://help.otoy.com/hc/
+      description: ""
+      tags: []
+    - title: BCC文档
+      link: https://borisfx.com/documentation/continuum/bcc-user-guide/
+      description: ""
+      tags: []

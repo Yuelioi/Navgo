@@ -1,6 +1,7 @@
 package db
 
 import (
+	"backend/internal/common/cache"
 	"backend/internal/common/constants"
 	"backend/internal/types"
 	"fmt"
@@ -59,42 +60,44 @@ func (m *CollectionManager) Read() error {
 				return err
 			}
 
-			if depth == 1 {
-				// 二级分类级别, 记录一下cid 并填写路径
+			m.catMetas[relativeDirPath] = &CategoryMeta{
+				CID:   relativeDirPath,
+				Title: meta.Category.Title,
+			}
 
-				m.catMetas[relativeDirPath] = &CategoryMeta{
-					CID:   meta.Category.CID,
-					Title: meta.Category.Title,
-				}
+			if depth == 1 {
+				// 只储存分类
+
+				// 拓展分类内容
 				meta.Category.Path = meta.Category.CID
 				meta.Category.Depth = depth
+				meta.Category.FullTitle = meta.Category.Title
 			} else {
 				// 正常导航级别
 
-				cats := make([]string, 0)
-
 				parentTitle := ""
+				parentFolderName := relativeDirPathList[0]
 
-				for _, id := range relativeDirPathList {
-					if v, ok := m.catMetas[id]; ok {
-						cats = append(cats, v.CID)
-						parentTitle = v.Title
-					} else {
-						cats = append(cats, meta.Category.CID)
-					}
+				cm, ok := m.catMetas[parentFolderName]
+				if ok {
+					parentTitle = cm.Title
 				}
+
 				// 跳过当前没有收集网站的分类
 				if meta.Collections == nil {
 					return nil
 				}
 
-				// 补充目录的Path
+				// 补充目录参数
 				cat := meta.Category
 				cat.Depth = depth
-				cat.Path = filepath.Join(cats...)
+				cat.Path = relativeDirPath
 				cat.FullTitle = parentTitle + "/" + meta.Category.Title
-
 				meta.Category = cat
+
+				if info.Name() == "comic" {
+					print(1)
+				}
 
 				for i, c := range meta.Collections {
 
@@ -104,7 +107,7 @@ func (m *CollectionManager) Read() error {
 					}
 
 					collectionCid := rawUrl.Host
-					collectionPath := filepath.Join(append(cats, collectionCid)...)
+					collectionPath := filepath.Join(relativeDirPath, collectionCid)
 
 					// 补充页面信息, 使用主机名作为ID
 					meta.Collections[i].CID = collectionCid
@@ -132,6 +135,16 @@ func (m *CollectionManager) Build() error {
 		cats = append(cats, element.Category)
 		collections = append(collections, element.Collections...)
 	}
+
+	storage := make(map[string]*types.Group, 0)
+
+	// 储存本地缓存数据
+	for _, mp := range m.Metas {
+		storage[mp.Category.Path] = mp
+	}
+
+	c := cache.Manager.GetController(cache.LocalCacheID)
+	c.Preload(storage)
 
 	DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "path"}},

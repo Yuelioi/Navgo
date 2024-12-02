@@ -3,6 +3,8 @@ package collection
 import (
 	"context"
 
+	"backend/internal/common/cache"
+	"backend/internal/common/dao/collection"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -27,8 +29,14 @@ func NewUpdateCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *
 func (l *UpdateCollectionLogic) UpdateCollection(req *types.CollectionUpdateParams) (resp *types.Collection, err error) {
 
 	// 修改数据库
+	c, err := collection.Update(req)
+	if err != nil {
+		return nil, err
+	}
 
 	// 修改本地源
+	cc := cache.Manager.GetController(cache.LocalCacheID)
+	cc.Update(c.Category.Path, c)
 
 	return
 }

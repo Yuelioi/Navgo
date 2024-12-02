@@ -3,6 +3,8 @@ package collection
 import (
 	"context"
 
+	"backend/internal/common/cache"
+	"backend/internal/common/dao/collection"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -25,7 +27,15 @@ func NewDeleteCollectionLogic(ctx context.Context, svcCtx *svc.ServiceContext) *
 }
 
 func (l *DeleteCollectionLogic) DeleteCollection(req *types.IDRequest) (resp *types.Collection, err error) {
-	// todo: add your logic here and delete this line
+	// 修改数据库
+	c, err := collection.Delete(req)
+	if err != nil {
+		return nil, err
+	}
+
+	// 修改本地源
+	cc := cache.Manager.GetController(cache.LocalCacheID)
+	cc.Remove(c.Category.Path, c)
 
 	return
 }

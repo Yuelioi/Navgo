@@ -16,20 +16,23 @@ import (
 储存本地必要数据
 */
 
-var localCacheID = "localCache"
+var LocalCacheID = "localCache"
 
 type localCache struct {
-	storage map[string]*types.Group
+	storage map[string]*types.Group // eg:[cg/other][collections]
 }
 
 func NewLocalCache() *localCache {
-	return &localCache{}
+	return &localCache{
+		storage: map[string]*types.Group{},
+	}
 }
 
 func (i *localCache) ID() string {
-	return localCacheID
+	return LocalCacheID
 }
 
+// id: cg/other
 func (i *localCache) Add(id string, item any) error {
 	collection, ok := item.(*types.Collection)
 	if !ok {
@@ -41,12 +44,6 @@ func (i *localCache) Add(id string, item any) error {
 		group.Collections = append(group.Collections, collection)
 	} else {
 		group := &types.Group{
-			Category: &types.Category{
-				CID:       localCacheID,
-				Title:     "",
-				FullTitle: "",
-				Path:      "",
-			},
 			Collections: []*types.Collection{},
 		}
 		group.Collections = append(group.Collections, collection)
@@ -54,7 +51,23 @@ func (i *localCache) Add(id string, item any) error {
 
 	return i.AfterModify(id)
 }
+func (i *localCache) Update(id string, item any) error {
+	collection, ok := item.(*types.Collection)
+	if !ok {
+		return errors.New("item is not a collection")
+	}
 
+	if group, ok := i.storage[id]; ok {
+		for index, c := range group.Collections {
+			if c.ID == collection.ID {
+				group.Collections[index] = collection
+			}
+		}
+	}
+	return i.AfterModify(id)
+}
+
+// 增/删/改后 保存本地数据
 func (i *localCache) AfterModify(id string) error {
 	if group, ok := i.storage[id]; ok {
 		data, err := yaml.Marshal(group)
@@ -94,12 +107,29 @@ func (i *localCache) Get(id string) (any, error) {
 }
 
 // Preload implements Manager.
-func (i *localCache) Preload() error {
-
+func (i *localCache) Preload(data any) error {
+	if storage, ok := data.(map[string]*types.Group); ok {
+		i.storage = storage
+	}
 	return nil
 }
 
 // Remove implements Manager.
-func (i *localCache) Remove(id string) error {
-	panic("unimplemented")
+func (i *localCache) Remove(id string, item any) error {
+	collection, ok := item.(*types.Collection)
+	if !ok {
+		return errors.New("item is not a collection")
+	}
+
+	if group, ok := i.storage[id]; ok {
+		for index, c := range group.Collections {
+			if c.ID == collection.ID {
+				group.Collections = append(group.Collections[:index], group.Collections[index+1:]...)
+				i.storage[id] = group
+				break
+			}
+		}
+	}
+
+	return i.AfterModify(id)
 }

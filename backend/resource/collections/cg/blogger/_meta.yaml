@@ -1,0 +1,13 @@
+title: 博主
+order: 2
+collections:
+  - title: Entagma
+    link: https://entagma.com/
+    description: 进阶CG资源
+    tags:
+      - Houdini
+      - 进阶
+  - title: sgasakura
+    link: https://www.sgasakura.com/
+    description: MV,PV,MG,AE插件,教程
+    tags: []

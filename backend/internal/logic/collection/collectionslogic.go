@@ -6,8 +6,8 @@ import (
 	"sort"
 	"strings"
 
+	"backend/internal/common/dao/category"
 	"backend/internal/common/dao/collection"
-	"backend/internal/common/db"
 	"backend/internal/svc"
 	"backend/internal/types"
 
@@ -53,50 +53,47 @@ func (l *CollectionsLogic) Collections() (resp *types.CollectionsDataResponse, e
 		return
 	}
 
+	topCats, err := category.TopCategories()
+	if err != nil {
+		return
+	}
+
+	// 构建顶层数据
+	topCatsMap := make(map[string]*types.CollectionsData, 0)
+	for _, cat := range topCats {
+		top := &types.CollectionsData{
+			Category: cat,
+			Groups:   []*types.Group{},
+		}
+		datas = append(datas, top)
+		topCatsMap[cat.CID] = top
+	}
+
+	// 构建父级索引
+	parentMap := make(map[string]*types.Group, 0)
+
 	for _, collection := range collections {
-
-		var topData *types.CollectionsData
-		var group *types.Group
-
-		// 顶级分类
+		// 查找顶级数据
 		topID := strings.Split(collection.Category.Path, string(filepath.Separator))[0]
 
-		// 查找顶级数据
-		for _, top := range datas {
-			if top.Category.CID == topID {
-				topData = top
-			}
-		}
-		// 没找到从数据库填充
-		// 初始化父分类
-		if topData == nil {
-			cat := &types.Category{}
-			db.DB.Model(&types.Category{}).First(cat, db.DB.Where("path =?", topID))
-			topData = &types.CollectionsData{
-				Category: cat,
-				Groups:   []*types.Group{},
-			}
-			// 附着到resp
-			datas = append(datas, topData)
+		group, ok := topCatsMap[topID]
+		if !ok {
+			// 没找到父级分类就继续, 虽然肯定能找到
+			continue
 		}
 
-		// 查找次级数据
-		for _, secondary := range topData.Groups {
-			if secondary.Category.Path == collection.Category.Path {
-				group = secondary
-			}
-		}
-		// 初始化子分类
-		if group == nil {
-			group = &types.Group{
+		// 查找父级数据
+		parent, ok := parentMap[collection.Category.Path]
+		if !ok {
+			parent = &types.Group{
 				Category:    collection.Category,
-				Collections: []*types.Collection{},
+				Collections: make([]*types.Collection, 0),
 			}
-			// 附着到父类
-			topData.Groups = append(topData.Groups, group)
+			parentMap[collection.Category.Path] = parent
+			group.Groups = append(group.Groups, parent)
 		}
+		parent.Collections = append(parent.Collections, collection)
 
-		group.Collections = append(group.Collections, collection)
 	}
 
 	resp = &types.CollectionsDataResponse{

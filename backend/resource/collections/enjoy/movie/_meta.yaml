@@ -1,0 +1,15 @@
+title: 电影
+order: 2
+collections:
+  - title: 电影狗
+    link: https://www.dianyinggou.com/
+    description: ""
+  - title: BT电影下载
+    link: https://www.kuba222.com/
+    description: 酷吧电影下载网
+  - title: 美剧迷
+    link: https://www.meijumi.net/
+    description: ""
+  - title: dianying.fm电影资源整合
+    link: https://dianying.fm/
+    description: dianying.fm

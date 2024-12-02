@@ -33,12 +33,12 @@ export interface Collection {
   cid: string
   title: string
   link: string
-  path?: string
+  path: string
   categoryID?: string
   category: Category
   description: string
 
-  favicon?: string
+  favicon: File | null
   tags?: Array<string>
   // view?: number
   like?: boolean
@@ -94,7 +94,8 @@ export interface CollectionUpdateParams {
   link: string
   description?: string
   category_path?: string
-  tags?: Array<string>
+  tags?: string
+  favicon?: File | null
 }
 
 export interface CollectionsResponse {

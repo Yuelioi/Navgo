@@ -39,7 +39,12 @@ export async function loadData() {
     // 填充导航菜单
     navs.value.push(ele.category)
     // 设置第一组group可见, 防止首屏加载太多
-    ele.groups[0].show = true
+
+    for (let i = 0; i < ele.groups.length; i++) {
+      const group = ele.groups[i]
+      group.show = true
+      break
+    }
 
     ele.groups.forEach((group) => {
       group.collections.forEach((item) => {

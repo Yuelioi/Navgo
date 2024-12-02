@@ -1,0 +1,15 @@
+title: 游戏
+order: 5
+collections:
+  - title: GameKee | 游戏百科攻略
+    link: https://www.gamekee.com/
+    description: GameKee（简称K站）致力于为好游戏提供wiki百科和情报攻略，在这里每个玩家都可以为自己喜欢的游戏搭建wiki专区，希望通过我们的努力，让更多的好游戏能被发现，也欢迎各位游戏热爱者加入我们，一起为自己喜欢的游戏做点有意义的事情。
+  - title: OP.GG - LoL 资料库
+    link: https://www.op.gg/
+    description: 最佳LoL冠军构建和玩家统计-学习冠军构建、符文和计数器。搜索防暴ID和标语以获取所有游戏模式的统计数据。
+  - title: 布锅锅联盟宇宙
+    link: https://voice.buguoguo.cn/#/voice
+    description: LOL 英雄语音
+  - title: 鸣潮互动地图工具
+    link: https://static-web.ghzs.com/cspage_pro/mingchao-map.html#/
+    description: 帮助鸣潮新手开荒的资源地图查看工具，让玩家获取到所有最准确的重要资源点位，高效节约玩家跑图找点位的时间精力

@@ -25,6 +25,10 @@ func (i *InReviewCache) ID() string {
 	return InReviewCacheID
 }
 
+func (i *InReviewCache) Update(id string, item any) error {
+	return nil
+}
+
 func (i *InReviewCache) Add(id string, item any) error {
 	collection, ok := item.(*types.Collection)
 	if !ok {
@@ -60,8 +64,7 @@ func (i *InReviewCache) Get(id string) (any, error) {
 
 // Preload implements Manager.
 func (i *InReviewCache) Preload(data any) error {
-	inReviewDir := filepath.Join(constants.ConfInst.Resource.Collections, constants.ConfInst.Resource.Pending)
-	inReviewMeta := filepath.Join(inReviewDir, constants.ConfInst.Resource.MetaFile)
+	inReviewMeta := filepath.Join(constants.ConfInst.Resource.Pending, constants.ConfInst.Resource.MetaFile)
 	i.inReviewMeta = inReviewMeta
 
 	yamlFile, err := os.ReadFile(inReviewMeta)
@@ -79,6 +82,6 @@ func (i *InReviewCache) Preload(data any) error {
 }
 
 // Remove implements Manager.
-func (i *InReviewCache) Remove(id string) error {
+func (i *InReviewCache) Remove(id string, item any) error {
 	return nil
 }

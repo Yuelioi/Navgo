@@ -1,0 +1,54 @@
+title: 其他
+order: 3
+collections:
+  - title: ProcessOn
+    link: https://www.processon.com/
+    description: 在线思维导图、组织结构图、网络拓扑图、BPMN、UML图、UI界面原型设计、iOS界面原型设计等。同时依托于互联网实现了人与人之间的实时协作和共享。
+  - title: diagrams
+    link: https://app.diagrams.net/
+    description: 在线流程图
+  - title: Billfish 素材管理工具
+    link: https://www.billfish.cn/
+    description: Billfish是专为设计师打造的素材管理工具，可以高效的整理电脑的各类素材：支持PNG、JPG、PSD、AI、GIF、SVG、EPS、CDR等格式。Billfish素材管理工具可以快速、轻松的管理素材，让你拥有更多的时间专注于设计本身。
+  - title: AI线稿上色
+    link: https://petalica.com/index_zh.html
+    description: Petalica Paint
+  - title: 自由钢琴
+    link: https://www.autopiano.cn/
+    description: 在线弹钢琴
+  - title: 动漫场景识别检测 | 查找时间点
+    link: https://trace.moe/
+    description: Search Anime by ScreenShot. Lookup the exact moment and the episode.
+  - title: docsmall
+    link: https://docsmall.com/
+    description: docsmall提供在线图片压缩、GIF压缩、在线PDF压缩、PDF合并、PDF分割功能
+  - title: 在线LaTeX公式编辑器
+    link: https://www.latexlive.com/
+    description: 识别图片中的公式！免费的在线LaTeX公式编辑器。支持导出svg、超大png、jpg、MathML、SVGCode。可以打出任何公式，不只是数学！支持物理physics、化学mhchem、unicode等常用扩展宏包加载。即时渲染，基于MathJax实现。
+  - title: GeoGebra 在线绘图
+    link: https://www.geogebra.org/calculator
+    description: GeoGebra - the world’s favorite, free math tools used by over 100 million students and teachers
+  - title: 在线Latex
+    link: https://www.codecogs.com/latex/eqneditor.php?lang=zh-cn
+    description: Interactive Open Source Numerical Library of C/C++ functions for Engineering, Finance, Maths, Science and Statistics. With Online Calculators for Numerical Components and Excel Add-ins.
+  - title: 二次元画像詳細
+    link: https://ascii2d.net/
+    description: 2D 图像详细搜索
+  - title: 免费手绘人物
+    link: https://nav.yuelili.com/sites/free-hand-drawn-characters.html
+    description: "类似的网站还有: https://www..."
+  - title: 梗图生成器
+    link: https://x.magiconch.com/
+    description: 梗图生成器 - 神奇海螺
+  - title: 词云生成
+    link: https://www.yciyun.com/
+    description: 最简单的在线生成中文字云的网站，易词云是一款优秀的在线中文词云生成网站，具有分词功能，内含多种形状模板，不同的配色方案，可供选择
+  - title: 临时邮箱
+    link: https://temporarymail.com/
+    description: Create disposable and temporary email addresses in an instant without the hassle of receiving spam or needing to sign up.
+  - title: 在线录屏
+    link: https://www.p2hp.com/screenrecord.html
+    description: ""
+  - title: 国外假地址
+    link: https://www.fakeaddressgenerator.com/usa_address_generator
+    description: 注册国外账号的时候挺有用的

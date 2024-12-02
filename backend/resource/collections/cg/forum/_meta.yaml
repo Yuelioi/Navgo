@@ -1,0 +1,11 @@
+title: 论坛
+order: 4
+collections:
+    - title: Creative COW
+      link: https://creativecow.net/forums/forum/adobe-after-effects/
+      description: 上古论坛,至今仍在活跃
+      tags: []
+    - title: motionisland
+      link: https://blog.motionisland.com/
+      description: 教程/文档/技巧
+      tags: []

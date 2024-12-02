@@ -70,7 +70,7 @@ const store = useBasicStore()
 const { navs, token } = storeToRefs(store)
 
 import { VDialog } from '@/plugins/dialog'
-import { auth, type User } from '@/api'
+import { auth, checkToken, type User } from '@/api'
 
 const form = reactive<User>({
   iD: 0,
@@ -104,8 +104,11 @@ async function login() {
   }
 }
 
-onMounted(() => {
-  token
+onMounted(async () => {
+  const resp = await checkToken(token.value)
+  if (resp.data.code < 0) {
+    token.value = ''
+  }
 })
 </script>
 
