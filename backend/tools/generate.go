@@ -17,7 +17,6 @@ type Response struct {
 }
 
 func queryMeta(link string) (*Response, error) {
-
 	_, err := url.Parse(link)
 	if err != nil {
 		return nil, err

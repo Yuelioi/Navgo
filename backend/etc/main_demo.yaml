@@ -1,6 +1,7 @@
 Name: main
 Host: 0.0.0.0
 Port: 9200
+MaxBytes: 52428800 # 上传文件大小
 
 Resource:
   Announces: resource\\announces

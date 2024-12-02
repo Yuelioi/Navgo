@@ -53,14 +53,3 @@ export async function getLikes() {
   }
   return []
 }
-
-export async function getAnnounces(): Promise<api.AnnouncesData> {
-  // 先清除历史记录 再添加
-  // await db.clearData('announces')
-  return (await api.announces()).data.data
-}
-
-export async function net(id: string) {
-  const resp = await api.net(id)
-  return resp.data['data']
-}

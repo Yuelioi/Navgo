@@ -28,7 +28,7 @@ func UpdateCollectionHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		file, _, err := r.FormFile("favicon")
 		if err == nil {
 			defer file.Close()
-			_, err := saveFile(w, r, file, global.ConfInst.Resource.Icons, req.CID)
+			err := saveFile(file, global.ConfInst.Resource.Icons, req.CID)
 			if err != nil {
 				return
 			}

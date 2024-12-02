@@ -28,8 +28,6 @@ export interface AnnouncesData {
 }
 
 export interface Collection {
-  // createdAt?: string
-  // updatedAt?: string
   cid: string
   title: string
   link: string

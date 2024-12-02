@@ -1,9 +1,11 @@
 title: 官网
 order: 1
 collections:
-  - title: Python
-    link: https://www.python.org/
-    description: The official home of the Python Programming Language
-  - title: Go Language
-    link: https://go.dev/
-    description: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
+    - title: Python
+      link: https://www.python.org/
+      description: The official home of the Python Programming Language
+      tags: []
+    - title: Go Language
+      link: https://go.dev/
+      description: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
+      tags: []

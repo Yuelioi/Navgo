@@ -19,7 +19,7 @@ type CollectionsDataResponse {
 }
 
 type CollectionUpdateParams {
-	CID          string   `form:"cid"`
+	CID          string   `form:"cid,optional"`
 	Title        string   `form:"title"`
 	Link         string   `form:"link"`
 	Description  string   `form:"description,optional"`
@@ -71,7 +71,7 @@ service main {
 
 	@doc "增加页面"
 	@handler AddCollection
-	post /collection (Collection) returns (Collection)
+	post /collection (CollectionUpdateParams) returns (Collection)
 
 }
 

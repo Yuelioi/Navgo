@@ -65,8 +65,12 @@ export function navs() {
  * @param req
  * @param headers
  */
-export function addCollection(req: FormData) {
-  return axios.post<ApiResponse<null>>(apiUrl + `/v1/collection`, req, formHeader)
+export function addCollection(req: components.CollectionUpdateParams) {
+  return axios.post<ApiResponse<null>>(
+    apiUrl + `/v1/collection`,
+    req,
+    new Header().withForm().withAuth().build()
+  )
 }
 
 /**
@@ -169,7 +173,7 @@ export function tags() {
  * @description "获取页面信息"
  */
 export function net(id: string) {
-  return axios.post<ApiResponse<components.CollectionResponse>>(
+  return axios.post<components.CollectionResponse>(
     apiUrl + `/v1/net`,
     {},
     {
@@ -198,7 +202,11 @@ export function checkToken(token: string) {
  * @param headers
  */
 export function auth(req: components.User) {
-  return axios.post<ApiResponse<components.AuthResponse>>(apiUrl + `/v1/auth`, req, formHeader)
+  return axios.post<ApiResponse<components.AuthResponse>>(
+    apiUrl + `/v1/auth`,
+    req,
+    new Header().withForm().withAuth().build()
+  )
 }
 
 /**

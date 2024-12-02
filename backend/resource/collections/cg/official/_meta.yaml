@@ -1,24 +1,31 @@
 title: 官网
 order: 1
 collections:
-  - title: Unreal
-    link: https://www.unrealengine.com/
-    description: Unreal Engine is the world’s most open and advanced real-time 3D creation tool for photoreal visuals and immersive experiences.
-  - title: Nuke
-    link: https://www.foundry.com/
-    description: Foundry creates pioneering software for creative industries across Digital Design, Media and Entertainment.
-  - title: Smith Micro
-    link: https://www.smithmicro.com/
-    description: Proven Solutions For Wireless Service Providers To Enrich Today&#039;s Connected Lifestyles And Engage Consumers Via Smartphones And Consumer IoT
-  - title: Autodesk
-    link: https://www.autodesk.com/
-    description: Autodesk is a global leader in design and make technology, with expertise across architecture, engineering, construction, design, manufacturing, and entertainment.
-  - title: Maxon
-    link: https://www.maxon.net
-    description: Maxon tools include the award-winning Cinema 4D suite of 3D modeling, simulation and animation technology, the Red Giant lineup of revolutionary editing,…
-  - title: Substance
-    link: https://substance3d.adobe.com/community-assets/
-    description: ""
-  - title: ZBrush
-    link: http://pixologic.com/
-    description: Find ZBrush Retailers, and stores that offer product sales, pricing and purchase.
+    - title: Unreal
+      link: https://www.unrealengine.com/
+      description: 虚幻引擎是世界上最开放、最先进的实时 3D 创作工具，可提供真实的视觉效果和身临其境的体验。
+      tags: []
+    - title: Nuke
+      link: https://www.foundry.com/
+      description: Foundry creates pioneering software for creative industries across Digital Design, Media and Entertainment.
+      tags: []
+    - title: Smith Micro
+      link: https://www.smithmicro.com/
+      description: Proven Solutions For Wireless Service Providers To Enrich Today&#039;s Connected Lifestyles And Engage Consumers Via Smartphones And Consumer IoT
+      tags: []
+    - title: Autodesk
+      link: https://www.autodesk.com/
+      description: Autodesk is a global leader in design and make technology, with expertise across architecture, engineering, construction, design, manufacturing, and entertainment.
+      tags: []
+    - title: Maxon
+      link: https://www.maxon.net
+      description: Maxon tools include the award-winning Cinema 4D suite of 3D modeling, simulation and animation technology, the Red Giant lineup of revolutionary editing,…
+      tags: []
+    - title: Substance
+      link: https://substance3d.adobe.com/community-assets/
+      description: ""
+      tags: []
+    - title: ZBrush
+      link: http://pixologic.com/
+      description: 数字雕刻和绘画软件，广泛用于3D艺术创作，尤其是在电影、游戏、动画和数字雕塑领域。
+      tags: []

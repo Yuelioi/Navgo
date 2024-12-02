@@ -2,8 +2,7 @@
   <div class="flex flex-col relative container z-10">
     <div class="self-center flex-1 my-8 w-full">
       <!-- 公告 -->
-      <div
-        role="alert"
+      <div role="alert"
         class="alert flex w-full backdrop-blur-sm shadow-md border-1 overflow-hidden border-opacity-25 bg-base-200/20"
         v-if="currentAnnounce && showSetting.announce">
         <span class="icon-[lucide--info] size-5 hidden md:block"></span>
@@ -24,10 +23,7 @@
       <!-- 导航 -->
       <div class="w-full flex flex-col lg:space-y-16">
         <!-- 个人收藏 -->
-        <div
-          class="card rounded-md shadow-md hover:shadow-lg my-8"
-          id="love"
-          v-if="showSetting.likes">
+        <div class="card rounded-md shadow-md hover:shadow-lg my-8" id="love" v-if="showSetting.likes">
           <CatTitle :title="'我的收藏'" :icon="'icon-[lucide--star]'"></CatTitle>
 
           <div class="card-body md:mt-2 px-1 pb-2 md:pb-4">
@@ -47,10 +43,7 @@
         </div>
 
         <!-- 网站导航 -->
-        <div
-          class="card rounded-md shadow-md hover:shadow-lg"
-          :id="data.category.cid"
-          v-if="showSetting.collections"
+        <div class="card rounded-md shadow-md hover:shadow-lg" :id="data.category.cid" v-if="showSetting.collections"
           v-for="(data, index) in collectionsDatas">
           <!-- 分类标题 -->
           <CatTitle :title="data.category.title" :icon="icons[index]"></CatTitle>
@@ -58,23 +51,12 @@
           <div class="card-body group px-1 py-1 md:px-4">
             <div role="tablist" class="tabs tabs-bordered" aria-label="Tabs">
               <template v-for="(group, groupIndex) in data.groups">
-                <input
-                  type="radio"
-                  :name="data.category.cid"
-                  role="tab"
-                  class="tab first:ml-4 px-1 sm:px-4 text-nowrap"
+                <input type="radio" :name="data.category.cid" role="tab" class="tab first:ml-4 px-1 sm:px-4 text-nowrap"
                   :id="`${data.category.cid}-tab-${groupIndex}`"
-                  :aria-controls="`${data.category.cid}-tabpanel-${groupIndex}`"
-                  :tabindex="groupIndex === 0 ? 0 : -1"
-                  :checked="groupIndex === 0"
-                  :aria-label="group.category.title"
-                  @click="group.show = true" />
-                <div
-                  role="tabpanel"
-                  class="tab-content my-1"
-                  :id="`${data.category.cid}-tabpanel-${groupIndex}`"
-                  :aria-labelledby="`${data.category.cid}-tab-${groupIndex}`"
-                  v-if="group.show">
+                  :aria-controls="`${data.category.cid}-tabpanel-${groupIndex}`" :tabindex="groupIndex === 0 ? 0 : -1"
+                  :checked="groupIndex === 0" :aria-label="group.category.title" @click="group.show = true" />
+                <div role="tabpanel" class="tab-content my-1" :id="`${data.category.cid}-tabpanel-${groupIndex}`"
+                  :aria-labelledby="`${data.category.cid}-tab-${groupIndex}`" v-if="group.show">
                   <KeepAlive>
                     <div class="grid grid-cols-card relative">
                       <AsyncGroupCard :collections="group.collections"></AsyncGroupCard>
@@ -91,7 +73,7 @@
 </template>
 <script setup lang="ts">
 import type { Announce } from '@/api'
-import { getAnnounces } from '@/logic'
+import * as api from "@/api"
 
 import { icons } from '@/stores/icons'
 
@@ -134,9 +116,8 @@ watch(route, () => {
 })
 
 onMounted(async () => {
-  const data = await getAnnounces()
-
-  announces.value = data['announces']
+  const resp = await api.announces()
+  announces.value = resp.data.data['announces']
   currentAnnounce.value = announces.value[0]
   setInterval(() => {
     const currentIndex = announces.value.indexOf(currentAnnounce.value)
