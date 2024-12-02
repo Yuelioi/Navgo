@@ -62,8 +62,14 @@ export async function loadData() {
     })
   })
 
-  // 加载网站数据
-  const siteData = await statistics()
 
-  siteStats.value = siteData.data.data
+  try {
+    // 加载网站数据
+    const siteData = await statistics()
+    if (siteData) {
+      siteStats.value = siteData.data.data
+    }
+  } catch (e) {
+    console.log(e)
+  }
 }
