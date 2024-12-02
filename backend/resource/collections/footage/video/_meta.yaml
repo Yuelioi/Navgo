@@ -2,15 +2,31 @@ cid: video
 title: 视频
 order: 3
 collections:
-    - title: videvo
-      link: https://www.videvo.net/
-      description: Download royalty free stock video footage with over 2 million videos and clips in 4K and HD. We also offer a wide selection of music and sound effect files with over 300,000 clips available. Click here to download royalty-free licensing videos, motion graphics, music and sound effects from Videvo today.
-      tags: []
-    - title: videezy
-      link: https://www.videezy.com/
-      description: ""
-      tags: []
-    - title: pexels
-      link: https://www.pexels.com/zh-cn/
-      description: ""
-      tags: []
+  - title: videvo
+    link: https://www.videvo.net/
+    description: 下载免版权的视频素材，提供超过 200 万个 4K 和 HD 视频片段。还提供广泛的音乐和音效文件库，超过 30 万个音频片段可供选择。
+    tags: []
+  - title: videezy
+    link: https://www.videezy.com/
+    description: 提供大量免费和付费的高清视频素材，涵盖各种主题和场景，适合用于影片制作、广告和网络内容创作。
+    tags: []
+  - title: pexels
+    link: https://www.pexels.com/zh-cn/
+    description: 提供高质量的免版权视频和图片素材，所有内容可免费用于个人和商业项目。
+    tags: []
+  - title: Coverr
+    link: https://coverr.co/
+    description: Coverr 提供免版权的高清视频素材，所有视频都可以免费下载并在个人和商业项目中使用。
+    tags: []
+  - title: Pixabay
+    link: https://pixabay.com/videos/
+    description: Pixabay 提供免费的高清视频和动画，所有素材都可以用于商业用途，无需授权或归属。
+    tags: []
+  - title: Artgrid
+    link: https://artgrid.io/
+    description: Artgrid 提供高质量的高清视频素材，适用于电影制作、广告、YouTube 视频等，提供灵活的订阅模式。
+    tags: []
+  - title: Motion Places
+    link: https://www.motionplaces.com/
+    description: 提供免费的高清视频素材，专注于自然风光和城市景观，适合用于旅行视频和纪录片制作。
+    tags: []

@@ -2,15 +2,11 @@ cid: tool
 title: 工具
 order: 7
 collections:
-    - title: UE在线蓝图
-      link: https://blueprintue.com/
-      description: ""
-      tags: []
-    - title: 贝塞尔游戏 The Bézier Game
-      link: https://bezier.method.ac/
-      description: The Bézier Game
-      tags: []
-    - title: 贝塞尔游戏 The Bézier Game
-      link: https://bezier.method.ac/
-      description: The Bézier Game
-      tags: []
+  - title: UE在线蓝图
+    link: https://blueprintue.com/
+    description: ""
+    tags: []
+  - title: 贝塞尔游戏 The Bézier Game
+    link: https://bezier.method.ac/
+    description: The Bézier Game
+    tags: []

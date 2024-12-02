@@ -2,15 +2,43 @@ cid: icon
 title: 图标
 order: 5
 collections:
-    - title: 阿里图标库
-      link: https://www.iconfont.cn/
-      description: 国内功能很强大且图标内容很丰富的矢量图标库，提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造，设计和前端开发的便捷工具
-      tags: []
-    - title: flaticon
-      link: https://www.flaticon.com/
-      description: ""
-      tags: []
-    - title: Paper-co
-      link: https://free-paper-texture.com/
-      description: Paper-co | 免费下载纸张纹理材料的网站
-      tags: []
+  - title: 阿里图标库
+    link: https://www.iconfont.cn/
+    description: 国内功能很强大且图标内容很丰富的矢量图标库，提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造，设计和前端开发的便捷工具
+    tags: []
+  - title: iconify
+    link: https://icon-sets.iconify.design/
+    description: Iconify 提供了一个庞大的图标集合，支持多种图标库，并提供简单易用的 API，可以帮助开发者快速集成图标到项目中。
+    tags: []
+  - title: flaticon
+    link: https://www.flaticon.com/
+    description: Flaticon 提供数百万个矢量图标，涵盖各类主题，支持不同格式的下载，用户可以根据关键词搜索图标，方便用于网页设计和应用开发。
+    tags: []
+  - title: Font Awesome
+    link: https://fontawesome.com/
+    description: Font Awesome 是全球最流行的矢量图标库之一，提供免费的和付费的图标，广泛用于网站、应用开发和设计中。
+    tags: []
+  - title: Material Icons
+    link: https://material.io/resources/icons/
+    description: Material Icons 是由 Google 提供的官方图标库，遵循 Material Design 规范，涵盖了数百个常用图标，适用于各种项目和应用。
+    tags: []
+  - title: Feather Icons
+    link: https://feathericons.com/
+    description: Feather 是一个开源的、简洁的矢量图标库，具有清晰、简洁的设计风格，适用于所有类型的界面设计。
+    tags: []
+  - title: Iconfinder
+    link: https://www.iconfinder.com/
+    description: Iconfinder 提供一个庞大的图标库，涵盖了成千上万的免费和付费图标，支持按需求搜索并以多种格式下载。
+    tags: []
+  - title: Noun Project
+    link: https://thenounproject.com/
+    description: Noun Project 是一个提供大量图标的设计平台，用户可以浏览和下载各种类别的图标，支持个人和商业用途。
+    tags: []
+  - title: Streamline Icons
+    link: https://streamlineicons.com/
+    description: Streamline 提供高质量、易于自定义的图标集，适合用于现代设计项目，涵盖了数以千计的图标，支持 SVG、PNG 格式。
+    tags: []
+  - title: Icons8
+    link: https://icons8.com/icons
+    description: Icons8 提供免费的矢量图标、插图和 UI 设计素材，支持在线编辑和下载，适用于网页、移动端及应用开发。
+    tags: []

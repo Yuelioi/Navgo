@@ -42,11 +42,11 @@ type Collection struct {
 	Model
 	CID         string    `json:"cid,optional,omitempty" gorm:"column:cid"`
 	Title       string    `json:"title"`
-	Link        string    `json:"link"`
+	Link        string    `json:"link" gorm:"column:link;unique"`
 	Description string    `json:"description,optional"`
 	Order       int       `json:"order,optional,omitempty" gorm:"column:order"`
-	Path        string    `json:"path,optional,omitempty" gorm:"column:path;unique"`
-	CategoryID  uint      `json:"-,omitempty" gorm:"column:category_id;index"` // 外键字段
+	Path        string    `json:"path,optional,omitempty"`
+	CategoryID  uint      `json:"-,omitempty" gorm:"column:category_id;index"`
 	Category    *Category `json:"category,omitempty" gorm:"foreignKey:CategoryID;references:ID"`
 	Favicon     string    `json:"favicon,optional,omitempty"`
 	Tags        pq.StringArray  `json:"tags,optional,omitempty" gorm:"type:text[]"`

@@ -2,43 +2,74 @@ cid: tool
 title: 工具
 order: 7
 collections:
-    - title: MOJI辞书
-      link: https://www.mojidict.com/
-      description: 学日语的
-      tags: []
-    - title: 在线输入各国语言
-      link: https://www.lexilogos.com/keyboard/japanese.php
-      description: ""
-      tags: []
-    - title: 剑桥词典
-      link: https://dictionary.cambridge.org/
-      description: The most popular dictionary and thesaurus for learners of English. Meanings and definitions of words with pronunciations and translations.
-      tags: []
-    - title: 牛津词典
-      link: https://www.oxfordlearnersdictionaries.com/
-      description: The largest and most trusted free online dictionary for learners of British and American English with definitions, pictures, example sentences, synonyms, antonyms, word origins, audio pronunciation, and more. Look up the meanings of words, abbreviations, phrases, and idioms in our free English Dictionary.
-      tags: []
-    - title: 文字转语音
-      link: https://soundoftext.com/
-      description: ""
-      tags: []
-    - title: 语法俱乐部
-      link: https://llwslc.github.io/grammar-club/content/Preface.html
-      description: 简明的英语语法书。
-      tags: []
-    - title: Etymonline
-      link: https://www.etymonline.com/
-      description: 英语词汇词根查询站。
-      tags: []
-    - title: 日本語品詞分解ツール | konisimple tool
-      link: https://tool.konisimple.net/text/hinshi_keitaiso
-      description: 分解为词性并显示，以便于查看
-      tags: []
-    - title: Collins
-      link: https://www.collinsdictionary.com/
-      description: Collins 词典由英国出版公司HarperCollins出版
-      tags: []
-    - title: 基础汉英类义词典 - Obsidian
-      link: https://publish.obsidian.md/thesaurus/
-      description: ""
-      tags: []
+  - title: MOJI辞书
+    link: https://www.mojidict.com/
+    description: 一款专为学习日语设计的在线词典，提供日语词汇、语法及例句的详细解释，帮助用户快速理解日语单词的含义及用法。
+    tags:
+      - 日语
+      - 词典
+      - 学习
+  - title: 在线输入各国语言
+    link: https://www.lexilogos.com/keyboard/japanese.php
+    description: 提供多语言输入法工具，支持多种语言的键盘布局，包括日语、法语、德语等，便于用户进行各语言的输入。
+    tags:
+      - 输入法
+      - 多语言
+      - 工具
+  - title: 剑桥词典
+    link: https://dictionary.cambridge.org/
+    description: 剑桥词典为英语学习者提供了丰富的词汇、短语、发音、词义和翻译，帮助用户提高英语理解和表达能力。
+    tags:
+      - 英语
+      - 词典
+      - 学习
+  - title: 牛津词典
+    link: https://www.oxfordlearnersdictionaries.com/
+    description: 牛津词典提供英美英语的详细释义、发音、词源、同义词、反义词及例句，是学习英语的权威工具。
+    tags:
+      - 英语
+      - 词典
+      - 学习
+  - title: 文字转语音
+    link: https://soundoftext.com/
+    description: 提供将输入文本转换为语音的工具，支持多种语言和发音选项，适合语言学习和听力练习。
+    tags:
+      - 语音
+      - 工具
+      - 学习
+  - title: 语法俱乐部
+    link: https://llwslc.github.io/grammar-club/content/Preface.html
+    description: 提供简明的英语语法书，内容涵盖基本语法规则和用法，帮助英语学习者快速掌握语法知识。
+    tags:
+      - 英语
+      - 语法
+      - 学习
+  - title: Etymonline
+    link: https://www.etymonline.com/
+    description: 提供英语单词的词根查询，帮助学习者理解单词的起源、发展和演变，是学习英语词汇的有力工具。
+    tags:
+      - 英语
+      - 词汇
+      - 学习
+  - title: 日本語品詞分解ツール | konisimple tool
+    link: https://tool.konisimple.net/text/hinshi_keitaiso
+    description: 日语文本词性分解工具，自动分析日语句子中的词性，帮助学习者理解单词在句中的作用。
+    tags:
+      - 日语
+      - 语法
+      - 工具
+  - title: Collins
+    link: https://www.collinsdictionary.com/
+    description: Collins 词典提供英美英语的丰富词汇、释义、发音及例句，适合各层次英语学习者，内容权威且更新及时。
+    tags:
+      - 英语
+      - 词典
+      - 学习
+  - title: 基础汉英类义词典 - Obsidian
+    link: https://publish.obsidian.md/thesaurus/
+    description: 提供汉英类义词典，帮助学习者更好地理解汉英之间的词汇差异和用法，适合英语学习者或翻译工作者使用。
+    tags:
+      - 英语
+      - 汉英
+      - 词典
+      - 学习

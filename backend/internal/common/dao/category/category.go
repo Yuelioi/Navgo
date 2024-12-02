@@ -3,6 +3,7 @@ package category
 import (
 	"backend/internal/common/db"
 	"backend/internal/types"
+	"os"
 	"strings"
 
 	"gorm.io/gorm/clause"
@@ -51,7 +52,7 @@ func Navs() ([]*types.Nav, error) {
 			pathToNav[cat.Path] = newNav
 		} else {
 
-			parentPath := strings.Split(cat.Path, "\\")[0]
+			parentPath := strings.Split(cat.Path, string(os.PathSeparator))[0]
 			if parentNav, exists := pathToNav[parentPath]; exists {
 				childNav := types.Nav{
 					CID:       cat.CID,

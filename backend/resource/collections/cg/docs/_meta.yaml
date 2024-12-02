@@ -1,3 +1,4 @@
+cid: docs
 title: 文档
 order: 6
 collections:
@@ -22,7 +23,7 @@ collections:
       link: https://docs.blender.org/
       description: ""
       tags:
-        - bldender
+        - blender
     - title: C4D文档
       link: https://help.maxon.net/c4d/en-us/
       description: ""

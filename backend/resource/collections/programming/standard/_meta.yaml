@@ -1,3 +1,73 @@
 title: 规范
 order: 8
 collections:
+  - title: Google 编程风格指南
+    link: https://google.github.io/styleguide/
+    description: Google 提供的编程风格指南，涵盖了多种编程语言（如 C++, Python, Java 等）的规范，旨在帮助开发者编写清晰、可维护的代码。
+    tags:
+      - 编程规范
+      - 风格指南
+      - Google
+  - title: Airbnb JavaScript Style Guide
+    link: https://github.com/airbnb/javascript
+    description: Airbnb 的 JavaScript 编程风格指南，提供了一套最佳实践，用于提高代码质量和一致性。
+    tags:
+      - JavaScript
+      - 编程规范
+      - 风格指南
+  - title: PEP 8 - Python 编程风格指南
+    link: https://peps.python.org/pep-0008/
+    description: Python 的官方编程规范，定义了代码风格的标准，包括命名约定、代码格式、注释等。
+    tags:
+      - Python
+      - 编程规范
+      - PEP 8
+  - title: 规范代码 - Clean Code 书籍摘要
+    link: https://github.com/ryanmcdermott/clean-code-javascript
+    description: 通过总结《Clean Code》一书，提供了 JavaScript 代码编写的最佳实践，帮助开发者编写更简洁、高效、可维护的代码。
+    tags:
+      - JavaScript
+      - 清洁代码
+      - 编程规范
+  - title: 《程序员的自我修养》 GitHub
+    link: https://github.com/tiancaiamao/How-to-learn
+    description: 这是《程序员的自我修养》一书的 GitHub 版本，涵盖了编程开发中的核心技能和最佳实践，包括调试、优化、设计模式等。
+    tags:
+      - 自我修养
+      - 编程规范
+      - 优化
+  - title: GitHub 开源编程规范
+    link: https://github.com/github/styleguide
+    description: GitHub 自己的开源项目中使用的编程风格指南，适用于 Markdown、JavaScript、CSS 等文件的编写。
+    tags:
+      - GitHub
+      - 编程规范
+      - 开源
+  - title: Java 编程规范 - Oracle 官方
+    link: https://www.oracle.com/java/technologies/javase/codeconventions-150003.pdf
+    description: Oracle 提供的 Java 编程风格规范，包含了 Java 编程的代码格式、注释规范、命名规则等。
+    tags:
+      - Java
+      - 编程规范
+      - Oracle
+  - title: C# 编程规范 - Microsoft 官方
+    link: https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions
+    description: Microsoft 提供的 C# 编程规范，涵盖了常用的编程实践、代码格式、命名约定等，旨在提高代码可读性和可维护性。
+    tags:
+      - C#
+      - 编程规范
+      - Microsoft
+  - title: ESLint - JavaScript 代码检查工具
+    link: https://eslint.org/docs/rules/
+    description: ESLint 是一个用于检查 JavaScript 代码质量的工具，提供了大量的规则，用于保证代码风格的一致性。
+    tags:
+      - JavaScript
+      - 代码质量
+      - 工具
+  - title: 标准 JavaScript 规范
+    link: https://standardjs.com/
+    description: Standard 是一个 JavaScript 编码风格规范，提供了一套简单的一致性规则，帮助开发者写出符合标准的代码。
+    tags:
+      - JavaScript
+      - 编程规范
+      - 风格指南

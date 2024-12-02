@@ -7,7 +7,7 @@ import (
 
 func Update(req *types.CollectionUpdateParams) (*types.Collection, error) {
 	var collection types.Collection
-	result := db.DB.Preload("Category").Where("cid = ?", req.CID).First(&collection)
+	result := db.DB.Preload("Category").Where("link = ?", req.Link).First(&collection)
 
 	if result.Error != nil {
 		return nil, result.Error

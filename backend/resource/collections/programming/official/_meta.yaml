@@ -1,11 +1,101 @@
 title: 官网
 order: 1
 collections:
-    - title: Python
-      link: https://www.python.org/
-      description: The official home of the Python Programming Language
-      tags: []
-    - title: Go Language
-      link: https://go.dev/
-      description: Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
-      tags: []
+  - title: Python
+    link: https://www.python.org/
+    description: Python 是一种易于学习和使用的高级编程语言，广泛应用于数据科学、人工智能、Web 开发等领域。其简洁的语法和丰富的库使其成为开发人员和数据科学家的首选。
+    tags:
+      - Python
+      - 编程语言
+      - 开源
+  - title: Go Language
+    link: https://go.dev/
+    description: Go 是一种开源编程语言，旨在让软件开发变得简单、可靠和高效。由 Google 开发，Go 以其简洁的语法、并发支持和高效的性能在开发者中广受欢迎。
+    tags:
+      - Go
+      - 编程语言
+      - 开源
+  - title: Java
+    link: https://www.java.com/
+    description: Java 是一种面向对象的编程语言，具有跨平台的特点。它广泛应用于企业级应用、移动应用、Web 服务和大数据处理等领域。
+    tags:
+      - Java
+      - 编程语言
+      - 企业级
+  - title: JavaScript
+    link: https://www.javascript.com/
+    description: JavaScript 是一种广泛用于 Web 开发的脚本语言，支持动态交互和客户端编程。它是前端开发的核心语言，也可用于服务器端编程（Node.js）。
+    tags:
+      - JavaScript
+      - 编程语言
+      - Web开发
+  - title: C++
+    link: https://isocpp.org/
+    description: C++ 是一种面向对象的编程语言，是 C 语言的扩展。它广泛用于开发高性能应用程序、游戏开发、操作系统和嵌入式系统。
+    tags:
+      - C++
+      - 编程语言
+      - 高性能
+  - title: C#
+    link: https://learn.microsoft.com/en-us/dotnet/csharp/
+    description: C# 是微软开发的现代化编程语言，广泛用于 Windows 平台的应用开发、Web 服务（ASP.NET）和游戏开发（Unity）。
+    tags:
+      - C#
+      - 编程语言
+      - .NET
+  - title: Ruby
+    link: https://www.ruby-lang.org/en/
+    description: Ruby 是一种高效的面向对象编程语言，特别适用于 Web 开发（Ruby on Rails）和自动化脚本编写。其简洁的语法使得开发者能够快速实现功能。
+    tags:
+      - Ruby
+      - 编程语言
+      - Web开发
+  - title: Swift
+    link: https://www.swift.org/
+    description: Swift 是由苹果公司开发的一种编程语言，专门用于 iOS、macOS、watchOS 和 tvOS 的开发。它结合了易用性和性能，是移动开发的首选语言之一。
+    tags:
+      - Swift
+      - 编程语言
+      - iOS开发
+  - title: Kotlin
+    link: https://kotlinlang.org/
+    description: Kotlin 是一种用于现代应用开发的编程语言，兼容 Java，且具有更简洁的语法。它主要用于 Android 开发，并且也可用于服务器端和 Web 开发。
+    tags:
+      - Kotlin
+      - 编程语言
+      - Android开发
+  - title: Rust
+    link: https://www.rust-lang.org/
+    description: Rust 是一种专注于性能和内存安全的系统编程语言。它消除了内存管理问题，并且被广泛应用于构建高性能应用和嵌入式系统。
+    tags:
+      - Rust
+      - 编程语言
+      - 系统编程
+  - title: TypeScript
+    link: https://www.typescriptlang.org/
+    description: TypeScript 是 JavaScript 的超集，增加了静态类型检查。它被广泛用于大型前端项目开发，尤其是在使用 Angular、React 和 Vue.js 等框架时。
+    tags:
+      - TypeScript
+      - 编程语言
+      - Web开发
+  - title: PHP
+    link: https://www.php.net/
+    description: PHP 是一种广泛用于 Web 开发的服务器端脚本语言，能够快速开发动态网页，尤其在与 MySQL 数据库结合使用时表现出色。
+    tags:
+      - PHP
+      - 编程语言
+      - Web开发
+  - title: Scala
+    link: https://www.scala-lang.org/
+    description: Scala 是一种静态类型的编程语言，兼具面向对象和函数式编程特性。它常用于构建分布式系统、大数据处理和 Web 应用程序。
+    tags:
+      - Scala
+      - 编程语言
+      - 函数式编程
+  - title: R
+    link: https://www.r-project.org/
+    description: R 是一种用于统计计算和数据分析的编程语言，广泛应用于学术界和数据科学领域，特别是在数据可视化和统计模型构建方面表现出色。
+    tags:
+      - R
+      - 编程语言
+      - 数据科学

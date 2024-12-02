@@ -3,7 +3,19 @@ order: 7
 collections:
   - title: 二次元画像检索
     link: https://ascii2d.net/
-    description: ""
+    description: 二次元画像检索工具，可以通过上传图片进行二次元风格的图像检索，帮助用户快速找到相似的二次元图片。
   - title: 动画场景识别
     link: https://trace.moe/
-    description: 根据图片找动画时间点
+    description: 根据图片找动画时间点，帮助用户通过截图识别动画场景并提供相应的时间戳。
+  - title: Google 图像搜索
+    link: https://images.google.com/
+    description: Google 提供的图像搜索工具，允许用户上传图片进行反向搜索，查找相似图片和相关网页。
+  - title: TinEye
+    link: https://tineye.com/
+    description: TinEye 是一个图片反向搜索引擎，可以通过图片查找源网站、相似图片或修改过的图像。
+  - title: Yandex 图像搜索
+    link: https://yandex.com/images/
+    description: Yandex 提供的图像搜索工具，允许用户通过图片进行反向搜索，查找相似的图片和相关内容。
+  - title: Baidu 图像搜索
+    link: https://image.baidu.com/
+    description: 百度的图像搜索工具，可以通过上传图片或输入关键词进行反向搜索，找到相似或相关的图片。

@@ -1,9 +1,44 @@
+cid: blogger
 title: 博主
 order: 2
 collections:
-  - title: Ryuuu TV 學日文看日本
-    link: https://www.youtube.com/channel/UCCZS6YMggfiRV_U7NuiNNsg
-    description:
-  - title: 三原JAPAN
-    link: https://www.youtube.com/channel/UCCBq7s8VOCyek275uvq5lYQ
-    description:
+    - title: 日本語の森 (Nihongo no Mori)
+      link: https://www.youtube.com/@nihongonomori2013
+      description: 这个频道提供了从初级到高级的日语学习视频，讲解语法、词汇和听力技巧，适合各种层次的学习者。
+      tags: []
+    - title: Miku's Japanese Language School
+      link: https://www.youtube.com/@mikurealjapanese
+      description: 提供日语发音、常用词汇和语法的教学，适合零基础的学习者，帮助大家快速入门。
+      tags: []
+    - title: Ryuuu TV 學日文看日本
+      link: https://www.youtube.com/channel/UCCZS6YMggfiRV_U7NuiNNsg
+      description: 提供有趣的日语学习内容，内容涵盖了日本文化、日常会话和实际应用，适合日语初学者和进阶学习者。
+      tags: []
+    - title: 三原JAPAN
+      link: https://www.youtube.com/channel/UCCBq7s8VOCyek275uvq5lYQ
+      description: 提供简明易懂的日语教学视频，包括常见的日常用语、词汇、语法等内容，帮助学习者轻松掌握日语。
+      tags: []
+    - title: Learn Japanese with JapanesePod101
+      link: https://www.youtube.com/@JapanesePod101
+      description: 通过有趣的对话、词汇学习和日常会话教学，帮助学习者提升听力和口语表达能力，适合各个级别的学习者。
+      tags: []
+    - title: BBC Learning English
+      link: https://www.youtube.com/user/bbclearningenglish
+      description: BBC 提供的英语学习频道，涵盖了日常英语、口语、词汇、语法等，帮助学生提高英语水平。
+      tags: []
+    - title: English Addict with Mr. Duncan
+      link: https://www.youtube.com/user/duncaninchina
+      description: Mr. Duncan 提供有趣且富有互动性的英语学习视频，重点帮助学生提高口语表达和听力理解。
+      tags: []
+    - title: Rachel's English
+      link: https://www.youtube.com/user/rachelsenglish
+      description: 专注于美国英语发音和口音改进，帮助学生改善发音、口语流利度和理解力，适合各级别的学习者。
+      tags: []
+    - title: EngVid
+      link: https://www.youtube.com/user/engvidenglish
+      description: EngVid 提供免费的英语学习视频，涵盖语法、词汇、口语、听力等多个方面，是一个适合英语初学者和进阶学习者的频道。
+      tags: []
+    - title: Learn English with EnglishClass101.com
+      link: https://www.youtube.com/user/EnglishClass101
+      description: 提供多种形式的英语学习内容，包括日常会话、语法、词汇等，适合所有水平的学习者。
+      tags: []

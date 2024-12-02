@@ -4,33 +4,80 @@ collections:
   - title: MDN Web Docs
     link: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide
     description: The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps.
+    tags:
+      - Web开发
+      - JavaScript
+      - HTML
+      - CSS
   - title: CPP中文手册
     link: https://zh.cppreference.com/
-    description: ""
+    description: C++中文参考手册，提供详细的C++标准库、语言特性及常用工具类库的文档，适合开发者查阅和学习。
+    tags:
+      - C++
+      - 编程手册
+      - 中文文档
   - title: CPP英文手册
     link: https://cplusplus.com/reference/
-    description: ""
+    description: The official C++ reference manual in English, offering comprehensive documentation on the C++ programming language and its standard library.
+    tags:
+      - C++
+      - Programming
+      - Reference Manual
   - title: 现代 JavaScript 教程
     link: https://zh.javascript.info/
-    description: 现代 JavaScript 教程：有关示例和任务的简单但详细的解释包括：闭包、文档和事件，以及面向对象编程等。
-  - title: Pro Git (第二版 中)
+    description: 现代 JavaScript 教程：有关示例和任务的简单但详细的解释，包括闭包、文档和事件，以及面向对象编程等。
+    tags:
+      - JavaScript
+      - Web开发
+      - 学习资源
+  - title: Pro Git (第二版 中文)
     link: https://www.progit.cn/
-    description: ""
+    description: Pro Git 是一本开源 Git 教程，提供了从 Git 的基本使用到高级特性的详细讲解，是学习版本控制的最佳资源。
+    tags:
+      - Git
+      - 版本控制
+      - 开源教程
   - title: TypeScript 手册
     link: https://www.typescriptlang.org/docs/handbook/intro.html
     description: TypeScript extends JavaScript by adding types to the language. TypeScript speeds up your development experience by catching errors and providing fixes before you even run your code.
+    tags:
+      - TypeScript
+      - JavaScript
+      - 编程语言
+      - 开发工具
   - title: Go中文文档
     link: https://www.topgoer.com/
-    description: 前景 · Go语言中文文档
+    description: Go语言中文文档，帮助开发者快速学习 Go 语言，提供了 Go 语言的基础教程和丰富的参考资料。
+    tags:
+      - 非官方
+      - Go
+      - 编程语言
+      - 中文文档
   - title: PYTHON 文档
     link: https://docs.python.org
-    description: python Documentation
+    description: The official Python documentation site, offering a complete guide to Python programming including its library reference, tutorials, and how-tos.
+    tags:
+      - Python
+      - 官方文档
   - title: Docker中文快速入门
     link: https://docker.easydoc.net
-    description: ""
+    description: Docker中文文档，包括安装教程、常见问题、命令参考等，是了解和掌握 Docker 技术的重要资源。
+    tags:
+      - Docker
+      - 容器化
+      - 中文文档
   - title: C语言中文网
     link: http://c.biancheng.net/
     description: C语言中文网是中国领先的C语言程序设计专业网站，提供C语言入门经典教程、C语言编译器、C语言函数手册，C语言编程技巧，C语言考试试题等，是学习、自学C语言程序设计的好帮手。
+    tags:
+      - C语言
+      - 编程教程
+      - 中文资源
   - title: thebookofshaders
     link: https://thebookofshaders.com/
-    description:
+    description: The Book of Shaders is a resource for learning GLSL (OpenGL Shading Language), focusing on understanding how shaders work and how to use them in graphics programming.
+    tags:
+      - GLSL
+      - Shaders
+      - 图形编程
+      - 教程

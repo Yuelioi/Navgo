@@ -2,39 +2,129 @@ cid: official
 title: 官网
 order: 1
 collections:
-    - title: TED
-      link: https://www.ted.com/
-      description: TED Talks are influential videos from expert speakers on education, business, science, tech and creativity, with subtitles in 100+ languages. Ideas free to stream and download.
-      tags: []
-    - title: 日本電視台 Japanese TV
-      link: https://mov3.co/
-      description: 日本電視台, MBS每日放送, KTV, MBS, NTV, TV Asahi, TV Tokyo, MBS毎日放送, テレビ朝日, テレビ東京, 日本テレビ, 関西テレビ
-      tags: []
-    - title: "\r\n    OJAD - オンライン日本語アクセント辞書"
-      link: https://www.gavo.t.u-tokyo.ac.jp/ojad/
-      description: 会显示各种日语书 单词的各种形态, 方便记忆!
-      tags: []
-    - title: テレ朝news
-      link: https://news.tv-asahi.co.jp/
-      description: テレビ朝日が配信しているニュースサイト。政治・経済・社会・国際から、スポーツ・エンタメまで、最新ニュースをいち早くお届け。ニュース速報やアクセスランキングなど今話題のニュースもひと目でわかります。
-      tags:
-        - 新闻
-        - 日语
-    - title: JUMP
-      link: https://youngjump.jp/
-      description: 毎週木曜日発売。集英社の青年コミック誌『週刊ヤングジャンプ』の公式サイト。
-      tags:
-        - 新闻
-        - 日语
-    - title: NHKニュース 速報・最新情報
-      link: https://www3.nhk.or.jp/news/
-      description: NHKのニュースサイト「NHK NEWS WEB」。国内外の取材網を生かし、さまざまな分野のニュースをいち早く、正確にお伝えします。ニュース速報はもちろん、現場の記者が執筆した読み応えのある特集記事や、ＮＨＫならではの豊富な動画コンテンツも。
-      tags:
-        - 新闻
-        - 日语
-    - title: ニコニコ動画
-      link: https://www.nicovideo.jp/
-      description: ""
-      tags:
-        - 新闻
-        - 日语
+  - title: TED
+    link: https://www.ted.com/
+    description: TED Talks are influential videos from expert speakers on education, business, science, tech and creativity, with subtitles in 100+ languages. Ideas free to stream and download.
+    tags: []
+  - title: 日本電視台 Japanese TV
+    link: https://mov3.co/
+    description: 日本電視台, MBS每日放送, KTV, MBS, NTV, TV Asahi, TV Tokyo, MBS毎日放送, テレビ朝日, テレビ東京, 日本テレビ, 関西テレビ
+    tags: []
+  - title: OJAD - オンライン日本語アクセント辞書
+    link: https://www.gavo.t.u-tokyo.ac.jp/ojad/
+    description: 会显示各种日语书 单词的各种形态, 方便记忆!
+    tags: []
+  - title: テレ朝news
+    link: https://news.tv-asahi.co.jp/
+    description: テレビ朝日が配信しているニュースサイト。政治・経済・社会・国際から、スポーツ・エンタメまで、最新ニュースをいち早くお届け。ニュース速報やアクセスランキングなど今話題のニュースもひと目でわかります。
+    tags:
+      - 新闻
+      - 日语
+  - title: JUMP
+    link: https://youngjump.jp/
+    description: 毎週木曜日発売。集英社の青年コミック誌『週刊ヤングジャンプ』の公式サイト。
+    tags:
+      - 新闻
+      - 日语
+  - title: NHKニュース 速報・最新情報
+    link: https://www3.nhk.or.jp/news/
+    description: NHKのニュースサイト「NHK NEWS WEB」。国内外の取材網を生かし、さまざまな分野のニュースをいち早く、正確にお伝えします。ニュース速報はもちろん、現場の記者が執筆した読み応えのある特集記事や、ＮＨＫならではの豊富な動画コンテンツも。
+    tags:
+      - 新闻
+      - 日语
+  - title: ニコニコ動画
+    link: https://www.nicovideo.jp/
+    description: ""
+    tags:
+      - 新闻
+      - 日语
+  - title: 朝日新闻
+    link: https://www.asahi.com/
+    description: 提供最新的国内外新闻报道，涵盖政治、经济、社会、文化等多个领域，深度剖析新闻事件。
+    tags:
+      - 新闻
+      - 日语
+  - title: 每日新闻
+    link: https://mainichi.jp/
+    description: 提供广泛的新闻报道，涵盖国内外热点事件，提供时事、政治、社会、文化和娱乐等多方面的资讯。
+    tags:
+      - 新闻
+      - 日语
+  - title: 产经新闻
+    link: https://www.sanspo.com/
+    description: 专注于国内外政治、经济、体育和娱乐新闻，是日本重要的新闻媒体之一。
+    tags:
+      - 新闻
+      - 日语
+  - title: 日本经济新闻
+    link: https://www.nikkei.com/
+    description: 提供全球经济、金融和商业领域的最新资讯，特别关注日本本土经济和企业动态。
+    tags:
+      - 新闻
+      - 日语
+  - title: TBS新闻
+    link: https://news.tbs.co.jp/
+    description: 提供日本国内及全球新闻，包括政治、经济、社会、国际和娱乐等多个领域。
+    tags:
+      - 新闻
+      - 日语
+  - title: 共同通信社
+    link: https://www.kyodo.co.jp/
+    description: 共同通信社是日本的主要新闻机构之一，提供全面的国内外新闻，涵盖政治、文化、体育、经济等各个方面。
+    tags:
+      - 新闻
+      - 日语
+  - title: J-CAST News
+    link: https://www.j-cast.com/
+    description: 提供最新的日本新闻，涵盖社会、政治、经济、娱乐等多个领域，特别关注与社会热点相关的话题。
+    tags:
+      - 新闻
+      - 日语
+  - title: BBC News
+    link: https://www.bbc.com/news
+    description: 提供全球最新的新闻报道，涵盖政治、经济、社会、科技、文化和娱乐等多方面的内容。
+    tags:
+      - 新闻
+      - 英语
+  - title: The New York Times
+    link: https://www.nytimes.com/
+    description: 提供深入的全球新闻报道，尤其擅长政治、经济、文化、科技和国际关系的分析。
+    tags:
+      - 新闻
+      - 英语
+  - title: The Guardian
+    link: https://www.theguardian.com/
+    description: 提供国际新闻、分析和评论，涵盖政治、环境、科技、文化、体育等多领域。
+    tags:
+      - 新闻
+      - 英语
+  - title: CNN
+    link: https://edition.cnn.com/
+    description: 提供全球新闻、时事和分析，尤其关注美国本土和国际的政治、经济及社会事件。
+    tags:
+      - 新闻
+      - 英语
+  - title: Reuters
+    link: https://www.reuters.com/
+    description: 提供全球最新的新闻报道，专注于财经、政治、市场和全球时事分析。
+    tags:
+      - 新闻
+      - 英语
+  - title: Al Jazeera English
+    link: https://www.aljazeera.com/
+    description: 提供国际新闻，涵盖政治、经济、文化、社会等多个领域，特别关注中东和全球视野。
+    tags:
+      - 新闻
+      - 英语
+  - title: The Washington Post
+    link: https://www.washingtonpost.com/
+    description: 提供美国和全球新闻报道，尤其关注政治、经济、科技和文化领域。
+    tags:
+      - 新闻
+      - 英语
+  - title: Associated Press (AP)
+    link: https://apnews.com/
+    description: 提供全球新闻报道，涉及政治、科技、娱乐、体育、商业等多个领域，快速、简明的新闻内容。
+    tags:
+      - 新闻
+      - 英语

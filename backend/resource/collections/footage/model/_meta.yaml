@@ -4,7 +4,7 @@ order: 7
 collections:
   - title: TurboSquid
     link: https://www.turbosquid.com/
-    description: Buy 3D models for your project from our vast online catalog of cars, people, textures, architectural models and more.
+    description: 从我们庞大的在线目录中购买 3D 模型，涵盖汽车、人物、纹理、建筑模型等各种资源。
     tags: []
   - title: Sketchfab
     link: https://sketchfab.com/feed
@@ -12,16 +12,36 @@ collections:
     tags: []
   - title: Free 3D
     link: https://free3d.com/
-    description: Just a moment...
+    description: 免费提供各种 3D 模型，适用于游戏开发、动画制作、3D 打印等。
     tags: []
   - title: Mixamo动画库
     link: https://www.mixamo.com/#/
-    description: Mixamo
+    description: Mixamo 提供一个庞大的免费动画库，允许用户对 3D 模型应用各种动作和动画。
     tags: []
   - title: Three D Scans - Free 3D scan archive
     link: https://threedscans.com/
-    description: Free 3D scan archive
+    description: 提供免费的 3D 扫描档案，适用于雕塑、3D 打印和数字化艺术项目。
     tags:
       - 雕塑
       - 3D
       - 模型
+  - title: CGTrader
+    link: https://www.cgtrader.com/free-3d-models
+    description: CGTrader 提供了大量免费的 3D 模型，适用于各类设计和创作项目，支持多种格式下载。
+    tags: []
+  - title: Clara.io
+    link: https://clara.io/
+    description: Clara.io 是一个在线 3D 编辑器，提供 3D 模型资源，支持协作和编辑功能。
+    tags: []
+  - title: Blend Swap
+    link: https://www.blendswap.com/
+    description: Blend Swap 是一个专注于 Blender 用户的模型平台，提供用户上传和共享的高质量模型。
+    tags: []
+  - title: 3D Warehouse
+    link: https://3dwarehouse.sketchup.com/
+    description: 3D Warehouse 提供数以千计的免费的 SketchUp 模型，可以在多个领域中使用，如建筑、家居设计和产品原型制作。
+    tags: []
+  - title: MyMiniFactory
+    link: https://www.myminifactory.com/
+    description: MyMiniFactory 提供 3D 打印模型，用户可以下载并打印各种创意设计。
+    tags: []

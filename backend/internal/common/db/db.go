@@ -35,6 +35,20 @@ func init() {
 		panic("failed to connect database")
 	}
 
+	// modelsToDrop := []interface{}{
+	// 	&types.Category{},
+	// 	&types.Collection{},
+	// 	&types.Comment{},
+	// 	&types.Announce{},
+	// 	&types.User{},
+	// }
+
+	// for _, model := range modelsToDrop {
+	// 	if err := DB.Migrator().DropTable(model); err != nil {
+
+	// 	}
+	// }
+
 	err = DB.AutoMigrate(
 		&types.Category{}, &types.Collection{},
 		&types.Comment{}, &types.Announce{}, &types.Statistics{},

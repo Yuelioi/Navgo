@@ -2,43 +2,73 @@ cid: convert
 title: 格式
 order: 2
 collections:
-    - title: File Converter
-      link: https://convertio.co/zh/
-      description: Convertio - Easy tool to convert files online. More than 309 different document, image, spreadsheet, ebook, archive, presentation, audio and video formats supported.
-      tags: []
-    - title: 图片无损放大
-      link: https://bigjpg.com/
-      description: ""
-      tags: []
-    - title: TinyPNG
-      link: https://tinypng.com/
-      description: TinyPNG – 图片在线压缩
-      tags: []
-    - title: 音乐解锁
-      link: https://demo.unlock-music.dev/
-      description: 音频解密
-      tags: []
-    - title: Remove Background from Image
-      link: https://www.remove.bg/zh
-      description: 移除图片背景
-      tags: []
-    - title: Clipping Magic：删除线上图像背景
-      link: https://zh.clippingmagic.com/
-      description: 从您的图像中 100% 自动删除背景 — 智能剪切编辑器 — 裁剪、旋转、修复颜色、增加阴影以及反射 — 免费
-      tags: []
-    - title: 人声伴奏分离
-      link: https://vocalremover.org/
-      description: ""
-      tags: []
-    - title: 压缩PNG图片
-      link: https://compresspng.com/
-      description: 在线
-      tags: []
-    - title: 图片在线效果生成
-      link: https://evanw.github.io/webgl-filter/
-      description: 色彩调整,模糊,偏移,像素画等
-      tags: []
-    - title: waifu2x
-      link: https://www.waifu2x.net/
-      description: 在线图片放大
-      tags: []
+  - title: File Converter
+    link: https://convertio.co/zh/
+    description: Convertio 是一个简单易用的在线文件转换工具，支持超过309种不同类型的文件格式，包括文档、图片、电子书、音频和视频格式等。
+    tags:
+      - 文件转换
+      - 多格式支持
+      - 在线工具
+  - title: 图片无损放大
+    link: https://bigjpg.com/
+    description: Bigjpg 是一个专门用于图片无损放大的工具，通过深度学习技术，帮助用户在放大图片时保持清晰度和细节。
+    tags:
+      - 图片放大
+      - 无损放大
+      - 图像处理
+  - title: TinyPNG
+    link: https://tinypng.com/
+    description: TinyPNG 是一个高效的图片在线压缩工具，能够压缩 PNG 和 JPEG 格式的图片，减小文件大小同时保持图像质量。
+    tags:
+      - 图片压缩
+      - 在线工具
+      - PNG 压缩
+  - title: 音乐解锁
+    link: https://demo.unlock-music.dev/
+    description: 音乐解锁工具，用于解密和去除音频文件的版权保护，解锁后可以自由使用和分享音乐。
+    tags:
+      - 音乐解锁
+      - 音频解密
+      - 在线工具
+  - title: Remove Background from Image
+    link: https://www.remove.bg/zh
+    description: Remove.bg 是一个智能背景移除工具，能够快速且自动地从图像中移除背景，适用于人像、产品照片等。
+    tags:
+      - 背景移除
+      - 图像处理
+      - 在线工具
+  - title: Clipping Magic：删除线上图像背景
+    link: https://zh.clippingmagic.com/
+    description: Clipping Magic 是一款在线图像背景移除工具，支持自动剪切、裁剪、旋转、修复颜色等功能，并能增加阴影和反射效果。
+    tags:
+      - 背景移除
+      - 图像编辑
+      - 自动剪切
+  - title: 人声伴奏分离
+    link: https://vocalremover.org/
+    description: Vocal Remover 是一个在线工具，帮助用户分离音频中的人声和伴奏，适用于卡拉OK和音乐制作。
+    tags:
+      - 音频分离
+      - 人声去除
+      - 音乐制作
+  - title: 压缩PNG图片
+    link: https://compresspng.com/
+    description: CompressPNG 是一个免费的在线工具，可以压缩 PNG 格式的图片，减小文件大小而不影响图片质量。
+    tags:
+      - PNG 压缩
+      - 图片优化
+      - 在线工具
+  - title: 图片在线效果生成
+    link: https://evanw.github.io/webgl-filter/
+    description: 这是一个在线图像效果生成工具，支持多种图像效果，如色彩调整、模糊、偏移、像素画等，帮助用户快速生成艺术效果。
+    tags:
+      - 图片效果
+      - 图像处理
+      - WebGL
+  - title: waifu2x
+    link: https://www.waifu2x.net/
+    description: Waifu2x 是一个在线图片放大工具，专为动漫风格图像设计，能够去除噪点并提高图像的分辨率和细节。
+    tags:
+      - 图片放大
+      - 无损放大
+      - 动漫风格

@@ -3,34 +3,74 @@ order: 3
 collections:
   - title: 在线生成MD表格
     link: http://web.chacuo.net/charsettextmarkdown
-    description: ""
+    description: 这是一个在线工具，可以帮助用户快速生成 Markdown 表格，便于编辑和展示数据。
+    tags:
+      - Markdown
+      - 工具
+      - 表格
   - title: 代码片段生成器
     link: https://snippet-generator.app/
-    description: 哈哈哈 懒癌必备
+    description: 这款工具专为懒人设计，用户可以快速生成并管理代码片段，提升编程效率。
+    tags:
+      - 工具
+      - 代码片段
+      - 提高效率
   - title: codepen 在线写html
     link: https://codepen.io/
-    description: Attention Required! | Cloudflare
+    description: CodePen 是一个在线 HTML、CSS 和 JavaScript 编辑器，可以实时预览代码效果，适合前端开发者快速构建原型。
+    tags:
+      - HTML
+      - CSS
+      - JavaScript
+      - 在线编辑器
   - title: CSS格式化
     link: http://www.lonniebest.com/FormatCSS/
-    description: This is, quite possibly, the best computer automated card trick on the Internet.
+    description: 这个工具可以自动格式化你的 CSS 代码，帮助保持代码的整洁和一致性。
+    tags:
+      - CSS
+      - 工具
+      - 格式化
   - title: 在线编程 | 多语言
     link: https://rextester.com/l/octave_online_compiler
-    description: compile c# online
+    description: Rextester 是一个支持多种编程语言的在线编译器，适合快速运行各种语言的代码。
+    tags:
+      - 编程语言
+      - 在线编译器
+      - 多语言
   - title: 在线编程2 | 多语言
     link: https://www.onlinegdb.com/
-    description: Online GDB is online compiler and debugger for C/C++. You can compile, run and debug code with gdb online. Using gcc/g++ as compiler and gdb as debugger. Currently C and C++ languages are supported.
+    description: OnlineGDB 是一个支持多种编程语言的在线编译器和调试器，提供在线 C/C++ 编译和调试功能。
+    tags:
+      - 编程语言
+      - 在线编译器
+      - 调试器
+      - C/C++
   - title: regex101 正则
     link: https://regex101.com/
-    description: ""
+    description: Regex101 是一个在线正则表达式测试工具，支持实时调试和语法高亮，帮助开发者轻松构建正则表达式。
+    tags:
+      - 正则表达式
+      - 工具
+      - 调试
   - title: Overleaf | Latex
     link: https://www.overleaf.com/
-    description: An online LaTeX editor that’s easy to use. No installation, real-time collaboration, version control, hundreds of LaTeX templates, and more.
-  - title: 力扣
-    link: https://leetcode.cn/
-    description: 力扣
+    description: Overleaf 是一个在线 LaTeX 编辑器，支持实时协作、版本控制和大量模板，适合编写学术论文和报告。
+    tags:
+      - LaTeX
+      - 学术写作
+      - 在线编辑器
   - title: AtCoder
     link: https://atcoder.jp/
-    description: AtCoder is a programming contest site for anyone from beginners to experts. We hold weekly programming contests online.
+    description: AtCoder 是一个编程竞赛平台，适合从初学者到专家的所有程序员参加，每周都会举行编程比赛。
+    tags:
+      - 编程竞赛
+      - 练习
+      - 挑战
   - title: Codeforces
     link: http://codeforces.com/
-    description: Codeforces. Programming competitions and contests, programming community
+    description: Codeforces 是一个著名的编程竞赛网站，提供全球范围内的编程比赛，帮助程序员提高算法和数据结构的能力。
+    tags:
+      - 编程竞赛
+      - 算法
+      - 数据结构
+      - 挑战

@@ -270,7 +270,7 @@ function removeCollection(collection: Collection) {
   // 或者使用自定义设置
   VAlert({ alert: '确认要删除吗' }).then(async (confirmed) => {
     if (confirmed) {
-      await api.deleteCollection({ id: collection.path })
+      await api.deleteCollection({ id: collection.link })
     }
   })
 }

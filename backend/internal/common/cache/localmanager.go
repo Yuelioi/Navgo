@@ -59,7 +59,7 @@ func (i *localCache) Update(id string, item any) error {
 
 	if group, ok := i.storage[id]; ok {
 		for index, c := range group.Collections {
-			if c.ID == collection.ID {
+			if c.Link == collection.Link {
 				group.Collections[index] = collection
 			}
 		}
@@ -123,7 +123,7 @@ func (i *localCache) Remove(id string, item any) error {
 
 	if group, ok := i.storage[id]; ok {
 		for index, c := range group.Collections {
-			if c.ID == collection.ID {
+			if c.Link == collection.Link {
 				group.Collections = append(group.Collections[:index], group.Collections[index+1:]...)
 				i.storage[id] = group
 				break

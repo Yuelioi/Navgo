@@ -36,7 +36,7 @@ collections:
     description: 2D 图像详细搜索
   - title: 免费手绘人物
     link: https://nav.yuelili.com/sites/free-hand-drawn-characters.html
-    description: "类似的网站还有: https://www..."
+    description:
   - title: 梗图生成器
     link: https://x.magiconch.com/
     description: 梗图生成器 - 神奇海螺

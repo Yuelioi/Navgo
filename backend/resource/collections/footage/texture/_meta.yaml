@@ -2,56 +2,60 @@ cid: texture
 title: 材质
 order: 6
 collections:
-    - title: Poly Haven
-      link: https://polyhaven.com/
-      description: The Public 3D Asset Library
-      tags: []
-    - title: Hdri Sky
-      link: https://hdri-skies.com/
-      description: ""
-      tags: []
-    - title: Textures for 3D
-      link: https://www.textures.com/
-      description: Textures for 3D, graphic design and Photoshop!
-      tags: []
-    - title: ambientcg
-      link: https://ambientcg.com/
-      description: ""
-      tags: []
-    - title: Texturelabs
-      link: https://texturelabs.org/
-      description: 高质量纹理材质资源站，原创+免费。同名Youtube频道有相关Ps与Ae教程。
-      tags: []
-    - title: cgbookcase
-      link: https://www.cgbookcase.com/textures
-      description: PBR纹理
-      tags: []
-    - title: 材质忍者
-      link: https://texture.ninja/
-      description: ""
-      tags: []
-    - title: Texturebox
-      link: https://texturebox.com/category
-      description: Texturebox - Free and Premium Seamless PBR textures, photoscanned 3d models for archviz and games
-      tags: []
-    - title: MaterialX Library
-      link: https://matlib.gpuopen.com/main/materials/all
-      description: MaterialX 库是完全免费提供的高质量材料和相关纹理的集合。
-      tags: []
-    - title: ponzu 贴图在线生成!
-      link: https://www.ponzu.gg/
-      description: ""
-      tags: []
-    - title: toptal
-      link: https://www.toptal.com/designers/subtlepatterns/
-      description: ""
-      tags:
-        - 纹理
-    - title: ' The Pattern Library '
-      link: http://thepatternlibrary.com/
-      description: Patterns for the people, by the people
-      tags: []
-    - title: "3D TEXTURES | Free seamless PBR textures and Stylized textures with Color, Normal, Displacement, Occlusion and Roughness Maps.\t"
-      link: https://3dtextures.me/
-      description: Free seamless PBR textures with diffuse, normal, height, AO and roughness maps.
-      tags: []
+  - title: Poly Haven
+    link: https://polyhaven.com/
+    description: The Public 3D Asset Library
+    tags: []
+  - title: Hdri Sky
+    link: https://hdri-skies.com/
+    description: ""
+    tags: []
+  - title: Textures for 3D
+    link: https://www.textures.com/
+    description: Textures for 3D, graphic design and Photoshop!
+    tags: []
+  - title: ambientcg
+    link: https://ambientcg.com/
+    description: ""
+    tags: []
+  - title: Texturelabs
+    link: https://texturelabs.org/
+    description: 高质量纹理材质资源站，原创+免费。同名Youtube频道有相关Ps与Ae教程。
+    tags: []
+  - title: cgbookcase
+    link: https://www.cgbookcase.com/textures
+    description: PBR纹理
+    tags: []
+  - title: 材质忍者
+    link: https://texture.ninja/
+    description: ""
+    tags: []
+  - title: Texturebox
+    link: https://texturebox.com/category
+    description: Texturebox - Free and Premium Seamless PBR textures, photoscanned 3d models for archviz and games
+    tags: []
+  - title: MaterialX Library
+    link: https://matlib.gpuopen.com/main/materials/all
+    description: MaterialX 库是完全免费提供的高质量材料和相关纹理的集合。
+    tags: []
+  - title: ponzu 贴图在线生成!
+    link: https://www.ponzu.gg/
+    description: ""
+    tags: []
+  - title: toptal
+    link: https://www.toptal.com/designers/subtlepatterns/
+    description: ""
+    tags:
+      - 纹理
+  - title: The Pattern Library
+    link: http://thepatternlibrary.com/
+    description: Patterns for the people, by the people
+    tags: []
+  - title: 3D TEXTURES | Free seamless PBR textures and Stylized textures with Color, Normal, Displacement, Occlusion and Roughness Maps
+    link: https://3dtextures.me/
+    description: Free seamless PBR textures with diffuse, normal, height, AO and roughness maps.
+    tags: []
+  - title: Paper-co
+    link: https://free-paper-texture.com/
+    description: Paper-co | 免费下载纸张纹理材料的网站
+    tags: []

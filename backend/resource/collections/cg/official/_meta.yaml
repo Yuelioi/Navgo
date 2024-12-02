@@ -1,31 +1,72 @@
+cid: official
 title: 官网
 order: 1
 collections:
-    - title: Unreal
-      link: https://www.unrealengine.com/
-      description: 虚幻引擎是世界上最开放、最先进的实时 3D 创作工具，可提供真实的视觉效果和身临其境的体验。
-      tags: []
-    - title: Nuke
-      link: https://www.foundry.com/
-      description: Foundry creates pioneering software for creative industries across Digital Design, Media and Entertainment.
-      tags: []
-    - title: Smith Micro
-      link: https://www.smithmicro.com/
-      description: Proven Solutions For Wireless Service Providers To Enrich Today&#039;s Connected Lifestyles And Engage Consumers Via Smartphones And Consumer IoT
-      tags: []
-    - title: Autodesk
-      link: https://www.autodesk.com/
-      description: Autodesk is a global leader in design and make technology, with expertise across architecture, engineering, construction, design, manufacturing, and entertainment.
-      tags: []
-    - title: Maxon
-      link: https://www.maxon.net
-      description: Maxon tools include the award-winning Cinema 4D suite of 3D modeling, simulation and animation technology, the Red Giant lineup of revolutionary editing,…
-      tags: []
-    - title: Substance
-      link: https://substance3d.adobe.com/community-assets/
-      description: ""
-      tags: []
-    - title: ZBrush
-      link: http://pixologic.com/
-      description: 数字雕刻和绘画软件，广泛用于3D艺术创作，尤其是在电影、游戏、动画和数字雕塑领域。
-      tags: []
+  - title: Unreal
+    link: https://www.unrealengine.com/
+    description: 虚幻引擎是世界上最开放、最先进的实时 3D 创作工具，可提供真实的视觉效果和身临其境的体验。
+    tags: []
+  - title: Nuke
+    link: https://www.foundry.com/
+    description: Foundry 为数字设计、媒体和娱乐行业创造开创性的创意软件。
+    tags: []
+  - title: Smith Micro
+    link: https://www.smithmicro.com/
+    description: 提供无线服务提供商的成熟解决方案，以增强现代连接生活方式，并通过智能手机和消费物联网与消费者互动。
+    tags: []
+  - title: Autodesk
+    link: https://www.autodesk.com/
+    description: Autodesk 是全球领先的设计与制造技术公司，专注于建筑、工程、施工、设计、制造和娱乐领域。
+    tags: []
+  - title: Maxon
+    link: https://www.maxon.net
+    description: Maxon 工具包括屡获殊荣的 Cinema 4D 套件，提供 3D 建模、仿真和动画技术，以及 Red Giant 的革命性编辑工具等。
+    tags: []
+  - title: Adobe
+    link: https://www.adobe.com/
+    description: Adobe 提供创意、设计、视频编辑等领域的专业软件工具。
+    tags: []
+  - title: ZBrush
+    link: http://pixologic.com/
+    description: 数字雕刻和绘画软件，广泛用于3D艺术创作，尤其是在电影、游戏、动画和数字雕塑领域。
+    tags: []
+  - title: Houdini - 3D modeling, animation, VFX, look development, lighting and rendering | SideFX
+    link: https://www.sidefx.com/
+    description: Houdini 是一款 3D 程序软件，用于电影、电视、广告和视频游戏流程中的建模、装配、动画、视觉特效、外观开发、灯光和渲染。
+    tags: []
+  - title: Blender
+    link: https://www.blender.org/
+    description: Blender 是一个免费的开源 3D 创作套件，涵盖从建模、绑定、动画、仿真、渲染到合成、视频编辑的整个 3D 流程。
+    tags: []
+  - title: Lightwave 3D
+    link: https://www.lightwave3d.com/
+    description: Lightwave 3D 是一个 3D 软件解决方案，支持建模、动画、渲染和视觉特效创作，广泛应用于电视、电影和数字媒体。
+    tags: []
+  - title: Fusion
+    link: https://www.blackmagicdesign.com/products/fusion
+    description: Fusion 是一款视觉特效和动态图形软件，用于合成、运动追踪、3D 动画和键控。
+    tags: []
+  - title: Mari
+    link: https://www.foundry.com/products/mari
+    description: Mari 是一款 3D 绘画和纹理映射软件，适用于 VFX 和动画中的高分辨率纹理创作。
+    tags: []
+  - title: Clarisse iFX
+    link: https://www.isotropix.com/
+    description: Clarisse iFX 是一款专业的 3D 渲染和动画软件，广泛应用于电影、广告和广播的 VFX 制作。
+    tags: []
+  - title: Modo
+    link: https://www.foundry.com/products/modo
+    description: Modo 是一款 3D 建模、纹理处理和渲染软件，注重速度、易用性和艺术灵活性。
+    tags: []
+  - title: V-Ray
+    link: https://www.chaos.com/vray
+    description: V-Ray 是一款强大的 3D 渲染引擎，以其高质量的真实感渲染效果而闻名，广泛应用于建筑、汽车设计和电影制作。
+    tags: []
+  - title: OctaneRender
+    link: https://home.otoy.com/render/octane-render/
+    description: OctaneRender 是一款实时 3D 渲染引擎，以其速度、真实感和 GPU 加速渲染能力而闻名，广泛应用于视觉特效和动态图形。
+    tags: []
+  - title: SketchUp
+    link: https://www.sketchup.com/
+    description: SketchUp 是一款用户友好的 3D 建模软件，广泛用于建筑设计、室内设计和 3D 打印，因其简便性和丰富的插件支持而著称。
+    tags: []
