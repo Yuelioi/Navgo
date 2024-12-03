@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -14,6 +15,15 @@ import (
 
 var DB *gorm.DB
 var err error
+
+// 将原始日期字符串转换为新的日期格式
+func convertDateFormat(dateStr string) string {
+	if len(dateStr) != 8 {
+		return ""
+	}
+	year, month, day := dateStr[:4], dateStr[4:6], dateStr[6:]
+	return strings.Join([]string{year, month, day}, "-")
+}
 
 func init() {
 	if _, err = os.Stat(constants.ConfInst.Database.Resource); os.IsNotExist(err) {
